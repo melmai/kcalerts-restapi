@@ -68,8 +68,8 @@ function extractActiveRoutes(alert) {
 /**
  * Adds alert to the list
  *
- * @param {String} routeArr
+ * @param {Array} routeArr
  * @param {Object} alert
  * @param {Array} alertArr
  */
-function addAlertPanel(routeArr, alert, alertArr) {}
+function addAlertToRoute(routeArr, alert, alertArr) {}
