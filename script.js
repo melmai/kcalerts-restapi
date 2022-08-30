@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const root = document.getElementById("root");
-  const BASE_URL = "http://107.23.133.228:8090/developer/api/v2/";
+  const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
   const alerts = getAlerts(BASE_URL, API_KEY); // array of alerts
