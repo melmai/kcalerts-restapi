@@ -20,14 +20,14 @@ function getAlerts(baseURL, apiKey) {
   fetch(`${baseURL}/alerts?api_key=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
+      let alertArr = [];
       data.alerts.forEach((alert) => {
         // console.log(alert);
-        // console.log(extractActiveRoutes(alert));
+        console.log(uniqueRoutes(alert.affected_services.services));
 
-        const routes = extractActiveRoutes(alert);
+        const routes = uniqueRoutes(alert.affected_services.services);
+        // addAlertToRoute(routes, alert, alertArr);
       });
-
-      return data.alerts;
     })
     .catch((error) =>
       console.error("Problem with Alert Fetch operation:", error)
@@ -55,14 +55,13 @@ function getRoutes(baseURL, apiKey) {
 }
 
 /**
- * Extract active routes that pertain to this alert
+ * Filter array of routes so that only unique routes are listed
  *
  * @param {obj} alert
  * @returns array of routes to append this alert to
  */
-function extractActiveRoutes(alert) {
-  const routesArr = alert.affected_services.services;
-  return [...new Set(routesArr.map((route) => route.route_name))];
+function uniqueRoutes(routes) {
+  return [...new Set(routes.map((route) => route.route_name))];
 }
 
 /**
@@ -72,4 +71,12 @@ function extractActiveRoutes(alert) {
  * @param {Object} alert
  * @param {Array} alertArr
  */
-function addAlertToRoute(routeArr, alert, alertArr) {}
+function addAlertToRoute(routeArr, alert, alertArr) {
+  routeArr.forEach((route) => {
+    if (!alertArr.includes(route)) createRouteObj(route, alertArr);
+    appendAlert(route, alertArr, alert);
+  });
+}
+
+function createRouteObj(route, alertArr) {}
+function appendAlert(route, alertArr, alert) {}
