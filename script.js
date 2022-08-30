@@ -6,7 +6,7 @@ function createAlerts() {
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
   const alerts = getAlerts(BASE_URL, API_KEY); // array of alerts
-  // const routes = getRoutes(BASE_URL, API_KEY); // array of routes
+  const routes = getRoutes(BASE_URL, API_KEY); // array of routes
 }
 
 /**
@@ -20,14 +20,21 @@ function getAlerts(baseURL, apiKey) {
   fetch(`${baseURL}/alerts?api_key=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
-      let alertArr = [];
-      data.alerts.forEach((alert) => {
-        // console.log(alert);
-        console.log(uniqueRoutes(alert.affected_services.services));
+      let result = []; // contains array of route objects with alerts
+      let routes = []; // contains array of routes with active alerts
 
-        const routes = uniqueRoutes(alert.affected_services.services);
-        // addAlertToRoute(routes, alert, alertArr);
+      // loop through all alerts and create an array of routes that have alerts
+      data.alerts.forEach((alert) => {
+        routes = uniqueRoutes(alert.affected_services.services, "alert");
+
+        result.push({
+          routes: routes,
+          alert: alert,
+        });
       });
+
+      console.log(result);
+      return result;
     })
     .catch((error) =>
       console.error("Problem with Alert Fetch operation:", error)
@@ -60,8 +67,14 @@ function getRoutes(baseURL, apiKey) {
  * @param {obj} alert
  * @returns array of routes to append this alert to
  */
-function uniqueRoutes(routes) {
-  return [...new Set(routes.map((route) => route.route_name))];
+function uniqueRoutes(routes, type) {
+  if (type === "alert") {
+    return [...new Set(routes.map((route) => route.route_id))];
+  } else if (type === "route") {
+    return [...new Set(routes.map((route) => route))];
+  } else {
+    return [];
+  }
 }
 
 /**
@@ -73,7 +86,7 @@ function uniqueRoutes(routes) {
  */
 function addAlertToRoute(routeArr, alert, alertArr) {
   routeArr.forEach((route) => {
-    if (!alertArr.includes(route)) createRouteObj(route, alertArr);
+    if (!alertArr.includes(route_id)) createRouteObj(route, alertArr);
     appendAlert(route, alertArr, alert);
   });
 }
