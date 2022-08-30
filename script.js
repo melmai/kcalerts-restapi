@@ -5,8 +5,8 @@ function createAlerts() {
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2/";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
-  const alerts = getAlerts(BASE_URL, API_KEY);
-  const routes = getRoutes(BASE_URL, API_KEY);
+  const alerts = getAlerts(BASE_URL, API_KEY); // array of alerts
+  // const routes = getRoutes(BASE_URL, API_KEY); // array of routes
 }
 
 /**
@@ -20,7 +20,13 @@ function getAlerts(baseURL, apiKey) {
   fetch(`${baseURL}/alerts?api_key=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.alerts);
+      data.alerts.forEach((alert) => {
+        // console.log(alert);
+        // console.log(extractActiveRoutes(alert));
+
+        const routes = extractActiveRoutes(alert);
+      });
+
       return data.alerts;
     })
     .catch((error) =>
@@ -47,3 +53,23 @@ function getRoutes(baseURL, apiKey) {
       console.error("Problem with Route Fetch operation:", error)
     );
 }
+
+/**
+ * Extract active routes that pertain to this alert
+ *
+ * @param {obj} alert
+ * @returns array of routes to append this alert to
+ */
+function extractActiveRoutes(alert) {
+  const routesArr = alert.affected_services.services;
+  return [...new Set(routesArr.map((route) => route.route_name))];
+}
+
+/**
+ * Adds alert to the list
+ *
+ * @param {String} routeArr
+ * @param {Object} alert
+ * @param {Array} alertArr
+ */
+function addAlertPanel(routeArr, alert, alertArr) {}
