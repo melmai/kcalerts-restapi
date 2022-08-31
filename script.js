@@ -5,26 +5,15 @@ function createAlerts() {
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
-  // const alerts = getAlerts(BASE_URL, API_KEY); // array of alerts
-  // const routes = getRoutes(BASE_URL, API_KEY); // array of routes
-
-  // const data1 = Promise.all([
-  //   getAlerts(BASE_URL, API_KEY),
-  //   getRoutes(BASE_URL, API_KEY),
-  // ]).then((res) => res);
-
   const data = Promise.all([
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
     fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then((res) => res.json()),
   ]).then((res) => {
-    // console.log(res[0]); // test alerts
-    // console.log(res[1]); // test routes
-
     const alerts = res[0];
     const routes = res[1].mode[1].route;
 
-    console.log(alerts);
-    console.log(routes);
+    console.log(alerts); // test alerts
+    console.log(routes); // test routes
   });
 }
 
