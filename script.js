@@ -17,8 +17,14 @@ function createAlerts() {
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
     fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then((res) => res.json()),
   ]).then((res) => {
-    console.log(res[0]); // alerts
-    console.log(res[1]); // routes
+    // console.log(res[0]); // test alerts
+    // console.log(res[1]); // test routes
+
+    const alerts = res[0];
+    const routes = res[1].mode[1].route;
+
+    console.log(alerts);
+    console.log(routes);
   });
 }
 
