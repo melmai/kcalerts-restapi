@@ -5,48 +5,63 @@ function createAlerts() {
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
-  const data = Promise.all([
+  Promise.all([
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
     fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then((res) => res.json()),
   ]).then((res) => {
-    const alerts = res[0];
-    const routes = res[1].mode[1].route;
+    const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
+    const routes = res[1].mode[1].route; // array of all available routes
 
-    console.log(alerts); // test alerts
-    console.log(routes); // test routes
+    const data = processData(alerts, routes);
   });
 }
 
 /**
- * Fetches all alerts
  *
- * @param {String} baseURL
- * @param {String} apiKey
- * @returns an array of published alerts
+ * @param {Array} alerts array of alert objects with alert and array of route_id
+ * @param {Array} routes array of route objects with route_id and route_name properties
  */
-function getAlerts(baseURL, apiKey) {
-  fetch(`${baseURL}/alerts?api_key=${apiKey}`)
-    .then((response) => response.json())
-    .then((data) => {
-      let result = []; // contains array of route objects with alerts
-      let routes = []; // contains array of routes with active alerts
+function processData(alertArr, routes) {
+  let routeArr = routes;
 
-      // loop through all alerts and create an array of routes that have alerts
-      data.alerts.forEach((alert) => {
-        routes = uniqueRoutes(alert.affected_services.services, "alert");
-
-        result.push({
-          routes: routes,
-          alert: alert,
-        });
+  alertArr.forEach((data) => {
+    data.route_ids.forEach((routeID) => {
+      routeArr.forEach((route) => {
+        if (routeID === route.route_id) {
+          if (route.alerts) {
+            route.alerts = [...route.alerts, data.alert];
+          } else {
+            route.alerts = [];
+            route.alerts[0] = data.alert;
+          }
+        }
       });
+    });
+  });
 
-      console.log(result);
-      return result;
-    })
-    .catch((error) =>
-      console.error("Problem with Alert Fetch operation:", error)
-    );
+  return routeArr;
+}
+
+/**
+ * Process all alerts
+ *
+ * @param {Array} alerts
+ * @returns an array of objects that contain an alert and its unique routes
+ */
+function processAlerts(alerts) {
+  let result = [];
+
+  // loop through all alerts and create an array of routes that have alerts
+  alerts.forEach((alert) => {
+    const routes = uniqueRoutes(alert.affected_services.services, "alert");
+
+    result.push({
+      route_ids: routes,
+      alert: alert,
+    });
+  });
+
+  return result;
 }
 
 /**
