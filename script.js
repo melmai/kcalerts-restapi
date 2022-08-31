@@ -18,15 +18,15 @@ function createAlerts() {
 
 /**
  *
- * @param {Array} alerts array of alert objects with alert and array of route_id
- * @param {Array} routes array of route objects with route_id and route_name properties
+ * @param {Array} alertArr array of alert objects with alert and array of route_id
+ * @param {Array} routeArr array of route objects with route_id and route_name properties
  */
-function processData(alertArr, routes) {
-  let routeArr = routes;
+function processData(alertArr, routeArr) {
+  let routes = routeArr;
 
   alertArr.forEach((data) => {
     data.route_ids.forEach((routeID) => {
-      routeArr.forEach((route) => {
+      routes.forEach((route) => {
         if (routeID === route.route_id) {
           if (route.alerts) {
             route.alerts = [...route.alerts, data.alert];
