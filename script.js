@@ -65,26 +65,6 @@ function processAlerts(alerts) {
 }
 
 /**
- * Fetches all routes
- *
- * @param {String} baseURL
- * @param {String} apiKey
- * @returns array of route objects with route_id and route_name properties
- *
- *  */
-function getRoutes(baseURL, apiKey) {
-  fetch(`${baseURL}/routes?api_key=${apiKey}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.mode[1].route);
-      return data.mode[1].route;
-    })
-    .catch((error) =>
-      console.error("Problem with Route Fetch operation:", error)
-    );
-}
-
-/**
  * Filter array of routes so that only unique routes are listed
  *
  * @param {obj} alert
@@ -99,20 +79,3 @@ function uniqueRoutes(routes, type) {
     return [];
   }
 }
-
-/**
- * Adds alert to the list
- *
- * @param {Array} routeArr
- * @param {Object} alert
- * @param {Array} alertArr
- */
-function addAlertToRoute(routeArr, alert, alertArr) {
-  routeArr.forEach((route) => {
-    if (!alertArr.includes(route_id)) createRouteObj(route, alertArr);
-    appendAlert(route, alertArr, alert);
-  });
-}
-
-function createRouteObj(route, alertArr) {}
-function appendAlert(route, alertArr, alert) {}
