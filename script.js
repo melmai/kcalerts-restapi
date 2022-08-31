@@ -12,7 +12,8 @@ function createAlerts() {
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
     const routes = res[1].mode[1].route; // array of all available routes
 
-    const data = processData(alerts, routes);
+    const data = cleanup(processData(alerts, routes));
+    console.log(data);
   });
 }
 
@@ -62,6 +63,16 @@ function processAlerts(alerts) {
   });
 
   return result;
+}
+
+/**
+ * Removes routes without active alerts
+ *
+ * @param {Array} routes an array of routes with route_id, route_name, and alerts properties
+ * @returns array of routes with active alerts
+ */
+function cleanup(routes) {
+  return routes.filter((route) => route.alerts);
 }
 
 /**
