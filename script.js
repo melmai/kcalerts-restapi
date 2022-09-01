@@ -135,10 +135,22 @@ function addRoutePanel(route, id) {
     alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
     alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
 
-    let alertText = document.createElement("h4");
-    alertText.textContent = alert.header_text;
+    let alertTitle = document.createElement("h4");
+    alertTitle.textContent = alert.short_header_text;
 
-    alertPanel.append(alertText);
+    let alertDescription = document.createElement("p");
+    alertDescription.textContent = alert.description_text;
+
+    let alertCause = document.createElement("p");
+    alertCause.textContent = `Cause: ${alert.cause}`;
+
+    let start = document.createElement("p");
+    start.textContent = `Start: ${alert.effect_periods[0].effect_start}`;
+
+    let end = document.createElement("p");
+    end.textContent = `End: ${alert.effect_periods[0].effect_end}`;
+
+    alertPanel.append(alertTitle, alertDescription, alertCause, start, end);
     alertBody.append(alertPanel);
   });
 
