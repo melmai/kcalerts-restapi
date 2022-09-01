@@ -17,7 +17,6 @@ function createAlerts() {
     let accordion = new DocumentFragment();
     data.forEach((route, idx) => {
       accordion.append(addRoutePanel(route, idx));
-      console.log(accordion);
     });
     root.append(accordion);
   });
@@ -138,22 +137,42 @@ function addRoutePanel(route, id) {
     let alertTitle = document.createElement("h4");
     alertTitle.textContent = alert.short_header_text;
 
+    let alertLifecycle = document.createElement("p");
+    alertLifecycle.textContent = alert.alert_lifecycle;
+
     let alertDescription = document.createElement("p");
     alertDescription.textContent = alert.description_text;
+    alertDescription.setAttribute("style", "white-space:pre;");
+
+    let alertLink = document.createElement("p");
+    let alertURL = document.createElement("a");
+    alertURL.setAttribute("href", alert.url);
+    alertURL.setAttribute("target", "_blank");
+    alertURL.textContent = "More Details";
+    alertLink.append(alertURL);
 
     let alertCause = document.createElement("p");
     alertCause.textContent = `Cause: ${alert.cause}`;
 
-    let start = document.createElement("p");
-    start.textContent = `Start: ${alert.effect_periods[0].effect_start}`;
+    let alertDates = `Effective Dates: ${convertEpoch(
+      alert.effect_periods[0].effect_start
+    )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
 
-    let end = document.createElement("p");
-    end.textContent = `End: ${alert.effect_periods[0].effect_end}`;
-
-    alertPanel.append(alertTitle, alertDescription, alertCause, start, end);
+    alertPanel.append(
+      alertTitle,
+      alertLifecycle,
+      alertDescription,
+      alertLink,
+      alertCause,
+      alertDates
+    );
     alertBody.append(alertPanel);
   });
 
   routePanel.append(alertBody);
   return routePanel;
+}
+
+function convertEpoch(epochts) {
+  return new Date(epochts * 1000).toDateString();
 }
