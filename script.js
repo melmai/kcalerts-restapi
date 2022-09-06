@@ -115,7 +115,7 @@ function addRoutePanel(route, id) {
   button.setAttribute("data-bs-target", `#collapse${id}`);
   button.setAttribute("aria-expanded", "false");
   button.setAttribute("aria-controls", `collapse${id}`);
-  button.textContent = route.route_name;
+  button.textContent = routeLabel(route.route_name);
 
   header.append(button);
   routePanel.append(header);
@@ -175,4 +175,22 @@ function addRoutePanel(route, id) {
 
 function convertEpoch(epochts) {
   return new Date(epochts * 1000).toDateString();
+}
+
+function routeLabel(route) {
+  if (route.charAt(0).match(/[a-z]/i)) return route;
+  if (isDART(route)) return `DART ${route}`;
+  return ` Route ${route}`;
+}
+
+function isDART(route) {
+  const routeNum = parseInt(route);
+  if (
+    routeNum === 630 ||
+    routeNum === 631 ||
+    (routeNum >= 901 && routeNum <= 930)
+  ) {
+    return true;
+  }
+  return false;
 }
