@@ -135,10 +135,10 @@ function addRoutePanel(route, id) {
     alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
 
     let alertTitle = document.createElement("h4");
-    alertTitle.textContent = alert.short_header_text;
+    alertTitle.textContent = `${alert.effect_name}: ${alert.short_header_text}`;
 
     let alertLifecycle = document.createElement("p");
-    alertLifecycle.textContent = alert.alert_lifecycle;
+    alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
 
     let alertDescription = document.createElement("p");
     alertDescription.textContent = alert.description_text;
