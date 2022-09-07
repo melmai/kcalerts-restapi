@@ -18,6 +18,10 @@
   font-family: var(--title-font);
 }
 
+.cause {
+  margin-bottom: 0;
+}
+
 .dates {
   margin-bottom: 20px;
 }

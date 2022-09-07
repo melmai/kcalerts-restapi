@@ -140,7 +140,7 @@ function addRoutePanel(route, id) {
 
     let alertTitle = document.createElement("h5");
     alertTitle.setAttribute("class", "alert-title");
-    alertTitle.textContent = alert.short_header_text;
+    alertTitle.textContent = alert.header_text;
 
     let alertLifecycle = document.createElement("p");
     alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
@@ -183,7 +183,8 @@ function addRoutePanel(route, id) {
 }
 
 function convertEpoch(epochts) {
-  return new Date(epochts * 1000).toDateString();
+  // return new Date(epochts * 1000).toDateString();
+  return new Date(epochts * 1000).toLocaleDateString();
 }
 
 /**
