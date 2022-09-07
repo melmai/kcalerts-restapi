@@ -1,7 +1,23 @@
 * {
   font-family: "Cabin", sans-serif;
+  --title-font: "Roboto Condensed", sans-serif;
+}
+
+#root {
+  max-width: 980px;
+  margin: auto;
 }
 
 .accordion-collapse {
   padding: 1em;
+  margin-bottom: 30px;
+}
+
+.alert-type,
+.alert-title {
+  font-family: var(--title-font);
+}
+
+.dates {
+  margin-bottom: 20px;
 }

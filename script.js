@@ -109,7 +109,7 @@ function addRoutePanel(route, id) {
   title.setAttribute("class", "accordion-header");
 
   const button = document.createElement("button");
-  button.setAttribute("class", "accordion-button collapsed");
+  button.setAttribute("class", "accordion-button collapsed panel-title");
   // button.setAttribute("type", "button");
   button.setAttribute("data-bs-toggle", "collapse");
   button.setAttribute("data-bs-target", `#collapse${id}`);
@@ -134,8 +134,13 @@ function addRoutePanel(route, id) {
     alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
     alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
 
-    let alertTitle = document.createElement("h4");
-    alertTitle.textContent = `${alert.effect_name}: ${alert.short_header_text}`;
+    let alertType = document.createElement("h4");
+    alertType.setAttribute("class", "alert-type");
+    alertType.textContent = alert.effect_name;
+
+    let alertTitle = document.createElement("h5");
+    alertTitle.setAttribute("class", "alert-title");
+    alertTitle.textContent = alert.short_header_text;
 
     let alertLifecycle = document.createElement("p");
     alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
@@ -153,12 +158,16 @@ function addRoutePanel(route, id) {
 
     let alertCause = document.createElement("p");
     alertCause.textContent = `Cause: ${alert.cause}`;
+    alertCause.setAttribute("class", "cause");
 
-    let alertDates = `Effective Dates: ${convertEpoch(
+    let alertDates = document.createElement("p");
+    alertDates.textContent = `Effective Dates: ${convertEpoch(
       alert.effect_periods[0].effect_start
     )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
+    alertDates.setAttribute("class", "dates");
 
     alertPanel.append(
+      alertType,
       alertTitle,
       alertLifecycle,
       alertDescription,
