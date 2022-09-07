@@ -177,12 +177,24 @@ function convertEpoch(epochts) {
   return new Date(epochts * 1000).toDateString();
 }
 
+/**
+ * Adjusts the route title based on route number
+ *
+ * @param {String} route
+ * @returns String describing route type
+ */
 function routeLabel(route) {
   if (route.charAt(0).match(/[a-z]/i)) return route;
   if (isDART(route)) return `DART ${route}`;
   return ` Route ${route}`;
 }
 
+/**
+ * Determines if a given route is DART
+ *
+ * @param {String} route
+ * @returns boolean
+ */
 function isDART(route) {
   const routeNum = parseInt(route);
   if (
