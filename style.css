@@ -9,13 +9,11 @@
   margin: auto;
 }
 
-.accordion-collapse {
-  padding: 1em;
-  margin-bottom: 30px;
-}
-
 .alert-panel {
   display: flex;
+  border: 1px solid #eee;
+  border-top-width: 0;
+  padding: 1.5em;
 }
 
 .material-symbols-outlined {
