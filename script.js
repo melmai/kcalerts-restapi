@@ -16,7 +16,7 @@ function createAlerts() {
 
     let accordion = new DocumentFragment();
     data.forEach((route, idx) => {
-      accordion.append(addRoutePanel(route, idx));
+      accordion.append(createRoutePanel(route, idx));
     });
     root.append(accordion);
   });
@@ -96,7 +96,14 @@ function uniqueRoutes(routes, type) {
   }
 }
 
-function addRoutePanel(route, id) {
+/**
+ * Builds route panel with alerts
+ *
+ * @param {object} route
+ * @param {Int} id
+ * @returns route element with alerts
+ */
+function createRoutePanel(route, id) {
   // create parent fragment
   let routePanel = new DocumentFragment();
 
@@ -117,69 +124,83 @@ function addRoutePanel(route, id) {
   button.setAttribute("aria-controls", `collapse${id}`);
   button.textContent = routeLabel(route.route_name);
 
+  // add elements to route header section
   header.append(button);
   routePanel.append(header);
 
+  // create alert container
   const alertBody = document.createElement("div");
   alertBody.id = `collapse${id}`;
   alertBody.setAttribute("class", "accordion-collapse collapse");
   alertBody.setAttribute("aria-labelledby", `heading${id}`);
   // alertBody.setAttribute("data-bs-parent", "#accordionExample");
 
-  // append alerts to each route panel body section
+  // append alerts to alert container
   route.alerts.forEach((alert, idx) => {
-    let alertPanel = document.createElement("div");
-    alertPanel.id = `alert-collapse${idx}`;
-    // alertPanel.setAttribute("class", "collapse");
-    alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
-    alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
-
-    let alertType = document.createElement("h4");
-    alertType.setAttribute("class", "alert-type");
-    alertType.textContent = alert.effect_name;
-
-    let alertTitle = document.createElement("h5");
-    alertTitle.setAttribute("class", "alert-title");
-    alertTitle.textContent = alert.header_text;
-
-    let alertLifecycle = document.createElement("p");
-    alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
-
-    let alertDescription = document.createElement("p");
-    alertDescription.textContent = alert.description_text;
-    alertDescription.setAttribute("style", "white-space:pre;");
-
-    let alertLink = document.createElement("p");
-    let alertURL = document.createElement("a");
-    alertURL.setAttribute("href", alert.url);
-    alertURL.setAttribute("target", "_blank");
-    alertURL.textContent = "More Details";
-    alertLink.append(alertURL);
-
-    let alertCause = document.createElement("p");
-    alertCause.textContent = `Cause: ${alert.cause}`;
-    alertCause.setAttribute("class", "cause");
-
-    let alertDates = document.createElement("p");
-    alertDates.textContent = `Effective Dates: ${convertEpoch(
-      alert.effect_periods[0].effect_start
-    )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
-    alertDates.setAttribute("class", "dates");
-
-    alertPanel.append(
-      alertType,
-      alertTitle,
-      alertLifecycle,
-      alertDescription,
-      alertLink,
-      alertCause,
-      alertDates
-    );
-    alertBody.append(alertPanel);
+    alertBody.append(createAlertPanel(alert, idx));
   });
 
   routePanel.append(alertBody);
   return routePanel;
+}
+
+/**
+ * Creates an alert panel to append to a route
+ *
+ * @param {Object} alert
+ * @param {Int} idx
+ * @returns alert element
+ */
+function createAlertPanel(alert, idx) {
+  const alertPanel = document.createElement("div");
+  alertPanel.id = `alert-collapse${idx}`;
+  // alertPanel.setAttribute("class", "collapse");
+  alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
+  alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
+
+  const alertType = document.createElement("h4");
+  alertType.setAttribute("class", "alert-type");
+  alertType.textContent = alert.effect_name;
+
+  const alertTitle = document.createElement("h5");
+  alertTitle.setAttribute("class", "alert-title");
+  alertTitle.textContent = alert.header_text;
+
+  const alertLifecycle = document.createElement("p");
+  alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
+
+  const alertDescription = document.createElement("p");
+  alertDescription.textContent = alert.description_text;
+  alertDescription.setAttribute("style", "white-space:pre;");
+
+  const alertLink = document.createElement("p");
+  const alertURL = document.createElement("a");
+  alertURL.setAttribute("href", alert.url);
+  alertURL.setAttribute("target", "_blank");
+  alertURL.textContent = "More Details";
+  alertLink.append(alertURL);
+
+  const alertCause = document.createElement("p");
+  alertCause.textContent = `Cause: ${alert.cause}`;
+  alertCause.setAttribute("class", "cause");
+
+  const alertDates = document.createElement("p");
+  alertDates.textContent = `Effective Dates: ${convertEpoch(
+    alert.effect_periods[0].effect_start
+  )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
+  alertDates.setAttribute("class", "dates");
+
+  alertPanel.append(
+    alertType,
+    alertTitle,
+    alertLifecycle,
+    alertDescription,
+    alertLink,
+    alertCause,
+    alertDates
+  );
+
+  return alertPanel;
 }
 
 function convertEpoch(epochts) {
