@@ -1,6 +1,7 @@
 * {
   font-family: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
+  --icon-font: "Material Symbols Outlined";
 }
 
 #root {
@@ -8,9 +9,30 @@
   margin: auto;
 }
 
-.accordion-collapse {
-  padding: 1em;
-  margin-bottom: 30px;
+.alert-panel {
+  display: flex;
+  border: 1px solid #eee;
+  border-top-width: 0;
+  padding: 1.5em;
+}
+
+.material-symbols-outlined {
+  /* min-width: 50px; */
+  font-family: var(--icon-font);
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  padding-right: 0.5em;
+}
+
+.no_service {
+  color: red;
+}
+
+.detour {
+  color: orange;
+}
+
+.modified_service {
+  color: green;
 }
 
 .alert-type,
