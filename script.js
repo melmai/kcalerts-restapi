@@ -160,7 +160,11 @@ function createAlertPanel(alert, idx) {
 
   // alert icon
   const alertIcon = document.createElement("span");
-  alertIcon.setAttribute("class", `material-symbols-outlined alert-icon`);
+  const alertClass = alert.effect.toLowerCase();
+  alertIcon.setAttribute(
+    "class",
+    `material-symbols-outlined alert-icon ${alertClass}`
+  );
   console.log(`${alert.effect} - ${alert.effect_name}`);
   alertIcon.textContent = icon(alert.effect_name);
 

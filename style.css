@@ -25,6 +25,18 @@
   padding-right: 0.5em;
 }
 
+.no_service {
+  color: red;
+}
+
+.detour {
+  color: orange;
+}
+
+.modified_service {
+  color: green;
+}
+
 .alert-type,
 .alert-title {
   font-family: var(--title-font);
