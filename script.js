@@ -154,9 +154,21 @@ function createRoutePanel(route, id) {
 function createAlertPanel(alert, idx) {
   const alertPanel = document.createElement("div");
   alertPanel.id = `alert-collapse${idx}`;
-  // alertPanel.setAttribute("class", "collapse");
+  alertPanel.setAttribute("class", "alert-panel");
   alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
   alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
+
+  // alert icon
+  const alertIcon = document.createElement("div");
+  const alertClass = `${alert.effect_name}`.toLowerCase().split(" ").join("-");
+  console.log(alertClass);
+  alertIcon.setAttribute("class", `alert-icon ${alertClass}`);
+
+  alertPanel.append(alertIcon);
+
+  // alert content
+  const alertContent = document.createElement("div");
+  alertContent.setAttribute("class", "alert-content");
 
   const alertType = document.createElement("h4");
   alertType.setAttribute("class", "alert-type");
@@ -190,7 +202,7 @@ function createAlertPanel(alert, idx) {
   )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
   alertDates.setAttribute("class", "dates");
 
-  alertPanel.append(
+  alertContent.append(
     alertType,
     alertTitle,
     alertLifecycle,
@@ -199,6 +211,8 @@ function createAlertPanel(alert, idx) {
     alertCause,
     alertDates
   );
+
+  alertPanel.append(alertContent);
 
   return alertPanel;
 }

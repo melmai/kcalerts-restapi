@@ -13,6 +13,14 @@
   margin-bottom: 30px;
 }
 
+.alert-panel {
+  display: flex;
+}
+
+.alert-icon {
+  min-width: 50px;
+}
+
 .alert-type,
 .alert-title {
   font-family: var(--title-font);
