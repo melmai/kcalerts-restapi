@@ -16,7 +16,7 @@ function createAlerts() {
 
     let accordion = new DocumentFragment();
     data.forEach((route, idx) => {
-      accordion.append(addRoutePanel(route, idx));
+      accordion.append(createRoutePanel(route, idx));
     });
     root.append(accordion);
   });
@@ -96,7 +96,14 @@ function uniqueRoutes(routes, type) {
   }
 }
 
-function addRoutePanel(route, id) {
+/**
+ * Builds route panel with alerts
+ *
+ * @param {object} route
+ * @param {Int} id
+ * @returns route element with alerts
+ */
+function createRoutePanel(route, id) {
   // create parent fragment
   let routePanel = new DocumentFragment();
 
@@ -117,16 +124,18 @@ function addRoutePanel(route, id) {
   button.setAttribute("aria-controls", `collapse${id}`);
   button.textContent = routeLabel(route.route_name);
 
+  // add elements to route header section
   header.append(button);
   routePanel.append(header);
 
+  // create alert container
   const alertBody = document.createElement("div");
   alertBody.id = `collapse${id}`;
   alertBody.setAttribute("class", "accordion-collapse collapse");
   alertBody.setAttribute("aria-labelledby", `heading${id}`);
   // alertBody.setAttribute("data-bs-parent", "#accordionExample");
 
-  // append alerts to each route panel body section
+  // append alerts to alert container
   route.alerts.forEach((alert, idx) => {
     alertBody.append(createAlertPanel(alert, idx));
   });
