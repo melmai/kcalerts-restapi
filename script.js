@@ -159,10 +159,10 @@ function createAlertPanel(alert, idx) {
   alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
 
   // alert icon
-  const alertIcon = document.createElement("div");
-  const alertClass = `${alert.effect_name}`.toLowerCase().split(" ").join("-");
-  console.log(alertClass);
-  alertIcon.setAttribute("class", `alert-icon ${alertClass}`);
+  const alertIcon = document.createElement("span");
+  alertIcon.setAttribute("class", `material-symbols-outlined alert-icon`);
+  console.log(`${alert.effect} - ${alert.effect_name}`);
+  alertIcon.textContent = icon(alert.effect_name);
 
   alertPanel.append(alertIcon);
 
@@ -215,6 +215,35 @@ function createAlertPanel(alert, idx) {
   alertPanel.append(alertContent);
 
   return alertPanel;
+}
+
+function icon(effectName) {
+  let text;
+
+  switch (effectName) {
+    case "Trip Cancelation":
+    case "Suspension":
+      text = "cancel";
+      break;
+
+    case "Trip Restoration":
+      text = "task_alt";
+      break;
+
+    case "Stop Closure":
+      text = "dangerous";
+      break;
+
+    case "Multi-route Reroute":
+    case "Single Route Reroute":
+      text = "alt_route";
+      break;
+
+    default:
+      text = "warning";
+  }
+
+  return text;
 }
 
 function convertEpoch(epochts) {

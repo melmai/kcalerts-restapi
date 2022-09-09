@@ -1,6 +1,7 @@
 * {
   font-family: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
+  --icon-font: "Material Symbols Outlined";
 }
 
 #root {
@@ -17,8 +18,11 @@
   display: flex;
 }
 
-.alert-icon {
-  min-width: 50px;
+.material-symbols-outlined {
+  /* min-width: 50px; */
+  font-family: var(--icon-font);
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  padding-right: 0.5em;
 }
 
 .alert-type,
