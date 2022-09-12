@@ -276,7 +276,8 @@ function convertEpoch(epochts) {
  * @returns String describing route type
  */
 function routeLabel(route) {
-  if (route.charAt(0).match(/[a-z]/i)) return route;
+  if (route === "Duvall-Monroe Shuttle") return route;
+  if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isDART(route)) return `DART ${route}`;
   return ` Route ${route}`;
 }
