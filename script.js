@@ -187,7 +187,7 @@ function createAlertPanel(alert, idx) {
 
   const alertDescription = document.createElement("p");
   alertDescription.textContent = alert.description_text;
-  alertDescription.setAttribute("style", "white-space:pre;");
+  alertDescription.setAttribute("style", "white-space:pre-wrap;");
 
   const alertLink = document.createElement("p");
   const alertURL = document.createElement("a");
