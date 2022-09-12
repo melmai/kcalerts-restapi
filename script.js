@@ -276,6 +276,8 @@ function routeLabel(route) {
 function isDART(route) {
   const routeNum = parseInt(route);
   if (
+    routeNum === 204 ||
+    routeNum === 224 ||
     routeNum === 630 ||
     routeNum === 631 ||
     (routeNum >= 901 && routeNum <= 930)
