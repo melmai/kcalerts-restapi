@@ -201,9 +201,10 @@ function createAlertPanel(alert, idx) {
   alertCause.setAttribute("class", "cause");
 
   const alertDates = document.createElement("p");
-  alertDates.textContent = `Effective Dates: ${convertEpoch(
-    alert.effect_periods[0].effect_start
-  )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
+  alertDates.textContent = `Effective Dates: ${processAlertDates(
+    alert.effect_periods[0].effect_start,
+    alert.effect_periods[0].effect_end
+  )}`;
   alertDates.setAttribute("class", "dates");
 
   alertContent.append(
@@ -219,6 +220,19 @@ function createAlertPanel(alert, idx) {
   alertPanel.append(alertContent);
 
   return alertPanel;
+}
+
+/**
+ * Generates text for alert effective dates
+ *
+ * @param {Int} start
+ * @param {Int} end
+ * @returns String describing effective dates
+ */
+function processAlertDates(start, end) {
+  const today = Math.round(new Date().getTime() / 1000);
+  if (end < today) return `${convertEpoch(start)} until further notice`;
+  return `${convertEpoch(start)} to ${convertEpoch(end)}`;
 }
 
 function icon(effectName) {
