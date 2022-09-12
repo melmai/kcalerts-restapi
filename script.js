@@ -187,7 +187,7 @@ function createAlertPanel(alert, idx) {
 
   const alertDescription = document.createElement("p");
   alertDescription.textContent = alert.description_text;
-  alertDescription.setAttribute("style", "white-space:pre;");
+  alertDescription.setAttribute("style", "white-space:pre-wrap;");
 
   const alertLink = document.createElement("p");
   const alertURL = document.createElement("a");
@@ -201,9 +201,10 @@ function createAlertPanel(alert, idx) {
   alertCause.setAttribute("class", "cause");
 
   const alertDates = document.createElement("p");
-  alertDates.textContent = `Effective Dates: ${convertEpoch(
-    alert.effect_periods[0].effect_start
-  )} to ${convertEpoch(alert.effect_periods[0].effect_end)}`;
+  alertDates.textContent = `Effective Dates: ${processAlertDates(
+    alert.effect_periods[0].effect_start,
+    alert.effect_periods[0].effect_end
+  )}`;
   alertDates.setAttribute("class", "dates");
 
   alertContent.append(
@@ -219,6 +220,19 @@ function createAlertPanel(alert, idx) {
   alertPanel.append(alertContent);
 
   return alertPanel;
+}
+
+/**
+ * Generates text for alert effective dates
+ *
+ * @param {Int} start
+ * @param {Int} end
+ * @returns String describing effective dates
+ */
+function processAlertDates(start, end) {
+  const today = Math.round(new Date().getTime() / 1000);
+  if (end < today) return `${convertEpoch(start)} until further notice`;
+  return `${convertEpoch(start)} to ${convertEpoch(end)}`;
 }
 
 function icon(effectName) {
@@ -262,7 +276,8 @@ function convertEpoch(epochts) {
  * @returns String describing route type
  */
 function routeLabel(route) {
-  if (route.charAt(0).match(/[a-z]/i)) return route;
+  if (route === "Duvall-Monroe Shuttle") return route;
+  if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isDART(route)) return `DART ${route}`;
   return ` Route ${route}`;
 }
@@ -276,6 +291,8 @@ function routeLabel(route) {
 function isDART(route) {
   const routeNum = parseInt(route);
   if (
+    routeNum === 204 ||
+    routeNum === 224 ||
     routeNum === 630 ||
     routeNum === 631 ||
     (routeNum >= 901 && routeNum <= 930)
