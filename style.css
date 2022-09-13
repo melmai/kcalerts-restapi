@@ -54,12 +54,12 @@
   letter-spacing: 0.08em;
 }
 
-.active {
+.alert-status.active {
   background-color: red;
   color: #fff;
 }
 
-.planned {
+.alert-status.planned {
   background-color: orange;
 }
 

@@ -154,8 +154,9 @@ function createRoutePanel(route, id) {
  */
 function createAlertPanel(alert, idx) {
   const alertPanel = document.createElement("div");
+  const status = statusText(alert.alert_lifecycle);
   alertPanel.id = `alert-collapse${idx}`;
-  alertPanel.setAttribute("class", "alert-panel");
+  alertPanel.setAttribute("class", `alert-panel ${status.toLowerCase()}`);
   alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
   alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
 
@@ -179,7 +180,6 @@ function createAlertPanel(alert, idx) {
   alertType.textContent = alert.effect_name;
 
   const flag = document.createElement("span");
-  const status = statusText(alert.alert_lifecycle);
   console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
