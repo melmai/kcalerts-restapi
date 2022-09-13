@@ -44,7 +44,6 @@ function processData(alertArr, routeArr) {
 
           // increment alert type
           route.status = incrementStatusType(data.status, route.status);
-          // console.log(route.status);
         }
       });
     });
@@ -54,6 +53,13 @@ function processData(alertArr, routeArr) {
   return routeArr;
 }
 
+/**
+ * Increments alert status
+ *
+ * @param {String} alertStatus
+ * @param {Object} routeStatus
+ * @returns Object that holds status of alerts for the route
+ */
 function incrementStatusType(
   alertStatus,
   routeStatus = { active: 0, planned: 0 }
