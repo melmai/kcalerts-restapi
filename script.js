@@ -112,9 +112,6 @@ function createRoutePanel(route, id) {
   header.id = route.route_id;
   header.setAttribute("class", "accordion-item");
 
-  const title = document.createElement("h3");
-  title.setAttribute("class", "accordion-header");
-
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
   // button.setAttribute("type", "button");
@@ -122,9 +119,13 @@ function createRoutePanel(route, id) {
   button.setAttribute("data-bs-target", `#collapse${id}`);
   button.setAttribute("aria-expanded", "false");
   button.setAttribute("aria-controls", `collapse${id}`);
-  button.textContent = routeLabel(route.route_name);
+
+  const title = document.createElement("h3");
+  title.setAttribute("class", "accordion-title");
+  title.textContent = routeLabel(route.route_name);
 
   // add elements to route header section
+  button.append(title);
   header.append(button);
   routePanel.append(header);
 
@@ -165,7 +166,6 @@ function createAlertPanel(alert, idx) {
     "class",
     `material-symbols-outlined alert-icon ${alertClass}`
   );
-  console.log(`${alert.effect} - ${alert.effect_name}`);
   alertIcon.textContent = icon(alert.effect_name);
 
   alertPanel.append(alertIcon);
@@ -184,6 +184,7 @@ function createAlertPanel(alert, idx) {
 
   const alertLifecycle = document.createElement("p");
   alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
+  console.log(alert.alert_lifecycle);
 
   const alertDescription = document.createElement("p");
   alertDescription.textContent = alert.description_text;
