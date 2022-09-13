@@ -188,11 +188,16 @@ function createAlertPanel(alert, idx) {
 
   const alertTitle = document.createElement("h5");
   alertTitle.setAttribute("class", "alert-title");
-  alertTitle.textContent = alert.header_text;
+  alertTitle.textContent = accessibleText(alert.header_text);
 
-  const alertDescription = document.createElement("p");
-  alertDescription.textContent = alert.description_text;
-  alertDescription.setAttribute("style", "white-space:pre-wrap;");
+  // conditionally add description
+  let alertDescription;
+  if (alert.description_text) {
+    console.log(accessibleText(alert.description_text));
+    alertDescription = document.createElement("p");
+    alertDescription.textContent = accessibleText(alert.description_text);
+    alertDescription.setAttribute("style", "white-space:pre-wrap;");
+  }
 
   // conditionally add alertURL
   let alertLink;
@@ -219,7 +224,7 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
-    alertDescription,
+    alertDescription || "",
     alertLink || "",
     alertCause,
     alertDates
@@ -276,6 +281,32 @@ function icon(effectName) {
   }
 
   return text;
+}
+
+/**
+ * Replaces text in description that is difficult to parse for screen readers
+ *
+ * @param {String} desc
+ * @returns expanded version of description
+ */
+function accessibleText(desc) {
+  // if null, return
+  if (desc === "") return "";
+
+  // expand directionals
+  let res = "";
+  res = desc.replaceAll(/NB/g, "Northbound");
+  res = res.replaceAll(/SB/g, "Southbound");
+  res = res.replaceAll(/EB/g, "Eastbound");
+  res = res.replaceAll(/WB/g, "Westbound");
+
+  // expand streets
+  res = res.replaceAll(/ Ave\b/gm, " Avenue");
+  res = res.replaceAll(/ St\b/gm, " Street");
+  res = res.replaceAll(/ Pl\b/gm, " Place");
+  res = res.replaceAll(/ Rd\b/gm, " Road");
+
+  return res;
 }
 
 /**
