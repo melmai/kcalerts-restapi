@@ -268,11 +268,23 @@ function icon(effectName) {
   return text;
 }
 
+/**
+ * Generates text for status flag and alert classes
+ *
+ * @param {String} status
+ * @returns String to display in status flag and classnames
+ */
 function statusText(status) {
   if (status.includes("Upcoming")) return "planned";
   return "active";
 }
 
+/**
+ * Transforms epoch date to local date
+ *
+ * @param {Int} epochts
+ * @returns human readable string for date
+ */
 function convertEpoch(epochts) {
   // return new Date(epochts * 1000).toDateString();
   return new Date(epochts * 1000).toLocaleDateString();
