@@ -301,10 +301,10 @@ function accessibleText(desc) {
   res = res.replaceAll(/WB/g, "Westbound");
 
   // expand streets
-  res = res.replaceAll(/ Ave */gi, " Avenue ");
-  res = res.replaceAll(/ St */gi, " Street ");
-  res = res.replaceAll(/ Pl */gi, " Place ");
-  res = res.replaceAll(/ Rd */gi, " Road ");
+  res = res.replaceAll(/ Ave\b/gm, " Avenue");
+  res = res.replaceAll(/ St\b/gm, " Street");
+  res = res.replaceAll(/ Pl\b/gm, " Place");
+  res = res.replaceAll(/ Rd\b/gm, " Road");
 
   return res;
 }
