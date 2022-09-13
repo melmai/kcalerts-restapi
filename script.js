@@ -112,9 +112,6 @@ function createRoutePanel(route, id) {
   header.id = route.route_id;
   header.setAttribute("class", "accordion-item");
 
-  const title = document.createElement("h3");
-  title.setAttribute("class", "accordion-header");
-
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
   // button.setAttribute("type", "button");
@@ -122,9 +119,13 @@ function createRoutePanel(route, id) {
   button.setAttribute("data-bs-target", `#collapse${id}`);
   button.setAttribute("aria-expanded", "false");
   button.setAttribute("aria-controls", `collapse${id}`);
-  button.textContent = routeLabel(route.route_name);
+
+  const title = document.createElement("h3");
+  title.setAttribute("class", "accordion-title");
+  title.textContent = routeLabel(route.route_name);
 
   // add elements to route header section
+  button.append(title);
   header.append(button);
   routePanel.append(header);
 
@@ -153,8 +154,9 @@ function createRoutePanel(route, id) {
  */
 function createAlertPanel(alert, idx) {
   const alertPanel = document.createElement("div");
+  const status = statusText(alert.alert_lifecycle);
   alertPanel.id = `alert-collapse${idx}`;
-  alertPanel.setAttribute("class", "alert-panel");
+  alertPanel.setAttribute("class", `alert-panel ${status.toLowerCase()}`);
   alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
   alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
 
@@ -165,7 +167,6 @@ function createAlertPanel(alert, idx) {
     "class",
     `material-symbols-outlined alert-icon ${alertClass}`
   );
-  console.log(`${alert.effect} - ${alert.effect_name}`);
   alertIcon.textContent = icon(alert.effect_name);
 
   alertPanel.append(alertIcon);
@@ -178,12 +179,15 @@ function createAlertPanel(alert, idx) {
   alertType.setAttribute("class", "alert-type");
   alertType.textContent = alert.effect_name;
 
+  const flag = document.createElement("span");
+  console.log(status);
+  flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
+  flag.append(status);
+  alertType.append(flag);
+
   const alertTitle = document.createElement("h5");
   alertTitle.setAttribute("class", "alert-title");
   alertTitle.textContent = alert.header_text;
-
-  const alertLifecycle = document.createElement("p");
-  alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
 
   const alertDescription = document.createElement("p");
   alertDescription.textContent = alert.description_text;
@@ -210,7 +214,6 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
-    alertLifecycle,
     alertDescription,
     alertLink,
     alertCause,
@@ -262,6 +265,11 @@ function icon(effectName) {
   }
 
   return text;
+}
+
+function statusText(status) {
+  if (status.includes("Upcoming")) return "planned";
+  return "active";
 }
 
 function convertEpoch(epochts) {

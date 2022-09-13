@@ -9,6 +9,11 @@
   margin: auto;
 }
 
+.accordion-title {
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
 .alert-panel {
   display: flex;
   border: 1px solid #eee;
@@ -17,7 +22,6 @@
 }
 
 .material-symbols-outlined {
-  /* min-width: 50px; */
   font-family: var(--icon-font);
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
   padding-right: 0.5em;
@@ -38,6 +42,25 @@
 .alert-type,
 .alert-title {
   font-family: var(--title-font);
+}
+
+.alert-status {
+  margin-left: 1em;
+  text-transform: uppercase;
+  font-size: 0.6em;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  letter-spacing: 0.08em;
+}
+
+.alert-status.active {
+  background-color: red;
+  color: #fff;
+}
+
+.alert-status.planned {
+  background-color: orange;
 }
 
 .cause {
