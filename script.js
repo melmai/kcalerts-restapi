@@ -188,7 +188,7 @@ function createAlertPanel(alert, idx) {
 
   const alertTitle = document.createElement("h5");
   alertTitle.setAttribute("class", "alert-title");
-  alertTitle.textContent = alert.header_text;
+  alertTitle.textContent = accessibleText(alert.header_text);
 
   // conditionally add description
   let alertDescription;
