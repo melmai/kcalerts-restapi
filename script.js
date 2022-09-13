@@ -190,9 +190,14 @@ function createAlertPanel(alert, idx) {
   alertTitle.setAttribute("class", "alert-title");
   alertTitle.textContent = alert.header_text;
 
-  const alertDescription = document.createElement("p");
-  alertDescription.textContent = alert.description_text;
-  alertDescription.setAttribute("style", "white-space:pre-wrap;");
+  // conditionally add description
+  let alertDescription;
+  if (alert.description_text) {
+    console.log(accessibleText(alert.description_text));
+    alertDescription = document.createElement("p");
+    alertDescription.textContent = accessibleText(alert.description_text);
+    alertDescription.setAttribute("style", "white-space:pre-wrap;");
+  }
 
   // conditionally add alertURL
   let alertLink;
@@ -219,7 +224,7 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
-    alertDescription,
+    alertDescription || "",
     alertLink || "",
     alertCause,
     alertDates
@@ -276,6 +281,26 @@ function icon(effectName) {
   }
 
   return text;
+}
+
+function accessibleText(desc) {
+  // if null, return
+  if (desc === "") return "";
+
+  // expand directionals
+  let res = "";
+  res = desc.replaceAll(/NB/g, "Northbound");
+  res = res.replaceAll(/SB/g, "Southbound");
+  res = res.replaceAll(/EB/g, "Eastbound");
+  res = res.replaceAll(/WB/g, "Westbound");
+
+  // expand streets
+  res = res.replaceAll(/ Ave */gi, " Avenue ");
+  res = res.replaceAll(/ St */gi, " Street ");
+  res = res.replaceAll(/ Pl */gi, " Place ");
+  res = res.replaceAll(/ Rd */gi, " Road ");
+
+  return res;
 }
 
 /**
