@@ -283,6 +283,12 @@ function icon(effectName) {
   return text;
 }
 
+/**
+ * Replaces text in description that is difficult to parse for screen readers
+ *
+ * @param {String} desc
+ * @returns expanded version of description
+ */
 function accessibleText(desc) {
   // if null, return
   if (desc === "") return "";
