@@ -34,18 +34,38 @@ function processData(alertArr, routeArr) {
     data.route_ids.forEach((routeID) => {
       routes.forEach((route) => {
         if (routeID === route.route_id) {
+          // append alert
           if (route.alerts) {
             route.alerts = [...route.alerts, data.alert];
           } else {
             route.alerts = [];
             route.alerts[0] = data.alert;
           }
+
+          // increment alert type
+          route.status = incrementStatusType(data.status, route.status);
+          // console.log(route.status);
         }
       });
     });
   });
 
+  console.log(routeArr);
   return routeArr;
+}
+
+function incrementStatusType(
+  alertStatus,
+  routeStatus = { active: 0, planned: 0 }
+) {
+  let res = routeStatus;
+  if (alertStatus.includes("Ongoing") || alertStatus === "New") {
+    res.active = res.active + 1;
+  } else {
+    res.planned = res.planned + 1;
+  }
+
+  return res;
 }
 
 /**
@@ -64,6 +84,7 @@ function processAlerts(alerts) {
     result.push({
       route_ids: routes,
       alert: alert,
+      status: alert.alert_lifecycle,
     });
   });
 
@@ -181,7 +202,7 @@ function createAlertPanel(alert, idx) {
   alertType.textContent = alert.effect_name;
 
   const flag = document.createElement("span");
-  console.log(status);
+  // console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
   alertType.append(flag);
@@ -193,7 +214,7 @@ function createAlertPanel(alert, idx) {
   // conditionally add description
   let alertDescription;
   if (alert.description_text) {
-    console.log(accessibleText(alert.description_text));
+    // console.log(accessibleText(alert.description_text));
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("style", "white-space:pre-wrap;");
