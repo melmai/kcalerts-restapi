@@ -194,12 +194,16 @@ function createAlertPanel(alert, idx) {
   alertDescription.textContent = alert.description_text;
   alertDescription.setAttribute("style", "white-space:pre-wrap;");
 
-  const alertLink = document.createElement("p");
-  const alertURL = document.createElement("a");
-  alertURL.setAttribute("href", alert.url);
-  alertURL.setAttribute("target", "_blank");
-  alertURL.textContent = "More Details";
-  alertLink.append(alertURL);
+  // conditionally add alertURL
+  let alertLink;
+  if (alert.url) {
+    alertLink = document.createElement("p");
+    const alertURL = document.createElement("a");
+    alertURL.setAttribute("href", alert.url);
+    alertURL.setAttribute("target", "_blank");
+    alertURL.textContent = "More Details";
+    alertLink.append(alertURL);
+  }
 
   const alertCause = document.createElement("p");
   alertCause.textContent = `Cause: ${alert.cause}`;
@@ -216,7 +220,7 @@ function createAlertPanel(alert, idx) {
     alertType,
     alertTitle,
     alertDescription,
-    alertLink,
+    alertLink || "",
     alertCause,
     alertDates
   );
