@@ -46,11 +46,6 @@
   font-family: var(--title-font);
 }
 
-/* .alert-type {
-  display: flex;
-  align-items: center;
-} */
-
 .alert-status {
   position: absolute;
   margin-top: 3px;

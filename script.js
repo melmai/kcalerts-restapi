@@ -255,7 +255,7 @@ function icon(effectName) {
   switch (effectName) {
     case "Trip Cancelation":
     case "Suspension":
-      text = "cancel";
+      text = "error";
       break;
 
     case "Trip Restoration":
