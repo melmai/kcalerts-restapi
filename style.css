@@ -44,6 +44,25 @@
   font-family: var(--title-font);
 }
 
+.alert-status {
+  margin-left: 1em;
+  text-transform: uppercase;
+  font-size: 0.6em;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  letter-spacing: 0.08em;
+}
+
+.active {
+  background-color: red;
+  color: #fff;
+}
+
+.planned {
+  background-color: orange;
+}
+
 .cause {
   margin-bottom: 0;
 }

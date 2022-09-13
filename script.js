@@ -180,6 +180,7 @@ function createAlertPanel(alert, idx) {
 
   const flag = document.createElement("span");
   const status = statusText(alert.alert_lifecycle);
+  console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
   alertType.append(flag);
@@ -267,13 +268,8 @@ function icon(effectName) {
 }
 
 function statusText(status) {
-  if (status.includes("Upcoming")) {
-    return "upcoming";
-  } else if (status === "New") {
-    return "new";
-  } else {
-    return "ongoing";
-  }
+  if (status.includes("Upcoming")) return "planned";
+  return "active";
 }
 
 function convertEpoch(epochts) {
