@@ -163,6 +163,7 @@ function createAlertPanel(alert, idx) {
   // alert icon
   const alertIcon = document.createElement("span");
   const alertClass = alert.effect.toLowerCase();
+  alertIcon.setAttribute("aria-hidden", "true");
   alertIcon.setAttribute(
     "class",
     `material-symbols-outlined alert-icon ${alertClass}`
