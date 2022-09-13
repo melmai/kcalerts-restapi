@@ -178,13 +178,15 @@ function createAlertPanel(alert, idx) {
   alertType.setAttribute("class", "alert-type");
   alertType.textContent = alert.effect_name;
 
+  const flag = document.createElement("span");
+  const status = statusText(alert.alert_lifecycle);
+  flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
+  flag.append(status);
+  alertType.append(flag);
+
   const alertTitle = document.createElement("h5");
   alertTitle.setAttribute("class", "alert-title");
   alertTitle.textContent = alert.header_text;
-
-  const alertLifecycle = document.createElement("p");
-  alertLifecycle.textContent = `Status: ${alert.alert_lifecycle}`;
-  console.log(alert.alert_lifecycle);
 
   const alertDescription = document.createElement("p");
   alertDescription.textContent = alert.description_text;
@@ -211,7 +213,6 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
-    alertLifecycle,
     alertDescription,
     alertLink,
     alertCause,
@@ -263,6 +264,16 @@ function icon(effectName) {
   }
 
   return text;
+}
+
+function statusText(status) {
+  if (status.includes("Upcoming")) {
+    return "upcoming";
+  } else if (status === "New") {
+    return "new";
+  } else {
+    return "ongoing";
+  }
 }
 
 function convertEpoch(epochts) {
