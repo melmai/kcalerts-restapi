@@ -239,6 +239,12 @@ function processAlertDates(start, end) {
   return `${convertEpoch(start)} to ${convertEpoch(end)}`;
 }
 
+/**
+ * Generates string to call material icon that corresponds to alert type
+ *
+ * @param {String} effectName
+ * @returns String that represents Material Icon
+ */
 function icon(effectName) {
   let text;
 
