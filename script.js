@@ -181,7 +181,7 @@ function createAlertPanel(alert, idx) {
   alertType.textContent = alert.effect_name;
 
   const flag = document.createElement("span");
-  console.log(status);
+  // console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
   alertType.append(flag);
@@ -200,6 +200,8 @@ function createAlertPanel(alert, idx) {
   alertURL.setAttribute("target", "_blank");
   alertURL.textContent = "More Details";
   alertLink.append(alertURL);
+
+  console.log(alert.url);
 
   const alertCause = document.createElement("p");
   alertCause.textContent = `Cause: ${alert.cause}`;
