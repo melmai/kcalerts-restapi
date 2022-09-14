@@ -239,7 +239,7 @@ function createAlertPanel(alert, idx) {
   alertTitle.textContent = accessibleText(alert.header_text);
 
   // conditionally add description
-  let alertDescription;
+  let alertDescription = "";
   if (alert.description_text) {
     // console.log(accessibleText(alert.description_text));
     alertDescription = document.createElement("p");
@@ -248,7 +248,7 @@ function createAlertPanel(alert, idx) {
   }
 
   // conditionally add alertURL
-  let alertLink;
+  let alertLink = "";
   if (alert.url) {
     alertLink = document.createElement("p");
     const alertURL = document.createElement("a");
@@ -276,8 +276,8 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
-    alertDescription || "",
-    alertLink || "",
+    alertDescription,
+    alertLink,
     alertCause,
     alertDates
   );
@@ -368,8 +368,8 @@ function accessibleText(desc) {
  * @returns String to display in status flag and classnames
  */
 function statusText(status) {
-  if (status.includes("Upcoming")) return "planned";
-  return "active";
+  if (status === "New" || status.includes("Ongoing")) return "active";
+  return "planned";
 }
 
 /**
