@@ -137,7 +137,10 @@ function createRoutePanel(route, id) {
   // create panel elements
   const header = document.createElement("div");
   header.id = route.route_id;
-  header.setAttribute("class", "accordion-item");
+
+  const activeClass = route.status.active ? "active" : "";
+  const plannedClass = route.status.planned ? "planned" : "";
+  header.setAttribute("class", `accordion-item ${activeClass} ${plannedClass}`);
 
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
