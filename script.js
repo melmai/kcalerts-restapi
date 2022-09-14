@@ -214,12 +214,16 @@ function createAlertPanel(alert, idx) {
   alertCause.textContent = `Cause: ${alert.cause}`;
   alertCause.setAttribute("class", "cause");
 
-  const alertDates = document.createElement("p");
-  alertDates.textContent = `Effective Dates: ${processAlertDates(
-    alert.effect_periods[0].effect_start,
-    alert.effect_periods[0].effect_end
-  )}`;
-  alertDates.setAttribute("class", "dates");
+  // if array is not empty
+  let alertDates = "N/A";
+  if (alert.effect_periods.length > 0) {
+    alertDates = document.createElement("p");
+    alertDates.textContent = `Effective Dates: ${processAlertDates(
+      alert.effect_periods[0].effect_start,
+      alert.effect_periods[0].effect_end
+    )}`;
+    alertDates.setAttribute("class", "dates");
+  }
 
   alertContent.append(
     alertType,
