@@ -147,12 +147,33 @@ function createRoutePanel(route, id) {
   button.setAttribute("aria-expanded", "false");
   button.setAttribute("aria-controls", `collapse${id}`);
 
+  const panelContainer = document.createElement("div");
+  panelContainer.setAttribute("class", "panel-container");
+
   const title = document.createElement("h3");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeLabel(route.route_name);
 
+  const alertStatus = document.createElement("div");
+  alertStatus.setAttribute("class", "route-status");
+  let active, planned;
+  if (route.status.active > 0) {
+    active = document.createElement("span");
+    active.setAttribute("class", "active");
+    active.textContent = route.status.active;
+  }
+
+  if (route.status.planned > 0) {
+    planned = document.createElement("span");
+    planned.setAttribute("class", "planned");
+    planned.textContent = route.status.planned;
+  }
+
+  alertStatus.append(active || "", planned || "");
+
   // add elements to route header section
-  button.append(title);
+  panelContainer.append(title, alertStatus);
+  button.append(panelContainer);
   header.append(button);
   routePanel.append(header);
 
