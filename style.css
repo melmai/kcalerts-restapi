@@ -49,7 +49,8 @@
 }
 
 .route-status .active {
-  background-image: url(./img/svg/active.svg);
+  background-image: url(./img/svg/active-fill.svg);
+  color: #fff;
 }
 .route-status .planned {
   background-image: url(./img/svg/planned.svg);
