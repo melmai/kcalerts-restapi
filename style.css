@@ -12,6 +12,8 @@
 .accordion-title {
   font-size: 1em;
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
 .alert-panel {
@@ -19,6 +21,39 @@
   border: 1px solid #eee;
   border-top-width: 0;
   padding: 1.5em;
+}
+
+.panel-container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.route-status {
+  display: flex;
+}
+
+.route-status > span {
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 50%;
+  font-size: 14px;
+  padding: 0.5em;
+  padding-top: 0.75em;
+  line-height: 1;
+  margin-right: 0.25em;
+}
+
+.route-status .active {
+  background-image: url(./img/svg/active-fill.svg);
+  color: #fff;
+}
+.route-status .planned {
+  background-image: url(./img/svg/planned.svg);
 }
 
 .material-symbols-outlined {

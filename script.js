@@ -34,18 +34,44 @@ function processData(alertArr, routeArr) {
     data.route_ids.forEach((routeID) => {
       routes.forEach((route) => {
         if (routeID === route.route_id) {
+          // append alert
           if (route.alerts) {
             route.alerts = [...route.alerts, data.alert];
           } else {
             route.alerts = [];
             route.alerts[0] = data.alert;
           }
+
+          // increment alert type
+          route.status = incrementStatusType(data.status, route.status);
         }
       });
     });
   });
 
+  console.log(routeArr);
   return routeArr;
+}
+
+/**
+ * Increments alert status
+ *
+ * @param {String} alertStatus
+ * @param {Object} routeStatus
+ * @returns Object that holds status of alerts for the route
+ */
+function incrementStatusType(
+  alertStatus,
+  routeStatus = { active: 0, planned: 0 }
+) {
+  let res = routeStatus;
+  if (alertStatus.includes("Ongoing") || alertStatus === "New") {
+    res.active = res.active + 1;
+  } else {
+    res.planned = res.planned + 1;
+  }
+
+  return res;
 }
 
 /**
@@ -64,6 +90,7 @@ function processAlerts(alerts) {
     result.push({
       route_ids: routes,
       alert: alert,
+      status: alert.alert_lifecycle,
     });
   });
 
@@ -120,12 +147,33 @@ function createRoutePanel(route, id) {
   button.setAttribute("aria-expanded", "false");
   button.setAttribute("aria-controls", `collapse${id}`);
 
+  const panelContainer = document.createElement("div");
+  panelContainer.setAttribute("class", "panel-container");
+
   const title = document.createElement("h3");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeLabel(route.route_name);
 
+  const alertStatus = document.createElement("div");
+  alertStatus.setAttribute("class", "route-status");
+  let active, planned;
+  if (route.status.active > 0) {
+    active = document.createElement("span");
+    active.setAttribute("class", "active");
+    active.textContent = route.status.active;
+  }
+
+  if (route.status.planned > 0) {
+    planned = document.createElement("span");
+    planned.setAttribute("class", "planned");
+    planned.textContent = route.status.planned;
+  }
+
+  alertStatus.append(active || "", planned || "");
+
   // add elements to route header section
-  button.append(title);
+  panelContainer.append(title, alertStatus);
+  button.append(panelContainer);
   header.append(button);
   routePanel.append(header);
 
@@ -181,7 +229,7 @@ function createAlertPanel(alert, idx) {
   alertType.textContent = alert.effect_name;
 
   const flag = document.createElement("span");
-  console.log(status);
+  // console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
   alertType.append(flag);
@@ -191,16 +239,16 @@ function createAlertPanel(alert, idx) {
   alertTitle.textContent = accessibleText(alert.header_text);
 
   // conditionally add description
-  let alertDescription;
+  let alertDescription = "";
   if (alert.description_text) {
-    console.log(accessibleText(alert.description_text));
+    // console.log(accessibleText(alert.description_text));
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("style", "white-space:pre-wrap;");
   }
 
   // conditionally add alertURL
-  let alertLink;
+  let alertLink = "";
   if (alert.url) {
     alertLink = document.createElement("p");
     const alertURL = document.createElement("a");
@@ -228,8 +276,8 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
-    alertDescription || "",
-    alertLink || "",
+    alertDescription,
+    alertLink,
     alertCause,
     alertDates
   );
@@ -320,8 +368,8 @@ function accessibleText(desc) {
  * @returns String to display in status flag and classnames
  */
 function statusText(status) {
-  if (status.includes("Upcoming")) return "planned";
-  return "active";
+  if (status === "New" || status.includes("Ongoing")) return "active";
+  return "planned";
 }
 
 /**
