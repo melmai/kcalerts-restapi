@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
-  const allAlerts = document.getElementById("all-alerts");
+  const allAlerts = document.getElementById("accordion");
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
@@ -9,16 +9,28 @@ function createAlerts() {
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
     fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then((res) => res.json()),
   ]).then((res) => {
+    // process data
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
     const routes = res[1].mode[1].route; // array of all available routes
-    const data = cleanup(processData(alerts, routes));
-    console.log(data);
+    const allData = cleanup(processData(alerts, routes));
+    console.log(allData);
 
+    // build accordion
     let accordion = new DocumentFragment();
-    data.forEach((route, idx) => {
+    allData.forEach((route, idx) => {
       accordion.append(createRoutePanel(route, idx));
     });
     allAlerts.append(accordion);
+
+    // attach event handlers
+    const reset = document.getElementById("reset");
+    reset.addEventListener("click", showAllAlerts);
+
+    const activeAlertsBttn = document.getElementById("active-filter");
+    activeAlertsBttn.addEventListener("click", showActiveAlerts);
+
+    const plannedAlertsBttn = document.getElementById("planned-filter");
+    plannedAlertsBttn.addEventListener("click", showPlannedAlerts);
   });
 }
 
@@ -429,6 +441,6 @@ function isDART(route) {
 
 /* Event Handlers
  ******************************************************* */
+function showAllAlerts() {}
 function showActiveAlerts() {}
 function showPlannedAlerts() {}
-function showAllAlerts() {}
