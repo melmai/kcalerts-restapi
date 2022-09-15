@@ -441,6 +441,20 @@ function isDART(route) {
 
 /* Event Handlers
  ******************************************************* */
-function showAllAlerts() {}
-function showActiveAlerts() {}
-function showPlannedAlerts() {}
+function showAllAlerts() {
+  const accordion = document.getElementById("accordion");
+  accordion.removeAttribute("class", "active planned");
+  accordion.setAttribute("class", "accordion");
+}
+
+function showActiveAlerts() {
+  const accordion = document.getElementById("accordion");
+  accordion.removeAttribute("class", "planned");
+  accordion.setAttribute("class", "accordion active");
+}
+
+function showPlannedAlerts() {
+  const accordion = document.getElementById("accordion");
+  accordion.removeAttribute("class", "active");
+  accordion.setAttribute("class", "accordion planned");
+}
