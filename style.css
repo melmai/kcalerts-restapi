@@ -1,5 +1,20 @@
+/*
+Table of Contents
+1. Globals
+2. Main Container
+3. Active vs. Planned Alerts
+4. Route Header
+  - Route Name
+  - Status Count Icons
+5. Alert Panels
+  - Alert Type Icons
+  - Status Flags
+6. Status Filter Buttons
+
+*/
+
 /* *************************************************
- * Global
+ * Globals
  ***************************************************/
 * {
   font-family: "Cabin", sans-serif;
@@ -31,7 +46,7 @@
 }
 
 /* *************************************************
- * Route Panel Header 
+ * Route Header 
  ***************************************************/
 .panel-container {
   display: flex;
@@ -47,7 +62,7 @@
   align-items: center;
 }
 
-/* Alert Status Count Icons */
+/* Status Count Icons */
 .route-status {
   display: flex;
 }
@@ -76,7 +91,7 @@
 }
 
 /* *************************************************
- * Alert Details
+ * Alert Panels
  ***************************************************/
 .alert-panel {
   display: flex;
@@ -111,7 +126,7 @@
   color: green;
 }
 
-/* Alert Status Flags */
+/* Status Flags */
 .alert-status {
   position: absolute;
   margin-top: 3px;
@@ -139,3 +154,7 @@
 .dates {
   margin-bottom: 20px;
 }
+
+/* *************************************************
+ * Status Filter Buttons
+ ***************************************************/
