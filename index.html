@@ -25,6 +25,16 @@
     <script src="script.js" type="text/javascript"></script>
   </head>
   <body>
-    <section id="root" class="accordion"></section>
+    <!-- Tab Filters -->
+    <section id="status-filter">
+      <button id="all-filter">All</button>
+      <button id="active-filter">Active</button>
+      <button id="planned-filter">Planned Changes</button>
+    </section>
+
+    <!-- Accordions -->
+    <section id="all-alerts" class="accordion"></section>
+    <section id="active-alerts" class="accordion"></section>
+    <section id="planned-alerts" class="accordion"></section>
   </body>
 </html>

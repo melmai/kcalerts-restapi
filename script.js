@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
-  const root = document.getElementById("root");
+  const allAlerts = document.getElementById("all-alerts");
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
@@ -18,7 +18,7 @@ function createAlerts() {
     data.forEach((route, idx) => {
       accordion.append(createRoutePanel(route, idx));
     });
-    root.append(accordion);
+    allAlerts.append(accordion);
   });
 }
 
