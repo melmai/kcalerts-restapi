@@ -1,14 +1,23 @@
+/* *************************************************
+ * Global
+ ***************************************************/
 * {
   font-family: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
   --icon-font: "Material Symbols Outlined";
 }
 
+/* *************************************************
+ * Main Container
+ ***************************************************/
 #alerts-container {
   max-width: 980px;
   margin: auto;
 }
 
+/* *************************************************
+ * Active vs Planned Alerts
+ ***************************************************/
 .accordion.active > .planned:not(.active),
 .accordion.active .alert-panel.planned,
 .accordion.active .route-status .planned {
@@ -21,6 +30,16 @@
   display: none;
 }
 
+/* *************************************************
+ * Route Panel Header 
+ ***************************************************/
+.panel-container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+/* Route Name */
 .accordion-title {
   font-size: 1em;
   margin-bottom: 0;
@@ -28,19 +47,7 @@
   align-items: center;
 }
 
-.alert-panel {
-  display: flex;
-  border: 1px solid #eee;
-  border-top-width: 0;
-  padding: 1.5em;
-}
-
-.panel-container {
-  display: flex;
-  justify-content: space-between;
-  width: 95%;
-}
-
+/* Alert Status Count Icons */
 .route-status {
   display: flex;
 }
@@ -68,6 +75,22 @@
   background-image: url(./img/svg/planned.svg);
 }
 
+/* *************************************************
+ * Alert Details
+ ***************************************************/
+.alert-panel {
+  display: flex;
+  border: 1px solid #eee;
+  border-top-width: 0;
+  padding: 1.5em;
+}
+
+.alert-type,
+.alert-title {
+  font-family: var(--title-font);
+}
+
+/* Alert Type Icons */
 .material-symbols-outlined {
   font-family: var(--icon-font);
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -88,11 +111,7 @@
   color: green;
 }
 
-.alert-type,
-.alert-title {
-  font-family: var(--title-font);
-}
-
+/* Alert Status Flags */
 .alert-status {
   position: absolute;
   margin-top: 3px;
