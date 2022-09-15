@@ -4,7 +4,7 @@
   --icon-font: "Material Symbols Outlined";
 }
 
-#root {
+#alerts-container {
   max-width: 980px;
   margin: auto;
 }
