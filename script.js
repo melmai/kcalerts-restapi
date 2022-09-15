@@ -22,6 +22,8 @@ function createAlerts() {
   });
 }
 
+/* Process API Data / Backend
+ ******************************************************* */
 /**
  *
  * @param {Array} alertArr array of alert objects with alert and array of route_id
@@ -97,31 +99,8 @@ function processAlerts(alerts) {
   return result;
 }
 
-/**
- * Removes routes without active alerts
- *
- * @param {Array} routes an array of routes with route_id, route_name, and alerts properties
- * @returns array of routes with active alerts
- */
-function cleanup(routes) {
-  return routes.filter((route) => route.alerts);
-}
-
-/**
- * Filter array of routes so that only unique routes are listed
- *
- * @param {obj} alert
- * @returns array of routes to append this alert to
- */
-function uniqueRoutes(routes, type) {
-  if (type === "alert") {
-    return [...new Set(routes.map((route) => route.route_id))];
-  } else if (type === "route") {
-    return [...new Set(routes.map((route) => route))];
-  } else {
-    return [];
-  }
-}
+/* Build Front End
+ ******************************************************* */
 
 /**
  * Builds route panel with alerts
@@ -290,6 +269,35 @@ function createAlertPanel(alert, idx) {
   return alertPanel;
 }
 
+/* Helper Functions
+ ******************************************************* */
+
+/**
+ * Removes routes without active alerts
+ *
+ * @param {Array} routes an array of routes with route_id, route_name, and alerts properties
+ * @returns array of routes with active alerts
+ */
+function cleanup(routes) {
+  return routes.filter((route) => route.alerts);
+}
+
+/**
+ * Filter array of routes so that only unique routes are listed
+ *
+ * @param {obj} alert
+ * @returns array of routes to append this alert to
+ */
+function uniqueRoutes(routes, type) {
+  if (type === "alert") {
+    return [...new Set(routes.map((route) => route.route_id))];
+  } else if (type === "route") {
+    return [...new Set(routes.map((route) => route))];
+  } else {
+    return [];
+  }
+}
+
 /**
  * Generates text for alert effective dates
  *
@@ -418,3 +426,9 @@ function isDART(route) {
   }
   return false;
 }
+
+/* Event Handlers
+ ******************************************************* */
+function showActiveAlerts() {}
+function showPlannedAlerts() {}
+function showAllAlerts() {}
