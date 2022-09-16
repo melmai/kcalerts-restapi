@@ -445,16 +445,40 @@ function showAllAlerts() {
   const accordion = document.getElementById("accordion");
   accordion.removeAttribute("class", "active planned");
   accordion.setAttribute("class", "accordion");
+
+  clearButtons();
+
+  const bttn = document.getElementById("reset");
+  bttn.setAttribute("class", "tab-btn selected");
 }
 
 function showActiveAlerts() {
   const accordion = document.getElementById("accordion");
   accordion.removeAttribute("class", "planned");
   accordion.setAttribute("class", "accordion active");
+
+  clearButtons();
+
+  const bttn = document.getElementById("active-filter");
+  bttn.setAttribute("class", "tab-btn selected");
 }
 
 function showPlannedAlerts() {
   const accordion = document.getElementById("accordion");
   accordion.removeAttribute("class", "active");
   accordion.setAttribute("class", "accordion planned");
+
+  clearButtons();
+
+  const bttn = document.getElementById("planned-filter");
+  bttn.setAttribute("class", "tab-btn selected");
+}
+
+function clearButtons() {
+  const bttns = document.getElementsByClassName("tab-btn");
+  console.log(bttns);
+  for (bttn of bttns) {
+    bttn.removeAttribute("class", "selected");
+    bttn.setAttribute("class", "tab-btn");
+  }
 }

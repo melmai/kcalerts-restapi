@@ -20,6 +20,10 @@ Table of Contents
   font-family: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
   --icon-font: "Material Symbols Outlined";
+  --main-color: #29856b;
+  --hover-color: #185544;
+  --ghost-color: #319e7f;
+  --light-color: #baf1e1;
 }
 
 /* *************************************************
@@ -27,7 +31,7 @@ Table of Contents
  ***************************************************/
 #alerts-container {
   max-width: 980px;
-  margin: auto;
+  margin: 40px auto;
 }
 
 /* *************************************************
@@ -156,5 +160,22 @@ Table of Contents
 }
 
 /* *************************************************
- * Status Filter Buttons
+ * Status Filter Buttons - styles from S10 style guide
  ***************************************************/
+#status-filter {
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  border-style: solid;
+  padding: 0 22px;
+  text-transform: uppercase;
+  height: 44px;
+  color: #333;
+}
+
+.tab-btn.selected {
+  border-bottom: 2px solid var(--hover-color);
+}
