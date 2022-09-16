@@ -459,6 +459,10 @@ function isST(route) {
 
 /* Event Handlers
  ******************************************************* */
+/**
+ * Remove active styling from filter buttons
+ *
+ */
 function clearButtons() {
   const bttns = document.getElementsByClassName("tab-btn");
   for (bttn of bttns) {
@@ -467,9 +471,16 @@ function clearButtons() {
   }
 }
 
+/**
+ * Change the type of alerts in the view
+ *
+ * @param {String} show alert type to show
+ * @param {String} hide alert type to hide
+ */
 function showAlerts(show = "", hide = "") {
   const accordion = document.getElementById("accordion");
 
+  // change accordion view
   if (show === "") {
     accordion.removeAttribute("class", "active planned");
   } else {
@@ -477,6 +488,7 @@ function showAlerts(show = "", hide = "") {
   }
   accordion.setAttribute("class", `accordion ${show}`);
 
+  // update buttons
   clearButtons();
 
   let bttn;
