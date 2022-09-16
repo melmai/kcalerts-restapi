@@ -415,6 +415,7 @@ function convertEpoch(epochts) {
 function routeLabel(route) {
   if (route === "Duvall-Monroe Shuttle") return route;
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
+  if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
   return ` Route ${route}`;
 }
@@ -434,6 +435,19 @@ function isDART(route) {
     routeNum === 631 ||
     (routeNum >= 901 && routeNum <= 930)
   ) {
+    return true;
+  }
+  return false;
+}
+/**
+ * Determines if a given route operates under Sound Transit Express
+ *
+ * @param {String} route
+ * @returns boolean
+ */
+function isST(route) {
+  const routeNum = parseInt(route);
+  if (routeNum >= 500 && routeNum < 600) {
     return true;
   }
   return false;
