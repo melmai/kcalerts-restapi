@@ -24,13 +24,17 @@ function createAlerts() {
 
     // attach event handlers
     const reset = document.getElementById("reset");
-    reset.addEventListener("click", showAllAlerts);
+    reset.addEventListener("click", () => showAlerts());
 
     const activeAlertsBttn = document.getElementById("active-filter");
-    activeAlertsBttn.addEventListener("click", showActiveAlerts);
+    activeAlertsBttn.addEventListener("click", () =>
+      showAlerts("active", "planned")
+    );
 
     const plannedAlertsBttn = document.getElementById("planned-filter");
-    plannedAlertsBttn.addEventListener("click", showPlannedAlerts);
+    plannedAlertsBttn.addEventListener("click", () =>
+      showAlerts("planned", "active")
+    );
   });
 }
 
@@ -455,44 +459,43 @@ function isST(route) {
 
 /* Event Handlers
  ******************************************************* */
-function showAllAlerts() {
-  const accordion = document.getElementById("accordion");
-  accordion.removeAttribute("class", "active planned");
-  accordion.setAttribute("class", "accordion");
-
-  clearButtons();
-
-  const bttn = document.getElementById("reset");
-  bttn.setAttribute("class", "tab-btn selected");
-}
-
-function showActiveAlerts() {
-  const accordion = document.getElementById("accordion");
-  accordion.removeAttribute("class", "planned");
-  accordion.setAttribute("class", "accordion active");
-
-  clearButtons();
-
-  const bttn = document.getElementById("active-filter");
-  bttn.setAttribute("class", "tab-btn selected");
-}
-
-function showPlannedAlerts() {
-  const accordion = document.getElementById("accordion");
-  accordion.removeAttribute("class", "active");
-  accordion.setAttribute("class", "accordion planned");
-
-  clearButtons();
-
-  const bttn = document.getElementById("planned-filter");
-  bttn.setAttribute("class", "tab-btn selected");
-}
-
+/**
+ * Remove active styling from filter buttons
+ *
+ */
 function clearButtons() {
   const bttns = document.getElementsByClassName("tab-btn");
-  console.log(bttns);
   for (bttn of bttns) {
     bttn.removeAttribute("class", "selected");
     bttn.setAttribute("class", "tab-btn");
   }
+}
+
+/**
+ * Change the type of alerts in the view
+ *
+ * @param {String} show alert type to show
+ * @param {String} hide alert type to hide
+ */
+function showAlerts(show = "", hide = "") {
+  const accordion = document.getElementById("accordion");
+
+  // change accordion view
+  if (show === "") {
+    accordion.removeAttribute("class", "active planned");
+  } else {
+    accordion.removeAttribute("class", hide);
+  }
+  accordion.setAttribute("class", `accordion ${show}`);
+
+  // update buttons
+  clearButtons();
+
+  let bttn;
+  if (show === "") {
+    bttn = document.getElementById("reset");
+  } else {
+    bttn = document.getElementById(`${show}-filter`);
+  }
+  bttn.setAttribute("class", "tab-btn selected");
 }
