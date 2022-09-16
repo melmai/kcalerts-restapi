@@ -167,8 +167,8 @@ Table of Contents
 }
 
 .tab-btn {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
+  background-color: rgb(244, 244, 244);
+  border-color: rgb(244, 244, 244);
   border-style: solid;
   padding: 0 22px;
   text-transform: uppercase;
@@ -177,5 +177,7 @@ Table of Contents
 }
 
 .tab-btn.selected {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
   border-bottom: 2px solid var(--hover-color);
 }
