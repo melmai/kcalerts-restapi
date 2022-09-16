@@ -1,14 +1,64 @@
+/*
+Table of Contents
+1. Globals
+2. Main Container
+3. Active vs. Planned Alerts
+4. Route Header
+  - Route Name
+  - Status Count Icons
+5. Alert Panels
+  - Alert Type Icons
+  - Status Flags
+6. Status Filter Buttons
+
+*/
+
+/* *************************************************
+ * Globals
+ ***************************************************/
 * {
   font-family: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
   --icon-font: "Material Symbols Outlined";
+  --main-color: #29856b;
+  --hover-color: #185544;
+  --ghost-color: #319e7f;
+  --light-color: #baf1e1;
 }
 
-#root {
+/* *************************************************
+ * Main Container
+ ***************************************************/
+#alerts-container {
   max-width: 980px;
-  margin: auto;
+  margin: 40px auto;
 }
 
+/* *************************************************
+ * Active vs Planned Alerts
+ ***************************************************/
+.accordion.active > .planned:not(.active),
+.accordion.active .alert-panel.planned,
+.accordion.active .route-status .planned {
+  display: none;
+}
+
+.accordion.planned > .active:not(.planned),
+.accordion.planned .alert-panel.active,
+.accordion.planned .route-status .active {
+  display: none;
+}
+
+/* *************************************************
+ * Route Header 
+ ***************************************************/
+.panel-container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+/* Route Name */
 .accordion-title {
   font-size: 1em;
   margin-bottom: 0;
@@ -16,19 +66,7 @@
   align-items: center;
 }
 
-.alert-panel {
-  display: flex;
-  border: 1px solid #eee;
-  border-top-width: 0;
-  padding: 1.5em;
-}
-
-.panel-container {
-  display: flex;
-  justify-content: space-between;
-  width: 95%;
-}
-
+/* Status Count Icons */
 .route-status {
   display: flex;
 }
@@ -56,6 +94,22 @@
   background-image: url(./img/svg/planned.svg);
 }
 
+/* *************************************************
+ * Alert Panels
+ ***************************************************/
+.alert-panel {
+  display: flex;
+  border: 1px solid #eee;
+  border-top-width: 0;
+  padding: 1.5em;
+}
+
+.alert-type,
+.alert-title {
+  font-family: var(--title-font);
+}
+
+/* Alert Type Icons */
 .material-symbols-outlined {
   font-family: var(--icon-font);
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -76,11 +130,7 @@
   color: green;
 }
 
-.alert-type,
-.alert-title {
-  font-family: var(--title-font);
-}
-
+/* Status Flags */
 .alert-status {
   position: absolute;
   margin-top: 3px;
@@ -107,4 +157,27 @@
 
 .dates {
   margin-bottom: 20px;
+}
+
+/* *************************************************
+ * Status Filter Buttons - styles from S10 style guide
+ ***************************************************/
+#status-filter {
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  background-color: rgb(244, 244, 244);
+  border-color: rgb(244, 244, 244);
+  border-style: solid;
+  padding: 0 22px;
+  text-transform: uppercase;
+  height: 44px;
+  color: #333;
+}
+
+.tab-btn.selected {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  border-bottom: 2px solid var(--hover-color);
 }

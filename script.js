@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
-  const root = document.getElementById("root");
+  const allAlerts = document.getElementById("accordion");
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
@@ -9,19 +9,33 @@ function createAlerts() {
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
     fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then((res) => res.json()),
   ]).then((res) => {
+    // process data
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
     const routes = res[1].mode[1].route; // array of all available routes
-    const data = cleanup(processData(alerts, routes));
-    console.log(data);
+    const allData = cleanup(processData(alerts, routes));
+    console.log(allData);
 
+    // build accordion
     let accordion = new DocumentFragment();
-    data.forEach((route, idx) => {
+    allData.forEach((route, idx) => {
       accordion.append(createRoutePanel(route, idx));
     });
-    root.append(accordion);
+    allAlerts.append(accordion);
+
+    // attach event handlers
+    const reset = document.getElementById("reset");
+    reset.addEventListener("click", showAllAlerts);
+
+    const activeAlertsBttn = document.getElementById("active-filter");
+    activeAlertsBttn.addEventListener("click", showActiveAlerts);
+
+    const plannedAlertsBttn = document.getElementById("planned-filter");
+    plannedAlertsBttn.addEventListener("click", showPlannedAlerts);
   });
 }
 
+/* Process API Data / Backend
+ ******************************************************* */
 /**
  *
  * @param {Array} alertArr array of alert objects with alert and array of route_id
@@ -97,31 +111,8 @@ function processAlerts(alerts) {
   return result;
 }
 
-/**
- * Removes routes without active alerts
- *
- * @param {Array} routes an array of routes with route_id, route_name, and alerts properties
- * @returns array of routes with active alerts
- */
-function cleanup(routes) {
-  return routes.filter((route) => route.alerts);
-}
-
-/**
- * Filter array of routes so that only unique routes are listed
- *
- * @param {obj} alert
- * @returns array of routes to append this alert to
- */
-function uniqueRoutes(routes, type) {
-  if (type === "alert") {
-    return [...new Set(routes.map((route) => route.route_id))];
-  } else if (type === "route") {
-    return [...new Set(routes.map((route) => route))];
-  } else {
-    return [];
-  }
-}
+/* Build Front End
+ ******************************************************* */
 
 /**
  * Builds route panel with alerts
@@ -137,7 +128,10 @@ function createRoutePanel(route, id) {
   // create panel elements
   const header = document.createElement("div");
   header.id = route.route_id;
-  header.setAttribute("class", "accordion-item");
+
+  const activeClass = route.status.active ? "active" : "";
+  const plannedClass = route.status.planned ? "planned" : "";
+  header.setAttribute("class", `accordion-item ${activeClass} ${plannedClass}`);
 
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
@@ -287,6 +281,35 @@ function createAlertPanel(alert, idx) {
   return alertPanel;
 }
 
+/* Helper Functions
+ ******************************************************* */
+
+/**
+ * Removes routes without active alerts
+ *
+ * @param {Array} routes an array of routes with route_id, route_name, and alerts properties
+ * @returns array of routes with active alerts
+ */
+function cleanup(routes) {
+  return routes.filter((route) => route.alerts);
+}
+
+/**
+ * Filter array of routes so that only unique routes are listed
+ *
+ * @param {obj} alert
+ * @returns array of routes to append this alert to
+ */
+function uniqueRoutes(routes, type) {
+  if (type === "alert") {
+    return [...new Set(routes.map((route) => route.route_id))];
+  } else if (type === "route") {
+    return [...new Set(routes.map((route) => route))];
+  } else {
+    return [];
+  }
+}
+
 /**
  * Generates text for alert effective dates
  *
@@ -414,4 +437,48 @@ function isDART(route) {
     return true;
   }
   return false;
+}
+
+/* Event Handlers
+ ******************************************************* */
+function showAllAlerts() {
+  const accordion = document.getElementById("accordion");
+  accordion.removeAttribute("class", "active planned");
+  accordion.setAttribute("class", "accordion");
+
+  clearButtons();
+
+  const bttn = document.getElementById("reset");
+  bttn.setAttribute("class", "tab-btn selected");
+}
+
+function showActiveAlerts() {
+  const accordion = document.getElementById("accordion");
+  accordion.removeAttribute("class", "planned");
+  accordion.setAttribute("class", "accordion active");
+
+  clearButtons();
+
+  const bttn = document.getElementById("active-filter");
+  bttn.setAttribute("class", "tab-btn selected");
+}
+
+function showPlannedAlerts() {
+  const accordion = document.getElementById("accordion");
+  accordion.removeAttribute("class", "active");
+  accordion.setAttribute("class", "accordion planned");
+
+  clearButtons();
+
+  const bttn = document.getElementById("planned-filter");
+  bttn.setAttribute("class", "tab-btn selected");
+}
+
+function clearButtons() {
+  const bttns = document.getElementsByClassName("tab-btn");
+  console.log(bttns);
+  for (bttn of bttns) {
+    bttn.removeAttribute("class", "selected");
+    bttn.setAttribute("class", "tab-btn");
+  }
 }
