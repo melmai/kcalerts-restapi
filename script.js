@@ -35,6 +35,9 @@ function createAlerts() {
     plannedAlertsBttn.addEventListener("click", () =>
       showAlerts("planned", "active")
     );
+
+    const searchInput = document.getElementById("route-search");
+    searchInput.addEventListener("keyup", searchRoutes);
   });
 }
 
@@ -498,4 +501,9 @@ function showAlerts(show = "", hide = "") {
     bttn = document.getElementById(`${show}-filter`);
   }
   bttn.setAttribute("class", "tab-btn selected");
+}
+
+function searchRoutes() {
+  const input = document.getElementById("route-search").value;
+  console.log(input);
 }
