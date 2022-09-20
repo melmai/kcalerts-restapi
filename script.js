@@ -505,6 +505,10 @@ function showAlerts(show = "", hide = "") {
   bttn.setAttribute("class", "tab-btn selected");
 }
 
+/**
+ * Hides routes that do not include search input
+ *
+ */
 function searchRoutes() {
   // get the search value
   const input = document.getElementById("route-search").value.toLowerCase();
