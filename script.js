@@ -140,8 +140,7 @@ function createRoutePanel(route, id) {
   const activeClass = route.status.active ? "active" : "";
   const plannedClass = route.status.planned ? "planned" : "";
   header.setAttribute("class", `accordion-item ${activeClass} ${plannedClass}`);
-  const dataRoute = routeName.toLowerCase().split(" ").join("-");
-  header.setAttribute("data-route", dataRoute);
+  header.setAttribute("data-route", routeName);
 
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
@@ -427,7 +426,7 @@ function routeLabel(route) {
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
-  return ` Route ${route}`;
+  return `Route ${route}`;
 }
 
 /**
@@ -509,14 +508,12 @@ function showAlerts(show = "", hide = "") {
 function searchRoutes() {
   // get the search value
   const input = document.getElementById("route-search").value.toLowerCase();
-  console.log(input);
 
   // filter routes
   const routes = document.getElementsByClassName("accordion-item");
-  // console.log(routes);
   for (route of routes) {
-    console.log(route);
-    if (!route.getAttribute("data-route").includes(input)) {
+    const routeName = route.getAttribute("data-route").toLowerCase();
+    if (!routeName.includes(input)) {
       route.setAttribute("style", "display:none;");
     } else {
       route.setAttribute("style", "display:block;");
