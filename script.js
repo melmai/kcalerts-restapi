@@ -131,6 +131,7 @@ function processAlerts(alerts) {
 function createRoutePanel(route, id) {
   // create parent fragment
   let routePanel = new DocumentFragment();
+  const routeName = routeLabel(route.route_name);
 
   // create panel elements
   const header = document.createElement("div");
@@ -139,6 +140,8 @@ function createRoutePanel(route, id) {
   const activeClass = route.status.active ? "active" : "";
   const plannedClass = route.status.planned ? "planned" : "";
   header.setAttribute("class", `accordion-item ${activeClass} ${plannedClass}`);
+  const dataRoute = routeName.toLowerCase().split(" ").join("-");
+  header.setAttribute("data-route", dataRoute);
 
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
@@ -153,7 +156,7 @@ function createRoutePanel(route, id) {
 
   const title = document.createElement("h3");
   title.setAttribute("class", "accordion-title");
-  title.textContent = routeLabel(route.route_name);
+  title.textContent = routeName;
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
@@ -504,6 +507,19 @@ function showAlerts(show = "", hide = "") {
 }
 
 function searchRoutes() {
-  const input = document.getElementById("route-search").value;
+  // get the search value
+  const input = document.getElementById("route-search").value.toLowerCase();
   console.log(input);
+
+  // filter routes
+  const routes = document.getElementsByClassName("accordion-item");
+  // console.log(routes);
+  for (route of routes) {
+    console.log(route);
+    if (!route.getAttribute("data-route").includes(input)) {
+      route.setAttribute("style", "display:none;");
+    } else {
+      route.setAttribute("style", "display:block;");
+    }
+  }
 }
