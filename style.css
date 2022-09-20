@@ -25,6 +25,7 @@ Table of Contents
   --hover-color: #185544;
   --ghost-color: #319e7f;
   --light-color: #baf1e1;
+  --border-color: #eee;
 }
 
 /* *************************************************
@@ -33,6 +34,15 @@ Table of Contents
 #alerts-container {
   max-width: 980px;
   margin: 40px auto;
+}
+
+/* *************************************************
+ * Accordion Container
+ ***************************************************/
+#accordion {
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 1px 3px 4px #efefef;
 }
 
 /* *************************************************
