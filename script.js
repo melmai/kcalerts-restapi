@@ -35,6 +35,9 @@ function createAlerts() {
     plannedAlertsBttn.addEventListener("click", () =>
       showAlerts("planned", "active")
     );
+
+    const searchInput = document.getElementById("route-search");
+    searchInput.addEventListener("keyup", searchRoutes);
   });
 }
 
@@ -128,6 +131,7 @@ function processAlerts(alerts) {
 function createRoutePanel(route, id) {
   // create parent fragment
   let routePanel = new DocumentFragment();
+  const routeName = routeLabel(route.route_name);
 
   // create panel elements
   const header = document.createElement("div");
@@ -136,6 +140,7 @@ function createRoutePanel(route, id) {
   const activeClass = route.status.active ? "active" : "";
   const plannedClass = route.status.planned ? "planned" : "";
   header.setAttribute("class", `accordion-item ${activeClass} ${plannedClass}`);
+  header.setAttribute("data-route", routeName);
 
   const button = document.createElement("button");
   button.setAttribute("class", "accordion-button collapsed panel-title");
@@ -150,7 +155,7 @@ function createRoutePanel(route, id) {
 
   const title = document.createElement("h3");
   title.setAttribute("class", "accordion-title");
-  title.textContent = routeLabel(route.route_name);
+  title.textContent = routeName;
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
@@ -421,7 +426,7 @@ function routeLabel(route) {
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
-  return ` Route ${route}`;
+  return `Route ${route}`;
 }
 
 /**
@@ -498,4 +503,24 @@ function showAlerts(show = "", hide = "") {
     bttn = document.getElementById(`${show}-filter`);
   }
   bttn.setAttribute("class", "tab-btn selected");
+}
+
+/**
+ * Hides routes that do not include search input
+ *
+ */
+function searchRoutes() {
+  // get the search value
+  const input = document.getElementById("route-search").value.toLowerCase();
+
+  // filter routes
+  const routes = document.getElementsByClassName("accordion-item");
+  for (route of routes) {
+    const routeName = route.getAttribute("data-route").toLowerCase();
+    if (!routeName.includes(input)) {
+      route.setAttribute("style", "display:none;");
+    } else {
+      route.setAttribute("style", "display:block;");
+    }
+  }
 }

@@ -10,6 +10,7 @@ Table of Contents
   - Alert Type Icons
   - Status Flags
 6. Status Filter Buttons
+7. Search Filter
 
 */
 
@@ -180,4 +181,11 @@ Table of Contents
   background-color: var(--light-color);
   border-color: var(--light-color);
   border-bottom: 2px solid var(--hover-color);
+}
+
+/* *************************************************
+ * Search Filter 
+ ***************************************************/
+#search {
+  margin-bottom: 20px;
 }
