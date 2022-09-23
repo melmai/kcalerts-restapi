@@ -2,7 +2,7 @@
 Table of Contents
 1. Globals
 2. Main Container
-3. Active vs. Planned Alerts
+3. ongoing vs. upcoming Alerts
 4. Route Header
   - Route Name
   - Status Count Icons
@@ -46,17 +46,17 @@ Table of Contents
 }
 
 /* *************************************************
- * Active vs Planned Alerts
+ * ongoing vs upcoming Alerts
  ***************************************************/
-.accordion.active > .planned:not(.active),
-.accordion.active .alert-panel.planned,
-.accordion.active .route-status .planned {
+.accordion.ongoing > .upcoming:not(.ongoing),
+.accordion.ongoing .alert-panel.upcoming,
+.accordion.ongoing .route-status .upcoming {
   display: none !important;
 }
 
-.accordion.planned > .active:not(.planned),
-.accordion.planned .alert-panel.active,
-.accordion.planned .route-status .active {
+.accordion.upcoming > .ongoing:not(.upcoming),
+.accordion.upcoming .alert-panel.ongoing,
+.accordion.upcoming .route-status .ongoing {
   display: none !important;
 }
 
@@ -97,11 +97,11 @@ Table of Contents
   margin-right: 0.25em;
 }
 
-.route-status .active {
+.route-status .ongoing {
   background-image: url(./img/svg/active-fill.svg);
   color: #fff;
 }
-.route-status .planned {
+.route-status .upcoming {
   background-image: url(./img/svg/planned.svg);
 }
 
@@ -153,12 +153,12 @@ Table of Contents
   letter-spacing: 0.08em;
 }
 
-.alert-status.active {
+.alert-status.ongoing {
   background-color: red;
   color: #fff;
 }
 
-.alert-status.planned {
+.alert-status.upcoming {
   background-color: orange;
 }
 

@@ -26,14 +26,14 @@ function createAlerts() {
     const reset = document.getElementById("reset");
     reset.addEventListener("click", () => showAlerts());
 
-    const activeAlertsBttn = document.getElementById("active-filter");
-    activeAlertsBttn.addEventListener("click", () =>
-      showAlerts("active", "planned")
+    const ongoingAlertsBttn = document.getElementById("ongoing-filter");
+    ongoingAlertsBttn.addEventListener("click", () =>
+      showAlerts("ongoing", "upcoming")
     );
 
-    const plannedAlertsBttn = document.getElementById("planned-filter");
-    plannedAlertsBttn.addEventListener("click", () =>
-      showAlerts("planned", "active")
+    const upcomingAlertsBttn = document.getElementById("upcoming-filter");
+    upcomingAlertsBttn.addEventListener("click", () =>
+      showAlerts("upcoming", "ongoing")
     );
 
     const searchInput = document.getElementById("route-search");
@@ -83,13 +83,13 @@ function processData(alertArr, routeArr) {
  */
 function incrementStatusType(
   alertStatus,
-  routeStatus = { active: 0, planned: 0 }
+  routeStatus = { ongoing: 0, upcoming: 0 }
 ) {
   let res = routeStatus;
   if (alertStatus.includes("Ongoing") || alertStatus === "New") {
-    res.active = res.active + 1;
+    res.ongoing = res.ongoing + 1;
   } else {
-    res.planned = res.planned + 1;
+    res.upcoming = res.upcoming + 1;
   }
 
   return res;
@@ -137,9 +137,12 @@ function createRoutePanel(route, id) {
   const header = document.createElement("div");
   header.id = route.route_id;
 
-  const activeClass = route.status.active ? "active" : "";
-  const plannedClass = route.status.planned ? "planned" : "";
-  header.setAttribute("class", `accordion-item ${activeClass} ${plannedClass}`);
+  const ongoingClass = route.status.ongoing ? "ongoing" : "";
+  const upcomingClass = route.status.upcoming ? "upcoming" : "";
+  header.setAttribute(
+    "class",
+    `accordion-item ${ongoingClass} ${upcomingClass}`
+  );
   header.setAttribute("data-route", routeName);
 
   const button = document.createElement("button");
@@ -159,20 +162,20 @@ function createRoutePanel(route, id) {
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
-  let active, planned;
-  if (route.status.active > 0) {
-    active = document.createElement("span");
-    active.setAttribute("class", "active");
-    active.textContent = route.status.active;
+  let ongoing, upcoming;
+  if (route.status.ongoing > 0) {
+    ongoing = document.createElement("span");
+    ongoing.setAttribute("class", "ongoing");
+    ongoing.textContent = route.status.ongoing;
   }
 
-  if (route.status.planned > 0) {
-    planned = document.createElement("span");
-    planned.setAttribute("class", "planned");
-    planned.textContent = route.status.planned;
+  if (route.status.upcoming > 0) {
+    upcoming = document.createElement("span");
+    upcoming.setAttribute("class", "upcoming");
+    upcoming.textContent = route.status.upcoming;
   }
 
-  alertStatus.append(active || "", planned || "");
+  alertStatus.append(ongoing || "", upcoming || "");
 
   // add elements to route header section
   panelContainer.append(title, alertStatus);
@@ -293,10 +296,10 @@ function createAlertPanel(alert, idx) {
  ******************************************************* */
 
 /**
- * Removes routes without active alerts
+ * Removes routes without ongoing alerts
  *
  * @param {Array} routes an array of routes with route_id, route_name, and alerts properties
- * @returns array of routes with active alerts
+ * @returns array of routes with ongoing alerts
  */
 function cleanup(routes) {
   return routes.filter((route) => route.alerts);
@@ -399,8 +402,8 @@ function accessibleText(desc) {
  * @returns String to display in status flag and classnames
  */
 function statusText(status) {
-  if (status === "New" || status.includes("Ongoing")) return "active";
-  return "planned";
+  if (status === "New" || status.includes("Ongoing")) return "ongoing";
+  return "upcoming";
 }
 
 /**
@@ -464,7 +467,7 @@ function isST(route) {
 /* Event Handlers
  ******************************************************* */
 /**
- * Remove active styling from filter buttons
+ * Remove ongoing styling from filter buttons
  *
  */
 function clearButtons() {
@@ -486,7 +489,7 @@ function showAlerts(show = "", hide = "") {
 
   // change accordion view
   if (show === "") {
-    accordion.removeAttribute("class", "active planned");
+    accordion.removeAttribute("class", "ongoing upcoming");
   } else {
     accordion.removeAttribute("class", hide);
   }
