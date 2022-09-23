@@ -178,7 +178,6 @@ function createRoutePanel(route, id) {
   panelContainer.append(title, alertStatus);
   button.append(panelContainer);
   header.append(button);
-  routePanel.append(header);
 
   // create alert container
   const alertBody = document.createElement("div");
@@ -191,8 +190,8 @@ function createRoutePanel(route, id) {
   route.alerts.forEach((alert, idx) => {
     alertBody.append(createAlertPanel(alert, idx));
   });
-
-  routePanel.append(alertBody);
+  header.append(alertBody);
+  routePanel.append(header);
   return routePanel;
 }
 
