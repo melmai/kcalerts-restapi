@@ -51,13 +51,13 @@ Table of Contents
 .accordion.active > .planned:not(.active),
 .accordion.active .alert-panel.planned,
 .accordion.active .route-status .planned {
-  display: none;
+  display: none !important;
 }
 
 .accordion.planned > .active:not(.planned),
 .accordion.planned .alert-panel.active,
 .accordion.planned .route-status .active {
-  display: none;
+  display: none !important;
 }
 
 /* *************************************************
