@@ -398,6 +398,10 @@ function icon(effectName) {
       text = "alt_route";
       break;
 
+    case "Delay of Service":
+      text = "timer";
+      break;
+
     default:
       text = "warning";
   }
