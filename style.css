@@ -120,6 +120,10 @@ Table of Contents
   font-family: var(--title-font);
 }
 
+.alert-title {
+  font-size: 1.1em;
+}
+
 /* Alert Type Icons */
 .material-symbols-outlined {
   font-family: var(--icon-font);
@@ -145,6 +149,17 @@ Table of Contents
   color: orange;
 }
 
+/* Alert Header */
+.alert-header {
+  display: flex;
+}
+
+.alert-header button {
+  border: 0;
+  background-color: #fff;
+  color: green;
+}
+
 /* Status Flags */
 .alert-status {
   position: absolute;
@@ -166,12 +181,26 @@ Table of Contents
   background-color: orange;
 }
 
+/* Alert Contents */
+.alert-description,
+.dates {
+  white-space: pre-wrap;
+}
+
+.alert-description {
+  display: none;
+}
+
 .cause {
   margin-bottom: 0;
 }
 
 .dates {
   margin-bottom: 20px;
+}
+
+.alert-link {
+  display: none;
 }
 
 /* *************************************************

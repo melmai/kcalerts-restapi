@@ -236,7 +236,7 @@ function createAlertPanel(alert, idx) {
   flag.append(status);
   alertType.append(flag);
 
-  const alertTitle = document.createElement("h5");
+  const alertTitle = document.createElement("p");
   alertTitle.setAttribute("class", "alert-title");
   alertTitle.textContent = accessibleText(alert.header_text);
 
@@ -246,19 +246,25 @@ function createAlertPanel(alert, idx) {
     // console.log(accessibleText(alert.description_text));
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
-    alertDescription.setAttribute("style", "white-space:pre-wrap;");
+    alertDescription.setAttribute("class", "alert-description");
   }
 
   // conditionally add alertURL
-  let alertLink = "";
-  if (alert.url) {
-    alertLink = document.createElement("p");
-    const alertURL = document.createElement("a");
-    alertURL.setAttribute("href", alert.url);
-    alertURL.setAttribute("target", "_blank");
-    alertURL.textContent = "More Details";
-    alertLink.append(alertURL);
-  }
+  // let alertLink = "";
+  // if (alert.url) {
+  //   alertLink = document.createElement("p");
+  //   const alertURL = document.createElement("a");
+  //   alertURL.setAttribute("href", alert.url);
+  //   alertURL.setAttribute("target", "_blank");
+  //   alertURL.textContent = "More Details";
+  //   alertLink.append(alertURL);
+  // }
+
+  // more details button
+  const expandBttn = document.createElement("button");
+  expandBttn.setAttribute("class", "expand-bttn");
+  expandBttn.addEventListener("click", expandDetails);
+  expandBttn.textContent = "View details";
 
   const alertCause = document.createElement("p");
   alertCause.textContent = `Cause: ${alert.cause}`;
@@ -279,7 +285,6 @@ function createAlertPanel(alert, idx) {
       alert.effect_periods[0].effect_end
     )}`;
     alertDates.setAttribute("class", "dates");
-    alertDates.setAttribute("style", "white-space:pre-wrap;");
   }
 
   // const arr = [
@@ -294,7 +299,8 @@ function createAlertPanel(alert, idx) {
     alertType,
     alertTitle,
     alertDescription,
-    alertLink,
+    // alertLink,
+    expandBttn,
     alertCause,
     alertDates
   );
@@ -576,4 +582,8 @@ function searchRoutes() {
       route.setAttribute("style", "display:block;");
     }
   }
+}
+
+function expandDetails(e) {
+  console.log(e);
 }
