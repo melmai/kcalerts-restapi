@@ -364,10 +364,21 @@ function uniqueRoutes(routes, type) {
  * @param {Int} end
  * @returns String describing effective dates
  */
-function processAlertDates(start, end) {
+function processAlertDates(startDate, endDate) {
   const today = Math.round(new Date().getTime() / 1000);
-  if (end < today) return `${convertEpoch(start)} until further notice`;
-  return `${convertEpoch(start)} to ${convertEpoch(end)}`;
+  const start = convertEpoch(startDate);
+  const end = convertEpoch(endDate);
+
+  if (start === end) {
+    // if start and end dates are the same, return one value
+    return start;
+  } else if (endDate < today) {
+    // if end date is out of range, swap end value for until further notice
+    return `${start} until further notice`;
+  } else {
+    // else return date range
+    return `${start} to ${end}`;
+  }
 }
 
 /**
