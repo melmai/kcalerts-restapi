@@ -193,6 +193,7 @@ Table of Contents
   display: block;
   margin-bottom: 1rem;
   font-family: var(--title-font);
+  cursor: pointer;
 }
 
 .cause {
