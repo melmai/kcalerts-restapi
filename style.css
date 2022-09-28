@@ -122,6 +122,7 @@ Table of Contents
 
 .alert-title {
   font-size: 1.1em;
+  margin-bottom: 0.75rem;
 }
 
 /* Alert Type Icons */
@@ -190,7 +191,7 @@ Table of Contents
 .expand-link {
   /* margin-left: 5px; */
   display: block;
-  margin-top: 10px;
+  margin-bottom: 1rem;
   font-family: var(--title-font);
 }
 

@@ -262,12 +262,12 @@ function createAlertPanel(alert, idx) {
   // }
 
   // more details button
+  let expandLink = "";
   if (alert.description_text) {
-    const expandBttn = document.createElement("a");
-    expandBttn.setAttribute("class", "expand-link");
-    expandBttn.addEventListener("click", toggleDetails);
-    expandBttn.textContent = "View details";
-    alertTitle.append(expandBttn);
+    expandLink = document.createElement("a");
+    expandLink.setAttribute("class", "expand-link");
+    expandLink.addEventListener("click", toggleDetails);
+    expandLink.textContent = "View details";
   }
 
   const alertCause = document.createElement("p");
@@ -302,9 +302,9 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
+    expandLink,
     alertDescription,
     // alertLink,
-    // expandBttn,
     alertCause,
     alertDates
   );
@@ -589,7 +589,8 @@ function searchRoutes() {
 }
 
 function toggleDetails(e) {
-  const desc = e.target.parentElement.nextSibling;
+  // const desc = e.target.parentElement.nextSibling;
+  const desc = e.target.nextSibling;
   if (desc.style.display === "none") {
     desc.style.display = "block";
   } else {
