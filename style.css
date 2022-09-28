@@ -134,11 +134,15 @@ Table of Contents
 }
 
 .detour {
-  color: orange;
+  color: blue;
 }
 
 .modified_service {
   color: green;
+}
+
+.other_effect {
+  color: orange;
 }
 
 /* Status Flags */

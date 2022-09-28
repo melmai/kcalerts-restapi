@@ -269,14 +269,29 @@ function createAlertPanel(alert, idx) {
 
   // if array is not empty
   let alertDates = "N/A";
-  if (alert.effect_periods.length > 0) {
-    alertDates = document.createElement("p");
+  // console.log(alert.effect_periods.length);
+  alertDates = document.createElement("p");
+  // if more than one effective date range
+  if (alert.effect_periods.length > 1) {
+    alertDates.textContent = printDates(alert.effect_periods);
+    alertDates.setAttribute("class", "dates");
+    // else if only one effective date range
+  } else if (alert.effect_periods.length === 1) {
     alertDates.textContent = `Effective Dates: ${processAlertDates(
       alert.effect_periods[0].effect_start,
       alert.effect_periods[0].effect_end
     )}`;
     alertDates.setAttribute("class", "dates");
+    alertDates.setAttribute("style", "white-space:pre-wrap;");
   }
+
+  // const arr = [
+  //   { effect_end: "1672574340", effect_start: "1648897200" },
+  //   { effect_end: "1672574340", effect_start: "1648897200" },
+  //   { effect_end: "", effect_start: "1657226689" },
+  // ];
+
+  // alertDates.textContent = printDates(arr);
 
   alertContent.append(
     alertType,
@@ -294,6 +309,30 @@ function createAlertPanel(alert, idx) {
 
 /* Helper Functions
  ******************************************************* */
+
+/**
+ * Outputs array of effective dates to human readable string
+ *
+ * @param {Array} dates Effective dates for the alert
+ * @returns String
+ */
+function printDates(dates) {
+  let str = "Effective Dates: ";
+  for (let i = 0; i < dates.length; i++) {
+    if (i === dates.length - 1) {
+      str += `and ${processAlertDates(
+        dates[i].effect_start,
+        dates[i].effect_end
+      )}`;
+    } else {
+      str += `${processAlertDates(
+        dates[i].effect_start,
+        dates[i].effect_end
+      )}, `;
+    }
+  }
+  return str;
+}
 
 /**
  * Removes routes without ongoing alerts
@@ -328,10 +367,21 @@ function uniqueRoutes(routes, type) {
  * @param {Int} end
  * @returns String describing effective dates
  */
-function processAlertDates(start, end) {
+function processAlertDates(startDate, endDate) {
   const today = Math.round(new Date().getTime() / 1000);
-  if (end < today) return `${convertEpoch(start)} until further notice`;
-  return `${convertEpoch(start)} to ${convertEpoch(end)}`;
+  const start = convertEpoch(startDate);
+  const end = convertEpoch(endDate);
+
+  if (start === end) {
+    // if start and end dates are the same, return one value
+    return start;
+  } else if (endDate < today) {
+    // if end date is out of range, swap end value for until further notice
+    return `${start} until further notice`;
+  } else {
+    // else return date range
+    return `${start} to ${end}`;
+  }
 }
 
 /**
@@ -360,6 +410,10 @@ function icon(effectName) {
     case "Multi-route Reroute":
     case "Single Route Reroute":
       text = "alt_route";
+      break;
+
+    case "Delay of Service":
+      text = "timer";
       break;
 
     default:
