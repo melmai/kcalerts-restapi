@@ -187,8 +187,8 @@ Table of Contents
   white-space: pre-wrap;
 }
 
-.alert-description {
-  display: none;
+.expand-bttn {
+  margin-bottom: 30px;
 }
 
 .cause {

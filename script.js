@@ -247,6 +247,7 @@ function createAlertPanel(alert, idx) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
+    alertDescription.setAttribute("style", "display:none;");
   }
 
   // conditionally add alertURL
@@ -263,7 +264,7 @@ function createAlertPanel(alert, idx) {
   // more details button
   const expandBttn = document.createElement("button");
   expandBttn.setAttribute("class", "expand-bttn");
-  expandBttn.addEventListener("click", expandDetails);
+  expandBttn.addEventListener("click", toggleDetails);
   expandBttn.textContent = "View details";
 
   const alertCause = document.createElement("p");
@@ -584,6 +585,17 @@ function searchRoutes() {
   }
 }
 
-function expandDetails(e) {
-  console.log(e);
+function toggleDetails(e) {
+  const desc = e.target.previousSibling;
+  if (desc.style.display === "none") {
+    desc.style.display = "block";
+  } else {
+    desc.style.display = "none";
+  }
+
+  if (e.target.textContent === "View details") {
+    e.target.textContent = "Hide details";
+  } else {
+    e.target.textContent = "View details";
+  }
 }
