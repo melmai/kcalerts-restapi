@@ -11,7 +11,7 @@ function createAlerts() {
   ]).then((res) => {
     // process data
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
-    const routes = res[1].mode[1].route; // array of all available routes
+    const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
     const allData = cleanup(processData(alerts, routes));
     console.log(allData);
 
@@ -513,6 +513,26 @@ function isST(route) {
     return true;
   }
   return false;
+}
+
+/**
+ * Removes shuttle route and places it at the end of the array
+ *
+ * @param {Array} routes
+ * @returns Array of routes in correct order
+ */
+function organizeRoutes(routes) {
+  let shuttleRte = "";
+  let routeArr = [];
+  routes.forEach((route) => {
+    if (route.route_id === "102698") {
+      shuttleRte = route;
+    } else {
+      routeArr.push(route);
+    }
+  });
+
+  return [...routeArr, shuttleRte];
 }
 
 /* Event Handlers
