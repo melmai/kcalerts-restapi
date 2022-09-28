@@ -262,10 +262,13 @@ function createAlertPanel(alert, idx) {
   // }
 
   // more details button
-  const expandBttn = document.createElement("button");
-  expandBttn.setAttribute("class", "expand-bttn");
-  expandBttn.addEventListener("click", toggleDetails);
-  expandBttn.textContent = "View details";
+  let expandBttn = "";
+  if (alert.description_text) {
+    expandBttn = document.createElement("button");
+    expandBttn.setAttribute("class", "btn btn-outline-dark expand-bttn");
+    expandBttn.addEventListener("click", toggleDetails);
+    expandBttn.textContent = "View details";
+  }
 
   const alertCause = document.createElement("p");
   alertCause.textContent = `Cause: ${alert.cause}`;
