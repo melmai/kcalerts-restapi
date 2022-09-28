@@ -262,12 +262,12 @@ function createAlertPanel(alert, idx) {
   // }
 
   // more details button
-  let expandBttn = "";
   if (alert.description_text) {
-    expandBttn = document.createElement("button");
-    expandBttn.setAttribute("class", "btn btn-outline-dark expand-bttn");
+    const expandBttn = document.createElement("a");
+    expandBttn.setAttribute("class", "expand-link");
     expandBttn.addEventListener("click", toggleDetails);
     expandBttn.textContent = "View details";
+    alertTitle.append(expandBttn);
   }
 
   const alertCause = document.createElement("p");
@@ -304,7 +304,7 @@ function createAlertPanel(alert, idx) {
     alertTitle,
     alertDescription,
     // alertLink,
-    expandBttn,
+    // expandBttn,
     alertCause,
     alertDates
   );
@@ -589,7 +589,7 @@ function searchRoutes() {
 }
 
 function toggleDetails(e) {
-  const desc = e.target.previousSibling;
+  const desc = e.target.parentElement.nextSibling;
   if (desc.style.display === "none") {
     desc.style.display = "block";
   } else {
