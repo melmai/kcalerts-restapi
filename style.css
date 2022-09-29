@@ -41,7 +41,7 @@ Table of Contents
  ***************************************************/
 #accordion {
   border: 2px solid var(--border-color);
-  border-radius: 6px;
+  /* border-radius: 6px; */
   box-shadow: 1px 3px 4px #efefef;
 }
 
