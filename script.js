@@ -239,7 +239,7 @@ function createAlertPanel(alert, idx) {
   flag.append(status);
   alertType.append(flag);
 
-  const alertTitle = document.createElement("h5");
+  const alertTitle = document.createElement("p");
   alertTitle.setAttribute("class", "alert-title");
   alertTitle.textContent = accessibleText(alert.header_text);
 
@@ -249,18 +249,28 @@ function createAlertPanel(alert, idx) {
     // console.log(accessibleText(alert.description_text));
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
-    alertDescription.setAttribute("style", "white-space:pre-wrap;");
+    alertDescription.setAttribute("class", "alert-description");
+    alertDescription.setAttribute("style", "display:none;");
   }
 
   // conditionally add alertURL
-  let alertLink = "";
-  if (alert.url) {
-    alertLink = document.createElement("p");
-    const alertURL = document.createElement("a");
-    alertURL.setAttribute("href", alert.url);
-    alertURL.setAttribute("target", "_blank");
-    alertURL.textContent = "More Details";
-    alertLink.append(alertURL);
+  // let alertLink = "";
+  // if (alert.url) {
+  //   alertLink = document.createElement("p");
+  //   const alertURL = document.createElement("a");
+  //   alertURL.setAttribute("href", alert.url);
+  //   alertURL.setAttribute("target", "_blank");
+  //   alertURL.textContent = "More Details";
+  //   alertLink.append(alertURL);
+  // }
+
+  // more details button
+  let expandLink = "";
+  if (alert.description_text) {
+    expandLink = document.createElement("a");
+    expandLink.setAttribute("class", "expand-link");
+    expandLink.addEventListener("click", toggleDetails);
+    expandLink.textContent = "View details";
   }
 
   const alertCause = document.createElement("p");
@@ -282,7 +292,6 @@ function createAlertPanel(alert, idx) {
       alert.effect_periods[0].effect_end
     )}`;
     alertDates.setAttribute("class", "dates");
-    alertDates.setAttribute("style", "white-space:pre-wrap;");
   }
 
   // const arr = [
@@ -296,8 +305,9 @@ function createAlertPanel(alert, idx) {
   alertContent.append(
     alertType,
     alertTitle,
+    expandLink,
     alertDescription,
-    alertLink,
+    // alertLink,
     alertCause,
     alertDates
   );
@@ -598,5 +608,21 @@ function searchRoutes() {
     } else {
       route.setAttribute("style", "display:block;");
     }
+  }
+}
+
+function toggleDetails(e) {
+  // const desc = e.target.parentElement.nextSibling;
+  const desc = e.target.nextSibling;
+  if (desc.style.display === "none") {
+    desc.style.display = "block";
+  } else {
+    desc.style.display = "none";
+  }
+
+  if (e.target.textContent === "View details") {
+    e.target.textContent = "Hide details";
+  } else {
+    e.target.textContent = "View details";
   }
 }
