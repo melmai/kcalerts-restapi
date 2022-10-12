@@ -7,8 +7,11 @@ async function generateAlerts() {
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
+  // TODO replace static route with parsed version from window.location.pathname
   const routeName = "7"; // route 7
 
+  // get all routes and find the one we're looking for
+  // TODO find for all routes (multi-route pages)
   const routes = await fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then(
     (res) => res.json()
   );
@@ -17,9 +20,7 @@ async function generateAlerts() {
   const route = routes.mode[1].route.find(
     (route) => route.route_name === routeName
   );
-  console.log(route);
   const routeID = route.route_id;
-  console.log(routeID);
 
   // find alerts based on route ID
   const alerts = await fetch(
@@ -27,3 +28,5 @@ async function generateAlerts() {
   ).then((res) => res.json());
   console.log(alerts.alerts);
 }
+
+function parseRoutes(path) {}
