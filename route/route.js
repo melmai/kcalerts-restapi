@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
 async function generateAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/545";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-212";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241";
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241-245";
   //   const path = window.location.pathname;
   const alertContainer = document.getElementById("advisory-block-wrapper");
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
@@ -20,20 +20,19 @@ async function generateAlerts() {
     const alerts = await getAlertsByRoute(BASE_URL, API_KEY, routeID);
     console.log(alerts);
   } else {
-    let alerts = [];
-    Promise.all([
-      getRouteID(BASE_URL, API_KEY, routeNames[0]),
-      getRouteID(BASE_URL, API_KEY, routeNames[1]),
-    ]).then((res) => {
-      console.log(res);
-      Promise.all([
-        getAlertsByRoute(BASE_URL, API_KEY, res[0]),
-        getAlertsByRoute(BASE_URL, API_KEY, res[1]),
-      ]).then((res) => {
-        alerts = res;
-        console.log(alerts);
-      });
-    });
+    const routeIDs = await Promise.all(
+      routeNames.map(async (routeName) => {
+        return await getRouteID(BASE_URL, API_KEY, routeName);
+      })
+    );
+    console.log(routeIDs);
+
+    const alerts = await Promise.all(
+      routeIDs.map(async (routeID) => {
+        return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
+      })
+    );
+    console.log(alerts);
   }
 }
 
