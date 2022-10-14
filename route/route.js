@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
 async function generateAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/545";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-212";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241-245";
+  //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241-245";
   //   const path = window.location.pathname;
   const alertContainer = document.getElementById("advisory-block-wrapper");
   const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
@@ -13,27 +13,21 @@ async function generateAlerts() {
   const routeNames = parseRoutes(path);
   console.log(routeNames);
 
-  if (routeNames.length === 1) {
-    const routeID = await getRouteID(BASE_URL, API_KEY, routeNames[0]);
-    console.log(routeID);
+  // get the route IDs
+  const routeIDs = await Promise.all(
+    routeNames.map(async (routeName) => {
+      return await getRouteID(BASE_URL, API_KEY, routeName);
+    })
+  );
+  console.log(routeIDs);
 
-    const alerts = await getAlertsByRoute(BASE_URL, API_KEY, routeID);
-    console.log(alerts);
-  } else {
-    const routeIDs = await Promise.all(
-      routeNames.map(async (routeName) => {
-        return await getRouteID(BASE_URL, API_KEY, routeName);
-      })
-    );
-    console.log(routeIDs);
-
-    const alerts = await Promise.all(
-      routeIDs.map(async (routeID) => {
-        return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
-      })
-    );
-    console.log(alerts);
-  }
+  // get the alerts by route ID
+  const alerts = await Promise.all(
+    routeIDs.map(async (routeID) => {
+      return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
+    })
+  );
+  console.log(alerts);
 }
 
 function parseRoutes(path) {
@@ -42,13 +36,12 @@ function parseRoutes(path) {
 }
 
 async function getRouteID(baseURL, apiKey, routeName) {
-  // get all routes and find the one we're looking for
-  // TODO find for all routes (multi-route pages)
+  // get all routes
   const routes = await fetch(`${baseURL}/routes?api_key=${apiKey}`).then(
     (res) => res.json()
   );
 
-  // find the route ID we're looking for
+  // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
     (route) => route.route_name === routeName
   );
