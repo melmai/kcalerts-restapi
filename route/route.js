@@ -69,13 +69,13 @@ function createAlertsPanel(data) {
   const alerts = document.createElement("div");
   alerts.setAttribute("class", "toggle-inner");
 
-  data.forEach((data) => {
-    alerts.append(generateRouteAlerts(data));
+  data.forEach((data, idxa) => {
+    alerts.append(generateRouteAlerts(data, idxa));
   });
   return alerts;
 }
 
-function generateRouteAlerts(data) {
+function generateRouteAlerts(data, idxa) {
   const routeData = new DocumentFragment();
 
   // route header
@@ -85,14 +85,14 @@ function generateRouteAlerts(data) {
   routeData.append(routeHeader);
 
   // print alerts
-  data.alerts.forEach((alert, idx) => {
-    routeData.append(generateSingleAlert(alert, idx));
+  data.alerts.forEach((alert, idxb) => {
+    routeData.append(generateSingleAlert(alert, idxb, idxa));
   });
 
   return routeData;
 }
 
-function generateSingleAlert(alert, idx) {
+function generateSingleAlert(alert, idxb, idxa) {
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute(
@@ -107,8 +107,11 @@ function generateSingleAlert(alert, idx) {
 
   // alert flag
   const flag = document.createElement("span");
-  flag.setAttribute("class", "advisory-status ongoing");
-  flag.textContent = "ongoing";
+  flag.setAttribute(
+    "class",
+    `advisory-status ${statusText(alert.alert_lifecycle)}`
+  );
+  flag.textContent = statusText(alert.alert_lifecycle);
 
   type.append(flag);
 
@@ -122,13 +125,13 @@ function generateSingleAlert(alert, idx) {
   toggleLink.setAttribute("class", "toggle-link");
 
   const checkbox = document.createElement("input");
-  checkbox.id = `detail-${idx}`;
+  checkbox.id = `detail-${idxa}-${idxb}`;
   checkbox.setAttribute("type", "checkbox");
   checkbox.setAttribute("name", "details");
   checkbox.setAttribute("aria-hidden", "true");
 
   const label = document.createElement("label");
-  label.setAttribute("for", `detail-${idx}`);
+  label.setAttribute("for", `detail-${idxa}-${idxb}`);
   label.setAttribute("class", "toggle-link-label");
   label.setAttribute("aria-hidden", "true");
 
@@ -144,7 +147,16 @@ function generateSingleAlert(alert, idx) {
   // alert dates
   const dates = document.createElement("p");
   dates.setAttribute("class", "advisory-dates");
-  dates.textContent = "Effective Dates: 4/2/2022 to 1/1/2023";
+  // if more than one effective date range
+  if (alert.effect_periods.length > 1) {
+    dates.textContent = printDates(alert.effect_periods);
+    // else if only one effective date range
+  } else if (alert.effect_periods.length === 1) {
+    dates.textContent = `Effective Dates: ${processAlertDates(
+      alert.effect_periods[0].effect_start,
+      alert.effect_periods[0].effect_end
+    )}`;
+  }
 
   alertPanel.append(type, title, toggleLink, dates);
   return alertPanel;
@@ -286,10 +298,15 @@ function accessibleText(desc) {
   res = res.replaceAll(/WB/g, "Westbound");
 
   // expand streets
-  res = res.replaceAll(/ Ave\b/gm, " Avenue");
+  res = res.replaceAll(/ Ave?\b/gm, " Avenue");
   res = res.replaceAll(/ St\b/gm, " Street");
   res = res.replaceAll(/ Pl\b/gm, " Place");
   res = res.replaceAll(/ Rd\b/gm, " Road");
+  res = res.replaceAll(/ Pkwy\b/gm, " Parkway");
+  res = res.replaceAll(/ Blvd\b/gm, " Boulevard");
+
+  res = res.replaceAll(/ Lk\b/gm, " Lake");
+  res = res.replaceAll(/ Samm\b/gm, " Sammamish");
 
   return res;
 }
