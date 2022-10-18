@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
-  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-230";
+  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-212";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241-245";
   //   const path = window.location.pathname;
@@ -30,6 +30,8 @@ async function generateAlerts() {
   // build accordion
   let accordion = new DocumentFragment();
   accordion.append(buildAccordion(data));
+  console.log(accordion);
+  console.log(alertContainer);
   alertContainer.append(accordion);
 }
 
@@ -83,21 +85,24 @@ function createAlertsPanel(data) {
   // create panel to hold route alerts
   const alerts = document.createElement("div");
   alerts.setAttribute("class", "toggle-inner");
+  const isMultiple = data.length > 1;
+  console.log(isMultiple);
 
   data.forEach((data, idxa) => {
-    alerts.append(generateRouteAlerts(data, idxa));
+    alerts.append(generateRouteAlerts(data, idxa, isMultiple));
   });
   return alerts;
 }
 
-function generateRouteAlerts(data, idxa) {
+function generateRouteAlerts(data, idxa, isMultiple) {
   const routeData = new DocumentFragment();
 
-  // route header
-  const routeHeader = document.createElement("h3");
-  routeHeader.setAttribute("class", "route-header");
-  routeHeader.textContent = data.route_name;
-  routeData.append(routeHeader);
+  if (isMultiple) {
+    const routeHeader = document.createElement("h3");
+    routeHeader.setAttribute("class", "route-header");
+    routeHeader.textContent = data.route_name;
+    routeData.append(routeHeader);
+  }
 
   // print alerts
   data.alerts.forEach((alert, idxb) => {
