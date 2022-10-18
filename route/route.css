@@ -202,6 +202,10 @@ h6 {
   color: #fff;
 }
 
+.advisory-status.upcoming {
+  background-color: orange;
+}
+
 /* *************************************************
  * Alert Icons
  ***************************************************/
@@ -317,6 +321,7 @@ h6 {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease;
+  margin-bottom: 1em;
 }
 .toggle-link input[type="checkbox"] + label::after {
   content: "View details";
