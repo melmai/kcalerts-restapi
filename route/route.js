@@ -31,7 +31,7 @@ async function generateAlerts() {
 
   // build accordion
   let accordion = new DocumentFragment();
-  accordion.append(buildAccordion());
+  accordion.append(buildAccordion(data));
   alertContainer.append(accordion);
   // data.forEach((data, idx) => {
   //   accordion.append(createRoutePanel(data, idx));
@@ -39,7 +39,7 @@ async function generateAlerts() {
   // alertContainer.append(accordion);
 }
 
-function buildAccordion() {
+function buildAccordion(data) {
   // construct main panel
   const toggleBlock = document.createElement("div");
   toggleBlock.setAttribute("class", "toggle advisory-block");
@@ -66,11 +66,89 @@ function buildAccordion() {
   statusFlag.textContent = "3";
 
   label.append(statusFlag);
-  toggleBlock.append(button, label);
+  toggleBlock.append(button, label, createAlertsPanel(data));
   return toggleBlock;
 }
 
-function createRoutePanel(data, id) {}
+function createAlertsPanel(data) {
+  // create panel to hold route alerts
+  const alerts = document.createElement("div");
+  alerts.setAttribute("class", "toggle-inner");
+
+  data.forEach((data) => {
+    alerts.append(generateRouteAlerts(data));
+  });
+  return alerts;
+}
+
+function generateRouteAlerts(data) {
+  const routeData = new DocumentFragment();
+  console.log(data);
+
+  // route header
+  const routeHeader = document.createElement("h3");
+  routeHeader.textContent = data.route_name;
+  routeData.append(routeHeader);
+
+  // print alerts
+  data.alerts.forEach((alert, idx) => {
+    routeData.append(generateSingleAlert(alert, idx));
+  });
+
+  return routeData;
+}
+
+function generateSingleAlert(alert, idx) {
+  // alert panel
+  const alertPanel = document.createElement("div");
+  alertPanel.setAttribute("class", "advisory-content stop-closure");
+
+  // alert type
+  const type = document.createElement("h4");
+  type.setAttribute("class", "advisory-type");
+  type.textContent = "Stop Closure";
+
+  // alert flag
+  const flag = document.createElement("span");
+  flag.setAttribute("class", "advisory-status ongoing");
+  flag.textContent = "ongoing";
+
+  type.append(flag);
+
+  // alert title
+  const title = document.createElement("p");
+  title.setAttribute("class", "advisory-title");
+  title.textContent = alert.header_text;
+
+  // description toggle
+  const toggleLink = document.createElement("div");
+  toggleLink.setAttribute("class", "toggle-link");
+
+  const checkbox = document.createElement("input");
+  checkbox.id = `detail-${idx}`;
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.setAttribute("name", "details");
+  checkbox.setAttribute("aria-hidden", "true");
+
+  const label = document.createElement("label");
+  label.setAttribute("for", `detail-${idx}`);
+  label.setAttribute("class", "toggle-link-label");
+  label.setAttribute("aria-hidden", "true");
+
+  const description = document.createElement("p");
+  description.setAttribute("class", "advisory-detail");
+  description.textContent = alert.description_text;
+
+  toggleLink.append(checkbox, label, description);
+
+  // alert dates
+  const dates = document.createElement("p");
+  dates.setAttribute("class", "advisory-dates");
+  dates.textContent = "Effective Dates: 4/2/2022 to 1/1/2023";
+
+  alertPanel.append(type, title, toggleLink, dates);
+  return alertPanel;
+}
 
 function parseRoutes(path) {
   // extract route numbers from path
