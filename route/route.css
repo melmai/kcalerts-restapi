@@ -112,7 +112,7 @@ h6 {
 }
 .advisory-content {
   position: relative;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
   padding: 0 1.2rem 0.7rem 3.4rem;
   border-bottom: 1px solid #ccc;
 }
@@ -314,4 +314,11 @@ h6 {
 }
 .toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
   margin-top: 1rem;
+}
+
+/* Route Header */
+.route-header {
+  padding: 0.6em 1em;
+  background-color: var(--ghost-color);
+  color: #fff;
 }
