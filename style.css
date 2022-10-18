@@ -113,6 +113,7 @@ Table of Contents
   border: 1px solid #eee;
   border-top-width: 0;
   padding: 1.5em;
+  position: relative;
 }
 
 .alert-type,

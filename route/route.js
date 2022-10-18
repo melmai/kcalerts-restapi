@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
-  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/7-225";
+  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-212";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241-245";
   //   const path = window.location.pathname;
