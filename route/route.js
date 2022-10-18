@@ -31,11 +31,46 @@ async function generateAlerts() {
 
   // build accordion
   let accordion = new DocumentFragment();
-  data.forEach((data, idx) => {
-    accordion.append(createRoutePanel(data, idx));
-  });
+  accordion.append(buildAccordion());
   alertContainer.append(accordion);
+  // data.forEach((data, idx) => {
+  //   accordion.append(createRoutePanel(data, idx));
+  // });
+  // alertContainer.append(accordion);
 }
+
+function buildAccordion() {
+  // construct main panel
+  const toggleBlock = document.createElement("div");
+  toggleBlock.setAttribute("class", "toggle advisory-block");
+
+  // button
+  const button = document.createElement("input");
+  button.id = "toggle-advisory";
+  button.setAttribute("type", "checkbox");
+  button.setAttribute("name", "advisory");
+  button.setAttribute("aria-hidden", "true");
+
+  // button label
+  const label = document.createElement("label");
+  label.setAttribute("for", "toggle-advisory");
+  label.setAttribute(
+    "class",
+    "toggle-head advisory-block-title with-description"
+  );
+  label.textContent = "Service Advisory";
+
+  // status flag
+  const statusFlag = document.createElement("span");
+  statusFlag.setAttribute("class", "route-status ongoing");
+  statusFlag.textContent = "3";
+
+  label.append(statusFlag);
+  toggleBlock.append(button, label);
+  return toggleBlock;
+}
+
+function createRoutePanel(data, id) {}
 
 function parseRoutes(path) {
   // extract route numbers from path
