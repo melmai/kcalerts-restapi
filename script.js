@@ -1,4 +1,4 @@
-// window.addEventListener("DOMContentLoaded", createAlerts);
+window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const allAlerts = document.getElementById("accordion");
@@ -439,7 +439,7 @@ function icon(effectName) {
  * @param {String} desc
  * @returns expanded version of description
  */
- function accessibleText(desc) {
+function accessibleText(desc) {
   // if null, return
   if (desc === "") return "";
 
@@ -462,6 +462,7 @@ function icon(effectName) {
   res = res.replaceAll(/ Samm\b/gm, " Sammamish");
 
   return res;
+}
 
 /**
  * Generates text for status flag and alert classes
