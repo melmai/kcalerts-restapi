@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", createAlerts);
+// window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const allAlerts = document.getElementById("accordion");
