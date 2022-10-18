@@ -214,20 +214,35 @@ h6 {
   top: -5px;
   left: 1.2rem;
 }
-.stop-closure::before {
+.dangerous::before {
   content: "dangerous";
   content: "dangerous" / "";
   color: red;
 }
-.reroute::before {
+.alt_route::before {
   content: "alt_route";
   content: "alt_route" / "";
   color: blue;
 }
-.restored::before {
+.task_alt::before {
   content: "task_alt";
   content: "task_alt" / "";
   color: green;
+}
+.error::before {
+  content: "error";
+  content: "error" / "";
+  color: red;
+}
+.timer::before {
+  content: "timer";
+  content: "timer" / "";
+  color: orange;
+}
+.warning::before {
+  content: "warning";
+  content: "warning" / "";
+  color: black;
 }
 
 .route-status.ongoing {

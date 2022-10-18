@@ -11,7 +11,6 @@ async function generateAlerts() {
 
   // TODO replace static route with parsed version from window.location.pathname
   const routeNames = parseRoutes(path);
-  console.log(routeNames);
 
   // get the route IDs
   const routeIDs = await Promise.all(
@@ -19,7 +18,6 @@ async function generateAlerts() {
       return await getRouteID(BASE_URL, API_KEY, routeName);
     })
   );
-  console.log(routeIDs);
 
   // get the alerts by route ID
   const data = await Promise.all(
@@ -33,10 +31,6 @@ async function generateAlerts() {
   let accordion = new DocumentFragment();
   accordion.append(buildAccordion(data));
   alertContainer.append(accordion);
-  // data.forEach((data, idx) => {
-  //   accordion.append(createRoutePanel(data, idx));
-  // });
-  // alertContainer.append(accordion);
 }
 
 function buildAccordion(data) {
@@ -83,10 +77,10 @@ function createAlertsPanel(data) {
 
 function generateRouteAlerts(data) {
   const routeData = new DocumentFragment();
-  console.log(data);
 
   // route header
   const routeHeader = document.createElement("h3");
+  routeHeader.setAttribute("class", "route-header");
   routeHeader.textContent = data.route_name;
   routeData.append(routeHeader);
 
@@ -101,12 +95,15 @@ function generateRouteAlerts(data) {
 function generateSingleAlert(alert, idx) {
   // alert panel
   const alertPanel = document.createElement("div");
-  alertPanel.setAttribute("class", "advisory-content stop-closure");
+  alertPanel.setAttribute(
+    "class",
+    `advisory-content ${icon(alert.effect_name)}`
+  );
 
   // alert type
   const type = document.createElement("h4");
   type.setAttribute("class", "advisory-type");
-  type.textContent = "Stop Closure";
+  type.textContent = alert.effect_name;
 
   // alert flag
   const flag = document.createElement("span");
@@ -118,7 +115,7 @@ function generateSingleAlert(alert, idx) {
   // alert title
   const title = document.createElement("p");
   title.setAttribute("class", "advisory-title");
-  title.textContent = alert.header_text;
+  title.textContent = accessibleText(alert.header_text);
 
   // description toggle
   const toggleLink = document.createElement("div");
@@ -135,9 +132,12 @@ function generateSingleAlert(alert, idx) {
   label.setAttribute("class", "toggle-link-label");
   label.setAttribute("aria-hidden", "true");
 
-  const description = document.createElement("p");
-  description.setAttribute("class", "advisory-detail");
-  description.textContent = alert.description_text;
+  let description = "";
+  if (alert.description_text) {
+    description = document.createElement("p");
+    description.setAttribute("class", "advisory-detail");
+    description.textContent = accessibleText(alert.description_text);
+  }
 
   toggleLink.append(checkbox, label, description);
 
@@ -176,4 +176,142 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
     `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
   ).then((res) => res.json());
   return alerts;
+}
+
+/* Helper Functions
+ ******************************************************* */
+
+/**
+ * Outputs array of effective dates to human readable string
+ *
+ * @param {Array} dates Effective dates for the alert
+ * @returns String
+ */
+function printDates(dates) {
+  let str = "Effective Dates: ";
+  for (let i = 0; i < dates.length; i++) {
+    if (i === dates.length - 1) {
+      str += `and ${processAlertDates(
+        dates[i].effect_start,
+        dates[i].effect_end
+      )}`;
+    } else {
+      str += `${processAlertDates(
+        dates[i].effect_start,
+        dates[i].effect_end
+      )}, `;
+    }
+  }
+  return str;
+}
+
+/**
+ * Generates text for alert effective dates
+ *
+ * @param {Int} start
+ * @param {Int} end
+ * @returns String describing effective dates
+ */
+function processAlertDates(startDate, endDate) {
+  const today = Math.round(new Date().getTime() / 1000);
+  const start = convertEpoch(startDate);
+  const end = convertEpoch(endDate);
+
+  if (start === end) {
+    // if start and end dates are the same, return one value
+    return start;
+  } else if (endDate < today) {
+    // if end date is out of range, swap end value for until further notice
+    return `${start} until further notice`;
+  } else {
+    // else return date range
+    return `${start} to ${end}`;
+  }
+}
+
+/**
+ * Generates string to call material icon that corresponds to alert type
+ *
+ * @param {String} effectName
+ * @returns String that represents Material Icon
+ */
+function icon(effectName) {
+  let text;
+
+  switch (effectName) {
+    case "Trip Cancelation":
+    case "Suspension":
+      text = "error";
+      break;
+
+    case "Trip Restoration":
+      text = "task_alt";
+      break;
+
+    case "Stop Closure":
+      text = "dangerous";
+      break;
+
+    case "Multi-route Reroute":
+    case "Single Route Reroute":
+      text = "alt_route";
+      break;
+
+    case "Delay of Service":
+      text = "timer";
+      break;
+
+    default:
+      text = "warning";
+  }
+
+  return text;
+}
+
+/**
+ * Replaces text in description that is difficult to parse for screen readers
+ *
+ * @param {String} desc
+ * @returns expanded version of description
+ */
+function accessibleText(desc) {
+  // if null, return
+  if (desc === "") return "";
+
+  // expand directionals
+  let res = "";
+  res = desc.replaceAll(/NB/g, "Northbound");
+  res = res.replaceAll(/SB/g, "Southbound");
+  res = res.replaceAll(/EB/g, "Eastbound");
+  res = res.replaceAll(/WB/g, "Westbound");
+
+  // expand streets
+  res = res.replaceAll(/ Ave\b/gm, " Avenue");
+  res = res.replaceAll(/ St\b/gm, " Street");
+  res = res.replaceAll(/ Pl\b/gm, " Place");
+  res = res.replaceAll(/ Rd\b/gm, " Road");
+
+  return res;
+}
+
+/**
+ * Generates text for status flag and alert classes
+ *
+ * @param {String} status
+ * @returns String to display in status flag and classnames
+ */
+function statusText(status) {
+  if (status === "New" || status.includes("Ongoing")) return "ongoing";
+  return "upcoming";
+}
+
+/**
+ * Transforms epoch date to local date
+ *
+ * @param {Int} epochts
+ * @returns human readable string for date
+ */
+function convertEpoch(epochts) {
+  // return new Date(epochts * 1000).toDateString();
+  return new Date(epochts * 1000).toLocaleDateString();
 }
