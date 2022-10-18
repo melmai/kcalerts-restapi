@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
-  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545";
+  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-230";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-212";
   //   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-241-245";
   //   const path = window.location.pathname;
@@ -55,11 +55,26 @@ function buildAccordion(data) {
   label.textContent = "Service Advisory";
 
   // status flag
-  const statusFlag = document.createElement("span");
-  statusFlag.setAttribute("class", "route-status ongoing");
-  statusFlag.textContent = "3";
+  const statusFlags = document.createElement("span");
+  statusFlags.setAttribute("class", "route-status");
 
-  label.append(statusFlag);
+  const flagData = countAlertTypes(data);
+  console.log(flagData);
+
+  if (flagData.ongoing > 0) {
+    const ongoingFlag = document.createElement("span");
+    ongoingFlag.textContent = flagData.ongoing;
+    ongoingFlag.setAttribute("class", "ongoing");
+    statusFlags.append(ongoingFlag);
+  }
+  if (flagData.upcoming > 0) {
+    const upcomingFlag = document.createElement("span");
+    upcomingFlag.textContent = flagData.upcoming;
+    upcomingFlag.setAttribute("class", "upcoming");
+    statusFlags.append(upcomingFlag);
+  }
+
+  label.append(statusFlags);
   toggleBlock.append(button, label, createAlertsPanel(data));
   return toggleBlock;
 }
@@ -192,6 +207,26 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
 
 /* Helper Functions
  ******************************************************* */
+
+function countAlertTypes(data) {
+  let ongoing = 0;
+  let upcoming = 0;
+
+  data.forEach((route) => {
+    route.alerts.forEach((alert) => {
+      if (alert.alert_lifecycle === "Upcoming") {
+        upcoming++;
+      } else {
+        ongoing++;
+      }
+    });
+  });
+
+  return {
+    ongoing: ongoing,
+    upcoming: upcoming,
+  };
+}
 
 /**
  * Outputs array of effective dates to human readable string

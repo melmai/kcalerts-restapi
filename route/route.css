@@ -249,24 +249,33 @@ h6 {
   color: black;
 }
 
-.route-status.ongoing {
-  background-image: url(https://metrotransit.net/service-advisories/poc10/img/svg/active-fill.svg);
-  color: #fff;
-}
+/* Status Count Icons */
 .route-status {
+  display: flex;
+  margin-right: 30px;
+}
+
+.route-status > span {
   background-size: contain;
   background-repeat: no-repeat;
   min-width: 35px;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background-position: 50% 50%;
   font-size: 14px;
-  padding: 0.5rem;
-  padding-top: 0.75rem;
+  padding: 0.5em;
+  padding-top: 0.75em;
   line-height: 1;
-  position: absolute;
-  right: 3.25rem;
+  margin-right: 0.25em;
+}
+
+.route-status .ongoing {
+  background-image: url(../img/svg/active-fill.svg);
+  color: #fff;
+}
+.route-status .upcoming {
+  background-image: url(../img/svg/planned.svg);
 }
 
 /* Styles for hiding and showing */
@@ -289,6 +298,8 @@ h6 {
 }
 .toggle .advisory-block-title {
   background-color: #fff;
+  display: flex;
+  justify-content: space-between;
 }
 .toggle input:checked + .advisory-block-title {
   background-color: #b2d4f5;
