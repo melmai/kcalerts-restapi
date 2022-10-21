@@ -2,7 +2,8 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const allAlerts = document.getElementById("accordion");
-  const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
+  // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
+  const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
   Promise.all([
@@ -85,6 +86,7 @@ function incrementStatusType(
   alertStatus,
   routeStatus = { ongoing: 0, upcoming: 0 }
 ) {
+  // console.log(alertStatus);
   let res = routeStatus;
   if (alertStatus.includes("Ongoing") || alertStatus === "New") {
     res.ongoing = res.ongoing + 1;
@@ -231,7 +233,7 @@ function createAlertPanel(alert, idx) {
 
   const alertType = document.createElement("h4");
   alertType.setAttribute("class", "alert-type");
-  alertType.textContent = alert.effect_name;
+  alertType.textContent = expandType(alert.effect_name);
 
   const flag = document.createElement("span");
   // console.log(status);
@@ -426,6 +428,10 @@ function icon(effectName) {
       text = "timer";
       break;
 
+    case "ESN":
+      text = "ac_unit";
+      break;
+
     default:
       text = "warning";
   }
@@ -461,6 +467,18 @@ function accessibleText(desc) {
   res = res.replaceAll(/ Lk\b/gm, " Lake");
   res = res.replaceAll(/ Samm\b/gm, " Sammamish");
 
+  return res;
+}
+
+/**
+ * Expands alert type text for improved accessibility
+ *
+ * @param {String} type
+ * @returns expanded version of alert type
+ */
+function expandType(type) {
+  let res = "";
+  res = type.replaceAll(/ESN\b/gm, " Emergency Snow Network");
   return res;
 }
 
