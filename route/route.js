@@ -2,17 +2,20 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245";
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/a-line"; // alpha routes
+  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
+  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
   // path =
-  //   "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-217-241-245";
-  //   const path = window.location.pathname;
+  //   "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-217-241-245";           // no route alerts
+  // path = window.location.pathname;
+
   const alertContainer = document.getElementById("accordion");
-  const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
+  // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
+  const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
   // TODO replace static route with parsed version from window.location.pathname
-  const routeNames = parseRoutes(path);
+  const routeNames = parseRoutes(path.split("/").pop());
 
   // get the route IDs
   const routeIDs = await Promise.all(
@@ -27,13 +30,10 @@ async function generateAlerts() {
       return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
     })
   );
-  console.log(data);
 
   // build accordion
   let accordion = new DocumentFragment();
   accordion.append(buildAccordion(data));
-  console.log(accordion);
-  console.log(alertContainer);
   alertContainer.append(accordion);
 }
 
@@ -63,7 +63,6 @@ function buildAccordion(data) {
   statusFlags.setAttribute("class", "route-status");
 
   const flagData = countAlertTypes(data);
-  console.log(flagData);
 
   if (flagData.ongoing > 0) {
     const ongoingFlag = document.createElement("span");
@@ -88,7 +87,6 @@ function createAlertsPanel(data) {
   const alerts = document.createElement("div");
   alerts.setAttribute("class", "toggle-inner");
   const isMultiple = data.length > 1;
-  console.log(isMultiple);
 
   data.forEach((data, idxa) => {
     alerts.append(generateRouteAlerts(data, idxa, isMultiple));
@@ -185,10 +183,17 @@ function generateSingleAlert(alert, idxb, idxa) {
 }
 
 function parseRoutes(path) {
-  // extract route numbers from path
-  let routes = path.match(/(\d+)/g);
-  // remove leading zeros
-  return routes.map((route) => route.replaceAll(/^0+/g, ""));
+  let routes = [];
+  if (path[0].charAt(0).match(/[a-z]/i)) {
+    // if rapid ride...
+    routes[0] = path.replaceAll("-", " ");
+  } else {
+    // it's a numbered route, it could be multiple routes
+    routes = path.match(/(\d+)/g);
+    // remove leading zeros
+    routes = routes.map((route) => route.replaceAll(/^0+/g, ""));
+  }
+  return routes;
 }
 
 async function getRouteID(baseURL, apiKey, routeName) {
@@ -199,7 +204,7 @@ async function getRouteID(baseURL, apiKey, routeName) {
 
   // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
-    (route) => route.route_name === routeName
+    (route) => route.route_name.toLowerCase() === routeName
   );
   return route.route_id;
 }
