@@ -16,7 +16,6 @@ async function generateAlerts() {
 
   // TODO replace static route with parsed version from window.location.pathname
   const routeNames = parseRoutes(path.split("/").pop());
-  console.log(routeNames);
 
   // get the route IDs
   const routeIDs = await Promise.all(
@@ -31,13 +30,10 @@ async function generateAlerts() {
       return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
     })
   );
-  console.log(data);
 
   // build accordion
   let accordion = new DocumentFragment();
   accordion.append(buildAccordion(data));
-  console.log(accordion);
-  console.log(alertContainer);
   alertContainer.append(accordion);
 }
 
@@ -67,7 +63,6 @@ function buildAccordion(data) {
   statusFlags.setAttribute("class", "route-status");
 
   const flagData = countAlertTypes(data);
-  console.log(flagData);
 
   if (flagData.ongoing > 0) {
     const ongoingFlag = document.createElement("span");
@@ -92,7 +87,6 @@ function createAlertsPanel(data) {
   const alerts = document.createElement("div");
   alerts.setAttribute("class", "toggle-inner");
   const isMultiple = data.length > 1;
-  console.log(isMultiple);
 
   data.forEach((data, idxa) => {
     alerts.append(generateRouteAlerts(data, idxa, isMultiple));
@@ -189,20 +183,17 @@ function generateSingleAlert(alert, idxb, idxa) {
 }
 
 function parseRoutes(path) {
-  // extract route numbers from path
-  console.log(path);
   let routes = [];
   if (path[0].charAt(0).match(/[a-z]/i)) {
     // if rapid ride...
     routes[0] = path.replaceAll("-", " ");
-    return routes;
   } else {
-    // it's a numbered route
+    // it's a numbered route, it could be multiple routes
     routes = path.match(/(\d+)/g);
-    console.log(routes);
     // remove leading zeros
-    return routes.map((route) => route.replaceAll(/^0+/g, ""));
+    routes = routes.map((route) => route.replaceAll(/^0+/g, ""));
   }
+  return routes;
 }
 
 async function getRouteID(baseURL, apiKey, routeName) {
