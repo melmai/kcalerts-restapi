@@ -2,17 +2,21 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245";
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/a-line"; // alpha routes
+  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
+  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
   // path =
-  //   "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-217-241-245";
-  //   const path = window.location.pathname;
+  //   "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-217-241-245";           // no route alerts
+  // path = window.location.pathname;
+
   const alertContainer = document.getElementById("accordion");
-  const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
+  // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
+  const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
 
   // TODO replace static route with parsed version from window.location.pathname
-  const routeNames = parseRoutes(path);
+  const routeNames = parseRoutes(path.split("/").pop());
+  console.log(routeNames);
 
   // get the route IDs
   const routeIDs = await Promise.all(
@@ -186,9 +190,19 @@ function generateSingleAlert(alert, idxb, idxa) {
 
 function parseRoutes(path) {
   // extract route numbers from path
-  let routes = path.match(/(\d+)/g);
-  // remove leading zeros
-  return routes.map((route) => route.replaceAll(/^0+/g, ""));
+  console.log(path);
+  let routes = [];
+  if (path[0].charAt(0).match(/[a-z]/i)) {
+    // if rapid ride...
+    routes[0] = path.replaceAll("-", " ");
+    return routes;
+  } else {
+    // it's a numbered route
+    routes = path.match(/(\d+)/g);
+    console.log(routes);
+    // remove leading zeros
+    return routes.map((route) => route.replaceAll(/^0+/g, ""));
+  }
 }
 
 async function getRouteID(baseURL, apiKey, routeName) {
@@ -199,7 +213,7 @@ async function getRouteID(baseURL, apiKey, routeName) {
 
   // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
-    (route) => route.route_name === routeName
+    (route) => route.route_name.toLowerCase() === routeName
   );
   return route.route_id;
 }
