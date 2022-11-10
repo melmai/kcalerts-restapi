@@ -236,7 +236,6 @@ function createAlertPanel(alert, idx) {
   alertType.textContent = expandType(alert.effect_name);
 
   const flag = document.createElement("span");
-  // console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
   alertType.append(flag);
@@ -254,17 +253,6 @@ function createAlertPanel(alert, idx) {
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
   }
-
-  // conditionally add alertURL
-  // let alertLink = "";
-  // if (alert.url) {
-  //   alertLink = document.createElement("p");
-  //   const alertURL = document.createElement("a");
-  //   alertURL.setAttribute("href", alert.url);
-  //   alertURL.setAttribute("target", "_blank");
-  //   alertURL.textContent = "More Details";
-  //   alertLink.append(alertURL);
-  // }
 
   // more details button
   let expandLink = "";
@@ -305,20 +293,11 @@ function createAlertPanel(alert, idx) {
     alert.last_modified_dt
   )}`;
 
-  // const arr = [
-  //   { effect_end: "1672574340", effect_start: "1648897200" },
-  //   { effect_end: "1672574340", effect_start: "1648897200" },
-  //   { effect_end: "", effect_start: "1657226689" },
-  // ];
-
-  // alertDates.textContent = printDates(arr);
-
   alertContent.append(
     alertType,
     alertTitle,
     expandLink,
     alertDescription,
-    // alertLink,
     alertCause,
     alertDates,
     footer
