@@ -296,6 +296,15 @@ function createAlertPanel(alert, idx) {
     alertDates.setAttribute("class", "dates");
   }
 
+  const footer = document.createElement("p");
+  footer.setAttribute("class", "alert-footer");
+  footer.textContent = `Alert ID: ${
+    alert.alert_id
+  }, Last Updated: ${processAlertDates(
+    alert.last_modified_dt,
+    alert.last_modified_dt
+  )}`;
+
   // const arr = [
   //   { effect_end: "1672574340", effect_start: "1648897200" },
   //   { effect_end: "1672574340", effect_start: "1648897200" },
@@ -311,7 +320,8 @@ function createAlertPanel(alert, idx) {
     alertDescription,
     // alertLink,
     alertCause,
-    alertDates
+    alertDates,
+    footer
   );
 
   alertPanel.append(alertContent);
