@@ -417,7 +417,7 @@ function icon(effectName) {
       text = "timer";
       break;
 
-    case "ESN":
+    case "Emergency Snow Network":
       text = "ac_unit";
       break;
 
