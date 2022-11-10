@@ -178,7 +178,16 @@ function generateSingleAlert(alert, idxb, idxa) {
     )}`;
   }
 
-  alertPanel.append(type, title, toggleLink, dates);
+  const footer = document.createElement("p");
+  footer.setAttribute("class", "alert-footer");
+  footer.textContent = `Alert ID: ${
+    alert.alert_id
+  }, Last Updated: ${processAlertDates(
+    alert.last_modified_dt,
+    alert.last_modified_dt
+  )}`;
+
+  alertPanel.append(type, title, toggleLink, dates, footer);
   return alertPanel;
 }
 
@@ -318,6 +327,11 @@ function icon(effectName) {
 
     case "Delay of Service":
       text = "timer";
+      break;
+
+    case "ESN":
+    case "Emergency Snow Network":
+      text = "ac_unit";
       break;
 
     default:
