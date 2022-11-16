@@ -236,7 +236,6 @@ function createAlertPanel(alert, idx) {
   alertType.textContent = expandType(alert.effect_name);
 
   const flag = document.createElement("span");
-  // console.log(status);
   flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
   flag.append(status);
   alertType.append(flag);
@@ -254,17 +253,6 @@ function createAlertPanel(alert, idx) {
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
   }
-
-  // conditionally add alertURL
-  // let alertLink = "";
-  // if (alert.url) {
-  //   alertLink = document.createElement("p");
-  //   const alertURL = document.createElement("a");
-  //   alertURL.setAttribute("href", alert.url);
-  //   alertURL.setAttribute("target", "_blank");
-  //   alertURL.textContent = "More Details";
-  //   alertLink.append(alertURL);
-  // }
 
   // more details button
   let expandLink = "";
@@ -296,22 +284,23 @@ function createAlertPanel(alert, idx) {
     alertDates.setAttribute("class", "dates");
   }
 
-  // const arr = [
-  //   { effect_end: "1672574340", effect_start: "1648897200" },
-  //   { effect_end: "1672574340", effect_start: "1648897200" },
-  //   { effect_end: "", effect_start: "1657226689" },
-  // ];
-
-  // alertDates.textContent = printDates(arr);
+  const footer = document.createElement("p");
+  footer.setAttribute("class", "alert-footer");
+  footer.textContent = `Alert ID: ${
+    alert.alert_id
+  }, Last Updated: ${processAlertDates(
+    alert.last_modified_dt,
+    alert.last_modified_dt
+  )}`;
 
   alertContent.append(
     alertType,
     alertTitle,
     expandLink,
     alertDescription,
-    // alertLink,
     alertCause,
-    alertDates
+    alertDates,
+    footer
   );
 
   alertPanel.append(alertContent);
@@ -428,7 +417,7 @@ function icon(effectName) {
       text = "timer";
       break;
 
-    case "ESN":
+    case "Emergency Snow Network":
       text = "ac_unit";
       break;
 

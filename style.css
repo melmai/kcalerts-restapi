@@ -209,6 +209,18 @@ Table of Contents
   display: none;
 }
 
+.alert-footer {
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 7px;
+}
+
+@media screen and (min-width: 425px) {
+  .alert-footer {
+    font-size: 12px;
+  }
+}
+
 /* *************************************************
  * Status Filter Buttons - styles from S10 style guide
  ***************************************************/

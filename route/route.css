@@ -183,6 +183,18 @@ h6 {
 .advisory-dates {
 }
 
+.alert-footer {
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 7px;
+}
+
+@media screen and (min-width: 425px) {
+  .alert-footer {
+    font-size: 12px;
+  }
+}
+
 /* *************************************************
  * Status Badges
  ***************************************************/
@@ -223,10 +235,16 @@ h6 {
   content: "dangerous" / "";
   color: red;
 }
-.alt_route::before {
+.alt_route::before,
+.ac_unit::before {
   content: "alt_route";
   content: "alt_route" / "";
   color: blue;
+}
+
+.ac_unit::before {
+  content: "ac_unit";
+  content: "ac_unit" / "";
 }
 .task_alt::before {
   content: "task_alt";
