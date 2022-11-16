@@ -26,17 +26,25 @@
   </head>
   <body>
     <section id="alerts-container">
-      <!-- Search -->
-      <section id="search">
-        <label for="route-search">Route Search:</label>
-        <input type="text" name="route-search" id="route-search" />
-      </section>
+      <section class="filter-box-wrapper">
+        <!-- Search -->
+        <section id="search">
+          <label for="route-search">Filter the list:</label>
+          <input
+            type="text"
+            name="route-search"
+            id="route-search"
+            aria-label="Enter a route number"
+            placeholder="Enter a route #..."
+          />
+        </section>
 
-      <!-- Tab Filters -->
-      <section id="status-filter">
-        <button id="reset" class="tab-btn selected">All</button>
-        <button id="ongoing-filter" class="tab-btn">ongoing</button>
-        <button id="upcoming-filter" class="tab-btn">upcoming Changes</button>
+        <!-- Tab Filters -->
+        <section id="status-filter">
+          <button id="reset" class="tab-btn selected">All</button>
+          <button id="ongoing-filter" class="tab-btn">ongoing</button>
+          <button id="upcoming-filter" class="tab-btn">upcoming Changes</button>
+        </section>
       </section>
 
       <!-- Accordion -->
