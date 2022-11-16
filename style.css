@@ -130,7 +130,6 @@ h2 {
   display: flex;
   border: 1px solid #eee;
   border-top-width: 0;
-  /*padding: 1.5em;*/
   padding: 1.5rem 1rem 0;
   position: relative;
 }
@@ -243,6 +242,17 @@ h2 {
   display: none;
 }
 
+.alert-footer {
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 7px;
+}
+
+@media screen and (min-width: 425px) {
+  .alert-footer {
+    font-size: 12px;
+  }
+}
 /* *************************************************
  * Status Filter Buttons
  ***************************************************/
