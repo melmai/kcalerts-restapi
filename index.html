@@ -30,13 +30,18 @@
         <!-- Search -->
         <section id="search">
           <label for="route-search">Filter the list:</label>
-          <input
-            type="text"
-            name="route-search"
-            id="route-search"
-            aria-label="Enter a route number"
-            placeholder="Enter a route #..."
-          />
+          <div id="route-search-container">
+            <input
+              type="text"
+              name="route-search"
+              id="route-search"
+              aria-label="Enter a route number"
+              placeholder="Enter a route #..."
+            />
+            <button id="clear-search">
+              <span class="material-symbols-outlined hidden">close</span>
+            </button>
+          </div>
         </section>
 
         <!-- Tab Filters -->
