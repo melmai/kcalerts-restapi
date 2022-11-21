@@ -589,7 +589,7 @@ function showAlerts(show = "", hide = "") {
   } else {
     accordion.removeAttribute("class", hide);
   }
-  accordion.setAttribute("class", `accordion ${show}`);
+  accordion.setAttribute("class", `accordion accordion-flush ${show}`);
 
   // update buttons
   clearButtons();
