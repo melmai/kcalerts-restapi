@@ -38,7 +38,10 @@ function createAlerts() {
     );
 
     const searchInput = document.getElementById("route-search");
-    searchInput.addEventListener("keyup", searchRoutes);
+    searchInput.addEventListener("keyup", () => searchRoutes(true));
+
+    const clearInput = document.getElementById("clear-search");
+    clearInput.addEventListener("click", clearSearch);
   });
 }
 
@@ -607,7 +610,12 @@ function showAlerts(show = "", hide = "") {
  * Hides routes that do not include search input
  *
  */
-function searchRoutes() {
+function searchRoutes(showClear) {
+  if (showClear) {
+    const clearBttn = document.getElementById("clear-search");
+    clearBttn.setAttribute("style", "visibility: visible;");
+  }
+
   // get the search value
   const input = document.getElementById("route-search").value.toLowerCase();
 
@@ -621,6 +629,15 @@ function searchRoutes() {
       route.setAttribute("style", "display:block;");
     }
   }
+}
+
+function clearSearch() {
+  const clearBttn = document.getElementById("clear-search");
+  clearBttn.setAttribute("style", "visibility: hidden;");
+
+  const searchInput = document.getElementById("route-search");
+  searchInput.value = "";
+  searchRoutes(false);
 }
 
 function toggleDetails(e) {

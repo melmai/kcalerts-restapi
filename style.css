@@ -22,18 +22,11 @@ Table of Contents
   --title-font: "Roboto Condensed", sans-serif;
   --icon-font: "Material Symbols Outlined";
   --primary: #29856b;
-  --hover-color: #185544;
-  --ghost-color: #319e7f;
-  --light-color: #baf1e1;
-  --border-color: #eee;
-}
-
-body.rainforest {
-  --primary: #29856b;
   --primary-hover: #185544;
-  --primary-ghost-white: #29856b;
   --primary-ghost: #319e7f;
+  --primary-ghost-white: #29856b;
   --primary-light-background: #baf1e1;
+  --border-color: #eee;
 }
 
 h2 {
@@ -336,6 +329,32 @@ h2 {
   border-bottom: 4px solid #757575;
   margin: 0 0 -4px;
 }
+
 #search {
   margin-bottom: 20px;
+}
+
+#route-search-container {
+  position: relative;
+}
+
+#clear-search {
+  visibility: hidden;
+  border: 0;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: transparent;
+}
+
+#clear-search span {
+  color: var(--primary);
+}
+
+#clear-search span:hover {
+  color: var(--primary-hover);
+}
+
+#clear-search span:active {
+  color: var(--primary-ghost-white);
 }
