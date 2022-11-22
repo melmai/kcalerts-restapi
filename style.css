@@ -339,6 +339,7 @@ h2 {
 }
 
 #clear-search {
+  visibility: hidden;
   border: 0;
   position: absolute;
   right: 0;

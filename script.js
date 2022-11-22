@@ -609,6 +609,9 @@ function showAlerts(show = "", hide = "") {
  */
 function searchRoutes() {
   // get the search value
+  const clearBttn = document.getElementById("clear-search");
+  clearBttn.setAttribute("style", "visibility: visible;");
+
   const input = document.getElementById("route-search").value.toLowerCase();
 
   // filter routes
