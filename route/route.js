@@ -2,7 +2,8 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/a-line"; // alpha routes
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/c-line.html"; // alpha routes
+  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/11-5"; // alpha routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
   // path =
@@ -30,6 +31,14 @@ async function generateAlerts() {
       return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
     })
   );
+
+  // if no alerts, don't render accordion
+  let alerts = false;
+  data.forEach((route) => {
+    if (route.alerts.length > 0) alerts = true;
+  });
+
+  if (!alerts) return;
 
   // build accordion
   let accordion = new DocumentFragment();
@@ -195,6 +204,8 @@ function parseRoutes(path) {
   let routes = [];
   if (path[0].charAt(0).match(/[a-z]/i)) {
     // if rapid ride...
+    // strip .html if working locally
+    if (path.includes(".html")) path = path.replace(".html", "");
     routes[0] = path.replaceAll("-", " ");
   } else {
     // it's a numbered route, it could be multiple routes
