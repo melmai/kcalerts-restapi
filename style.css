@@ -358,3 +358,10 @@ h2 {
 #clear-search span:active {
   color: var(--primary-ghost-white);
 }
+
+/* *************************************************
+ * No alerts found
+ ***************************************************/
+#no-alerts-msg {
+  display: none;
+}
