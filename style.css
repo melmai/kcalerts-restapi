@@ -18,7 +18,7 @@ Table of Contents
  * Globals
  ***************************************************/
 * {
-  font-family: "Cabin", sans-serif;
+  --body-font: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
   --icon-font: "Material Symbols Outlined";
   --primary: #29856b;
@@ -27,6 +27,7 @@ Table of Contents
   --primary-ghost-white: #29856b;
   --primary-light-background: #baf1e1;
   --border-color: #eee;
+  font-family: var(--body-font);
 }
 
 *,
@@ -35,8 +36,23 @@ Table of Contents
   box-sizing: border-box;
 }
 
-h2 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--title-font);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 /* *************************************************
@@ -88,15 +104,19 @@ h2 {
 
 /* Route Name */
 .accordion-title {
+  font-family: var(--body-font);
   font-size: 1rem;
-  margin-bottom: 0;
+  margin: 0;
   display: flex;
   align-items: center;
+  font-weight: 400;
+  padding: 1.2rem;
 }
 
 /* Status Count Icons */
 .route-status {
   display: flex;
+  margin-right: 50px;
 }
 
 .route-status > span {
@@ -111,7 +131,6 @@ h2 {
   padding: 0.5rem;
   padding-top: 0.75rem;
   line-height: 1;
-  margin-right: 0.25rem;
 }
 
 .route-status .ongoing {
@@ -216,16 +235,17 @@ h2 {
 
 /* Alert Contents */
 .alert-description,
-.dates {
+.advisory-dates {
   white-space: pre-wrap;
 }
 
 .expand-link {
-  /* margin-left: 5px; */
   display: block;
   margin-bottom: 1rem;
   font-family: var(--title-font);
   cursor: pointer;
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 .cause {
@@ -233,7 +253,8 @@ h2 {
   text-transform: capitalize;
 }
 
-.dates {
+.advisory-dates {
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -385,15 +406,16 @@ h2 {
   padding: 0;
   line-height: 1.4;
 }
+
 .advisory-content {
   position: relative;
   margin-top: 1.5rem;
   padding: 0 1.2rem 0.7rem 3.4rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
 }
 .advisory-content:last-child {
   border-bottom: 0;
-  padding-bottom: 0;
+  /* padding-bottom: 0; */
 }
 .advisory-content + .advisory-content {
   margin-top: 1rem;
@@ -402,14 +424,7 @@ h2 {
 .advisory-type {
   font-family: var(--title-font);
 }
-.advisory-block-title {
-  font-family: var(--title-font);
-  font-weight: bold;
-  font-size: 1.5rem;
-  padding: 16px 20px;
-  border: 1px solid var(--border-color);
-  border-bottom: 0;
-}
+
 .with-description {
   position: relative;
   cursor: pointer;
@@ -543,10 +558,10 @@ h2 {
 }
 
 /* Status Count Icons */
-.route-status {
+/* .route-status {
   display: flex;
   margin-right: 30px;
-}
+} */
 
 .route-status > span {
   background-size: contain;
@@ -618,8 +633,9 @@ h2 {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease;
-  border: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
+
 .toggle-link .advisory-detail {
   display: block;
   max-height: 0;

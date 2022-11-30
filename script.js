@@ -181,7 +181,7 @@ function createRoutePanel(route, id) {
   );
   label.setAttribute("for", `toggle-advisory-${route.route_id}`);
 
-  const title = document.createElement("h3");
+  const title = document.createElement("h2");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeName;
 
@@ -280,14 +280,14 @@ function createAlertPanel(alert, idx) {
   // if more than one effective date range
   if (alert.effect_periods.length > 1) {
     alertDates.textContent = printDates(alert.effect_periods);
-    alertDates.setAttribute("class", "dates");
+    alertDates.setAttribute("class", "advisory-dates");
     // else if only one effective date range
   } else if (alert.effect_periods.length === 1) {
     alertDates.textContent = `Effective Dates: ${processAlertDates(
       alert.effect_periods[0].effect_start,
       alert.effect_periods[0].effect_end
     )}`;
-    alertDates.setAttribute("class", "dates");
+    alertDates.setAttribute("class", "advisory-dates");
   }
 
   const footer = document.createElement("p");
