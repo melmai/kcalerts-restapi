@@ -164,24 +164,29 @@ function createRoutePanel(route, id) {
   const upcomingClass = route.status.upcoming ? "upcoming" : "";
   header.setAttribute(
     "class",
-    `accordion-item ${ongoingClass} ${upcomingClass}`
+    `toggle advisory-block ${ongoingClass} ${upcomingClass}`
   );
   header.setAttribute("data-route", routeName);
 
-  const button = document.createElement("button");
-  button.setAttribute("class", "accordion-button collapsed panel-title");
-  // button.setAttribute("type", "button");
-  button.setAttribute("data-bs-toggle", "collapse");
-  button.setAttribute("data-bs-target", `#collapse${id}`);
-  button.setAttribute("aria-expanded", "false");
-  button.setAttribute("aria-controls", `collapse${id}`);
+  const button = document.createElement("input");
+  button.setAttribute("class", "toggle-advisory");
+  button.setAttribute("type", "checkbox");
+  button.setAttribute("name", `advisory-${route.route_id}`);
+  button.setAttribute("aria-hidden", "true");
 
-  const panelContainer = document.createElement("div");
-  panelContainer.setAttribute("class", "panel-container");
+  const label = document.createElement("label");
+  label.setAttribute(
+    "class",
+    "toggle-head advisory-block-title with-description"
+  );
+  label.setAttribute("for", `advisory-${route.route_id}`);
 
   const title = document.createElement("h3");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeName;
+
+  // const panelContainer = document.createElement("div");
+  // panelContainer.setAttribute("class", "panel-container");
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
@@ -201,16 +206,12 @@ function createRoutePanel(route, id) {
   alertStatus.append(ongoing || "", upcoming || "");
 
   // add elements to route header section
-  panelContainer.append(title, alertStatus);
-  button.append(panelContainer);
-  header.append(button);
+  label.append(title, alertStatus);
+  header.append(button, label);
 
   // create alert container
   const alertBody = document.createElement("div");
-  alertBody.id = `collapse${id}`;
-  alertBody.setAttribute("class", "accordion-collapse collapse");
-  alertBody.setAttribute("aria-labelledby", `heading${id}`);
-  // alertBody.setAttribute("data-bs-parent", "#accordionExample");
+  alertBody.setAttribute("class", "toggle-inner");
 
   // append alerts to alert container
   route.alerts.forEach((alert, idx) => {
@@ -229,28 +230,12 @@ function createRoutePanel(route, id) {
  * @returns alert element
  */
 function createAlertPanel(alert, idx) {
-  const alertPanel = document.createElement("div");
-  const status = statusText(alert.alert_lifecycle);
-  alertPanel.id = `alert-collapse${idx}`;
-  alertPanel.setAttribute("class", `alert-panel ${status.toLowerCase()}`);
-  alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
-  alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
-
-  // alert icon
-  const alertIcon = document.createElement("span");
-  const alertClass = alert.effect.toLowerCase();
-  alertIcon.setAttribute("aria-hidden", "true");
-  alertIcon.setAttribute(
-    "class",
-    `material-symbols-outlined alert-icon ${alertClass}`
-  );
-  alertIcon.textContent = icon(alert.effect_name);
-
-  alertPanel.append(alertIcon);
-
   // alert content
   const alertContent = document.createElement("div");
-  alertContent.setAttribute("class", "alert-content");
+  alertContent.setAttribute(
+    "class",
+    `advisory-content ${icon(alert.effect_name)}`
+  );
 
   const alertType = document.createElement("h4");
   alertType.setAttribute("class", "alert-type");
@@ -323,10 +308,7 @@ function createAlertPanel(alert, idx) {
     alertDates,
     footer
   );
-
-  alertPanel.append(alertContent);
-
-  return alertPanel;
+  return alertContent;
 }
 
 /* Helper Functions
