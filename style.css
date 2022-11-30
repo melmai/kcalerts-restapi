@@ -558,11 +558,11 @@ h2 {
 }
 
 .route-status .ongoing {
-  background-image: url(../img/svg/active-fill.svg);
+  background-image: url(img/svg/active-fill.svg);
   color: #fff;
 }
 .route-status .upcoming {
-  background-image: url(../img/svg/planned.svg);
+  background-image: url(img/svg/planned.svg);
 }
 
 /* Styles for hiding and showing */
@@ -579,7 +579,7 @@ h2 {
   transition: transform 0.3s ease;
 }
 .toggle.toggle--open label.toggle-head::after,
-.toggle input[id*="toggle"]:checked + label.toggle-head::after,
+.toggle input[class*="toggle"]:checked + label.toggle-head::after,
 .toggle input[type="checkbox"]:checked + label.toggle-head:after {
   transform: rotate(-180deg);
 }
@@ -592,7 +592,7 @@ h2 {
   background-color: #b2d4f5;
 }
 .toggle.toggle--open label + .toggle-inner,
-.toggle input[id*="toggle"]:checked + label + .toggle-inner,
+.toggle input[class*="toggle"]:checked + label + .toggle-inner,
 .toggle input[type="checkbox"]:checked + label + .toggle-inner,
 .toggle-link.toggle--open label + .advisory-detail,
 .toggle-link input[id*="detail"]:checked + label + .advisory-detail,
@@ -601,10 +601,10 @@ h2 {
   max-height: 2000px;
   transition: max-height 1s ease;
 }
-.toggle input[id*="toggle"],
-.no-toggle input[id*="toggle"],
-.toggle input[id*="detail"],
-.no-toggle input[id*="detail"] {
+.toggle input[class*="toggle"],
+.no-toggle input[class*="toggle"],
+.toggle input[class*="detail"],
+.no-toggle input[class*="detail"] {
   display: none;
 }
 .toggle .toggle-inner {
