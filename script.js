@@ -169,9 +169,9 @@ function createRoutePanel(route, id) {
   header.setAttribute("data-route", routeName);
 
   const button = document.createElement("input");
-  button.setAttribute("class", "toggle-advisory");
+  button.setAttribute("id", `toggle-advisory-${route.route_id}`);
   button.setAttribute("type", "checkbox");
-  button.setAttribute("name", `advisory-${route.route_id}`);
+  button.setAttribute("name", `toggle-advisory-${route.route_id}`);
   button.setAttribute("aria-hidden", "true");
 
   const label = document.createElement("label");
@@ -179,7 +179,7 @@ function createRoutePanel(route, id) {
     "class",
     "toggle-head advisory-block-title with-description"
   );
-  label.setAttribute("for", `advisory-${route.route_id}`);
+  label.setAttribute("for", `toggle-advisory-${route.route_id}`);
 
   const title = document.createElement("h3");
   title.setAttribute("class", "accordion-title");
@@ -238,7 +238,7 @@ function createAlertPanel(alert, idx) {
   );
 
   const alertType = document.createElement("h4");
-  alertType.setAttribute("class", "alert-type");
+  alertType.setAttribute("class", "advisory-type");
   alertType.textContent = expandType(alert.effect_name);
 
   const flag = document.createElement("span");
@@ -247,7 +247,7 @@ function createAlertPanel(alert, idx) {
   alertType.append(flag);
 
   const alertTitle = document.createElement("p");
-  alertTitle.setAttribute("class", "alert-title");
+  alertTitle.setAttribute("class", "advisory-title");
   alertTitle.textContent = accessibleText(alert.header_text);
 
   // conditionally add description

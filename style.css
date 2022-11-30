@@ -29,6 +29,12 @@ Table of Contents
   --border-color: #eee;
 }
 
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 h2 {
   font-family: var(--title-font);
 }
@@ -579,7 +585,7 @@ h2 {
   transition: transform 0.3s ease;
 }
 .toggle.toggle--open label.toggle-head::after,
-.toggle input[class*="toggle"]:checked + label.toggle-head::after,
+.toggle input[class="toggle-advisory"]:checked + label.toggle-head::after,
 .toggle input[type="checkbox"]:checked + label.toggle-head:after {
   transform: rotate(-180deg);
 }
@@ -592,7 +598,7 @@ h2 {
   background-color: #b2d4f5;
 }
 .toggle.toggle--open label + .toggle-inner,
-.toggle input[class*="toggle"]:checked + label + .toggle-inner,
+.toggle input[id*="toggle-advisory"]:checked + label + .toggle-inner,
 .toggle input[type="checkbox"]:checked + label + .toggle-inner,
 .toggle-link.toggle--open label + .advisory-detail,
 .toggle-link input[id*="detail"]:checked + label + .advisory-detail,
@@ -601,8 +607,8 @@ h2 {
   max-height: 2000px;
   transition: max-height 1s ease;
 }
-.toggle input[class*="toggle"],
-.no-toggle input[class*="toggle"],
+.toggle input[id*="toggle-advisory"],
+.no-toggle input[id*="toggle-advisory"],
 .toggle input[class*="detail"],
 .no-toggle input[class*="detail"] {
   display: none;
