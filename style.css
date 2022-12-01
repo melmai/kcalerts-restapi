@@ -96,11 +96,6 @@ h6 {
 /* *************************************************
  * Route Header 
  ***************************************************/
-.panel-container {
-  display: flex;
-  justify-content: space-between;
-  width: 95%;
-}
 
 /* Route Name */
 .accordion-title {
@@ -131,6 +126,7 @@ h6 {
   padding: 0.5rem;
   padding-top: 0.75rem;
   line-height: 1;
+  margin-right: 0.25rem;
 }
 
 .route-status .ongoing {
@@ -167,31 +163,6 @@ h6 {
   .alert-type {
     padding-right: 96px;
   }
-}
-
-/* Alert Type Icons */
-.material-symbols-outlined {
-  font-family: var(--icon-font);
-  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
-  padding-right: 0.5rem;
-  display: block;
-  margin-top: 2px;
-}
-
-.no_service {
-  color: red;
-}
-
-.detour {
-  color: blue;
-}
-
-.modified_service {
-  color: green;
-}
-
-.other_effect {
-  color: orange;
 }
 
 /* Alert Header */
@@ -387,23 +358,11 @@ h6 {
 }
 
 /* *************************************************
- * No alerts found
- ***************************************************/
-/* #no-alerts-msg {
-  display: none;
-} */
-
-/* *************************************************
  * Advisory Blocks
  ***************************************************/
 
 .advisory-block {
   position: relative;
-  display: block;
-  width: 100%;
-  border-bottom: 0;
-  margin: 0;
-  padding: 0;
   line-height: 1.4;
 }
 
@@ -413,38 +372,22 @@ h6 {
   padding: 0 1.2rem 0.7rem 3.4rem;
   border-bottom: 1px solid #eee;
 }
-.advisory-content:last-child {
-  border-bottom: 0;
-  /* padding-bottom: 0; */
-}
+
 .advisory-content + .advisory-content {
   margin-top: 1rem;
 }
-.advisory-block-title,
-.advisory-type {
-  font-family: var(--title-font);
-}
 
-.with-description {
-  position: relative;
-  cursor: pointer;
-  transition: all 0.4s;
-}
 .with-description:after {
   font-family: var(--icon-font);
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
-  display: inline-block;
+  /* display: inline-block; */
   opacity: 0.5;
   content: "expand_more";
   position: absolute;
   right: 1rem;
   top: 1.3rem;
-  /*background: #f4f4f4;*/
-  /*background-color: #187189;
-  border: 2px solid #187189;*/
-  color: #fff;
   color: #333;
   padding: 4px;
   border-radius: 100%;
@@ -465,47 +408,6 @@ h6 {
 .advisory-type {
   font-weight: normal;
   font-size: 1.3rem;
-}
-.advisory-detail {
-  white-space: pre-wrap;
-  margin: 0;
-}
-.advisory-dates {
-}
-
-.alert-footer {
-  font-size: 14px;
-  border-top: 1px solid var(--border-color);
-  padding-top: 7px;
-}
-
-@media screen and (min-width: 425px) {
-  .alert-footer {
-    font-size: 12px;
-  }
-}
-
-/* *************************************************
- * Status Badges
- ***************************************************/
-
-.advisory-status {
-  position: absolute;
-  margin-top: 3px;
-  margin-left: 1em;
-  text-transform: uppercase;
-  font-size: 0.6em;
-  padding: 2px 10px;
-  border-radius: 5px;
-  letter-spacing: 0.08em;
-}
-.advisory-status.ongoing {
-  background-color: red;
-  color: #fff;
-}
-
-.advisory-status.upcoming {
-  background-color: orange;
 }
 
 /* *************************************************
@@ -557,35 +459,6 @@ h6 {
   color: black;
 }
 
-/* Status Count Icons */
-/* .route-status {
-  display: flex;
-  margin-right: 30px;
-} */
-
-.route-status > span {
-  background-size: contain;
-  background-repeat: no-repeat;
-  min-width: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-position: 50% 50%;
-  font-size: 14px;
-  padding: 0.5em;
-  padding-top: 0.75em;
-  line-height: 1;
-  margin-right: 0.25em;
-}
-
-.route-status .ongoing {
-  background-image: url(img/svg/active-fill.svg);
-  color: #fff;
-}
-.route-status .upcoming {
-  background-image: url(img/svg/planned.svg);
-}
-
 /* Styles for hiding and showing */
 .toggle {
 }
@@ -610,8 +483,12 @@ h6 {
   justify-content: space-between;
 }
 .toggle input:checked + .advisory-block-title {
-  background-color: #b2d4f5;
+  background-color: var(--primary-light-background);
 }
+.toggle input:checked + .advisory-block-title:active {
+  background-color: var(--primary-light-background);
+}
+
 .toggle.toggle--open label + .toggle-inner,
 .toggle input[id*="toggle-advisory"]:checked + label + .toggle-inner,
 .toggle input[type="checkbox"]:checked + label + .toggle-inner,
@@ -643,23 +520,7 @@ h6 {
   transition: max-height 0.2s ease;
   margin-bottom: 1em;
 }
-.toggle-link input[type="checkbox"] + label::after {
-  content: "View details";
-  color: blue;
-  text-decoration: underline;
-  display: block;
-}
-.toggle-link input[type="checkbox"]:checked + label::after {
-  content: "Hide details";
-}
+
 .toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
   margin-top: 1rem;
-}
-
-/* Route Header */
-.route-header {
-  padding: 0.6em 1em;
-  background-color: var(--ghost-color);
-  color: #fff;
-  font-size: 1.3em;
 }
