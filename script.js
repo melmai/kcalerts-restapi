@@ -610,7 +610,7 @@ function showAlerts(show = "", hide = "") {
  * Hides routes that do not include search input
  *
  */
-function searchRoutes(showClear) {
+function searchRoutes(showClear = false) {
   if (showClear) {
     const clearBttn = document.getElementById("clear-search");
     clearBttn.setAttribute("style", "visibility: visible;");
@@ -620,7 +620,7 @@ function searchRoutes(showClear) {
   const input = document.getElementById("route-search").value.toLowerCase();
 
   // filter routes
-  const routes = document.getElementsByClassName("accordion-item");
+  const routes = document.getElementsByClassName("advisory-block");
   for (route of routes) {
     const routeName = route.getAttribute("data-route").toLowerCase();
     if (!routeName.includes(input)) {
