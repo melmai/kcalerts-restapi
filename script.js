@@ -2,9 +2,8 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const allAlerts = document.getElementById("accordion");
-  // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
-  const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
-  const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
+  const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
+  const API_KEY = "gvMjFrABizrQwye9KBD3KB";
 
   Promise.all([
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
