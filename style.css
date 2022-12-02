@@ -210,6 +210,11 @@ h6 {
   white-space: pre-wrap;
 }
 
+.alert-description {
+  border-left: 2px solid var(--primary-ghost-white);
+  padding-left: 1rem;
+}
+
 .expand-link {
   display: block;
   margin-bottom: 1rem;
