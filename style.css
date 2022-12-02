@@ -496,7 +496,7 @@ h6 {
 .toggle-link input[id*="detail"]:checked + label + .advisory-detail,
 .toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
   display: block;
-  max-height: 2000px;
+  max-height: 100%;
   transition: max-height 1s ease;
 }
 .toggle input[id*="toggle-advisory"],
