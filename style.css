@@ -18,7 +18,7 @@ Table of Contents
  * Globals
  ***************************************************/
 * {
-  font-family: "Cabin", sans-serif;
+  --body-font: "Cabin", sans-serif;
   --title-font: "Roboto Condensed", sans-serif;
   --icon-font: "Material Symbols Outlined";
   --primary: #29856b;
@@ -27,10 +27,32 @@ Table of Contents
   --primary-ghost-white: #29856b;
   --primary-light-background: #baf1e1;
   --border-color: #eee;
+  font-family: var(--body-font);
 }
 
-h2 {
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--title-font);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 /* *************************************************
@@ -74,23 +96,22 @@ h2 {
 /* *************************************************
  * Route Header 
  ***************************************************/
-.panel-container {
-  display: flex;
-  justify-content: space-between;
-  width: 95%;
-}
 
 /* Route Name */
 .accordion-title {
+  font-family: var(--body-font);
   font-size: 1rem;
-  margin-bottom: 0;
+  margin: 0;
   display: flex;
   align-items: center;
+  font-weight: 400;
+  padding: 1.2rem;
 }
 
 /* Status Count Icons */
 .route-status {
   display: flex;
+  margin-right: 50px;
 }
 
 .route-status > span {
@@ -144,31 +165,6 @@ h2 {
   }
 }
 
-/* Alert Type Icons */
-.material-symbols-outlined {
-  font-family: var(--icon-font);
-  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
-  padding-right: 0.5rem;
-  display: block;
-  margin-top: 2px;
-}
-
-.no_service {
-  color: red;
-}
-
-.detour {
-  color: blue;
-}
-
-.modified_service {
-  color: green;
-}
-
-.other_effect {
-  color: orange;
-}
-
 /* Alert Header */
 .alert-header {
   display: flex;
@@ -210,16 +206,17 @@ h2 {
 
 /* Alert Contents */
 .alert-description,
-.dates {
+.advisory-dates {
   white-space: pre-wrap;
 }
 
 .expand-link {
-  /* margin-left: 5px; */
   display: block;
   margin-bottom: 1rem;
   font-family: var(--title-font);
   cursor: pointer;
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 .cause {
@@ -227,7 +224,8 @@ h2 {
   text-transform: capitalize;
 }
 
-.dates {
+.advisory-dates {
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -360,8 +358,169 @@ h2 {
 }
 
 /* *************************************************
- * No alerts found
+ * Advisory Blocks
  ***************************************************/
-/* #no-alerts-msg {
+
+.advisory-block {
+  position: relative;
+  line-height: 1.4;
+}
+
+.advisory-content {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 0 1.2rem 0.7rem 3.4rem;
+  border-bottom: 1px solid #eee;
+}
+
+.advisory-content + .advisory-content {
+  margin-top: 1rem;
+}
+
+.with-description:after {
+  font-family: var(--icon-font);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  /* display: inline-block; */
+  opacity: 0.5;
+  content: "expand_more";
+  position: absolute;
+  right: 1rem;
+  top: 1.3rem;
+  color: #333;
+  padding: 4px;
+  border-radius: 100%;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+.advisory-type {
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+/* *************************************************
+ * Alert Icons
+ ***************************************************/
+
+.advisory-content::before {
+  font-family: var(--icon-font);
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+  font-size: 24px;
+  position: absolute;
+  top: -5px;
+  left: 1.2rem;
+}
+.dangerous::before {
+  content: "dangerous";
+  content: "dangerous" / "";
+  color: red;
+}
+.alt_route::before,
+.ac_unit::before {
+  content: "alt_route";
+  content: "alt_route" / "";
+  color: blue;
+}
+
+.ac_unit::before {
+  content: "ac_unit";
+  content: "ac_unit" / "";
+}
+.task_alt::before {
+  content: "task_alt";
+  content: "task_alt" / "";
+  color: green;
+}
+.error::before {
+  content: "error";
+  content: "error" / "";
+  color: red;
+}
+.timer::before {
+  content: "timer";
+  content: "timer" / "";
+  color: orange;
+}
+.warning::before {
+  content: "warning";
+  content: "warning" / "";
+  color: black;
+}
+
+/* Styles for hiding and showing */
+.toggle {
+}
+.toggle .toggle-head,
+.toggle .toggle-link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.toggle .toggle-head::before .toggle .toggle-link::before {
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+.toggle.toggle--open label.toggle-head::after,
+.toggle input[class="toggle-advisory"]:checked + label.toggle-head::after,
+.toggle input[type="checkbox"]:checked + label.toggle-head:after {
+  transform: rotate(-180deg);
+}
+.toggle .advisory-block-title {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.toggle input:checked + .advisory-block-title {
+  background-color: var(--primary-light-background);
+}
+.toggle input:checked + .advisory-block-title:active {
+  background-color: var(--primary-light-background);
+}
+
+.toggle.toggle--open label + .toggle-inner,
+.toggle input[id*="toggle-advisory"]:checked + label + .toggle-inner,
+.toggle input[type="checkbox"]:checked + label + .toggle-inner,
+.toggle-link.toggle--open label + .advisory-detail,
+.toggle-link input[id*="detail"]:checked + label + .advisory-detail,
+.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+  display: block;
+  max-height: 2000px;
+  transition: max-height 1s ease;
+}
+.toggle input[id*="toggle-advisory"],
+.no-toggle input[id*="toggle-advisory"],
+.toggle input[class*="detail"],
+.no-toggle input[class*="detail"] {
   display: none;
-} */
+}
+.toggle .toggle-inner {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-link .advisory-detail {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  margin-bottom: 1em;
+}
+
+.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+  margin-top: 1rem;
+}
