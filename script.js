@@ -11,7 +11,7 @@ function createAlerts() {
   const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
 
   // local JSON
-  const LOCAL_ALERT_DATA = "./json/alerts.json";
+  const LOCAL_ALERT_DATA = "./json/alerts20221207.json";
   const LOCAL_ROUTE_DATA = "./json/routes.json";
 
   // set fetch type
@@ -205,6 +205,7 @@ function createRoutePanel(route, id) {
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
+  alertStatus.setAttribute("aria-hidden", "true");
   let ongoing, upcoming;
   if (route.status.ongoing > 0) {
     ongoing = document.createElement("span");
