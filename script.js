@@ -2,12 +2,28 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const allAlerts = document.getElementById("accordion");
+
+  // remote API
   const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
   const API_KEY = "gvMjFrABizrQwye9KBD3KB";
 
+  const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
+  const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
+
+  // local JSON
+  const LOCAL_ALERT_DATA = "./json/alerts20221207.json";
+  const LOCAL_ROUTE_DATA = "./json/routes.json";
+
+  // set fetch type
+  const isRemote = false;
+
+  const ALERT_URL = isRemote ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
+  const ROUTE_URL = isRemote ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
+
+  // fetch data
   Promise.all([
-    fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
-    fetch(`${BASE_URL}/routes?api_key=${API_KEY}`).then((res) => res.json()),
+    fetch(ALERT_URL).then((res) => res.json()),
+    fetch(ROUTE_URL).then((res) => res.json()),
   ]).then((res) => {
     // process data
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
@@ -189,6 +205,7 @@ function createRoutePanel(route, id) {
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
+  alertStatus.setAttribute("aria-hidden", "true");
   let ongoing, upcoming;
   if (route.status.ongoing > 0) {
     ongoing = document.createElement("span");
@@ -420,6 +437,7 @@ function icon(effectName) {
       break;
 
     case "Emergency Snow Network":
+    case "Snow Route":
       text = "ac_unit";
       break;
 
