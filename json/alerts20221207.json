@@ -1,0 +1,2845 @@
+{
+  "alerts": [
+    {
+      "alert_id": 668,
+      "effect_name": "Emergency Snow Network",
+      "effect": "DETOUR",
+      "cause_name": "snow",
+      "cause": "WEATHER",
+      "header_text": "Metro continues to operate its Emergency Snow Network (ESN). Service is significantly reduced. Visit the Metro Matters blog and MetroWInter.com for complete information.",
+      "short_header_text": "Metro continues to operate its Emergency Snow Network (ESN). Service is significantly reduced. Visit MetroWinter.com.",
+      "url": "https://kingcountymetro.blog/2021/12/28/dec-28-snow-update-metro-to-continue-operating-emergency-snow-network/",
+      "description_text": "King County Metro continues to operate its Emergency Snow Network. \r\n\nThe following routes operate during ESN:\r\nRapidRide A Line\r\nRapidRide B Line\r\nRapidRide C Line\r\nRapidRide D Line\r\nRapidRide E Line\r\nRapidRide F Line\r\n3\r\n4\r\n5\r\n7\r\n10\r\n21\r\n24\r\n31\r\n32\r\n36\r\n40\r\n44\r\n45\r\n48\r\n60\r\n62\r\n65\r\n67\r\n70\r\n75\r\n101\r\n102\r\n105\r\n106\r\n120\r\n124\r\n128\r\n131\r\n132\r\n148\r\n150\r\n160\r\n161\r\n165\r\n168\r\n181\r\n184\r\n230\r\n231\r\n239\r\n245\r\n250\r\n255\r\n271\r\n331\r\n345\r\n348\r\n372\r\nST 522\r\nST 545\r\nST 550\r\nST 554\r\n773 - this route is suspended when the West Seattle Water Taxi is not in service.\r\n775 - this route is suspended when the West Seattle Water Taxi is not in service.\r\nDART 903\r\nDART 906\r\nDART 907 - this route will not operate on\r\nDART 930\r\n\nVisit the Metro Matters blog and MetroWInter.com for complete information.\r\n\nContact Customer Service at 206-553-3000, from 6 a.m. to 8 p.m. through Dec. 30 for trip planning and Lost & Found calls, and from 8 a.m. to 5 p.m. for ORCA, fare questions and customer comments.\r\n\nNOTE: The Customer Service phone lines will also be open with limited staffing on Dec. 31 from 9 a.m. to 2 p.m. for Trip Planning and ORCA assistance on the New Year's weekend. Customer comments can be submitted through online forms. \r\n\nPass Sales Office and Lost & Found are operating reduced hours, from 10 a.m. to 4 p.m. through Dec. 30. For Lost & Found, customers can call Metro Customer Service at 206-553-3000. In-person service is by appointment only, so please call first.\r\n\nNOTE: These offices will be closed on Friday, Dec. 31, in observance of the holiday.\r\n\nTips and tricks for riders \r\n\nTransit Alerts: Riders should sign?up?or update route subscriptions?to receive?Transit Alerts?via text and email?for?their?bus?routes. Routes can change quickly depending on snow accumulations.? \r\n\nReal-time updates show whether a bus trip is operating when it’s due to?depart or if it’s been canceled.? \r\n\nText for Departures allows riders to text their bus stop number to 62550 and receive the next bus trips headed their way or a cancellation notice. Riders can save 62550 in their phones in advance.?Metro’s real-time departure information can become less accurate during a storm and rough road conditions. \r\n\n“Next departures”?is available?on both the?Puget Sound Trip Planner webpage?and the?Puget Sound Trip Planner App.?Riders can check these sites to see whether their trip is reporting its position and estimated arrival time. \r\n\nFollow?@kcmetrobus?on Twitter?to see the latest?travel tips and service information.\r\n\nThank you for riding and using Metro's services.",
+      "severity": "Significant",
+      "created_dt": "1640746058",
+      "last_modified_dt": "1641350777",
+      "service_effect_text": "DART 903 and 63 other routes is operating using the Emergency Snow Network (ESN).",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1640745960", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100002",
+            "route_name": "10"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100003",
+            "route_name": "101"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100004",
+            "route_name": "105"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100005",
+            "route_name": "106"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100019",
+            "route_name": "120"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100023",
+            "route_name": "124"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100026",
+            "route_name": "128"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100030",
+            "route_name": "131"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100031",
+            "route_name": "132"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100042",
+            "route_name": "148"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100045",
+            "route_name": "150"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100060",
+            "route_name": "168"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100072",
+            "route_name": "181"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100101",
+            "route_name": "21"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100132",
+            "route_name": "24"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100136",
+            "route_name": "245"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100146",
+            "route_name": "255"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100162",
+            "route_name": "271"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100173",
+            "route_name": "3"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100184",
+            "route_name": "31"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100193",
+            "route_name": "32"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100196",
+            "route_name": "331"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100202",
+            "route_name": "345"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100205",
+            "route_name": "348"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100210",
+            "route_name": "36"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100214",
+            "route_name": "372"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100219",
+            "route_name": "4"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100224",
+            "route_name": "44"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100225",
+            "route_name": "45"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100228",
+            "route_name": "48"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100229",
+            "route_name": "5"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100232",
+            "route_name": "522"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100236",
+            "route_name": "545"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100239",
+            "route_name": "550"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100240",
+            "route_name": "554"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100249",
+            "route_name": "60"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100252",
+            "route_name": "62"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100254",
+            "route_name": "65"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100259",
+            "route_name": "67"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100263",
+            "route_name": "7"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100264",
+            "route_name": "70"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100269",
+            "route_name": "75"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100272",
+            "route_name": "773"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100292",
+            "route_name": "903"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100481",
+            "route_name": "775"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100487",
+            "route_name": "102"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100496",
+            "route_name": "930"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100512",
+            "route_name": "A Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102548",
+            "route_name": "B Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102561",
+            "route_name": "907"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102574",
+            "route_name": "40"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102576",
+            "route_name": "C Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102581",
+            "route_name": "D Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102593",
+            "route_name": "906"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102615",
+            "route_name": "E Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102619",
+            "route_name": "F Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102702",
+            "route_name": "239"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102703",
+            "route_name": "231"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102704",
+            "route_name": "250"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102705",
+            "route_name": "230"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102717",
+            "route_name": "165"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102718",
+            "route_name": "184"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102719",
+            "route_name": "161"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102720",
+            "route_name": "160"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 737,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "The elevator at the Clyde Hill/Yarrow & Clyde Hill/Yarrow (EB) (#71359) stop is out of service until further notice.\n",
+      "short_header_text": "The elev. at the Clyde Hill/Yarrow & Clyde Hill/Yarrow stop is out of service until further notice.\n",
+      "description_text": "Affected routes:\r\nST 542\r\nST 545\r\n255\r\n\nGet on/off buses at:\r\nSr 520 & Evergreen Point Rd (EB) (#71348) (to Redmond)\r\n\nThe elevator at the westbound Clyde Hill/Yarrow Point stop is operating. ST 542 and 545 riders, transfer to eastbound Route 255 at Evergreen Point Freeway Station and then transfer to a westbound bus at South Kirkland to return to Clyde Hill/Yarrow Point.",
+      "severity": "Minor",
+      "created_dt": "1643758530",
+      "last_modified_dt": "1644363377",
+      "service_effect_text": "Clyde Hill/Yarrow & Clyde Hill/Yarrow (EB) (#71359) stop relocating",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1643758523", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100146",
+            "route_name": "255",
+            "stop_id": "71359",
+            "stop_name": "Clyde Hill/Yarrow & Clyde Hill/Yarrow (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100236",
+            "route_name": "545",
+            "stop_id": "71359",
+            "stop_name": "Clyde Hill/Yarrow & Clyde Hill/Yarrow (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100511",
+            "route_name": "542",
+            "stop_id": "71359",
+            "stop_name": "Clyde Hill/Yarrow & Clyde Hill/Yarrow (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 883,
+      "effect_name": "Service Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Service on the South Lake Union Streetcar will be reduced today with trips operating approximately every 30 minutes until further notice. \n\nFor alternate bus service, use Metro bus routes 40 or 70.\n\n",
+      "short_header_text": "Service on the South Lake Union Streetcar will be reduced today with trips operating every 30 min.",
+      "severity": "Minor",
+      "created_dt": "1647609009",
+      "last_modified_dt": "1648213818",
+      "service_effect_text": "South Lake Union Streetcar notice:",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1647609002", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "0",
+            "mode_name": "Light Rail",
+            "route_id": "100340",
+            "route_name": "South Lake Union Streetcar"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 995,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #10910 12th Ave NE & NE 47th St (SB) closed beginning Mon Apr 25 until further notice.",
+      "short_header_text": "Stop #10910 12th Ave NE & NE 47th St (SB) closed beginning Mon Apr 25 until further notice.",
+      "description_text": "Affected routes:\r\n48\r\n372\r\n\nGet on/off buses at:\r\nStop #9650 11th Ave NE & NE 45th St (NB)\r\n\nTemporary\r\nBus Stop Closure\r\n\nBeginning Saturday, April 23, and until further notice, this bus stop will be closed due to construction.\r\n\nAt that time, board or exit routes 49 and 372 south and west of here, northbound on 11th Ave NE between NE 45th and NE 47th streets.\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.\r\n",
+      "severity": "Minor",
+      "created_dt": "1650678841",
+      "last_modified_dt": "1651489219",
+      "service_effect_text": "Stop #10910 12th Ave NE & NE 47th St (SB) closed beginning Mon Apr 25",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1650884400", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100214",
+            "route_name": "372",
+            "stop_id": "10910",
+            "stop_name": "12th Ave NE & NE 47th St (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100228",
+            "route_name": "48",
+            "stop_id": "10910",
+            "stop_name": "12th Ave NE & NE 47th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 996,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #1300 Madison St & 8th Ave (EB) closed beginning Fri Apr 29 until further notice due to construction.",
+      "short_header_text": "Stop #1300 Madison St & 8th Ave (EB) closed beginning Fri Apr 29 until further notice due to construction.",
+      "description_text": "Affected routes:\r\n12\r\n\nGet on/off buses at:\r\nStop #1300 Madison St & 8th Ave (EB).\r\nStop #1300 Madison St & 8th Ave (EB) closed beginning Fri Apr 29 until further notice due to construction.\r\n\nAffected routes:\r\n12\r\n\nGet on/off buses at:\r\nStop #1300 Madison St & 8th Ave (EB).\r\n\nTemporary\r\nBus Stop Closure\r\n\nBeginning Friday, April 29, and until further notice, this bus stop will be closed due to construction.\r\n\nAt that time, board or exit Route 12 at one of the following stops:\r\n\nWest and south of here, eastbound on Marion St between 4th and 5th avenues, (Stop #1590).\r\n\nEast of here, eastbound on Madison St just east of Boren Ave, (Stop #13291).\r\n\nFor transit information please contact Metro's Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.",
+      "severity": "Minor",
+      "created_dt": "1650679443",
+      "last_modified_dt": "1651834819",
+      "service_effect_text": "Stop #1300 Madison St & 8th Ave (EB) closed beginning Fri Apr 29 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1651230000", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "1300",
+            "stop_name": "Madison St & 8th Ave (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1098,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #11130 Pike St & Convention Pl (EB) revised beginning at 11:42 AM.",
+      "short_header_text": "Stop #11130 Pike St & Convention Pl (EB) revised beginning at 11:42 AM.",
+      "description_text": "Affected routes:\r\nST 550\r\n101\r\n102\r\n150\r\n\nRoutes 10 & 43 Service Revision\r\n\nEffective immediately, routes 10 and 43 will no longer stop here.\r\n\nAt this time, board or exit routes 10 to Capitol Hill and 43 to U-District west of here, eastbound on Pike St just east of 7th Ave, (Stop #1195).\r\n\nRoutes 101, 102, 150 and ST 550 are unaffected by this change and will continue to drop off passengers here.\r\n\nFor more information: \r\nVisit www.kingcounty.gov/metro.\r\nPick up a new green timetable on the bus.\r\nText your stop ID to 62550 to find the next departure time.\r\n",
+      "severity": "Information",
+      "created_dt": "1653504705",
+      "last_modified_dt": "1654109538",
+      "service_effect_text": "Stop #11130 Pike St & Convention Pl (EB) revised beginning at 11:42 AM",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1653504704", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100003",
+            "route_name": "101",
+            "stop_id": "11130",
+            "stop_name": "Pike St & Convention Pl (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100045",
+            "route_name": "150",
+            "stop_id": "11130",
+            "stop_name": "Pike St & Convention Pl (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100239",
+            "route_name": "550",
+            "stop_id": "11130",
+            "stop_name": "Pike St & Convention Pl (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100487",
+            "route_name": "102",
+            "stop_id": "11130",
+            "stop_name": "Pike St & Convention Pl (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1111,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #13282 E Madison St & Broadway Ct (WB) relocated beginning Fri Jun 10 until further notice due to construction.",
+      "short_header_text": "Stop #13282 E Madison St & Broadway Ct (WB) relocated beginning Fri Jun 10 until further notice",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/12",
+      "description_text": "Affected routes:\r\n12\r\n\nGet on/off buses at:\r\nStop #13277 E Madison St & 13th Ave (WB)\r\nStop #13283 Madison St & Summit Ave (WB)\r\n\n",
+      "severity": "Minor",
+      "created_dt": "1654263398",
+      "last_modified_dt": "1655472378",
+      "service_effect_text": "Stop Stop #13282 E Madison St & Broadway Ct (WB) relocated beginning Fri Jun 10 at 6:26 AM due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1654867560", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "13282",
+            "stop_name": "E Madison St & Broadway Ct (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1130,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #4220 5th Ave N & Broad St (NB) relocated beginning Sat Jun 11 until further notice due to construction.",
+      "short_header_text": "Stop #4220 5th Ave N & Broad St (NB) relocated beginning Sat Jun 11 until further notice due to construction.",
+      "description_text": "Affected routes:\r\n3\r\n4\r\n\nGet on/off buses at:\r\nStop #4200 Cedar St & Denny Way (NB).\r\nTemporary relocated stop just south of Harrison St.\r\nStop #4230 5th Ave N & Republican St (NB).\r\n",
+      "severity": "Minor",
+      "created_dt": "1654617604",
+      "last_modified_dt": "1655550019",
+      "service_effect_text": "Stop Stop #4220 5th Ave N & Broad St (NB) relocated beginning Sat Jun 11 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1654945200", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100173",
+            "route_name": "3",
+            "stop_id": "4220",
+            "stop_name": "5th Ave N & Broad St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100219",
+            "route_name": "4",
+            "stop_id": "4220",
+            "stop_name": "5th Ave N & Broad St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1154,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "emergency street repair work",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #80761 Lind Ave SW & SW Grady Way (SB) closed until further notice due to emergency street repair work.",
+      "short_header_text": "Stop #80761 Lind Ave SW & SW Grady Way (SB) closed until further notice due to emergency street repair work.",
+      "description_text": "Affected routes:\r\nRapidRide F Line\r\n153\r\n\nBoard or exit southbound route 676 (F Line) and Route 153:\r\n\nNorth of here, southbound on Lind Ave SW, just north of SW Grady Way at the temporary stop.",
+      "severity": "Minor",
+      "created_dt": "1655216601",
+      "last_modified_dt": "1655821098",
+      "service_effect_text": "Stop #80761 Lind Ave SW & SW Grady Way (SB) closed due to emergency street repair work",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1655216280", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100048",
+            "route_name": "153",
+            "stop_id": "80761",
+            "stop_name": "Lind Ave SW & SW Grady Way (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102619",
+            "route_name": "F Line",
+            "stop_id": "80761",
+            "stop_name": "Lind Ave SW & SW Grady Way (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1155,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "emergency street repair work",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #59868 SW 16th St & Lind Ave SW (EB) closed until further notice due to emergency street repair work.",
+      "short_header_text": "Stop #59868 SW 16th St & Lind Ave SW (EB) closed until further notice due to emergency street repair work.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/676",
+      "description_text": "Affected routes:\r\nRapidRide F Line\r\n\nGet on/off buses at:\r\nSouth and West of here, northbound on Oakesdale Ave SW, just south SW 16th St at the temporary stop.",
+      "severity": "Minor",
+      "created_dt": "1655216882",
+      "last_modified_dt": "1655821698",
+      "service_effect_text": "Stop #59868 SW 16th St & Lind Ave SW (EB) closed due to emergency street repair work",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1655216879", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102619",
+            "route_name": "F Line",
+            "stop_id": "59868",
+            "stop_name": "SW 16th St & Lind Ave SW (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1156,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "emergency street repair work",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #80768 Lind Ave SW & SW 16th St (SB) closed until further notice due to emergency street repair work.",
+      "short_header_text": "Stop #80768 Lind Ave SW & SW 16th St (SB) closed until further notice due to emergency street repair work.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/676",
+      "description_text": "Affected routes:\r\nRapidRide F Line\r\n\nSouth and West of here, southbound on Oakesdale Ave SW, just south SW 16th St at the temporary stop.\r\n\n North of here, southbound Lind Ave SW, just north of SW Grady Way at the temporary stop.",
+      "severity": "Minor",
+      "created_dt": "1655217173",
+      "last_modified_dt": "1655821998",
+      "service_effect_text": "Stop #80768 Lind Ave SW & SW 16th St (SB) closed due to emergency street repair work",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1655217172", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102619",
+            "route_name": "F Line",
+            "stop_id": "80768",
+            "stop_name": "Lind Ave SW & SW 16th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1167,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #47974 S 272nd St & S Star Lake Rd (EB) closed until further notice beginning Mon Jun 20 due to construction.",
+      "short_header_text": "Stop #47974 S 272nd St & S Star Lake Rd (EB) closed beginning Mon Jun 20 due to construction.",
+      "description_text": "Affected routes:\r\n183\r\n190\r\n\nGet on/off buses at:\r\nRts 183 & 190 - \r\nStop #47971 S 272nd St & Pacific Hwy S (EB)\r\n\nRt 183 - \r\nStop #47973 S 272nd St & I-5 (EB)\r\n\nRt 190 - \r\nStop #47972 I-5 & S 272nd St (NB)",
+      "severity": "Minor",
+      "created_dt": "1655487591",
+      "last_modified_dt": "1656327619",
+      "service_effect_text": "Stop #47974 S 272nd St & S Star Lake Rd (EB) closed beginning Mon Jun 20 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1655722800", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100074",
+            "route_name": "183",
+            "stop_id": "47974",
+            "stop_name": "S 272nd St & S Star Lake Rd (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100082",
+            "route_name": "190",
+            "stop_id": "47974",
+            "stop_name": "S 272nd St & S Star Lake Rd (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1168,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #50734 S 272nd St & 26th Ave S (EB) closed until further notice beginning Mon Jun 20 due to construction.",
+      "short_header_text": "Stop #50734 S 272nd St & 26th Ave S (EB) closed until further notice beginning Mon Jun 20 due to construction",
+      "description_text": "Affected routes:\r\n183\r\n190\r\n\nGet on/off buses at:\r\n\nRts 183 & 190 - \r\nStop #47971 S 272nd St & Pacific Hwy S (EB)\r\n\nRt 183 - \r\nStop #47973 S 272nd St & I-5 (EB)\r\n\nRt 190 - \r\nStop #47972 I-5 & S 272nd St (NB)\r\n",
+      "severity": "Minor",
+      "created_dt": "1655487833",
+      "last_modified_dt": "1656327619",
+      "service_effect_text": "Stop #50734 S 272nd St & 26th Ave S (EB) closed beginning Mon Jun 20 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1655722800", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100074",
+            "route_name": "183",
+            "stop_id": "50734",
+            "stop_name": "S 272nd St & 26th Ave S (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100082",
+            "route_name": "190",
+            "stop_id": "50734",
+            "stop_name": "S 272nd St & 26th Ave S (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1210,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #11358 NE 45th St & University Way NE - Bay 2 (WB) revised.",
+      "short_header_text": "Stop #11358 NE 45th St & University Way NE - Bay 2 (WB) revised.",
+      "description_text": "Affected routes:\r\n31\r\n32\r\n48\r\n167",
+      "severity": "Information",
+      "created_dt": "1657546430",
+      "last_modified_dt": "1658151258",
+      "service_effect_text": "Stop #11358 NE 45th St & University Way NE - Bay 2 (WB) revised",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1657546426", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100059",
+            "route_name": "167",
+            "stop_id": "11358",
+            "stop_name": "NE 45th St & University Way NE - Bay 2 (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100184",
+            "route_name": "31",
+            "stop_id": "11358",
+            "stop_name": "NE 45th St & University Way NE - Bay 2 (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100193",
+            "route_name": "32",
+            "stop_id": "11358",
+            "stop_name": "NE 45th St & University Way NE - Bay 2 (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100228",
+            "route_name": "48",
+            "stop_id": "11358",
+            "stop_name": "NE 45th St & University Way NE - Bay 2 (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1230,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "sidewalk repair",
+      "cause": "MAINTENANCE",
+      "header_text": "Stop #37352 University Way NE & NE 55th St (NB) relocated now until further notice due to sidewalk repair.",
+      "short_header_text": "Stop #37352 University Way NE & NE 55th St (NB) relocated now until further notice due to sidewalk repair.",
+      "description_text": "Affected routes:\r\n45\r\n73\r\n\nGet on/off buses at:\r\nAt the temporary location south of this stop, northbound on University Way NE just south of NE 55th St.",
+      "severity": "Minor",
+      "created_dt": "1658194670",
+      "last_modified_dt": "1658799498",
+      "service_effect_text": "Stop Stop #37352 University Way NE & NE 55th St (NB) relocated due to sidewalk repair",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1658194664", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100225",
+            "route_name": "45",
+            "stop_id": "37352",
+            "stop_name": "University Way NE & NE 55th St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100267",
+            "route_name": "73",
+            "stop_id": "37352",
+            "stop_name": "University Way NE & NE 55th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1259,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #9132 University Way NE & NE 50th St (SB) closed Sat Jul 30 & Sun Jul 31 7 AM-7 PM due to construction.",
+      "short_header_text": "Stop #9132 University Way NE & NE 50th St (SB) closed Sat Jul 30 & Sun Jul 31 7 AM-7 PM due to construction.",
+      "description_text": "Affected routes:\r\n73\r\n75\r\n\nGet on/off buses at:\r\nStop #9133 University Way NE & NE 45th St (SB)",
+      "severity": "Minor",
+      "created_dt": "1659119318",
+      "last_modified_dt": "1659794418",
+      "service_effect_text": "Stop #9132 University Way NE & NE 50th St (SB) closed beginning Sat Jul 30 at 7:00 AM due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1659189600", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100267",
+            "route_name": "73",
+            "stop_id": "9132",
+            "stop_name": "University Way NE & NE 50th St (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100269",
+            "route_name": "75",
+            "stop_id": "9132",
+            "stop_name": "University Way NE & NE 50th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1268,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #60840 International Blvd & S 208th St (NB) closed due to construction.",
+      "short_header_text": "Stop #60840 International Blvd & S 208th St (NB) closed due to construction.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/671",
+      "description_text": "Affected routes:\r\nRapidRide A Line\r\n\nGet on/off buses at:\r\nStop #60830 International Blvd & S 216th St (NB)\r\nStop #60850 International Blvd & S 200th St (NB)",
+      "severity": "Minor",
+      "created_dt": "1659493651",
+      "last_modified_dt": "1660098498",
+      "service_effect_text": "Stop #60840 International Blvd & S 208th St (NB) closed due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1659493649", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100512",
+            "route_name": "A Line",
+            "stop_id": "60840",
+            "stop_name": "International Blvd & S 208th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1304,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #29200 N 46th St & Aurora Ave N (EB) relocated starting Sat Aug 13 until further notice due to construction",
+      "short_header_text": "Stop #29200 N 46th St & Aurora Ave N (EB) relocated starting Sat Aug 13 until further notice.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/44/S/08/12/2022/",
+      "description_text": "Affected routes:\r\n44\r\n\nGet on/off buses at:\r\nthe temporary location eastbound on N 46 St between Whitman Ave N and Woodland Park Ave N.",
+      "severity": "Minor",
+      "created_dt": "1660347927",
+      "last_modified_dt": "1662980418",
+      "service_effect_text": "Stop Stop #29200 N 46th St & Aurora Ave N (EB) relocated starting Sat Aug 13 until further notice every Monday, Tuesday, Wednesday, Thursday, Friday, Saturday and Sunday due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "recurrence_text": "daily",
+      "effect_periods": [
+        { "effect_start": "1670414400", "effect_end": "1670500740" },
+        { "effect_start": "1670500800", "effect_end": "1670587140" },
+        { "effect_start": "1670587200", "effect_end": "1670673540" },
+        { "effect_start": "1670673600", "effect_end": "1670759940" },
+        { "effect_start": "1670760000", "effect_end": "1670846340" },
+        { "effect_start": "1670846400", "effect_end": "1670932740" },
+        { "effect_start": "1670932800", "effect_end": "1671019140" },
+        { "effect_start": "1671019200", "effect_end": "1671105540" },
+        { "effect_start": "1671105600", "effect_end": "1671191940" },
+        { "effect_start": "1671192000", "effect_end": "1671278340" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100224",
+            "route_name": "44",
+            "stop_id": "29200",
+            "stop_name": "N 46th St & Aurora Ave N (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1324,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #6600 Greenwood Ave N & N 77th St (NB) relocated due to construction.",
+      "short_header_text": "Stop #6600 Greenwood Ave N & N 77th St (NB) relocated due to construction.",
+      "description_text": "Affected routes:\r\n5\r\n\nGet on/off buses at:\r\nThe relocated stop Greenwood Ave N & N 78th St (NB)",
+      "severity": "Minor",
+      "created_dt": "1661218775",
+      "last_modified_dt": "1661823618",
+      "service_effect_text": "Stop Stop #6600 Greenwood Ave N & N 77th St (NB) relocated due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1661218769", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100229",
+            "route_name": "5",
+            "stop_id": "6600",
+            "stop_name": "Greenwood Ave N & N 77th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1327,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #37352 University Way NE & NE 55th St (NB) relocated due to construction.",
+      "short_header_text": "Stop #37352 University Way NE & NE 55th St (NB) relocated due to construction.",
+      "description_text": "Affected routes:\r\n45\r\n73\r\n\nGet on/off buses at:\r\nThe relocated stop a short distance from the affected stop",
+      "severity": "Minor",
+      "created_dt": "1661219941",
+      "last_modified_dt": "1661824758",
+      "service_effect_text": "Stop Stop #37352 University Way NE & NE 55th St (NB) relocated due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1661219934", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100225",
+            "route_name": "45",
+            "stop_id": "37352",
+            "stop_name": "University Way NE & NE 55th St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100267",
+            "route_name": "73",
+            "stop_id": "37352",
+            "stop_name": "University Way NE & NE 55th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1330,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #76298 Main St & 103rd Ave NE (EB) revised.",
+      "short_header_text": "Stop #76298 Main St & 103rd Ave NE (EB) revised.",
+      "description_text": "Affected routes:\r\nST 522\r\n342\r\n372\r\n\nGet on/off buses at:\r\nBeginning Saturday, August 20, Routes 342, 372 and ST 522 will be revised and will no longer serve this stop.\r\n\nAt that time, board or exit those routes at one of the following stops:\r\n\nRoute 342 - Stop #76221  Woodinville Dr & Kaysner Way (EB)\r\n\nRoutes 372 and ST 522 Stop #76222 Beardslee Blvd & Sunrise Dr (EB).\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.",
+      "severity": "Information",
+      "created_dt": "1661289118",
+      "last_modified_dt": "1661893818",
+      "service_effect_text": "Stop #76298 Main St & 103rd Ave NE (EB) revised",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1661288998", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100201",
+            "route_name": "342",
+            "stop_id": "76298",
+            "stop_name": "Main St & 103rd Ave NE (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100214",
+            "route_name": "372",
+            "stop_id": "76298",
+            "stop_name": "Main St & 103rd Ave NE (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100232",
+            "route_name": "522",
+            "stop_id": "76298",
+            "stop_name": "Main St & 103rd Ave NE (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1332,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #79294 Main St & Bothell Way NE (EB) closed.",
+      "short_header_text": "Stop #79294 Main St & Bothell Way NE (EB) closed.",
+      "description_text": "Affected routes:\r\nST 522\r\n342\r\n372\r\n\nBeginning Saturday, August 20, this bus stop will permanently close.\r\n\nAt that time, board or exit routes 342, 372 and ST 522 at the new stop south of here, eastbound on SR-522 just west of Bothell Way NE Stop #79296.\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.",
+      "severity": "Minor",
+      "created_dt": "1661290397",
+      "last_modified_dt": "1661895138",
+      "service_effect_text": "Stop #79294 Main St & Bothell Way NE (EB) closed",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1661290325", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100201",
+            "route_name": "342",
+            "stop_id": "79294",
+            "stop_name": "Main St & Bothell Way NE (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100214",
+            "route_name": "372",
+            "stop_id": "79294",
+            "stop_name": "Main St & Bothell Way NE (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100232",
+            "route_name": "522",
+            "stop_id": "79294",
+            "stop_name": "Main St & Bothell Way NE (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1375,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #13291 Madison St & Boren Ave (EB) revised due to construction.",
+      "short_header_text": "Stop #13291 Madison St & Boren Ave (EB) revised due to construction.",
+      "description_text": "Affected routes:\r\nTrailhead Direct Mt. Si\r\n12\r\n60\r\n\r\nGet on/off buses at:\r\nStop #13291 Madison St & Boren Ave (EB)",
+      "severity": "Information",
+      "created_dt": "1662662780",
+      "last_modified_dt": "1663347399",
+      "service_effect_text": "Stop #13291 Madison St & Boren Ave (EB) revised due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1662662760", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "13291",
+            "stop_name": "Madison St & Boren Ave (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100249",
+            "route_name": "60",
+            "stop_id": "13291",
+            "stop_name": "Madison St & Boren Ave (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1376,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #13292 Madison St & Summit Ave (EB) revised beginning Mon Sep 12 due to construction.",
+      "short_header_text": "Stop #13292 Madison St & Summit Ave (EB) revised beginning Mon Sep 12 due to construction.",
+      "description_text": "Affected routes:\r\nTrailhead Direct Mt. Si\r\n12\r\n60",
+      "severity": "Information",
+      "created_dt": "1662662924",
+      "last_modified_dt": "1663585218",
+      "service_effect_text": "Stop #13292 Madison St & Summit Ave (EB) revised due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1662980400", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "13292",
+            "stop_name": "Madison St & Summit Ave (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100249",
+            "route_name": "60",
+            "stop_id": "13292",
+            "stop_name": "Madison St & Summit Ave (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1377,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #41965 Broadway & E Union St (NB) revised beginning Mon Sep 12 due to construction.",
+      "short_header_text": "Stop #41965 Broadway & E Union St (NB) revised beginning Mon Sep 12 due to construction.",
+      "description_text": "Affected routes:\r\n9\r\n43\r\n49\r\n60",
+      "severity": "Information",
+      "created_dt": "1662663426",
+      "last_modified_dt": "1663585219",
+      "service_effect_text": "Stop #41965 Broadway & E Union St (NB) revised beginning Mon Sep 12 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1662980400", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100223",
+            "route_name": "43",
+            "stop_id": "41965",
+            "stop_name": "Broadway & E Union St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100249",
+            "route_name": "60",
+            "stop_id": "41965",
+            "stop_name": "Broadway & E Union St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100289",
+            "route_name": "9",
+            "stop_id": "41965",
+            "stop_name": "Broadway & E Union St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100447",
+            "route_name": "49",
+            "stop_id": "41965",
+            "stop_name": "Broadway & E Union St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1400,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "a road closure",
+      "cause": "OTHER_CAUSE",
+      "header_text": "Stop #6600 Greenwood Ave N & N 77th St (NB) closed from Sat Sep 17 at 4:00 AM to Sun Jan 1 at 3:59 AM due to a road closure.",
+      "short_header_text": "Stop #6600 Greenwood Ave N & N 77th St (NB) closed from Sat Sep 17 at 4am to Sun Jan 1 at 3:59am",
+      "description_text": "Affected routes:\r\n5\r\n\nGet on/off buses at:\r\nStop #6590 Greenwood Ave N & N 75th St (NB)\r\nThe relocated stop just north of N 78th St (NB)\r\nStop #6615 Greenwood Ave N & N 80th St (NB)",
+      "severity": "Minor",
+      "created_dt": "1663373666",
+      "last_modified_dt": "1664708419",
+      "service_effect_text": "Stop #6600 Greenwood Ave N & N 77th St (NB) closed from Sat Sep 17 at 4:00 AM to Sun Jan 1 at 3:59 AM due to a road closure",
+      "timeframe_text": "through December 31",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1663412400", "effect_end": "1672574340" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100229",
+            "route_name": "5",
+            "stop_id": "6600",
+            "stop_name": "Greenwood Ave N & N 77th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1440,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #45288 S Grady Way & Williams Ave S (WB) relocated due to construction until further notice.",
+      "short_header_text": "Stop #45288 S Grady Way & Williams Ave S (WB) relocated due to construction until further notice.",
+      "description_text": "Affected routes:\r\n101\r\n148\r\n153\r\n\nGet on/off buses at:\r\nThe relocated stop a short distance from the affected stop.",
+      "severity": "Minor",
+      "created_dt": "1663941571",
+      "last_modified_dt": "1664546358",
+      "service_effect_text": "Stop Stop #45288 S Grady Way & Williams Ave S (WB) relocated due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1663941526", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100003",
+            "route_name": "101",
+            "stop_id": "45288",
+            "stop_name": "S Grady Way & Williams Ave S (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "45288",
+            "stop_name": "S Grady Way & Williams Ave S (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100048",
+            "route_name": "153",
+            "stop_id": "45288",
+            "stop_name": "S Grady Way & Williams Ave S (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1453,
+      "effect_name": "Delay of Service",
+      "effect": "OTHER_EFFECT",
+      "cause_name": "an emergency response",
+      "cause": "POLICE_ACTIVITY",
+      "header_text": "Expect significant delays on Route 168 due to an emergency response near SE Kent-Kangley Rd and 116th Ave SE.",
+      "short_header_text": "Expect significant delays on Route 168 to Kent due to an emergency response.",
+      "url": "https://kingcounty.gov/depts/transportation/metro/schedules-maps/hastop/168.aspx",
+      "description_text": "Affected direction: to Kent",
+      "severity": "Significant",
+      "created_dt": "1664211488",
+      "last_modified_dt": "1664821698",
+      "service_effect_text": "Expect Significant delays on Route 168 to Kent beginning at 11:28 AM due to an emergency response",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1664216880", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100060",
+            "route_name": "168",
+            "direction_id": "1",
+            "direction_name": "to Kent"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1466,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #27890 NW 125th St & 8th Ave NW (EB) relocated beginning Thu Sep 29 due to construction.",
+      "short_header_text": "Stop #27890 NW 125th St & 8th Ave NW (EB) relocated beginning Thu Sep 29 due to construction.",
+      "description_text": "Affected routes:\r\n28\r\n\nGet on/off buses at:\r\nThe relocated stop 8th Ave NW & NW 125th St (SB).",
+      "severity": "Minor",
+      "created_dt": "1664399410",
+      "last_modified_dt": "1665054019",
+      "service_effect_text": "Stop Stop #27890 NW 125th St & 8th Ave NW (EB) relocated beginning Thu Sep 29 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1664449200", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100169",
+            "route_name": "28",
+            "stop_id": "27890",
+            "stop_name": "NW 125th St & 8th Ave NW (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1472,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #81300 5th Ave NE & NE 148th St (NB) closed beginning Mon Oct 17 due to construction.",
+      "short_header_text": "Stop #81300 5th Ave NE & NE 148th St (NB) closed beginning Mon Oct 17 due to construction.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/347/N/09/30/2022/",
+      "description_text": "Affected routes:\r\n347\r\n\nGet on/off buses at:\r\nStop #75307 5th Ave NE & NE 145th St (NB)\r\nStop #81302 5th Ave NE & NE 152nd St (NB)",
+      "severity": "Minor",
+      "created_dt": "1664568619",
+      "last_modified_dt": "1666609219",
+      "service_effect_text": "Stop #81300 5th Ave NE & NE 148th St (NB) closed beginning Mon Oct 17 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1666004400", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100204",
+            "route_name": "347",
+            "stop_id": "81300",
+            "stop_name": "5th Ave NE & NE 148th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1473,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #81256 5th Ave NE & NE 148th St (SB) closed beginning Mon Oct 17 due to construction.",
+      "short_header_text": "Stop #81256 5th Ave NE & NE 148th St (SB) closed beginning Mon Oct 17 due to construction.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/347/N/09/30/2022/",
+      "description_text": "Affected routes:\r\n347\r\n\nGet on/off buses at:\r\nStop #81254 5th Ave NE & NE 152nd St (SB)\r\nStop #82200 NE 145th St & 6th Ave NE (EB)",
+      "severity": "Minor",
+      "created_dt": "1664568758",
+      "last_modified_dt": "1666609219",
+      "service_effect_text": "Stop #81256 5th Ave NE & NE 148th St (SB) closed beginning Mon Oct 17 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1666004400", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100204",
+            "route_name": "347",
+            "stop_id": "81256",
+            "stop_name": "5th Ave NE & NE 148th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1500,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #56372 Renton Ave S & S 116th Pl (SB) relocated to a nearby stop from Mon Oct 17 at 7:00 AM to Tue Oct 18 at 8:00 PM due to construction.",
+      "short_header_text": "Stop #56372 Renton Av S & S 116th Pl (SB) relocated 7AM to 8PM on Mon Oct 17 & Sun 18 due to construction.",
+      "description_text": "Affected routes:\r\n106\r\n\r\nGet on/off buses at:\r\nStop #56370 Renton Ave S & S Fountain St (SB)\r\nStop #56373 Renton Ave S & 68th Ave S (SB)",
+      "severity": "Minor",
+      "created_dt": "1665094722",
+      "last_modified_dt": "1666620018",
+      "service_effect_text": "Stop #56372 Renton Ave S & S 116th Pl (SB) closed due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1666015200", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100005",
+            "route_name": "106",
+            "stop_id": "56372",
+            "stop_name": "Renton Ave S & S 116th Pl (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1516,
+      "effect_name": "Multi-route Reroute",
+      "effect": "DETOUR",
+      "cause_name": "a collision",
+      "cause": "ACCIDENT",
+      "header_text": "Metro routes 226 and 232 are currently rerouted westbound off of NE Bellevue Redmond Rd between 140th Ave NE and 130th Ave NE, due to a collision..",
+      "short_header_text": "Metro rts. 226 & 232 are currently rerouted WB off of NE Bel-Red Rd betwn 140th Av NE & 130th Av NE, due to C",
+      "description_text": "Affected stops:\r\nStop #84824 NE Bellevue Redmond Rd & 140th Ave NE (WB)\r\nStop #84826 Bellevue Redmond Rd & 132nd Ave NE (WB)\r\nStop #84831 NE Bellevue Redmond Rd & 136th Ave NE (WB)\r\n\nGet on/off buses at:\r\nStop #84822 NE Bellevue Redmond Rd & 143rd Ave NE (WB)\r\nStop #84827 Bellevue Redmond Rd & 130th Ave NE (WB)",
+      "severity": "Significant",
+      "created_dt": "1665196127",
+      "last_modified_dt": "1665800958",
+      "service_effect_text": "Route 226 are rerouted due to a collision",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1665196107", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102552",
+            "route_name": "226",
+            "stop_id": "84824",
+            "stop_name": "NE Bellevue Redmond Rd & 140th Ave NE (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102552",
+            "route_name": "226",
+            "stop_id": "84826",
+            "stop_name": "Bellevue Redmond Rd & 132nd Ave NE (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102552",
+            "route_name": "226",
+            "stop_id": "84831",
+            "stop_name": "NE Bellevue Redmond Rd & 136th Ave NE (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1532,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #26870 N 35th St & Troll Ave N (EB) closed beginning Mon Oct 24 due to construction.",
+      "short_header_text": "Stop #26870 N 35th St & Troll Ave N (EB) closed beginning Mon Oct 24 due to construction.",
+      "description_text": "Affected routes:\r\n31\r\n32\r\n62\r\n\nGet on/off buses at:\r\nStop #26860 Fremont Ave N & N 34th St (NB)\r\nStop #26885 N 35th St & Woodland Park Ave N (EB)\r\n",
+      "severity": "Minor",
+      "created_dt": "1665578330",
+      "last_modified_dt": "1667214019",
+      "service_effect_text": "Stop #26870 N 35th St & Troll Ave N (EB) closed beginning Mon Oct 24 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1666609200", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100184",
+            "route_name": "31",
+            "stop_id": "26870",
+            "stop_name": "N 35th St & Troll Ave N (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100193",
+            "route_name": "32",
+            "stop_id": "26870",
+            "stop_name": "N 35th St & Troll Ave N (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100252",
+            "route_name": "62",
+            "stop_id": "26870",
+            "stop_name": "N 35th St & Troll Ave N (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1533,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #26490 N 35th St & Troll Ave N (WB) closed beginning Mon Oct 24 due to construction.",
+      "short_header_text": "Stop #26490 N 35th St & Troll Ave N (WB) closed beginning Mon Oct 24 due to construction.",
+      "description_text": "Affected routes:\r\n31\r\n32\r\n62\r\n\nGet on/off buses at:\r\nStop #26480 N 35th St & Stone Way N (WB)\r\nStop #26510 Fremont Ave N & N 34th St (SB)\r\n",
+      "severity": "Minor",
+      "created_dt": "1665580387",
+      "last_modified_dt": "1667214019",
+      "service_effect_text": "Stop #26490 N 35th St & Troll Ave N (WB) closed beginning Mon Oct 24 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1666609200", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100184",
+            "route_name": "31",
+            "stop_id": "26490",
+            "stop_name": "N 35th St & Troll Ave N (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100193",
+            "route_name": "32",
+            "stop_id": "26490",
+            "stop_name": "N 35th St & Troll Ave N (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100252",
+            "route_name": "62",
+            "stop_id": "26490",
+            "stop_name": "N 35th St & Troll Ave N (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1584,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #13277 E Madison St & 13th Ave (WB) relocated through Thu Dec 15 due to construction.",
+      "short_header_text": "Stop #13277 E Madison St & 13th Ave (WB) relocated through Thu Dec 15 due to construction.",
+      "description_text": "Affected routes:\r\n2\r\n12\r\n\nGet on/off buses at:\r\nThe relocated stop a short distance east of the affected stop (WB)",
+      "severity": "Minor",
+      "created_dt": "1666733755",
+      "last_modified_dt": "1666733755",
+      "service_effect_text": "Stop Stop #13277 E Madison St & 13th Ave (WB) relocated through Thu Dec 15 due to construction",
+      "timeframe_text": "through December 15",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1666733776", "effect_end": "1671191940" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "13277",
+            "stop_name": "E Madison St & 13th Ave (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100089",
+            "route_name": "2",
+            "stop_id": "13277",
+            "stop_name": "E Madison St & 13th Ave (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1586,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #71331 Overlake P&R (SB) closed due to construction.",
+      "short_header_text": "Stop #71331 Overlake P&R (SB) closed due to construction.",
+      "description_text": "Affected routes:\r\nRapidRide B Line\r\n249\r\n\nGet on/off buses at:\r\nThe temporary stop 152nd Ave NE just south of NE Turing St (SB)",
+      "severity": "Minor",
+      "created_dt": "1666736054",
+      "last_modified_dt": "1667340918",
+      "service_effect_text": "Stop #71331 Overlake P&R (SB) closed due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1666736074", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100139",
+            "route_name": "249",
+            "stop_id": "71331",
+            "stop_name": "Overlake P&R (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102548",
+            "route_name": "B Line",
+            "stop_id": "71331",
+            "stop_name": "Overlake P&R (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1609,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #27540 E Yesler Way & 18th Ave S (EB) closed beginning Sat Nov 12 due to construction.",
+      "short_header_text": "Stop #27540 E Yesler Way & 18th Ave S (EB) closed beginning Sat Nov 12 due to construction.",
+      "description_text": "Affected routes:\r\n27\r\n\nGet on/off buses at:\r\nStop #27530 E Yesler Way & 16th Ave S (EB)\r\nStop #27550 E Yesler Way & 20th Ave S (EB)",
+      "severity": "Minor",
+      "created_dt": "1667220056",
+      "last_modified_dt": "1668859219",
+      "service_effect_text": "Stop #27540 E Yesler Way & 18th Ave S (EB) closed beginning Sat Nov 12 due to construction",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1668254400", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100161",
+            "route_name": "27",
+            "stop_id": "27540",
+            "stop_name": "E Yesler Way & 18th Ave S (EB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1626,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #60840 International Blvd & S 208th St (NB) revised beginning Sat Nov 5.",
+      "short_header_text": "Stop #60840 International Blvd & S 208th St (NB) revised beginning Sat Nov 5.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/671/N/11/02/2022/",
+      "description_text": "Affected routes:\r\nRapidRide A Line\r\n\nBeginning Saturday, November 5, this temporary stop will close.\r\n\nAt that time, board or exit RapidRide A Line at the permanent stop just north of here, northbound on International Blvd., just north of S 208th St.\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.\r\n",
+      "severity": "Information",
+      "created_dt": "1667423427",
+      "last_modified_dt": "1668250818",
+      "service_effect_text": "Stop #60840 International Blvd & S 208th St (NB) revised beginning Sat Nov 5",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1667646000", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100512",
+            "route_name": "A Line",
+            "stop_id": "60840",
+            "stop_name": "International Blvd & S 208th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1643,
+      "effect_name": "Single Route Reroute",
+      "effect": "DETOUR",
+      "cause_name": "an emergency response",
+      "cause": "POLICE_ACTIVITY",
+      "header_text": "Metro Transit TEST Alert - Route 346 is rerouted off of Meridian Ave N. north of N 130th St and south of Roosevelt Way N. due to an emergency response.",
+      "short_header_text": "Metro Transit TEST Alert - Route 346 is rerouted off of Meridian Ave N. ",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/346/N/11/08/2022/",
+      "description_text": "Affected stops:\r\nStop #17870 Meridian Ave N & N 133rd St (NB)\r\nStop #17880 Meridian Ave N & N 135th St (NB)\r\nStop #16840 Meridian Ave N & N 135th St (SB)\r\nStop #16850 Meridian Ave N & N 133rd St (SB)\r\n\nRoute 346 to Aurora Village get on/off buses at:\r\n\nStop #17860 Meridian Ave N & N 130th St (NB)\r\nStop #17890 Meridian Ave N & Roosevelt Way N (NB)\r\n\nRoute 346 to Northgate get on/off buses at:\r\n\nStop #16830 Meridian Ave N & Roosevelt Way N (SB)\r\nStop #16860 Meridian Ave N & N 130th St (SB)",
+      "severity": "Significant",
+      "created_dt": "1667941848",
+      "last_modified_dt": "1668546678",
+      "service_effect_text": "Route 346 is rerouted due to an emergency response",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1667941845", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100203",
+            "route_name": "346",
+            "stop_id": "16840",
+            "stop_name": "Meridian Ave N & N 135th St (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100203",
+            "route_name": "346",
+            "stop_id": "16850",
+            "stop_name": "Meridian Ave N & N 133rd St (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100203",
+            "route_name": "346",
+            "stop_id": "17870",
+            "stop_name": "Meridian Ave N & N 133rd St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100203",
+            "route_name": "346",
+            "stop_id": "17880",
+            "stop_name": "Meridian Ave N & N 135th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1652,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #18000 32nd Ave NW & NW 75th St (SB) closed from Fri Nov 11 at 4:00 AM to Sat Dec 31 at 3:59 AM due to construction.",
+      "short_header_text": "Stop #18000 32nd Ave NW & NW 75th St closed from Fri Nov 11 at 4am to Sat",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/17/N/11/09/2022/",
+      "description_text": "Affected routes:\r\n17 \r\n\nGet on/off buses at:\r\nStop #17990 32nd Ave NW & NW 77th St (SB)\r\nStop #18010 32nd Ave NW & NW 73rd St (SB)",
+      "severity": "Minor",
+      "created_dt": "1668040665",
+      "last_modified_dt": "1668166218",
+      "service_effect_text": "Stop #18000 32nd Ave NW & NW 75th St (SB) closed from Fri Nov 11 at 4:00 AM to Sat Dec 31 at 3:59 AM due to construction",
+      "timeframe_text": "through December 30",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1668168000", "effect_end": "1672487940" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100062",
+            "route_name": "17",
+            "stop_id": "18000",
+            "stop_name": "32nd Ave NW & NW 75th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1653,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #18890 32nd Ave NW & NW 75th St (NB) closed from Fri Nov 11 at 4:00 AM to Sat Dec 31 at 3:59 AM due to construction.",
+      "short_header_text": "Stop #18890 32nd Ave NW & NW 75th St closed from Fri Nov 11 at 4am to Sat",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/17/N/11/09/2022/",
+      "description_text": "Affected routes:\r\n17 \r\n\nGet on/off buses at:\r\nStop #18880 32nd Ave NW & NW 73rd St (NB)\r\nStop #18900 32nd Ave NW & NW 77th St (NB)",
+      "severity": "Minor",
+      "created_dt": "1668043327",
+      "last_modified_dt": "1668166219",
+      "service_effect_text": "Stop #18890 32nd Ave NW & NW 75th St (NB) closed from Fri Nov 11 at 4:00 AM to Sat Dec 31 at 3:59 AM due to construction",
+      "timeframe_text": "through December 30",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1668168000", "effect_end": "1672487940" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100062",
+            "route_name": "17",
+            "stop_id": "18890",
+            "stop_name": "32nd Ave NW & NW 75th St (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1654,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #74250 120th Ave NE & Totem Lake Way (SB) revised.",
+      "short_header_text": "Stop #74250 120th Ave NE & Totem Lake Way (SB) revised.",
+      "description_text": "Affected routes:\r\n225 \r\n239 \r\n\nUntil further notice, routes 225 and 239 will not serve this bus stop.\r\n\nBoard or exit routes 225 and 239 north of here, at the Totem Lake Transit Center, located on NE 128th St just east 120th Ave NE.\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.\r\n",
+      "severity": "Information",
+      "created_dt": "1668043568",
+      "last_modified_dt": "1668648378",
+      "service_effect_text": "Stop #74250 120th Ave NE & Totem Lake Way (SB) revised",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1668043560", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102701",
+            "route_name": "225",
+            "stop_id": "74250",
+            "stop_name": "120th Ave NE & Totem Lake Way (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102702",
+            "route_name": "239",
+            "stop_id": "74250",
+            "stop_name": "120th Ave NE & Totem Lake Way (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1655,
+      "effect_name": "Stop Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #74730 120th Ave NE & Totem Lake Way (NB) revised.",
+      "short_header_text": "Stop #74730 120th Ave NE & Totem Lake Way (NB) revised.",
+      "description_text": "Affected routes:\r\n225 \r\n239 \r\n\nUntil further notice, routes 225 and 239 will not serve this bus stop.\r\n\nBoard or exit routes 225 and 239 north of here, at the Totem Lake Transit Center, located on NE 128th St just east 120th Ave NE.\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.\r\n",
+      "severity": "Information",
+      "created_dt": "1668044330",
+      "last_modified_dt": "1668649158",
+      "service_effect_text": "Stop #74730 120th Ave NE & Totem Lake Way (NB) revised",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1668044327", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102701",
+            "route_name": "225",
+            "stop_id": "74730",
+            "stop_name": "120th Ave NE & Totem Lake Way (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102702",
+            "route_name": "239",
+            "stop_id": "74730",
+            "stop_name": "120th Ave NE & Totem Lake Way (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1660,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Stop #35801 15th Ave NE & NE 47th St (SB) closed permanently Sat Nov 26.",
+      "short_header_text": "Stop #35801 15th Ave NE & NE 47th St (SB) closed permanently Sat Nov 26.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/48/S/11/10/2022/",
+      "description_text": "Affected routes:\r\n48 \r\n\nBeginning Saturday, November 26, this bus stop will permanently close.\r\nAt that time, board or exit Route 48 at one of the following stops:\r\n\nStop #35800 - North of here, southbound on 15th Ave NE just south of NE 50th St .\r\nStop #35820 - South of here, southbound on 15th Ave NE just north of NE 45th St.\r\n\nFor transit information please contact Metro’s Customer Information Office at (206) 553-3000 or visit kingcounty.gov/metro.\r\n",
+      "severity": "Minor",
+      "created_dt": "1668115762",
+      "last_modified_dt": "1669462218",
+      "service_effect_text": "Stop #35801 15th Ave NE & NE 47th St (SB) closed from Sat Nov 26 at 4:00 AM to Sun Jan 1 at 3:59 AM",
+      "timeframe_text": "through December 31",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1669464000", "effect_end": "1672574340" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100228",
+            "route_name": "48",
+            "stop_id": "35801",
+            "stop_name": "15th Ave NE & NE 47th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1672,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #2950 E Union St & 31st Ave (WB) relocated from Sat Dec 3 at 8:00 AM to Fri Dec 23 at 5:00 PM due to construction.",
+      "short_header_text": "Stop #2950 E Union St & 31st Ave relocated from Sat Dec 3 at 8am to Fri D",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/2/N/11/16/2022/",
+      "description_text": "Affected routes:\r\n2 \r\n\nGet on/off buses at:\r\nThe relocated stop a short distance from the affected stop (WB)",
+      "severity": "Minor",
+      "created_dt": "1668610258",
+      "last_modified_dt": "1670081418",
+      "service_effect_text": "Stop Stop #2950 E Union St & 31st Ave (WB) relocated from Sat Dec 3 at 8:00 AM to Fri Dec 23 at 5:00 PM due to construction",
+      "timeframe_text": "through December 23",
+      "alert_lifecycle": "New",
+      "effect_periods": [
+        { "effect_start": "1670083200", "effect_end": "1671843600" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100089",
+            "route_name": "2",
+            "stop_id": "2950",
+            "stop_name": "E Union St & 31st Ave (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1677,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #55472 51st Ave S & Renton Ave S (NB) relocated from Thu Nov 17 thru Fri Dec 16 due to construction.",
+      "short_header_text": "Stop #55472 51st Ave S & Renton Ave S relocated from Thu Nov 17 thru Fri ",
+      "description_text": "Affected routes:\r\n106 \r\n107 \r\n\nGet on/off buses at:\r\nStop #55220 Renton Ave S & 52nd Ave S (NB)\r\nThe temporary stop at 51st Ave S & S Cambridge St\r\nStop #55474 51st Ave S & S Fletcher St (NB)",
+      "severity": "Minor",
+      "created_dt": "1668644959",
+      "last_modified_dt": "1668684618",
+      "service_effect_text": "Stop Stop #55472 51st Ave S & Renton Ave S (NB) relocated from Thu Nov 17 at 4:00 AM to Sat Dec 17 at 3:59 AM due to construction",
+      "timeframe_text": "through December 16",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1668686400", "effect_end": "1671278340" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100005",
+            "route_name": "106",
+            "stop_id": "55472",
+            "stop_name": "51st Ave S & Renton Ave S (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "55472",
+            "stop_name": "51st Ave S & Renton Ave S (NB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1692,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #55228 51st Ave S & S Roxbury St (SB) closed through Fri Dec 16 due to construction.",
+      "short_header_text": "Stop #55228 51st Ave S & S Roxbury St (SB) closed through Fri Dec 16",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/107/N/11/21/2022/",
+      "description_text": "Affected routes:\r\n107 \r\n\nGet on/off buses at:\r\nThe temporary stop south of here at Pilgrim Ave S (SB)",
+      "severity": "Minor",
+      "created_dt": "1669061040",
+      "last_modified_dt": "1669061040",
+      "service_effect_text": "Stop #55228 51st Ave S & S Roxbury St (SB) closed through Fri Dec 16 due to construction",
+      "timeframe_text": "through December 16",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1669061035", "effect_end": "1671278340" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "55228",
+            "stop_name": "51st Ave S & S Roxbury St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1712,
+      "effect_name": "Suspension",
+      "effect": "NO_SERVICE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Route 125 service is suspended today.",
+      "short_header_text": "Route 125 service is suspended today.",
+      "url": "https://kingcounty.gov/depts/transportation/metro/alerts-updates/winter.aspx",
+      "description_text": "We apologize for the inconvenience and greatly appreciate your patience.\r\nThank you for riding and using Metro's services.",
+      "severity": "Significant",
+      "created_dt": "1670338692",
+      "last_modified_dt": "1670338692",
+      "service_effect_text": "Route 125 service suspended",
+      "alert_lifecycle": "New",
+      "effect_periods": [{ "effect_start": "1670338652", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100024",
+            "route_name": "125"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1713,
+      "effect_name": "Snow Routes",
+      "effect": "DETOUR",
+      "cause_name": "snow",
+      "cause": "WEATHER",
+      "header_text": "Snow is falling across King County, but Metro buses are currently able to operate on their regular routes. Transit Alerts will be sent out if there is a need to switch to snow routes.",
+      "short_header_text": "Snow is falling across King County, but Metro buses are regular operation",
+      "url": "https://kingcountymetro.blog/",
+      "severity": "Significant",
+      "created_dt": "1670339549",
+      "last_modified_dt": "1670428019",
+      "service_effect_text": "Bus, Marine and Rail service is operating on snow routes.",
+      "alert_lifecycle": "New",
+      "banner_text": "Snow is falling across King County, but Metro buses are currently able to operate on their regular routes. Transit Alerts will be sent out if there is a need to switch to snow routes.",
+      "effect_periods": [{ "effect_start": "1670339520", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          { "route_type": "0", "mode_name": "Light Rail" },
+          { "route_type": "3", "mode_name": "Bus" },
+          { "route_type": "4", "mode_name": "Boat" }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1714,
+      "effect_name": "Snow Routes",
+      "effect": "DETOUR",
+      "cause_name": "snow",
+      "cause": "WEATHER",
+      "header_text": "All bus routes in Metro’s North King County snow area are currently operating on their designated snow routing and may also be delayed.",
+      "short_header_text": "All Rts in Metro's North King Cty snow area are on their snow routing.",
+      "url": "https://kingcounty.gov/depts/transportation/metro/alerts-updates/service-advisories/snow-ice-flood-alerts.aspx ",
+      "severity": "Significant",
+      "created_dt": "1670340085",
+      "last_modified_dt": "1670340085",
+      "service_effect_text": "Bus service is operating on snow routes.",
+      "alert_lifecycle": "New",
+      "effect_periods": [{ "effect_start": "1670340057", "effect_end": "" }],
+      "affected_services": {
+        "services": [{ "route_type": "3", "mode_name": "Bus" }],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1715,
+      "effect_name": "Suspension",
+      "effect": "NO_SERVICE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Routes 9 , 15 , 17 , 18 , 29 , 64 , 111 , 121 , 212 and 217 service suspended through end of service today, Tuesday December 6.",
+      "short_header_text": "Rts. 9 , 15 , 17 , 18 , 29 , 64 , 111 , 121 , 212 & 217 service suspended",
+      "url": "https://kingcounty.gov/depts/transportation/metro/alerts-updates/service-advisories/construction-and-events-alerts.aspx ",
+      "severity": "Significant",
+      "created_dt": "1670341297",
+      "last_modified_dt": "1670341297",
+      "service_effect_text": "Routes 9 , 15 , 17 , 18 , 29 , 64 , 111 , 121 , 212 and 217 service suspended",
+      "alert_lifecycle": "New",
+      "effect_periods": [{ "effect_start": "1670341291", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100011",
+            "route_name": "111"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100020",
+            "route_name": "121"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100044",
+            "route_name": "15"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100062",
+            "route_name": "17"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100071",
+            "route_name": "18"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100104",
+            "route_name": "212"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100109",
+            "route_name": "217"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100253",
+            "route_name": "64"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100289",
+            "route_name": "9"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102572",
+            "route_name": "29"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1716,
+      "effect_name": "Snow Routes",
+      "effect": "DETOUR",
+      "cause_name": "weather",
+      "cause": "WEATHER",
+      "header_text": "All bus routes in Metro's East King County snow area have returned to their regular routing.",
+      "short_header_text": "All Rts. in Metro's East King County snow area have returned to their reg",
+      "severity": "Significant",
+      "created_dt": "1670341561",
+      "last_modified_dt": "1670341561",
+      "service_effect_text": "Bus service is operating on snow routes.",
+      "alert_lifecycle": "New",
+      "effect_periods": [{ "effect_start": "1670341505", "effect_end": "" }],
+      "affected_services": {
+        "services": [{ "route_type": "3", "mode_name": "Bus" }],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1717,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop # 45130 NE 12th St & Olympia Ave NE (WB) relocated from 8AM – 3PM on Wednesday Dec 7 until Friday Dec 9 due to construction.",
+      "short_header_text": "Stop # 45130 NE 12th St & Olympia Ave NE (WB) relocated from 8AM – 3PM ",
+      "description_text": "Affected routes:\r\n105 \r\n240 \r\n\nGet on/off buses at:\r\nThe relocated stop a short distance from the affected stop (EB)\r\n\n",
+      "severity": "Minor",
+      "created_dt": "1670342182",
+      "last_modified_dt": "1670427018",
+      "service_effect_text": "Stop Stop #45130 NE 12th St & Olympia Ave NE (WB) relocated from Wed Dec 7 at 8:00 AM to Fri Dec 9 at 3:00 PM due to construction",
+      "timeframe_text": "through Friday",
+      "alert_lifecycle": "New",
+      "effect_periods": [
+        { "effect_start": "1670428800", "effect_end": "1670626800" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100004",
+            "route_name": "105",
+            "stop_id": "45130",
+            "stop_name": "NE 12th St & Olympia Ave NE (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100133",
+            "route_name": "240",
+            "stop_id": "45130",
+            "stop_name": "NE 12th St & Olympia Ave NE (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1718,
+      "effect_name": "Snow Route",
+      "effect": "DETOUR",
+      "cause_name": "snow",
+      "cause": "WEATHER",
+      "header_text": "Snow routing is in effect on RapidRide E Line, ST 522, 5 , 301 , 302 , 303 , 304 , 330 , 331 , 342 , 345 , 346 , 347 , 348 and 372.",
+      "short_header_text": "Snow routing is in effect on RapidRide E Ln, ST 522, 5 , 301 , 302 , 303 ",
+      "severity": "Significant",
+      "created_dt": "1670345133",
+      "last_modified_dt": "1670345133",
+      "service_effect_text": "Snow route is in effect on RapidRide E Line, ST 522, 5 , 301 , 302 , 303 , 304 , 330 , 331 , 342 , 345 , 346 , 347 , 348 and 372",
+      "alert_lifecycle": "New",
+      "effect_periods": [{ "effect_start": "1670345115", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100175",
+            "route_name": "301"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100177",
+            "route_name": "303"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100178",
+            "route_name": "304"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100195",
+            "route_name": "330"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100196",
+            "route_name": "331"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100201",
+            "route_name": "342"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100202",
+            "route_name": "345"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100203",
+            "route_name": "346"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100204",
+            "route_name": "347"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100205",
+            "route_name": "348"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100214",
+            "route_name": "372"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100229",
+            "route_name": "5"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100232",
+            "route_name": "522"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102615",
+            "route_name": "E Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102731",
+            "route_name": "302"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1719,
+      "effect_name": "Snow Route",
+      "effect": "DETOUR",
+      "cause_name": "snow",
+      "cause": "WEATHER",
+      "header_text": "Snow route is in effect on RapidRide C Line and thirty-seven other routes.",
+      "short_header_text": "Snow route is in effect on RapidRide C Line and thirty-seven other routes",
+      "description_text": "Affected routes:\r\nRapidRide C Line\r\nRapidRide F Line\r\n4 \r\n7 \r\n8 \r\n9 \r\n14 \r\n21 \r\n22 \r\n27 \r\n36 \r\n48 \r\n50 \r\n55 \r\n56 \r\n57 \r\n60 \r\n101 \r\n102 \r\n106 \r\n107 \r\n111 \r\n113 \r\n114 \r\n120 \r\n124 \r\n125 \r\n128 \r\n131 \r\n132 \r\n150 \r\n162 \r\n177 \r\n190 \r\n193 \r\n981 \r\n987 \r\n989 ",
+      "severity": "Significant",
+      "created_dt": "1670345646",
+      "last_modified_dt": "1670345646",
+      "service_effect_text": "Snow route is in effect on RapidRide C Line and thirty-seven other routes",
+      "alert_lifecycle": "New",
+      "effect_periods": [{ "effect_start": "1670345607", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100003",
+            "route_name": "101"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100005",
+            "route_name": "106"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100011",
+            "route_name": "111"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100012",
+            "route_name": "113"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100013",
+            "route_name": "114"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100019",
+            "route_name": "120"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100023",
+            "route_name": "124"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100024",
+            "route_name": "125"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100026",
+            "route_name": "128"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100030",
+            "route_name": "131"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100031",
+            "route_name": "132"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100039",
+            "route_name": "14"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100045",
+            "route_name": "150"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100068",
+            "route_name": "177"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100082",
+            "route_name": "190"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100101",
+            "route_name": "21"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100111",
+            "route_name": "22"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100161",
+            "route_name": "27"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100210",
+            "route_name": "36"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100219",
+            "route_name": "4"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100228",
+            "route_name": "48"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100230",
+            "route_name": "50"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100238",
+            "route_name": "55"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100242",
+            "route_name": "56"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100246",
+            "route_name": "57"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100249",
+            "route_name": "60"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100263",
+            "route_name": "7"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100275",
+            "route_name": "8"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100289",
+            "route_name": "9"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100345",
+            "route_name": "987"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100347",
+            "route_name": "989"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100473",
+            "route_name": "981"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100487",
+            "route_name": "102"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100495",
+            "route_name": "193"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102576",
+            "route_name": "C Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102619",
+            "route_name": "F Line"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102715",
+            "route_name": "162"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1720,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #52240 Ambaum Blvd SW & SW 136th St (SB) relocated from 8:00 AM to 5:00 PM on Thu Dec 8 due to construction.",
+      "short_header_text": "Stop #52240 Ambaum Blvd SW & SW 136th St relocated 8am-5pm on Thu Dec 8",
+      "description_text": "Affected routes:\r\n120 \r\n\nGet on/off buses at:\r\nThe relocated stop a short distance from the affected stop (SB)",
+      "severity": "Minor",
+      "created_dt": "1670346320",
+      "last_modified_dt": "1670414419",
+      "service_effect_text": "Stop Stop #52240 Ambaum Blvd SW & SW 136th St (SB) relocated from 8:00 AM to 5:00 PM on Thu Dec 8 due to construction",
+      "timeframe_text": "tomorrow",
+      "alert_lifecycle": "Upcoming",
+      "effect_periods": [
+        { "effect_start": "1670515200", "effect_end": "1670547600" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100019",
+            "route_name": "120",
+            "stop_id": "52240",
+            "stop_name": "Ambaum Blvd SW & SW 136th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1721,
+      "effect_name": "Stop Closure",
+      "effect": "NO_SERVICE",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop # 10910 12TH AVE NE & NE 47TH ST closed from 4AM – 9PM on Saturday Dec 10 due to construction.\n",
+      "short_header_text": "Stop # 10910 12TH AVE NE & NE 47TH ST closed from 4AM – 9PM on Saturday D",
+      "description_text": "Affected routes:\r\n372 \r\n\nGet on/off buses at:\r\nStop #10911 U District Station - Bay 3 (EB)",
+      "severity": "Minor",
+      "created_dt": "1670356225",
+      "last_modified_dt": "1670356225",
+      "service_effect_text": "Stop #10910 12th Ave NE & NE 47th St (SB) closed on Sat Dec 10 until 9:00 PM due to construction",
+      "timeframe_text": "Saturday",
+      "alert_lifecycle": "Upcoming",
+      "effect_periods": [
+        { "effect_start": "1670673600", "effect_end": "1670734800" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100214",
+            "route_name": "372",
+            "stop_id": "10910",
+            "stop_name": "12th Ave NE & NE 47th St (SB)"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
+      "alert_id": 1722,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #1415 Madison St & 4th Ave (WB) relocated from Mon Dec 12 at 8:00 AM to Tue Dec 13 at 5:00 PM due to construction.",
+      "short_header_text": "Stop #1415 Madison St & 4th Ave relocated from Mon Dec 12 at 8am to Tue D",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/12/N/12/07/2022/",
+      "description_text": "Affected routes:\r\n12 \r\n\nGet on/off buses at:\r\nStop #1415 Madison St & 4th Ave (WB)",
+      "severity": "Minor",
+      "created_dt": "1670430349",
+      "last_modified_dt": "1670430349",
+      "service_effect_text": "Stop Stop #1415 Madison St & 4th Ave (WB) relocated from Mon Dec 12 at 8:00 AM to Tue Dec 13 at 5:00 PM due to construction",
+      "timeframe_text": "Monday through Tuesday",
+      "alert_lifecycle": "Upcoming",
+      "effect_periods": [
+        { "effect_start": "1670860800", "effect_end": "1670979600" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "1415",
+            "stop_name": "Madison St & 4th Ave (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    }
+  ]
+}

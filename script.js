@@ -11,7 +11,7 @@ function createAlerts() {
   const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
 
   // local JSON
-  const LOCAL_ALERT_DATA = "./json/alerts.json";
+  const LOCAL_ALERT_DATA = "./json/alerts20221207.json";
   const LOCAL_ROUTE_DATA = "./json/routes.json";
 
   // set fetch type
