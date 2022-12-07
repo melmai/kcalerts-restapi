@@ -437,6 +437,7 @@ function icon(effectName) {
       break;
 
     case "Emergency Snow Network":
+    case "Snow Route":
       text = "ac_unit";
       break;
 
