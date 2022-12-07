@@ -2,9 +2,8 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
   const allAlerts = document.getElementById("accordion");
-  // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
-  const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
-  const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
+  const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
+  const API_KEY = "gvMjFrABizrQwye9KBD3KB";
 
   Promise.all([
     fetch(`${BASE_URL}/alerts?api_key=${API_KEY}`).then((res) => res.json()),
@@ -164,24 +163,29 @@ function createRoutePanel(route, id) {
   const upcomingClass = route.status.upcoming ? "upcoming" : "";
   header.setAttribute(
     "class",
-    `accordion-item ${ongoingClass} ${upcomingClass}`
+    `toggle advisory-block ${ongoingClass} ${upcomingClass}`
   );
   header.setAttribute("data-route", routeName);
 
-  const button = document.createElement("button");
-  button.setAttribute("class", "accordion-button collapsed panel-title");
-  // button.setAttribute("type", "button");
-  button.setAttribute("data-bs-toggle", "collapse");
-  button.setAttribute("data-bs-target", `#collapse${id}`);
-  button.setAttribute("aria-expanded", "false");
-  button.setAttribute("aria-controls", `collapse${id}`);
+  const button = document.createElement("input");
+  button.setAttribute("id", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("type", "checkbox");
+  button.setAttribute("name", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("aria-hidden", "true");
 
-  const panelContainer = document.createElement("div");
-  panelContainer.setAttribute("class", "panel-container");
+  const label = document.createElement("label");
+  label.setAttribute(
+    "class",
+    "toggle-head advisory-block-title with-description"
+  );
+  label.setAttribute("for", `toggle-advisory-${route.route_id}`);
 
-  const title = document.createElement("h3");
+  const title = document.createElement("h2");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeName;
+
+  // const panelContainer = document.createElement("div");
+  // panelContainer.setAttribute("class", "panel-container");
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
@@ -201,16 +205,12 @@ function createRoutePanel(route, id) {
   alertStatus.append(ongoing || "", upcoming || "");
 
   // add elements to route header section
-  panelContainer.append(title, alertStatus);
-  button.append(panelContainer);
-  header.append(button);
+  label.append(title, alertStatus);
+  header.append(button, label);
 
   // create alert container
   const alertBody = document.createElement("div");
-  alertBody.id = `collapse${id}`;
-  alertBody.setAttribute("class", "accordion-collapse collapse");
-  alertBody.setAttribute("aria-labelledby", `heading${id}`);
-  // alertBody.setAttribute("data-bs-parent", "#accordionExample");
+  alertBody.setAttribute("class", "toggle-inner");
 
   // append alerts to alert container
   route.alerts.forEach((alert, idx) => {
@@ -229,31 +229,15 @@ function createRoutePanel(route, id) {
  * @returns alert element
  */
 function createAlertPanel(alert, idx) {
-  const alertPanel = document.createElement("div");
-  const status = statusText(alert.alert_lifecycle);
-  alertPanel.id = `alert-collapse${idx}`;
-  alertPanel.setAttribute("class", `alert-panel ${status.toLowerCase()}`);
-  alertPanel.setAttribute("aria-labelledby", `alert-heading${idx}`);
-  alertPanel.setAttribute("data-bs-parent", `#collapse${idx}`);
-
-  // alert icon
-  const alertIcon = document.createElement("span");
-  const alertClass = alert.effect.toLowerCase();
-  alertIcon.setAttribute("aria-hidden", "true");
-  alertIcon.setAttribute(
-    "class",
-    `material-symbols-outlined alert-icon ${alertClass}`
-  );
-  alertIcon.textContent = icon(alert.effect_name);
-
-  alertPanel.append(alertIcon);
-
   // alert content
   const alertContent = document.createElement("div");
-  alertContent.setAttribute("class", "alert-content");
+  alertContent.setAttribute(
+    "class",
+    `advisory-content ${icon(alert.effect_name)}`
+  );
 
   const alertType = document.createElement("h4");
-  alertType.setAttribute("class", "alert-type");
+  alertType.setAttribute("class", "advisory-type");
   alertType.textContent = expandType(alert.effect_name);
 
   const flag = document.createElement("span");
@@ -262,7 +246,7 @@ function createAlertPanel(alert, idx) {
   alertType.append(flag);
 
   const alertTitle = document.createElement("p");
-  alertTitle.setAttribute("class", "alert-title");
+  alertTitle.setAttribute("class", "advisory-title");
   alertTitle.textContent = accessibleText(alert.header_text);
 
   // conditionally add description
@@ -295,14 +279,14 @@ function createAlertPanel(alert, idx) {
   // if more than one effective date range
   if (alert.effect_periods.length > 1) {
     alertDates.textContent = printDates(alert.effect_periods);
-    alertDates.setAttribute("class", "dates");
+    alertDates.setAttribute("class", "advisory-dates");
     // else if only one effective date range
   } else if (alert.effect_periods.length === 1) {
     alertDates.textContent = `Effective Dates: ${processAlertDates(
       alert.effect_periods[0].effect_start,
       alert.effect_periods[0].effect_end
     )}`;
-    alertDates.setAttribute("class", "dates");
+    alertDates.setAttribute("class", "advisory-dates");
   }
 
   const footer = document.createElement("p");
@@ -323,10 +307,7 @@ function createAlertPanel(alert, idx) {
     alertDates,
     footer
   );
-
-  alertPanel.append(alertContent);
-
-  return alertPanel;
+  return alertContent;
 }
 
 /* Helper Functions
@@ -628,7 +609,7 @@ function showAlerts(show = "", hide = "") {
  * Hides routes that do not include search input
  *
  */
-function searchRoutes(showClear) {
+function searchRoutes(showClear = false) {
   if (showClear) {
     const clearBttn = document.getElementById("clear-search");
     clearBttn.setAttribute("style", "visibility: visible;");
@@ -638,7 +619,7 @@ function searchRoutes(showClear) {
   const input = document.getElementById("route-search").value.toLowerCase();
 
   // filter routes
-  const routes = document.getElementsByClassName("accordion-item");
+  const routes = document.getElementsByClassName("advisory-block");
   for (route of routes) {
     const routeName = route.getAttribute("data-route").toLowerCase();
     if (!routeName.includes(input)) {
