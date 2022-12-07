@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", createAlerts);
 
 function createAlerts() {
-  const allAlerts = document.getElementById("accordion");
+  const allAlerts = document.getElementById("kcalert-accordion");
 
   // remote API
   const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
@@ -62,19 +62,18 @@ function createAlerts() {
       // since we are observing only a single element, so we access the first element in entries array
       let rect = entries[0].contentRect;
       const errorMsg = document.getElementById("no-alerts-msg");
-      const accordion = document.getElementById("accordion");
 
       if (rect.height === 0) {
         errorMsg.setAttribute("style", "display: block;");
-        accordion.setAttribute("style", "border-color: transparent;");
+        allAlerts.setAttribute("style", "border-color: transparent;");
       } else {
         errorMsg.setAttribute("style", "display: none;");
-        accordion.setAttribute("style", "border-color: #eee;");
+        allAlerts.setAttribute("style", "border-color: #eee;");
       }
     });
 
     // start observing for resize
-    resize_ob.observe(document.getElementById("accordion"));
+    resize_ob.observe(allAlerts);
   });
 }
 
