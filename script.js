@@ -205,6 +205,7 @@ function createRoutePanel(route, id) {
 
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
+  alertStatus.setAttribute("aria-hidden", "true");
   let ongoing, upcoming;
   if (route.status.ongoing > 0) {
     ongoing = document.createElement("span");
