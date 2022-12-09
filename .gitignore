@@ -1,2 +1,5 @@
 .DS_Store
 *.ai
+*.css.map
+package-lock.json
+node_modules
