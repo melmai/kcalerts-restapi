@@ -29,7 +29,7 @@ function createAlerts() {
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
     const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
     const allData = cleanup(processData(alerts, routes));
-    console.log(allData);
+    // console.log(allData);
 
     // build accordion
     let accordion = new DocumentFragment();
@@ -106,7 +106,7 @@ function processData(alertArr, routeArr) {
     });
   });
 
-  console.log(routeArr);
+  // console.log(routeArr);
   return routeArr;
 }
 
