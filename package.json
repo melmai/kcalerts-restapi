@@ -1,0 +1,22 @@
+{
+  "name": "kcalerts-restapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melmai/kcalerts-restapi.git"
+  },
+  "author": "Melissa Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melmai/kcalerts-restapi/issues"
+  },
+  "homepage": "https://github.com/melmai/kcalerts-restapi#readme"
+}
