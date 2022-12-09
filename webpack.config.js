@@ -9,6 +9,24 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "./js/[name].js",
+    publicPath: "/",
+  },
+  devServer: {
+    static: [
+      {
+        directory: path.join(__dirname, "dist"),
+      },
+      {
+        directory: path.join(__dirname, "img"),
+      },
+      {
+        directory: path.join(__dirname, "json"),
+      },
+    ],
+    port: 9000,
+    open: {
+      target: ["/index.html", "route.html"],
+    },
   },
   module: {
     rules: [
