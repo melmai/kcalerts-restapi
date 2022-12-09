@@ -13,7 +13,6 @@ Table of Contents
 7. Search Filter
 
 */
-
 /* *************************************************
  * Globals
  ***************************************************/
@@ -62,13 +61,13 @@ h6 {
   max-width: 980px;
   margin: 40px auto;
 }
+
 @media only screen and (max-width: 992px) {
   #alerts-container {
     margin-left: 20px;
     margin-right: 20px;
   }
 }
-
 /* *************************************************
  * Accordion Container
  ***************************************************/
@@ -96,7 +95,6 @@ h6 {
 /* *************************************************
  * Route Header 
  ***************************************************/
-
 /* Route Name */
 .accordion-title {
   font-family: var(--body-font);
@@ -130,11 +128,12 @@ h6 {
 }
 
 .route-status .ongoing {
-  background-image: url(../../img/svg/active-fill.svg);
+  background-image: url(./img/svg/active-fill.svg);
   color: #fff;
 }
+
 .route-status .upcoming {
-  background-image: url(../../img/svg/planned.svg);
+  background-image: url(./img/svg/planned.svg);
 }
 
 /* *************************************************
@@ -164,7 +163,6 @@ h6 {
     padding-right: 96px;
   }
 }
-
 /* Alert Header */
 .alert-header {
   display: flex;
@@ -194,7 +192,6 @@ h6 {
     top: 0;
   }
 }
-
 .alert-status.ongoing {
   background-color: red;
   color: #fff;
@@ -252,7 +249,6 @@ h6 {
 /* *************************************************
  * Status Filter Buttons
  ***************************************************/
-
 #status-filter {
   margin-bottom: 20px;
 }
@@ -266,6 +262,7 @@ h6 {
   font-size: 0.8rem;
   text-transform: uppercase;
 }
+
 #status-filter .filter-btn.selected,
 #status-filter .tab-btn.selected {
   background-color: var(--primary);
@@ -290,7 +287,6 @@ h6 {
 /* *************************************************
  * Search Filter 
  ***************************************************/
-
 .filter-box-wrapper {
   background-color: #fff;
   width: 100%;
@@ -302,9 +298,11 @@ h6 {
   -moz-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
   box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
 }
+
 .filter-box {
   position: relative;
 }
+
 #map-search,
 #route-search {
   width: 100%;
@@ -365,7 +363,6 @@ h6 {
 /* *************************************************
  * Advisory Blocks
  ***************************************************/
-
 .advisory-block {
   position: relative;
   line-height: 1.4;
@@ -410,6 +407,7 @@ h6 {
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
 }
+
 .advisory-type {
   font-weight: normal;
   font-size: 1.3rem;
@@ -418,7 +416,6 @@ h6 {
 /* *************************************************
  * Alert Icons
  ***************************************************/
-
 .advisory-content::before {
   font-family: var(--icon-font);
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -427,89 +424,100 @@ h6 {
   top: -5px;
   left: 1.2rem;
 }
+
 .dangerous::before {
   content: "dangerous";
-  content: "dangerous" / "";
+  content: "dangerous"/"";
   color: red;
 }
+
 .alt_route::before,
 .ac_unit::before {
   content: "alt_route";
-  content: "alt_route" / "";
+  content: "alt_route"/"";
   color: blue;
 }
 
 .ac_unit::before {
   content: "ac_unit";
-  content: "ac_unit" / "";
+  content: "ac_unit"/"";
 }
+
 .task_alt::before {
   content: "task_alt";
-  content: "task_alt" / "";
+  content: "task_alt"/"";
   color: green;
 }
+
 .error::before {
   content: "error";
-  content: "error" / "";
+  content: "error"/"";
   color: red;
 }
+
 .timer::before {
   content: "timer";
-  content: "timer" / "";
+  content: "timer"/"";
   color: orange;
 }
+
 .warning::before {
   content: "warning";
-  content: "warning" / "";
+  content: "warning"/"";
   color: black;
 }
 
 /* Styles for hiding and showing */
-.toggle {
-}
 .toggle .toggle-head,
 .toggle .toggle-link {
   position: relative;
   display: block;
   cursor: pointer;
 }
+
 .toggle .toggle-head::before .toggle .toggle-link::before {
   position: absolute;
   transition: transform 0.3s ease;
 }
+
 .toggle.toggle--open label.toggle-head::after,
-.toggle input[class="toggle-advisory"]:checked + label.toggle-head::after,
-.toggle input[type="checkbox"]:checked + label.toggle-head:after {
+.toggle input[class=toggle-advisory]:checked + label.toggle-head::after,
+.toggle input[type=checkbox]:checked + label.toggle-head:after {
   transform: rotate(-180deg);
 }
+
 .toggle .advisory-block-title {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
 }
+
 .toggle input:checked + .advisory-block-title {
   background-color: var(--primary-light-background);
 }
+
 .toggle input:checked + .advisory-block-title:active {
   background-color: var(--primary-light-background);
 }
 
 .toggle.toggle--open label + .toggle-inner,
-.toggle input[id*="toggle-advisory"]:checked + label + .toggle-inner,
-.toggle input[type="checkbox"]:checked + label + .toggle-inner,
+.toggle input[id*=toggle-advisory]:checked + label + .toggle-inner,
+.toggle input[type=checkbox]:checked + label + .toggle-inner,
 .toggle-link.toggle--open label + .advisory-detail,
-.toggle-link input[id*="detail"]:checked + label + .advisory-detail,
-.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+.toggle-link input[id*=detail]:checked + label + .advisory-detail,
+.toggle-link input[type=checkbox]:checked + label + .advisory-detail {
   display: block;
   max-height: 100%;
   transition: max-height 1s ease;
 }
-.toggle input[id*="toggle-advisory"],
-.no-toggle input[id*="toggle-advisory"],
-.toggle input[class*="detail"],
-.no-toggle input[class*="detail"] {
+
+.toggle input[id*=toggle-advisory],
+.no-toggle input[id*=toggle-advisory],
+.toggle input[class*=detail],
+.no-toggle input[class*=detail] {
   display: none;
 }
+
 .toggle .toggle-inner {
   display: block;
   max-height: 0;
@@ -526,6 +534,8 @@ h6 {
   margin-bottom: 1em;
 }
 
-.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+.toggle-link input[type=checkbox]:checked + label + .advisory-detail {
   margin-top: 1rem;
 }
+
+/*# sourceMappingURL=style.css.map */
