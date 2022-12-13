@@ -298,12 +298,12 @@ h6 {
 }
 
 .route-status .ongoing {
-  background-image: url(../../img/svg/active-fill.svg);
+  background-image: url(../static/img/svg/active-fill.svg);
   color: #fff;
 }
 
 .route-status .upcoming {
-  background-image: url(../../img/svg/planned.svg);
+  background-image: url(../static/img/svg/planned.svg);
 }
 
 /* Styles for hiding and showing */
@@ -320,8 +320,8 @@ h6 {
 }
 
 .toggle.toggle--open label.toggle-head::after,
-.toggle input[id*="toggle"]:checked + label.toggle-head::after,
-.toggle input[type="checkbox"]:checked + label.toggle-head:after {
+.toggle input[id*=toggle]:checked + label.toggle-head::after,
+.toggle input[type=checkbox]:checked + label.toggle-head:after {
   transform: rotate(-180deg);
 }
 
@@ -336,20 +336,20 @@ h6 {
 }
 
 .toggle.toggle--open label + .toggle-inner,
-.toggle input[id*="toggle"]:checked + label + .toggle-inner,
-.toggle input[type="checkbox"]:checked + label + .toggle-inner,
+.toggle input[id*=toggle]:checked + label + .toggle-inner,
+.toggle input[type=checkbox]:checked + label + .toggle-inner,
 .toggle-link.toggle--open label + .advisory-detail,
-.toggle-link input[id*="detail"]:checked + label + .advisory-detail,
-.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+.toggle-link input[id*=detail]:checked + label + .advisory-detail,
+.toggle-link input[type=checkbox]:checked + label + .advisory-detail {
   display: block;
   max-height: 2000px;
   transition: max-height 1s ease;
 }
 
-.toggle input[id*="toggle"],
-.no-toggle input[id*="toggle"],
-.toggle input[id*="detail"],
-.no-toggle input[id*="detail"] {
+.toggle input[id*=toggle],
+.no-toggle input[id*=toggle],
+.toggle input[id*=detail],
+.no-toggle input[id*=detail] {
   display: none;
 }
 
@@ -369,18 +369,18 @@ h6 {
   margin-bottom: 1em;
 }
 
-.toggle-link input[type="checkbox"] + label::after {
+.toggle-link input[type=checkbox] + label::after {
   content: "View details";
   color: blue;
   text-decoration: underline;
   display: block;
 }
 
-.toggle-link input[type="checkbox"]:checked + label::after {
+.toggle-link input[type=checkbox]:checked + label::after {
   content: "Hide details";
 }
 
-.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+.toggle-link input[type=checkbox]:checked + label + .advisory-detail {
   margin-top: 1rem;
 }
 

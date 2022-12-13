@@ -9,7 +9,7 @@ function systemAlertInit() {
   const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
 
   // local data
-  const LOCAL_ALERT_DATA = "../json/alerts20221207.json";
+  const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
 
   // set fetch type
   const isRemote = false;
