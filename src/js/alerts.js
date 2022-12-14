@@ -9,8 +9,6 @@ import {
   routeLabel,
   organizeRoutes,
   showAlerts,
-  searchRoutes,
-  clearSearch,
   toggleDetails,
   expandType,
 } from "./helpers";
@@ -338,4 +336,38 @@ function createAlertPanel(alert, idx) {
     footer
   );
   return alertContent;
+}
+
+/**
+ * Hides routes that do not include search input
+ *
+ */
+function searchRoutes(showClear = false) {
+  if (showClear) {
+    const clearBttn = document.getElementById("clear-search");
+    clearBttn.setAttribute("style", "visibility: visible;");
+  }
+
+  // get the search value
+  const input = document.getElementById("route-search").value.toLowerCase();
+
+  // filter routes
+  const routes = document.getElementsByClassName("advisory-block");
+  for (const route of routes) {
+    const routeName = route.getAttribute("data-route").toLowerCase();
+    if (!routeName.includes(input)) {
+      route.setAttribute("style", "display:none;");
+    } else {
+      route.setAttribute("style", "display:block;");
+    }
+  }
+}
+
+function clearSearch() {
+  const clearBttn = document.getElementById("clear-search");
+  clearBttn.setAttribute("style", "visibility: hidden;");
+
+  const searchInput = document.getElementById("route-search");
+  searchInput.value = "";
+  searchRoutes(false);
 }

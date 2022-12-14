@@ -144,7 +144,7 @@ function generateRouteAlerts(data, idxa, isMultiple) {
   return routeData;
 }
 
-function generateSingleAlert(alert, idxb, idxa) {
+function generateSingleAlert(alert) {
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute(
