@@ -1,0 +1,66 @@
+/* *************************************************
+ * Main Container
+ ***************************************************/
+#alerts-container {
+  max-width: 980px;
+  margin: 40px auto;
+}
+@media only screen and (max-width: 992px) {
+  #alerts-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+/* *************************************************
+   * Accordion Container
+   ***************************************************/
+#accordion {
+  border: 2px solid var(--border-color);
+  /* border-radius: 6px; */
+  /* box-shadow: 1px 3px 4px #efefef; */
+}
+
+/* *************************************************
+ * Route Header 
+ ***************************************************/
+
+/* Route Name */
+.accordion-title {
+  font-family: var(--body-font);
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  padding: 1.2rem;
+}
+
+/* Status Count Icons */
+.route-status {
+  display: flex;
+  margin-right: 50px;
+}
+
+.route-status > span {
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 50%;
+  font-size: 14px;
+  padding: 0.5rem;
+  padding-top: 0.75rem;
+  line-height: 1;
+  margin-right: 0.25rem;
+}
+
+.route-status .ongoing {
+  background-image: url(../static/img/svg/active-fill.svg);
+  color: #fff;
+}
+.route-status .upcoming {
+  background-image: url(../static/img/svg/planned.svg);
+}

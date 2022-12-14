@@ -1,0 +1,14 @@
+/* *************************************************
+ * ongoing vs upcoming Alerts
+ ***************************************************/
+.accordion.ongoing > .upcoming:not(.ongoing),
+.accordion.ongoing .alert-panel.upcoming,
+.accordion.ongoing .route-status .upcoming {
+  display: none !important;
+}
+
+.accordion.upcoming > .ongoing:not(.upcoming),
+.accordion.upcoming .alert-panel.ongoing,
+.accordion.upcoming .route-status .ongoing {
+  display: none !important;
+}

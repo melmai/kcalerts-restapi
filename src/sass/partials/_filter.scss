@@ -1,0 +1,112 @@
+/* *************************************************
+ * Status Filter Buttons
+ ***************************************************/
+
+#status-filter {
+  margin-bottom: 20px;
+}
+
+#status-filter .filter-btn,
+#status-filter .tab-btn {
+  border: 1px solid #ccc;
+  background-color: var(--light);
+  color: var(--gray);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+#status-filter .filter-btn.selected,
+#status-filter .tab-btn.selected {
+  background-color: var(--primary);
+  color: #fff;
+  position: relative;
+  padding-left: 24px;
+}
+
+#status-filter .filter-btn.selected::before,
+#status-filter .tab-btn.selected::before {
+  font-family: "Material Symbols Outlined";
+  content: "check";
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+  font-size: 20px;
+  width: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* *************************************************
+   * Search Filter 
+   ***************************************************/
+
+.filter-box-wrapper {
+  background-color: #fff;
+  width: 100%;
+  margin: 0 0 1.7rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  -webkit-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
+  -moz-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
+}
+.filter-box {
+  position: relative;
+}
+#map-search,
+#route-search {
+  width: 100%;
+  font-size: 1.3em;
+  font-size: 16px;
+  height: 56px;
+  background: #f4f4f4;
+  border: 0;
+  border-bottom: 1px solid #757575;
+  border-radius: 0;
+  margin: 0;
+  padding: 20px;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+#map-search:focus,
+#map-search:hover,
+#route-search:focus,
+#route-search:hover {
+  height: 60px;
+  border-bottom: 4px solid #757575;
+  margin: 0 0 -4px;
+}
+
+#search {
+  margin-bottom: 20px;
+}
+
+#route-search-container {
+  position: relative;
+}
+
+#clear-search {
+  visibility: hidden;
+  border: 0;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: transparent;
+}
+
+#clear-search span {
+  color: var(--primary);
+}
+
+#clear-search span:hover {
+  color: var(--primary-hover);
+}
+
+#clear-search span:active {
+  color: var(--primary-ghost-white);
+}

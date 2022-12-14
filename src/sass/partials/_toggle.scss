@@ -1,0 +1,65 @@
+/* Styles for hiding and showing */
+.toggle {
+}
+.toggle .toggle-head,
+.toggle .toggle-link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.toggle .toggle-head::before .toggle .toggle-link::before {
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+.toggle.toggle--open label.toggle-head::after,
+.toggle input[class="toggle-advisory"]:checked + label.toggle-head::after,
+.toggle input[type="checkbox"]:checked + label.toggle-head:after {
+  transform: rotate(-180deg);
+}
+.toggle .advisory-block-title {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.toggle input:checked + .advisory-block-title {
+  background-color: var(--primary-light-background);
+}
+.toggle input:checked + .advisory-block-title:active {
+  background-color: var(--primary-light-background);
+}
+
+.toggle.toggle--open label + .toggle-inner,
+.toggle input[id*="toggle-advisory"]:checked + label + .toggle-inner,
+.toggle input[type="checkbox"]:checked + label + .toggle-inner,
+.toggle-link.toggle--open label + .advisory-detail,
+.toggle-link input[id*="detail"]:checked + label + .advisory-detail,
+.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+  display: block;
+  max-height: 100%;
+  transition: max-height 1s ease;
+}
+.toggle input[id*="toggle-advisory"],
+.no-toggle input[id*="toggle-advisory"],
+.toggle input[class*="detail"],
+.no-toggle input[class*="detail"] {
+  display: none;
+}
+.toggle .toggle-inner {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-link .advisory-detail {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  margin-bottom: 1em;
+}
+
+.toggle-link input[type="checkbox"]:checked + label + .advisory-detail {
+  margin-top: 1rem;
+}
