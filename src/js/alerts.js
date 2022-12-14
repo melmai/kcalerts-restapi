@@ -188,7 +188,7 @@ function createRoutePanel(route, id) {
   return routePanel;
 }
 
-function setupListEvents() {
+function setupListEvents(element) {
   // reset to default view
   const reset = document.getElementById("reset");
   reset.addEventListener("click", () => showAlerts());
@@ -214,5 +214,5 @@ function setupListEvents() {
   clearInput.addEventListener("click", clearSearch);
 
   // notify user if no results
-  notifyNoResults(allAlerts);
+  notifyNoResults(element);
 }
