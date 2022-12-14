@@ -271,6 +271,28 @@ function countAlertTypes(data) {
   };
 }
 
+/**
+ * Increments alert status
+ *
+ * @param {String} alertStatus
+ * @param {Object} routeStatus
+ * @returns Object that holds status of alerts for the route
+ */
+function incrementStatusType(
+  alertStatus,
+  routeStatus = { ongoing: 0, upcoming: 0 }
+) {
+  // console.log(alertStatus);
+  let res = routeStatus;
+  if (alertStatus.includes("Ongoing") || alertStatus === "New") {
+    res.ongoing = res.ongoing + 1;
+  } else {
+    res.upcoming = res.upcoming + 1;
+  }
+
+  return res;
+}
+
 export {
   printDates,
   cleanup,
@@ -286,4 +308,5 @@ export {
   organizeRoutes,
   expandType,
   countAlertTypes,
+  incrementStatusType,
 };

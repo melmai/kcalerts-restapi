@@ -57,4 +57,64 @@ function toggleDetails(e) {
   }
 }
 
-export { clearButtons, showAlerts, toggleDetails };
+function notifyNoResults(element) {
+  const resize_ob = new ResizeObserver(function (entries) {
+    // since we are observing only a single element, so we access the first element in entries array
+    let rect = entries[0].contentRect;
+    const errorMsg = document.getElementById("no-alerts-msg");
+
+    if (rect.height === 0) {
+      errorMsg.setAttribute("style", "display: block;");
+      element.setAttribute("style", "border-color: transparent;");
+    } else {
+      errorMsg.setAttribute("style", "display: none;");
+      element.setAttribute("style", "border-color: #eee;");
+    }
+  });
+
+  // start observing for resize
+  resize_ob.observe(element);
+}
+
+/**
+ * Hides routes that do not include search input
+ *
+ */
+function searchRoutes(showClear = false) {
+  if (showClear) {
+    const clearBttn = document.getElementById("clear-search");
+    clearBttn.setAttribute("style", "visibility: visible;");
+  }
+
+  // get the search value
+  const input = document.getElementById("route-search").value.toLowerCase();
+
+  // filter routes
+  const routes = document.getElementsByClassName("advisory-block");
+  for (const route of routes) {
+    const routeName = route.getAttribute("data-route").toLowerCase();
+    if (!routeName.includes(input)) {
+      route.setAttribute("style", "display:none;");
+    } else {
+      route.setAttribute("style", "display:block;");
+    }
+  }
+}
+
+function clearSearch() {
+  const clearBttn = document.getElementById("clear-search");
+  clearBttn.setAttribute("style", "visibility: hidden;");
+
+  const searchInput = document.getElementById("route-search");
+  searchInput.value = "";
+  searchRoutes(false);
+}
+
+export {
+  clearButtons,
+  showAlerts,
+  toggleDetails,
+  notifyNoResults,
+  searchRoutes,
+  clearSearch,
+};

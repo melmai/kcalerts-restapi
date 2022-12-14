@@ -1,6 +1,17 @@
 import { BASE_URL, API_KEY } from "./cred";
-import { cleanup, uniqueRoutes, routeLabel, organizeRoutes } from "./helpers";
-import { showAlerts } from "./events";
+import {
+  cleanup,
+  uniqueRoutes,
+  routeLabel,
+  organizeRoutes,
+  incrementStatusType,
+} from "./helpers";
+import {
+  showAlerts,
+  notifyNoResults,
+  searchRoutes,
+  clearSearch,
+} from "./events";
 import { generateSingleAlert } from "./single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
@@ -18,7 +29,6 @@ function createAlerts() {
 
   // set fetch type
   const isRemote = false;
-
   const ALERT_URL = isRemote ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
   const ROUTE_URL = isRemote ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
 
@@ -31,7 +41,6 @@ function createAlerts() {
     const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
     const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
     const allData = cleanup(processData(alerts, routes));
-    // console.log(allData);
 
     // build accordion
     let accordion = new DocumentFragment();
@@ -41,41 +50,7 @@ function createAlerts() {
     allAlerts.append(accordion);
 
     // attach event handlers
-    const reset = document.getElementById("reset");
-    reset.addEventListener("click", () => showAlerts());
-
-    const ongoingAlertsBttn = document.getElementById("ongoing-filter");
-    ongoingAlertsBttn.addEventListener("click", () =>
-      showAlerts("ongoing", "upcoming")
-    );
-
-    const upcomingAlertsBttn = document.getElementById("upcoming-filter");
-    upcomingAlertsBttn.addEventListener("click", () =>
-      showAlerts("upcoming", "ongoing")
-    );
-
-    const searchInput = document.getElementById("route-search");
-    searchInput.addEventListener("keyup", () => searchRoutes(true));
-
-    const clearInput = document.getElementById("clear-search");
-    clearInput.addEventListener("click", clearSearch);
-
-    const resize_ob = new ResizeObserver(function (entries) {
-      // since we are observing only a single element, so we access the first element in entries array
-      let rect = entries[0].contentRect;
-      const errorMsg = document.getElementById("no-alerts-msg");
-
-      if (rect.height === 0) {
-        errorMsg.setAttribute("style", "display: block;");
-        allAlerts.setAttribute("style", "border-color: transparent;");
-      } else {
-        errorMsg.setAttribute("style", "display: none;");
-        allAlerts.setAttribute("style", "border-color: #eee;");
-      }
-    });
-
-    // start observing for resize
-    resize_ob.observe(allAlerts);
+    setupListEvents(allAlerts);
   });
 }
 
@@ -108,30 +83,7 @@ function processData(alertArr, routeArr) {
     });
   });
 
-  // console.log(routeArr);
   return routeArr;
-}
-
-/**
- * Increments alert status
- *
- * @param {String} alertStatus
- * @param {Object} routeStatus
- * @returns Object that holds status of alerts for the route
- */
-function incrementStatusType(
-  alertStatus,
-  routeStatus = { ongoing: 0, upcoming: 0 }
-) {
-  // console.log(alertStatus);
-  let res = routeStatus;
-  if (alertStatus.includes("Ongoing") || alertStatus === "New") {
-    res.ongoing = res.ongoing + 1;
-  } else {
-    res.upcoming = res.upcoming + 1;
-  }
-
-  return res;
 }
 
 /**
@@ -236,36 +188,31 @@ function createRoutePanel(route, id) {
   return routePanel;
 }
 
-/**
- * Hides routes that do not include search input
- *
- */
-function searchRoutes(showClear = false) {
-  if (showClear) {
-    const clearBttn = document.getElementById("clear-search");
-    clearBttn.setAttribute("style", "visibility: visible;");
-  }
+function setupListEvents() {
+  // reset to default view
+  const reset = document.getElementById("reset");
+  reset.addEventListener("click", () => showAlerts());
 
-  // get the search value
-  const input = document.getElementById("route-search").value.toLowerCase();
+  // show only ongoing alerts
+  const ongoingAlertsBttn = document.getElementById("ongoing-filter");
+  ongoingAlertsBttn.addEventListener("click", () =>
+    showAlerts("ongoing", "upcoming")
+  );
 
-  // filter routes
-  const routes = document.getElementsByClassName("advisory-block");
-  for (const route of routes) {
-    const routeName = route.getAttribute("data-route").toLowerCase();
-    if (!routeName.includes(input)) {
-      route.setAttribute("style", "display:none;");
-    } else {
-      route.setAttribute("style", "display:block;");
-    }
-  }
-}
+  // show only upcoming alerts
+  const upcomingAlertsBttn = document.getElementById("upcoming-filter");
+  upcomingAlertsBttn.addEventListener("click", () =>
+    showAlerts("upcoming", "ongoing")
+  );
 
-function clearSearch() {
-  const clearBttn = document.getElementById("clear-search");
-  clearBttn.setAttribute("style", "visibility: hidden;");
-
+  // search input
   const searchInput = document.getElementById("route-search");
-  searchInput.value = "";
-  searchRoutes(false);
+  searchInput.addEventListener("keyup", () => searchRoutes(true));
+
+  // clear search
+  const clearInput = document.getElementById("clear-search");
+  clearInput.addEventListener("click", clearSearch);
+
+  // notify user if no results
+  notifyNoResults(allAlerts);
 }
