@@ -6,6 +6,7 @@ import {
   accessibleText,
   statusText,
   toggleDetails,
+  countAlertTypes,
 } from "./helpers";
 
 window.addEventListener("DOMContentLoaded", generateAlerts);
@@ -251,27 +252,4 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
     `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
   ).then((res) => res.json());
   return alerts;
-}
-
-/* Helper Functions
- ******************************************************* */
-
-function countAlertTypes(data) {
-  let ongoing = 0;
-  let upcoming = 0;
-
-  data.forEach((route) => {
-    route.alerts.forEach((alert) => {
-      if (alert.alert_lifecycle === "Upcoming") {
-        upcoming++;
-      } else {
-        ongoing++;
-      }
-    });
-  });
-
-  return {
-    ongoing: ongoing,
-    upcoming: upcoming,
-  };
 }

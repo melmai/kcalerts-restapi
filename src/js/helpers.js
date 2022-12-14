@@ -344,6 +344,26 @@ function toggleDetails(e) {
   }
 }
 
+function countAlertTypes(data) {
+  let ongoing = 0;
+  let upcoming = 0;
+
+  data.forEach((route) => {
+    route.alerts.forEach((alert) => {
+      if (alert.alert_lifecycle === "Upcoming") {
+        upcoming++;
+      } else {
+        ongoing++;
+      }
+    });
+  });
+
+  return {
+    ongoing: ongoing,
+    upcoming: upcoming,
+  };
+}
+
 export {
   printDates,
   cleanup,
@@ -363,4 +383,5 @@ export {
   clearSearch,
   toggleDetails,
   expandType,
+  countAlertTypes,
 };
