@@ -130,8 +130,8 @@ function generateRouteAlerts(data, idxa, isMultiple) {
   }
 
   // print alerts
-  data.alerts.forEach((alert, idxb) => {
-    routeData.append(generateSingleAlert(alert, idxb, idxa));
+  data.alerts.forEach((alert) => {
+    routeData.append(generateSingleAlert(alert));
   });
 
   return routeData;
