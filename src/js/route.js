@@ -4,6 +4,7 @@ import {
   icon,
   accessibleText,
   statusText,
+  toggleDetails,
 } from "./helpers";
 
 window.addEventListener("DOMContentLoaded", generateAlerts);
@@ -177,29 +178,24 @@ function generateSingleAlert(alert, idxb, idxa) {
   title.setAttribute("class", "advisory-title");
   title.textContent = accessibleText(alert.header_text);
 
-  // description toggle
-  const toggleLink = document.createElement("div");
-  toggleLink.setAttribute("class", "toggle-link");
-
-  const checkbox = document.createElement("input");
-  checkbox.id = `detail-${idxa}-${idxb}`;
-  checkbox.setAttribute("type", "checkbox");
-  checkbox.setAttribute("name", "details");
-  checkbox.setAttribute("aria-hidden", "true");
-
-  const label = document.createElement("label");
-  label.setAttribute("for", `detail-${idxa}-${idxb}`);
-  label.setAttribute("class", "toggle-link-label");
-  label.setAttribute("aria-hidden", "true");
-
-  let description = "";
+  // conditionally add description
+  let alertDescription = "";
   if (alert.description_text) {
-    description = document.createElement("p");
-    description.setAttribute("class", "advisory-detail");
-    description.textContent = accessibleText(alert.description_text);
+    // console.log(accessibleText(alert.description_text));
+    alertDescription = document.createElement("p");
+    alertDescription.textContent = accessibleText(alert.description_text);
+    alertDescription.setAttribute("class", "alert-description");
+    alertDescription.setAttribute("style", "display:none;");
   }
 
-  toggleLink.append(checkbox, label, description);
+  // more details button
+  let expandLink = "";
+  if (alert.description_text) {
+    expandLink = document.createElement("a");
+    expandLink.setAttribute("class", "expand-link");
+    expandLink.addEventListener("click", toggleDetails);
+    expandLink.textContent = "View details";
+  }
 
   // alert dates
   const dates = document.createElement("p");
@@ -224,7 +220,7 @@ function generateSingleAlert(alert, idxb, idxa) {
     alert.last_modified_dt
   )}`;
 
-  alertPanel.append(type, title, toggleLink, dates, footer);
+  alertPanel.append(type, title, expandLink, alertDescription, dates, footer);
   return alertPanel;
 }
 
