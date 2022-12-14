@@ -1,3 +1,4 @@
+import { BASE_URL, API_KEY } from "./cred";
 import {
   printDates,
   processAlertDates,
@@ -44,18 +45,10 @@ async function generateAlerts() {
 async function getRemoteAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/c-line.html"; // alpha routes
-  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/11-5"; // alpha routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
-  // path =
-  //   "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-217-241-245";           // no route alerts
   // path = window.location.pathname;
 
-  // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
-  const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
-  const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
-
-  // TODO replace static route with parsed version from window.location.pathname
   const routeNames = parseRoutes(path.split("/").pop());
 
   // get the route IDs
@@ -181,7 +174,6 @@ function generateSingleAlert(alert, idxb, idxa) {
   // conditionally add description
   let alertDescription = "";
   if (alert.description_text) {
-    // console.log(accessibleText(alert.description_text));
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");

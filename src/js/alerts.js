@@ -1,3 +1,4 @@
+import { BASE_URL, API_KEY } from "./cred";
 import {
   printDates,
   cleanup,
@@ -20,9 +21,6 @@ function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
 
   // remote API
-  const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
-  const API_KEY = "gvMjFrABizrQwye9KBD3KB";
-
   const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
   const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
 

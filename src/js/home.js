@@ -1,3 +1,4 @@
+import { BASE_URL, API_KEY } from "./cred";
 import { processAlertDates } from "./helpers";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
@@ -6,8 +7,6 @@ function systemAlertInit() {
   const systemAlertContainer = document.getElementById("system-alerts-banner");
 
   // remote API
-  const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
-  const API_KEY = "gvMjFrABizrQwye9KBD3KB";
   const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
 
   // local data
