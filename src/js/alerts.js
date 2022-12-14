@@ -206,9 +206,6 @@ function createRoutePanel(route, id) {
   title.setAttribute("class", "accordion-title");
   title.textContent = routeName;
 
-  // const panelContainer = document.createElement("div");
-  // panelContainer.setAttribute("class", "panel-container");
-
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
   alertStatus.setAttribute("aria-hidden", "true");

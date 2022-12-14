@@ -259,7 +259,7 @@ function organizeRoutes(routes) {
  */
 function clearButtons() {
   const bttns = document.getElementsByClassName("tab-btn");
-  for (bttn of bttns) {
+  for (const bttn of bttns) {
     bttn.removeAttribute("class", "selected");
     bttn.setAttribute("class", "tab-btn");
   }
@@ -272,7 +272,7 @@ function clearButtons() {
  * @param {String} hide alert type to hide
  */
 function showAlerts(show = "", hide = "") {
-  const accordion = document.getElementById("accordion");
+  const accordion = document.getElementById("kcalert-accordion");
 
   // change accordion view
   if (show === "") {
