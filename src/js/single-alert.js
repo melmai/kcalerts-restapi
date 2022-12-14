@@ -4,8 +4,8 @@ import {
   icon,
   accessibleText,
   statusText,
-  toggleDetails,
 } from "./helpers";
+import { toggleDetails } from "./events";
 
 export function generateSingleAlert(alert) {
   // alert panel

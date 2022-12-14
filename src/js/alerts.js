@@ -1,11 +1,6 @@
 import { BASE_URL, API_KEY } from "./cred";
-import {
-  cleanup,
-  uniqueRoutes,
-  routeLabel,
-  organizeRoutes,
-  showAlerts,
-} from "./helpers";
+import { cleanup, uniqueRoutes, routeLabel, organizeRoutes } from "./helpers";
+import { showAlerts } from "./events";
 import { generateSingleAlert } from "./single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
