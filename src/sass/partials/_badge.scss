@@ -1,0 +1,66 @@
+/* *************************************************
+ * ongoing vs upcoming Alerts
+ ***************************************************/
+.accordion.ongoing > .upcoming:not(.ongoing),
+.accordion.ongoing .alert-panel.upcoming,
+.accordion.ongoing .route-status .upcoming {
+  display: none !important;
+}
+
+.accordion.upcoming > .ongoing:not(.upcoming),
+.accordion.upcoming .alert-panel.ongoing,
+.accordion.upcoming .route-status .ongoing {
+  display: none !important;
+}
+
+/* Status Count Icons */
+.route-status {
+  display: flex;
+  margin-right: 30px;
+}
+
+.route-status > span {
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 50%;
+  font-size: 14px;
+  padding: 0.5em;
+  padding-top: 0.75em;
+  line-height: 1;
+  margin-right: 0.25em;
+}
+
+.route-status .ongoing {
+  background-image: url(../static/img/svg/active-fill.svg);
+  color: #fff;
+}
+.route-status .upcoming {
+  background-image: url(../static/img/svg/planned.svg);
+}
+
+/* *************************************************
+ * Status Badges
+ ***************************************************/
+
+.advisory-status {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 1em;
+  text-transform: uppercase;
+  font-size: 0.6em;
+  padding: 2px 10px;
+  border-radius: 5px;
+  letter-spacing: 0.08em;
+}
+.advisory-status.ongoing {
+  background-color: red;
+  color: #fff;
+}
+
+.advisory-status.upcoming {
+  background-color: orange;
+}

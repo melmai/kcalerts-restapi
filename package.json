@@ -1,0 +1,35 @@
+{
+  "name": "kcalerts-restapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "sass": "sass --watch src/sass/:dist/css/",
+    "build": "npm run sass && webpack -w",
+    "start:dev": "webpack-dev-server --mode=development",
+    "stop:dev": "webpack-dev-server stop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melmai/kcalerts-restapi.git"
+  },
+  "author": "Melissa Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melmai/kcalerts-restapi/issues"
+  },
+  "homepage": "https://github.com/melmai/kcalerts-restapi#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.0",
+    "sass": "^1.56.2",
+    "sass-loader": "^13.2.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

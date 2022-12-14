@@ -1,15 +1,16 @@
+import { BASE_URL, API_KEY } from "./cred";
+import { processAlertDates } from "./helpers";
+
 window.addEventListener("DOMContentLoaded", systemAlertInit);
 
 function systemAlertInit() {
   const systemAlertContainer = document.getElementById("system-alerts-banner");
 
   // remote API
-  const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
-  const API_KEY = "gvMjFrABizrQwye9KBD3KB";
   const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
 
   // local data
-  const LOCAL_ALERT_DATA = "./json/alerts20221207.json";
+  const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
 
   // set fetch type
   const isRemote = false;
@@ -65,28 +66,4 @@ function buildBanner(alert) {
 
   bannerContent.append(title, bodyText, date);
   return bannerContent;
-}
-
-/**
- * Generates text for alert effective dates
- *
- * @param {Int} start
- * @param {Int} end
- * @returns String describing effective dates
- */
-function processAlertDates(startDate, endDate) {
-  const today = Math.round(new Date().getTime() / 1000);
-  const start = convertEpoch(startDate);
-  const end = convertEpoch(endDate);
-
-  if (start === end) {
-    // if start and end dates are the same, return one value
-    return start;
-  } else if (endDate < today) {
-    // if end date is out of range, swap end value for until further notice
-    return `${start} until further notice`;
-  } else {
-    // else return date range
-    return `${start} to ${end}`;
-  }
 }
