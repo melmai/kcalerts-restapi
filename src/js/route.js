@@ -9,6 +9,38 @@ import {
 window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
+  const alertContainer = document.getElementById("accordion");
+  const isRemote = false;
+
+  let data;
+  if (isRemote) {
+    data = getRemoteAlerts();
+
+    // if no alerts, don't render accordion
+    let alerts = false;
+    data.forEach((route) => {
+      if (route.alerts.length > 0) alerts = true;
+    });
+
+    if (!alerts) return;
+  } else {
+    let json;
+    json = "../static/json/route/c-line.json";
+    json = "../static/json/route/007.json";
+    // json = "../static/json/route/271.json";
+
+    data = await fetch(json).then((res) => res.json());
+    data = [data];
+  }
+  console.log(data);
+
+  // build accordion
+  let accordion = new DocumentFragment();
+  accordion.append(buildAccordion(data));
+  alertContainer.append(accordion);
+}
+
+async function getRemoteAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/c-line.html"; // alpha routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/11-5"; // alpha routes
@@ -18,7 +50,6 @@ async function generateAlerts() {
   //   "/sitecore/content/KCGov/home/depts/metro/schedules-maps/240-217-241-245";           // no route alerts
   // path = window.location.pathname;
 
-  const alertContainer = document.getElementById("accordion");
   // const BASE_URL = "http://107.23.133.228:8090/developer/api/v2";
   const BASE_URL = "http://3.228.90.146:8090/developer/api/v2";
   const API_KEY = "4oJedLBt80WP-d7E6Ekf5w";
@@ -40,18 +71,7 @@ async function generateAlerts() {
     })
   );
 
-  // if no alerts, don't render accordion
-  let alerts = false;
-  data.forEach((route) => {
-    if (route.alerts.length > 0) alerts = true;
-  });
-
-  if (!alerts) return;
-
-  // build accordion
-  let accordion = new DocumentFragment();
-  accordion.append(buildAccordion(data));
-  alertContainer.append(accordion);
+  return data;
 }
 
 function buildAccordion(data) {
