@@ -1,17 +1,12 @@
 import { BASE_URL, API_KEY } from "./cred";
 import {
-  printDates,
   cleanup,
   uniqueRoutes,
-  processAlertDates,
-  icon,
-  accessibleText,
   routeLabel,
   organizeRoutes,
   showAlerts,
-  toggleDetails,
-  expandType,
 } from "./helpers";
+import { generateSingleAlert } from "./single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
 
@@ -242,100 +237,11 @@ function createRoutePanel(route, id) {
 
   // append alerts to alert container
   route.alerts.forEach((alert, idx) => {
-    alertBody.append(createAlertPanel(alert, idx));
+    alertBody.append(generateSingleAlert(alert));
   });
   header.append(alertBody);
   routePanel.append(header);
   return routePanel;
-}
-
-/**
- * Creates an alert panel to append to a route
- *
- * @param {Object} alert
- * @param {Int} idx
- * @returns alert element
- */
-function createAlertPanel(alert, idx) {
-  // alert content
-  const alertContent = document.createElement("div");
-  alertContent.setAttribute(
-    "class",
-    `advisory-content ${icon(alert.effect_name)}`
-  );
-
-  const alertType = document.createElement("h4");
-  alertType.setAttribute("class", "advisory-type");
-  alertType.textContent = expandType(alert.effect_name);
-
-  const flag = document.createElement("span");
-  flag.setAttribute("class", `alert-status ${status.toLowerCase()}`);
-  flag.append(status);
-  alertType.append(flag);
-
-  const alertTitle = document.createElement("p");
-  alertTitle.setAttribute("class", "advisory-title");
-  alertTitle.textContent = accessibleText(alert.header_text);
-
-  // conditionally add description
-  let alertDescription = "";
-  if (alert.description_text) {
-    // console.log(accessibleText(alert.description_text));
-    alertDescription = document.createElement("p");
-    alertDescription.textContent = accessibleText(alert.description_text);
-    alertDescription.setAttribute("class", "alert-description");
-    alertDescription.setAttribute("style", "display:none;");
-  }
-
-  // more details button
-  let expandLink = "";
-  if (alert.description_text) {
-    expandLink = document.createElement("a");
-    expandLink.setAttribute("class", "expand-link");
-    expandLink.addEventListener("click", toggleDetails);
-    expandLink.textContent = "View details";
-  }
-
-  const alertCause = document.createElement("p");
-  alertCause.textContent = `Cause: ${alert.cause}`;
-  alertCause.setAttribute("class", "cause");
-
-  // if array is not empty
-  let alertDates = "N/A";
-  // console.log(alert.effect_periods.length);
-  alertDates = document.createElement("p");
-  // if more than one effective date range
-  if (alert.effect_periods.length > 1) {
-    alertDates.textContent = printDates(alert.effect_periods);
-    alertDates.setAttribute("class", "advisory-dates");
-    // else if only one effective date range
-  } else if (alert.effect_periods.length === 1) {
-    alertDates.textContent = `Effective Dates: ${processAlertDates(
-      alert.effect_periods[0].effect_start,
-      alert.effect_periods[0].effect_end
-    )}`;
-    alertDates.setAttribute("class", "advisory-dates");
-  }
-
-  const footer = document.createElement("p");
-  footer.setAttribute("class", "alert-footer");
-  footer.textContent = `Alert ID: ${
-    alert.alert_id
-  }, Last Updated: ${processAlertDates(
-    alert.last_modified_dt,
-    alert.last_modified_dt
-  )}`;
-
-  alertContent.append(
-    alertType,
-    alertTitle,
-    expandLink,
-    alertDescription,
-    alertCause,
-    alertDates,
-    footer
-  );
-  return alertContent;
 }
 
 /**
