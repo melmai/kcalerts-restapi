@@ -1,108 +1,23 @@
-// @import "./partials/global"; // globals
-// @import "./partials/badge"; // badges
-// @import "./partials/filter"; // filters
-// @import "./partials/icons"; // icons
-// @import "./partials/toggle"; // accordion show/hide
-// @import "./partials/list"; // list view
-// @import "./partials/alert"; // alert panel
-
-/* General styling for the page */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  padding: 20px;
-  background-color: #fff;
-}
-
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
+@import "./partials/mixins"; // mixins
+@import "./partials/global"; // globals
+@import "./partials/badge"; // badges
+@import "./partials/filter"; // filters
+@import "./partials/icons"; // icons
+@import "./partials/toggle"; // accordion show/hide
+@import "./partials/list"; // list view
+@import "./partials/alert"; // alert panel
 
 .main-content {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px 20px;
   background: #fff;
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    padding: 10px;
+  @include responsive(600px) {
+    .main-content {
+      margin: 0;
+      padding: 0 0 20px;
+    }
   }
-
-  .main-content {
-    max-width: 900px;
-    margin: 0;
-    padding: 0 0 20px;
-    background: #fff;
-  }
-}
-
-.border1 {
-  border: 1px solid #ccc;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-}
-.advisory-block-wrapper {
-  padding: 0;
-}
-
-/* Styles for service advisories */
-
-/* *************************************************
- * Globals
- ***************************************************/
-* {
-  font-family: "Cabin", sans-serif;
-  --title-font: "Roboto Condensed", sans-serif;
-  --icon-font: "Material Symbols Outlined";
-  --main-color: #29856b;
-  --hover-color: #185544;
-  --ghost-color: #319e7f;
-  --light-color: #baf1e1;
-  --border-color: #ddd;
 }
 
 /* *************************************************
