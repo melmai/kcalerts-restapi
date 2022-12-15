@@ -80,16 +80,16 @@ function buildBanner(alert) {
   bodyText.textContent = alert.banner_text;
 
   // effective date
-  const date = document.createElement("span");
-  date.textContent = processAlertDates(
-    alert.effect_periods[0].effect_start,
-    alert.effect_periods[0].effect_end
-  );
+  // const date = document.createElement("span");
+  // date.textContent = processAlertDates(
+  //   alert.effect_periods[0].effect_start,
+  //   alert.effect_periods[0].effect_end
+  // );
 
   // link
-  const link = document.createElement("a");
-  link.setAttribute("href", "#");
-  link.textContent = "";
+  // const link = document.createElement("a");
+  // link.setAttribute("href", "#");
+  // link.textContent = "";
 
   // close bttn
   const buttonContainer = document.createElement("div");
@@ -108,7 +108,7 @@ function buildBanner(alert) {
   closeButton.append(spanX);
   buttonContainer.append(closeButton);
 
-  content.append(bodyText, date, link);
+  content.append(bodyText);
   col11.append(title, content);
   row.append(col11, buttonContainer);
   alertInner.append(row);
