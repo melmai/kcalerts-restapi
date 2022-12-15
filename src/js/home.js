@@ -38,7 +38,14 @@ function getBannerAlerts(alerts) {
 }
 
 // get most recent alert
-function featuredAlert(alerts) {}
+function featuredAlert(alerts) {
+  let featured = alerts[0];
+  for (let i = 1; i < alerts.length; i++) {
+    if (featured.last_modified_dt > alerts[i].last_modified_dt)
+      featured = alerts[i];
+  }
+  return featured;
+}
 
 // build banner with most recent alert
 function buildBanner(alert) {
