@@ -53,6 +53,14 @@ export function generateSingleAlert(alert) {
     expandLink.textContent = "View details";
   }
 
+  // cause
+  let alertCause = "";
+  if (alert.cause_name) {
+    alertCause = document.createElement("p");
+    alertCause.textContent = `Cause: ${alert.cause_name}`;
+    alertCause.setAttribute("class", "cause");
+  }
+
   // alert dates
   const dates = document.createElement("p");
   dates.setAttribute("class", "advisory-dates");
@@ -76,6 +84,14 @@ export function generateSingleAlert(alert) {
     alert.last_modified_dt
   )}`;
 
-  alertPanel.append(type, title, expandLink, alertDescription, dates, footer);
+  alertPanel.append(
+    type,
+    title,
+    expandLink,
+    alertDescription,
+    alertCause,
+    dates,
+    footer
+  );
   return alertPanel;
 }
