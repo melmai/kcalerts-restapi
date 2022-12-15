@@ -9719,7 +9719,6 @@ h6 {
   margin-bottom: 1rem;
   font-family: var(--title-font);
   cursor: pointer;
-  color: var(--primary);
   text-decoration: underline;
 }
 
