@@ -1,3 +1,4 @@
+import "bootstrap";
 import { BASE_URL, API_KEY } from "./cred";
 import { processAlertDates } from "./helpers";
 
@@ -49,14 +50,33 @@ function featuredAlert(alerts) {
 
 // build banner with most recent alert
 function buildBanner(alert) {
-  const bannerContent = new DocumentFragment();
+  const bannerContent = document.createElement("div");
+  bannerContent.setAttribute(
+    "class",
+    "alert alert-warning alert-dismissible fade show"
+  );
+  bannerContent.setAttribute("role", "alert");
+
+  const alertInner = document.createElement("div");
+  alertInner.setAttribute("class", "container");
+
+  const row = document.createElement("div");
+  row.setAttribute("class", "row");
+
+  const col11 = document.createElement("div");
+  col11.setAttribute("class", "col-11");
 
   // title
   const title = document.createElement("h2");
-  title.textContent = "Title";
+  title.setAttribute("class", "alert-title");
+  title.textContent = alert.service_effect_text;
 
   // text
+  const content = document.createElement("div");
+  content.setAttribute("class", "alert-text");
+
   const bodyText = document.createElement("p");
+  bodyText.setAttribute("class", "rich-text");
   bodyText.textContent = alert.banner_text;
 
   // effective date
@@ -71,6 +91,28 @@ function buildBanner(alert) {
   link.setAttribute("href", "#");
   link.textContent = "";
 
-  bannerContent.append(title, bodyText, date);
+  // close bttn
+  const buttonContainer = document.createElement("div");
+  buttonContainer.setAttribute("class", "col");
+
+  const closeButton = document.createElement("button");
+  closeButton.setAttribute("type", "button");
+  closeButton.setAttribute("class", "close");
+  closeButton.setAttribute("data-dismiss", "alert");
+  closeButton.setAttribute("aria-label", "Close");
+
+  const spanX = document.createElement("span");
+  spanX.setAttribute("aria-hidden", "true");
+  spanX.textContent = "x";
+
+  closeButton.append(spanX);
+  buttonContainer.append(closeButton);
+
+  content.append(bodyText, date, link);
+  col11.append(title, content);
+  row.append(col11, buttonContainer);
+  alertInner.append(row);
+  bannerContent.append(alertInner);
+
   return bannerContent;
 }
