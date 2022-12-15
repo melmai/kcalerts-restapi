@@ -14,6 +14,7 @@ Table of Contents
 
 */
 
+@import "../../node_modules/bootstrap/scss/bootstrap";
 @import "./partials/global"; // globals
 @import "./partials/badge"; // badges
 @import "./partials/filter"; // filters
@@ -21,3 +22,4 @@ Table of Contents
 @import "./partials/toggle"; // accordion show/hide
 @import "./partials/list"; // list view
 @import "./partials/alert"; // alert panel
+@import "./partials/banner";

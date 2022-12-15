@@ -1,3 +1,4 @@
+import "bootstrap";
 import { BASE_URL, API_KEY } from "./cred";
 import { processAlertDates } from "./helpers";
 
@@ -38,32 +39,80 @@ function getBannerAlerts(alerts) {
 }
 
 // get most recent alert
-function featuredAlert(alerts) {}
+function featuredAlert(alerts) {
+  let featured = alerts[0];
+  for (let i = 1; i < alerts.length; i++) {
+    if (featured.last_modified_dt > alerts[i].last_modified_dt)
+      featured = alerts[i];
+  }
+  return featured;
+}
 
 // build banner with most recent alert
 function buildBanner(alert) {
-  const bannerContent = new DocumentFragment();
+  const bannerContent = document.createElement("div");
+  bannerContent.setAttribute(
+    "class",
+    "alert alert-warning alert-dismissible fade show"
+  );
+  bannerContent.setAttribute("role", "alert");
+
+  const alertInner = document.createElement("div");
+  alertInner.setAttribute("class", "container");
+
+  const row = document.createElement("div");
+  row.setAttribute("class", "row");
+
+  const col11 = document.createElement("div");
+  col11.setAttribute("class", "col-11");
 
   // title
   const title = document.createElement("h2");
-  title.textContent = "Title";
+  title.setAttribute("class", "alert-title");
+  title.textContent = alert.service_effect_text;
 
   // text
+  const content = document.createElement("div");
+  content.setAttribute("class", "alert-text");
+
   const bodyText = document.createElement("p");
+  bodyText.setAttribute("class", "rich-text");
   bodyText.textContent = alert.banner_text;
 
   // effective date
-  const date = document.createElement("span");
-  date.textContent = processAlertDates(
-    alert.effect_periods[0].effect_start,
-    alert.effect_periods[0].effect_end
-  );
+  // const date = document.createElement("span");
+  // date.textContent = processAlertDates(
+  //   alert.effect_periods[0].effect_start,
+  //   alert.effect_periods[0].effect_end
+  // );
 
   // link
-  const link = document.createElement("a");
-  link.setAttribute("href", "#");
-  link.textContent = "";
+  // const link = document.createElement("a");
+  // link.setAttribute("href", "#");
+  // link.textContent = "";
 
-  bannerContent.append(title, bodyText, date);
+  // close bttn
+  const buttonContainer = document.createElement("div");
+  buttonContainer.setAttribute("class", "col");
+
+  const closeButton = document.createElement("button");
+  closeButton.setAttribute("type", "button");
+  closeButton.setAttribute("class", "close");
+  closeButton.setAttribute("data-dismiss", "alert");
+  closeButton.setAttribute("aria-label", "Close");
+
+  const spanX = document.createElement("span");
+  spanX.setAttribute("aria-hidden", "true");
+  spanX.textContent = "x";
+
+  closeButton.append(spanX);
+  buttonContainer.append(closeButton);
+
+  content.append(bodyText);
+  col11.append(title, content);
+  row.append(col11, buttonContainer);
+  alertInner.append(row);
+  bannerContent.append(alertInner);
+
   return bannerContent;
 }
