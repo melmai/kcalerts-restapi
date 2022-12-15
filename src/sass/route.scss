@@ -7,19 +7,6 @@
 @import "./partials/list"; // list view
 @import "./partials/alert"; // alert panel
 
-.main-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px 20px;
-  background: #fff;
-  @include responsive(600px) {
-    .main-content {
-      margin: 0;
-      padding: 0 0 20px;
-    }
-  }
-}
-
 /* *************************************************
  * Advisory Blocks
  ***************************************************/
