@@ -22,12 +22,16 @@ async function generateAlerts() {
   } else {
     let json;
     json = "../static/json/route/c-line.json";
-    json = "../static/json/route/007.json";
+    // json = "../static/json/route/007.json";
     // json = "../static/json/route/271.json";
 
-    data = await fetch(json).then((res) => res.json());
+    data = await fetch(json)
+      .then((res) => res.json())
+      .then((res) => removeSysAlerts(res.alerts));
+    console.log(data);
     data = [data];
   }
+
   console.log(data);
 
   // build accordion
@@ -39,7 +43,7 @@ async function generateAlerts() {
 async function getRemoteAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/c-line.html"; // alpha routes
-  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
   // path = window.location.pathname;
 
@@ -170,6 +174,23 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
   // find alerts based on route ID
   const alerts = await fetch(
     `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .then((res) => removeSysAlerts(res, routeID));
   return alerts;
+}
+
+function removeSysAlerts(alerts, routeID) {
+  let arr = [];
+  for (const alert of alerts) {
+    // console.log(alert);
+    for (const service of alert.affected_services.services) {
+      if (service.route_id == routeID) {
+        arr.push(alert);
+        break;
+      }
+    }
+  }
+  console.log(arr);
+  return arr;
 }
