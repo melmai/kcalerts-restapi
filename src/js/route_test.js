@@ -6,18 +6,17 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
 
 async function generateAlerts() {
   const alertContainer = document.getElementById("accordion");
-  const isRemote = false;
+  const isRemote = true;
 
   let data;
   if (isRemote) {
     data = await getRemoteAlerts();
-
+    console.log(data);
     // if no alerts, don't render accordion
     let alerts = false;
     data.forEach((route) => {
       if (route.alerts.length > 0) alerts = true;
     });
-
     if (!alerts) return;
   } else {
     let json;
@@ -26,6 +25,7 @@ async function generateAlerts() {
     // json = "../static/json/route/271.json";
 
     data = await fetch(json).then((res) => res.json());
+
     data = [data];
   }
   console.log(data);
@@ -39,7 +39,8 @@ async function generateAlerts() {
 async function getRemoteAlerts() {
   let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
   path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/c-line.html"; // alpha routes
-  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
+  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/7-271"; // 2 routes
   // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
   // path = window.location.pathname;
 
@@ -51,6 +52,7 @@ async function getRemoteAlerts() {
       return await getRouteID(BASE_URL, API_KEY, routeName);
     })
   );
+  console.log(routeIDs);
 
   // get the alerts by route ID
   const data = await Promise.all(
@@ -58,6 +60,7 @@ async function getRemoteAlerts() {
       return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
     })
   );
+  console.log(data);
 
   return data;
 }
@@ -155,21 +158,39 @@ function parseRoutes(path) {
 
 async function getRouteID(baseURL, apiKey, routeName) {
   // get all routes
-  const routes = await fetch(`${baseURL}/routes?api_key=${apiKey}`).then(
-    (res) => res.json()
+  // const routes = await fetch(`${baseURL}/routes?api_key=${apiKey}`).then(
+  //   (res) => res.json()
+  // );
+  const routes = await fetch("../static/json/routes.json").then((res) =>
+    res.json()
   );
 
   // find the route ID we're looking for based on its name
+  // const route = routes.mode[1].route.find(
+  //   (route) => route.route_name.toLowerCase() === routeName
+  // );
+
   const route = routes.mode[1].route.find(
     (route) => route.route_name.toLowerCase() === routeName
   );
+
   return route.route_id;
 }
 
 async function getAlertsByRoute(baseURL, apiKey, routeID) {
   // find alerts based on route ID
-  const alerts = await fetch(
-    `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
-  ).then((res) => res.json());
+  // const alerts = await fetch(
+  //   `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
+  // ).then((res) => res.json());
+  let alerts;
+  if (routeID == "100263") {
+    alerts = await fetch("../static/json/route/007.json").then((res) =>
+      res.json()
+    );
+  } else {
+    alerts = await fetch("../static/json/route/271.json").then((res) =>
+      res.json()
+    );
+  }
   return alerts;
 }
