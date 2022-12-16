@@ -11,11 +11,9 @@ module.exports = {
     filename: "./js/[name].js",
   },
   devServer: {
-    static: [
-      {
-        directory: path.join(__dirname, "dist"),
-      },
-    ],
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     port: 9000,
     open: {
       target: ["/index.html", "/route.html"],
