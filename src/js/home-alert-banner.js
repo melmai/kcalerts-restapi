@@ -1,5 +1,5 @@
 import "bootstrap";
-import { BASE_URL, API_KEY } from "./cred";
+import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
 import { processAlertDates } from "./helpers";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
@@ -14,8 +14,7 @@ function systemAlertInit() {
   const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
 
   // set fetch type
-  const isRemote = false;
-  const ALERT_URL = isRemote ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
+  const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
 
   fetch(ALERT_URL)
     .then((res) => res.json())

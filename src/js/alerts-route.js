@@ -1,4 +1,4 @@
-import { BASE_URL, API_KEY } from "./cred";
+import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
 import { countAlertTypes } from "./helpers";
 import { generateSingleAlert } from "./single-alert";
 
@@ -9,10 +9,9 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
  */
 async function generateAlerts() {
   const alertContainer = document.getElementById("accordion");
-  const isRemote = false;
 
   let data;
-  if (isRemote) {
+  if (IS_REMOTE) {
     data = await getRemoteAlerts();
 
     // if no alerts, don't render accordion
@@ -31,7 +30,6 @@ async function generateAlerts() {
     data = await fetch(json).then((res) => res.json());
     data = [data];
   }
-  console.log(data);
 
   // build accordion
   let accordion = new DocumentFragment();
