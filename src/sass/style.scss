@@ -14,7 +14,10 @@ Table of Contents
 
 */
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+// External Libraries
+@import "../../node_modules/bootstrap/scss/bootstrap"; // remove this for prod
+
+// App Styles
 @import "./partials/global"; // globals
 @import "./partials/badge"; // badges
 @import "./partials/filter"; // filters
@@ -22,4 +25,4 @@ Table of Contents
 @import "./partials/toggle"; // accordion show/hide
 @import "./partials/list"; // list view
 @import "./partials/alert"; // alert panel
-@import "./partials/banner";
+@import "./partials/banner"; // home page banner
