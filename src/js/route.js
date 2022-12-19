@@ -10,7 +10,7 @@ async function generateAlerts() {
 
   let data;
   if (isRemote) {
-    data = getRemoteAlerts();
+    data = await getRemoteAlerts();
 
     // if no alerts, don't render accordion
     let alerts = false;
