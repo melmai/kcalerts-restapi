@@ -16,6 +16,9 @@ import { generateSingleAlert } from "./single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
 
+/**
+ * Init Function
+ */
 function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
 
@@ -57,6 +60,7 @@ function createAlerts() {
 /* Process API Data / Backend
  ******************************************************* */
 /**
+ * Organizes the alert data by route and alert type count
  *
  * @param {Array} alertArr array of alert objects with alert and array of route_id
  * @param {Array} routeArr array of route objects with route_id and route_name properties
