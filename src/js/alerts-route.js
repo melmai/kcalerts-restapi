@@ -13,6 +13,7 @@ async function generateAlerts() {
   let data;
   if (IS_REMOTE) {
     data = await getRemoteAlerts();
+    data = removeSystemAlerts(data);
 
     // if no alerts, don't render accordion
     let alerts = false;
@@ -29,6 +30,7 @@ async function generateAlerts() {
 
     data = await fetch(json).then((res) => res.json());
     data = [data];
+    data = removeSystemAlerts(data);
   }
 
   // build accordion
@@ -214,5 +216,12 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
   const alerts = await fetch(
     `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
   ).then((res) => res.json());
+  return alerts;
+}
+
+function removeSystemAlerts(data) {
+  console.log(data);
+  let alerts = [];
+  alerts = data;
   return alerts;
 }
