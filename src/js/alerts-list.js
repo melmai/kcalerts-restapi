@@ -1,4 +1,4 @@
-import { BASE_URL, API_KEY } from "./cred";
+import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
 import {
   cleanup,
   uniqueRoutes,
@@ -16,6 +16,9 @@ import { generateSingleAlert } from "./single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
 
+/**
+ * Init Function
+ */
 function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
 
@@ -28,9 +31,8 @@ function createAlerts() {
   const LOCAL_ROUTE_DATA = "../static/json/routes.json";
 
   // set fetch type
-  const isRemote = false;
-  const ALERT_URL = isRemote ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
-  const ROUTE_URL = isRemote ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
+  const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
+  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
 
   // fetch data
   Promise.all([
@@ -57,6 +59,7 @@ function createAlerts() {
 /* Process API Data / Backend
  ******************************************************* */
 /**
+ * Organizes the alert data by route and alert type count
  *
  * @param {Array} alertArr array of alert objects with alert and array of route_id
  * @param {Array} routeArr array of route objects with route_id and route_name properties

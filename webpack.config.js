@@ -2,20 +2,18 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    home: "./src/js/home.js",
-    alerts: "./src/js/alerts.js",
-    route: "./src/js/route.js",
+    metroalertbanner: "./src/js/home-alert-banner.js",
+    kcalertslist: "./src/js/alerts-list.js",
+    kcalertsroute: "./src/js/alerts-route.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "./js/[name].js",
   },
   devServer: {
-    static: [
-      {
-        directory: path.join(__dirname, "dist"),
-      },
-    ],
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     port: 9000,
     open: {
       target: ["/index.html", "/route.html"],

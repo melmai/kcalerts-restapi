@@ -10,7 +10,7 @@
     "sass": "sass --watch src/sass/:dist/css/",
     "build": "npm run sass && webpack -w",
     "start:dev": "webpack-dev-server --mode=development",
-    "stop:dev": "webpack-dev-server stop"
+    "stop:dev": "webpack-dev-server stop --mode=development"
   },
   "repository": {
     "type": "git",
