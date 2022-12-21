@@ -1,0 +1,1212 @@
+[
+  {
+    "alerts": [
+      {
+        "alert_id": 668,
+        "effect_name": "Emergency Snow Network",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "Metro continues to operate its Emergency Snow Network (ESN). Service is significantly reduced. Visit the Metro Matters blog and MetroWInter.com for complete information.",
+        "short_header_text": "Metro continues to operate its Emergency Snow Network (ESN). Service is significantly reduced. Visit MetroWinter.com.",
+        "url": "https://kingcountymetro.blog/2021/12/28/dec-28-snow-update-metro-to-continue-operating-emergency-snow-network/",
+        "description_text": "King County Metro continues to operate its Emergency Snow Network. \r\n\nThe following routes operate during ESN:\r\nRapidRide A Line\r\nRapidRide B Line\r\nRapidRide C Line\r\nRapidRide D Line\r\nRapidRide E Line\r\nRapidRide F Line\r\n3\r\n4\r\n5\r\n7\r\n10\r\n21\r\n24\r\n31\r\n32\r\n36\r\n40\r\n44\r\n45\r\n48\r\n60\r\n62\r\n65\r\n67\r\n70\r\n75\r\n101\r\n102\r\n105\r\n106\r\n120\r\n124\r\n128\r\n131\r\n132\r\n148\r\n150\r\n160\r\n161\r\n165\r\n168\r\n181\r\n184\r\n230\r\n231\r\n239\r\n245\r\n250\r\n255\r\n271\r\n331\r\n345\r\n348\r\n372\r\nST 522\r\nST 545\r\nST 550\r\nST 554\r\n773 - this route is suspended when the West Seattle Water Taxi is not in service.\r\n775 - this route is suspended when the West Seattle Water Taxi is not in service.\r\nDART 903\r\nDART 906\r\nDART 907 - this route will not operate on\r\nDART 930\r\n\nVisit the Metro Matters blog and MetroWInter.com for complete information.\r\n\nContact Customer Service at 206-553-3000, from 6 a.m. to 8 p.m. through Dec. 30 for trip planning and Lost & Found calls, and from 8 a.m. to 5 p.m. for ORCA, fare questions and customer comments.\r\n\nNOTE: The Customer Service phone lines will also be open with limited staffing on Dec. 31 from 9 a.m. to 2 p.m. for Trip Planning and ORCA assistance on the New Year's weekend. Customer comments can be submitted through online forms. \r\n\nPass Sales Office and Lost & Found are operating reduced hours, from 10 a.m. to 4 p.m. through Dec. 30. For Lost & Found, customers can call Metro Customer Service at 206-553-3000. In-person service is by appointment only, so please call first.\r\n\nNOTE: These offices will be closed on Friday, Dec. 31, in observance of the holiday.\r\n\nTips and tricks for riders \r\n\nTransit Alerts: Riders should sign?up?or update route subscriptions?to receive?Transit Alerts?via text and email?for?their?bus?routes. Routes can change quickly depending on snow accumulations.? \r\n\nReal-time updates show whether a bus trip is operating when it’s due to?depart or if it’s been canceled.? \r\n\nText for Departures allows riders to text their bus stop number to 62550 and receive the next bus trips headed their way or a cancellation notice. Riders can save 62550 in their phones in advance.?Metro’s real-time departure information can become less accurate during a storm and rough road conditions. \r\n\n“Next departures”?is available?on both the?Puget Sound Trip Planner webpage?and the?Puget Sound Trip Planner App.?Riders can check these sites to see whether their trip is reporting its position and estimated arrival time. \r\n\nFollow?@kcmetrobus?on Twitter?to see the latest?travel tips and service information.\r\n\nThank you for riding and using Metro's services.",
+        "severity": "Significant",
+        "created_dt": "1640746058",
+        "last_modified_dt": "1641350777",
+        "service_effect_text": "DART 903 and 63 other routes is operating using the Emergency Snow Network (ESN).",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1640745960", "effect_end": "" }],
+        "affected_services": {
+          "services": [
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100002",
+              "route_name": "10"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100003",
+              "route_name": "101"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100004",
+              "route_name": "105"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100005",
+              "route_name": "106"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100019",
+              "route_name": "120"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100023",
+              "route_name": "124"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100026",
+              "route_name": "128"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100030",
+              "route_name": "131"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100031",
+              "route_name": "132"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100042",
+              "route_name": "148"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100045",
+              "route_name": "150"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100060",
+              "route_name": "168"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100072",
+              "route_name": "181"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100101",
+              "route_name": "21"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100132",
+              "route_name": "24"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100136",
+              "route_name": "245"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100146",
+              "route_name": "255"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100162",
+              "route_name": "271"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100173",
+              "route_name": "3"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100184",
+              "route_name": "31"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100193",
+              "route_name": "32"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100196",
+              "route_name": "331"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100202",
+              "route_name": "345"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100205",
+              "route_name": "348"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100210",
+              "route_name": "36"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100214",
+              "route_name": "372"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100219",
+              "route_name": "4"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100224",
+              "route_name": "44"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100225",
+              "route_name": "45"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100228",
+              "route_name": "48"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100229",
+              "route_name": "5"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100232",
+              "route_name": "522"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100236",
+              "route_name": "545"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100239",
+              "route_name": "550"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100240",
+              "route_name": "554"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100249",
+              "route_name": "60"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100252",
+              "route_name": "62"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100254",
+              "route_name": "65"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100259",
+              "route_name": "67"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100263",
+              "route_name": "7"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100264",
+              "route_name": "70"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100269",
+              "route_name": "75"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100272",
+              "route_name": "773"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100292",
+              "route_name": "903"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100481",
+              "route_name": "775"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100487",
+              "route_name": "102"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100496",
+              "route_name": "930"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100512",
+              "route_name": "A Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102548",
+              "route_name": "B Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102561",
+              "route_name": "907"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102574",
+              "route_name": "40"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102576",
+              "route_name": "C Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102581",
+              "route_name": "D Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102593",
+              "route_name": "906"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102615",
+              "route_name": "E Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102619",
+              "route_name": "F Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102702",
+              "route_name": "239"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102703",
+              "route_name": "231"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102704",
+              "route_name": "250"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102705",
+              "route_name": "230"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102717",
+              "route_name": "165"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102718",
+              "route_name": "184"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102719",
+              "route_name": "161"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102720",
+              "route_name": "160"
+            }
+          ],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1713,
+        "effect_name": "Snow Routes",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "Snow is falling across King County, but Metro buses are currently able to operate on their regular routes. Transit Alerts will be sent out if there is a need to switch to snow routes.",
+        "short_header_text": "Snow is falling across King County, but Metro buses are regular operation",
+        "url": "https://kingcountymetro.blog/",
+        "severity": "Significant",
+        "created_dt": "1670339549",
+        "last_modified_dt": "1670944338",
+        "service_effect_text": "Bus, Marine and Rail service is operating on snow routes.",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "banner_text": "Snow is falling across King County, but Metro buses are currently able to operate on their regular routes. Transit Alerts will be sent out if there is a need to switch to snow routes.",
+        "effect_periods": [{ "effect_start": "1670339520", "effect_end": "" }],
+        "affected_services": {
+          "services": [
+            { "route_type": "0", "mode_name": "Light Rail" },
+            { "route_type": "3", "mode_name": "Bus" },
+            { "route_type": "4", "mode_name": "Boat" }
+          ],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1714,
+        "effect_name": "Snow Routes",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "All bus routes in Metro’s North King County snow area are currently operating on their designated snow routing and may also be delayed.",
+        "short_header_text": "All Rts in Metro's North King Cty snow area are on their snow routing.",
+        "url": "https://kingcounty.gov/depts/transportation/metro/alerts-updates/service-advisories/snow-ice-flood-alerts.aspx ",
+        "severity": "Significant",
+        "created_dt": "1670340085",
+        "last_modified_dt": "1670944878",
+        "service_effect_text": "Bus service is operating on snow routes.",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1670340057", "effect_end": "" }],
+        "affected_services": {
+          "services": [{ "route_type": "3", "mode_name": "Bus" }],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1716,
+        "effect_name": "Snow Routes",
+        "effect": "DETOUR",
+        "cause_name": "weather",
+        "cause": "WEATHER",
+        "header_text": "All bus routes in Metro's East King County snow area have returned to their regular routing.",
+        "short_header_text": "All Rts. in Metro's East King County snow area have returned to their reg",
+        "severity": "Significant",
+        "created_dt": "1670341561",
+        "last_modified_dt": "1670946318",
+        "service_effect_text": "Bus service is operating on snow routes.",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1670341505", "effect_end": "" }],
+        "affected_services": {
+          "services": [{ "route_type": "3", "mode_name": "Bus" }],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1719,
+        "effect_name": "Snow Route",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "Snow route is in effect on RapidRide C Line and thirty-seven other routes.",
+        "short_header_text": "Snow route is in effect on RapidRide C Line and thirty-seven other routes",
+        "description_text": "Affected routes:\r\nRapidRide C Line\r\nRapidRide F Line\r\n4 \r\n7 \r\n8 \r\n9 \r\n14 \r\n21 \r\n22 \r\n27 \r\n36 \r\n48 \r\n50 \r\n55 \r\n56 \r\n57 \r\n60 \r\n101 \r\n102 \r\n106 \r\n107 \r\n111 \r\n113 \r\n114 \r\n120 \r\n124 \r\n125 \r\n128 \r\n131 \r\n132 \r\n150 \r\n162 \r\n177 \r\n190 \r\n193 \r\n981 \r\n987 \r\n989 ",
+        "severity": "Significant",
+        "created_dt": "1670345646",
+        "last_modified_dt": "1670950458",
+        "service_effect_text": "Snow route is in effect on RapidRide C Line and thirty-seven other routes",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1670345607", "effect_end": "" }],
+        "affected_services": {
+          "services": [
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100003",
+              "route_name": "101"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100005",
+              "route_name": "106"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100006",
+              "route_name": "107"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100011",
+              "route_name": "111"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100012",
+              "route_name": "113"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100013",
+              "route_name": "114"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100019",
+              "route_name": "120"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100023",
+              "route_name": "124"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100024",
+              "route_name": "125"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100026",
+              "route_name": "128"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100030",
+              "route_name": "131"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100031",
+              "route_name": "132"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100039",
+              "route_name": "14"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100045",
+              "route_name": "150"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100068",
+              "route_name": "177"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100082",
+              "route_name": "190"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100101",
+              "route_name": "21"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100111",
+              "route_name": "22"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100161",
+              "route_name": "27"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100210",
+              "route_name": "36"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100219",
+              "route_name": "4"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100228",
+              "route_name": "48"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100230",
+              "route_name": "50"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100238",
+              "route_name": "55"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100242",
+              "route_name": "56"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100246",
+              "route_name": "57"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100249",
+              "route_name": "60"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100263",
+              "route_name": "7"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100275",
+              "route_name": "8"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100289",
+              "route_name": "9"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100345",
+              "route_name": "987"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100347",
+              "route_name": "989"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100473",
+              "route_name": "981"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100487",
+              "route_name": "102"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100495",
+              "route_name": "193"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102576",
+              "route_name": "C Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102619",
+              "route_name": "F Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102715",
+              "route_name": "162"
+            }
+          ],
+          "elevators": []
+        }
+      }
+    ],
+    "route_id": "100263",
+    "route_name": "7"
+  },
+  {
+    "alerts": [
+      {
+        "alert_id": 668,
+        "effect_name": "Emergency Snow Network",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "Metro continues to operate its Emergency Snow Network (ESN). Service is significantly reduced. Visit the Metro Matters blog and MetroWInter.com for complete information.",
+        "short_header_text": "Metro continues to operate its Emergency Snow Network (ESN). Service is significantly reduced. Visit MetroWinter.com.",
+        "url": "https://kingcountymetro.blog/2021/12/28/dec-28-snow-update-metro-to-continue-operating-emergency-snow-network/",
+        "description_text": "King County Metro continues to operate its Emergency Snow Network. \r\n\nThe following routes operate during ESN:\r\nRapidRide A Line\r\nRapidRide B Line\r\nRapidRide C Line\r\nRapidRide D Line\r\nRapidRide E Line\r\nRapidRide F Line\r\n3\r\n4\r\n5\r\n7\r\n10\r\n21\r\n24\r\n31\r\n32\r\n36\r\n40\r\n44\r\n45\r\n48\r\n60\r\n62\r\n65\r\n67\r\n70\r\n75\r\n101\r\n102\r\n105\r\n106\r\n120\r\n124\r\n128\r\n131\r\n132\r\n148\r\n150\r\n160\r\n161\r\n165\r\n168\r\n181\r\n184\r\n230\r\n231\r\n239\r\n245\r\n250\r\n255\r\n271\r\n331\r\n345\r\n348\r\n372\r\nST 522\r\nST 545\r\nST 550\r\nST 554\r\n773 - this route is suspended when the West Seattle Water Taxi is not in service.\r\n775 - this route is suspended when the West Seattle Water Taxi is not in service.\r\nDART 903\r\nDART 906\r\nDART 907 - this route will not operate on\r\nDART 930\r\n\nVisit the Metro Matters blog and MetroWInter.com for complete information.\r\n\nContact Customer Service at 206-553-3000, from 6 a.m. to 8 p.m. through Dec. 30 for trip planning and Lost & Found calls, and from 8 a.m. to 5 p.m. for ORCA, fare questions and customer comments.\r\n\nNOTE: The Customer Service phone lines will also be open with limited staffing on Dec. 31 from 9 a.m. to 2 p.m. for Trip Planning and ORCA assistance on the New Year's weekend. Customer comments can be submitted through online forms. \r\n\nPass Sales Office and Lost & Found are operating reduced hours, from 10 a.m. to 4 p.m. through Dec. 30. For Lost & Found, customers can call Metro Customer Service at 206-553-3000. In-person service is by appointment only, so please call first.\r\n\nNOTE: These offices will be closed on Friday, Dec. 31, in observance of the holiday.\r\n\nTips and tricks for riders \r\n\nTransit Alerts: Riders should sign?up?or update route subscriptions?to receive?Transit Alerts?via text and email?for?their?bus?routes. Routes can change quickly depending on snow accumulations.? \r\n\nReal-time updates show whether a bus trip is operating when it’s due to?depart or if it’s been canceled.? \r\n\nText for Departures allows riders to text their bus stop number to 62550 and receive the next bus trips headed their way or a cancellation notice. Riders can save 62550 in their phones in advance.?Metro’s real-time departure information can become less accurate during a storm and rough road conditions. \r\n\n“Next departures”?is available?on both the?Puget Sound Trip Planner webpage?and the?Puget Sound Trip Planner App.?Riders can check these sites to see whether their trip is reporting its position and estimated arrival time. \r\n\nFollow?@kcmetrobus?on Twitter?to see the latest?travel tips and service information.\r\n\nThank you for riding and using Metro's services.",
+        "severity": "Significant",
+        "created_dt": "1640746058",
+        "last_modified_dt": "1641350777",
+        "service_effect_text": "DART 903 and 63 other routes is operating using the Emergency Snow Network (ESN).",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1640745960", "effect_end": "" }],
+        "affected_services": {
+          "services": [
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100002",
+              "route_name": "10"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100003",
+              "route_name": "101"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100004",
+              "route_name": "105"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100005",
+              "route_name": "106"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100019",
+              "route_name": "120"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100023",
+              "route_name": "124"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100026",
+              "route_name": "128"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100030",
+              "route_name": "131"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100031",
+              "route_name": "132"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100042",
+              "route_name": "148"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100045",
+              "route_name": "150"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100060",
+              "route_name": "168"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100072",
+              "route_name": "181"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100101",
+              "route_name": "21"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100132",
+              "route_name": "24"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100136",
+              "route_name": "245"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100146",
+              "route_name": "255"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100162",
+              "route_name": "271"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100173",
+              "route_name": "3"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100184",
+              "route_name": "31"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100193",
+              "route_name": "32"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100196",
+              "route_name": "331"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100202",
+              "route_name": "345"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100205",
+              "route_name": "348"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100210",
+              "route_name": "36"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100214",
+              "route_name": "372"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100219",
+              "route_name": "4"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100224",
+              "route_name": "44"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100225",
+              "route_name": "45"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100228",
+              "route_name": "48"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100229",
+              "route_name": "5"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100232",
+              "route_name": "522"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100236",
+              "route_name": "545"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100239",
+              "route_name": "550"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100240",
+              "route_name": "554"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100249",
+              "route_name": "60"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100252",
+              "route_name": "62"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100254",
+              "route_name": "65"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100259",
+              "route_name": "67"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100263",
+              "route_name": "7"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100264",
+              "route_name": "70"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100269",
+              "route_name": "75"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100272",
+              "route_name": "773"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100292",
+              "route_name": "903"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100481",
+              "route_name": "775"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100487",
+              "route_name": "102"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100496",
+              "route_name": "930"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "100512",
+              "route_name": "A Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102548",
+              "route_name": "B Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102561",
+              "route_name": "907"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102574",
+              "route_name": "40"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102576",
+              "route_name": "C Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102581",
+              "route_name": "D Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102593",
+              "route_name": "906"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102615",
+              "route_name": "E Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102619",
+              "route_name": "F Line"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102702",
+              "route_name": "239"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102703",
+              "route_name": "231"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102704",
+              "route_name": "250"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102705",
+              "route_name": "230"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102717",
+              "route_name": "165"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102718",
+              "route_name": "184"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102719",
+              "route_name": "161"
+            },
+            {
+              "route_type": "3",
+              "mode_name": "Bus",
+              "route_id": "102720",
+              "route_name": "160"
+            }
+          ],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1713,
+        "effect_name": "Snow Routes",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "Snow is falling across King County, but Metro buses are currently able to operate on their regular routes. Transit Alerts will be sent out if there is a need to switch to snow routes.",
+        "short_header_text": "Snow is falling across King County, but Metro buses are regular operation",
+        "url": "https://kingcountymetro.blog/",
+        "severity": "Significant",
+        "created_dt": "1670339549",
+        "last_modified_dt": "1670944338",
+        "service_effect_text": "Bus, Marine and Rail service is operating on snow routes.",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "banner_text": "Snow is falling across King County, but Metro buses are currently able to operate on their regular routes. Transit Alerts will be sent out if there is a need to switch to snow routes.",
+        "effect_periods": [{ "effect_start": "1670339520", "effect_end": "" }],
+        "affected_services": {
+          "services": [
+            { "route_type": "0", "mode_name": "Light Rail" },
+            { "route_type": "3", "mode_name": "Bus" },
+            { "route_type": "4", "mode_name": "Boat" }
+          ],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1714,
+        "effect_name": "Snow Routes",
+        "effect": "DETOUR",
+        "cause_name": "snow",
+        "cause": "WEATHER",
+        "header_text": "All bus routes in Metro’s North King County snow area are currently operating on their designated snow routing and may also be delayed.",
+        "short_header_text": "All Rts in Metro's North King Cty snow area are on their snow routing.",
+        "url": "https://kingcounty.gov/depts/transportation/metro/alerts-updates/service-advisories/snow-ice-flood-alerts.aspx ",
+        "severity": "Significant",
+        "created_dt": "1670340085",
+        "last_modified_dt": "1670944878",
+        "service_effect_text": "Bus service is operating on snow routes.",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1670340057", "effect_end": "" }],
+        "affected_services": {
+          "services": [{ "route_type": "3", "mode_name": "Bus" }],
+          "elevators": []
+        }
+      },
+      {
+        "alert_id": 1716,
+        "effect_name": "Snow Routes",
+        "effect": "DETOUR",
+        "cause_name": "weather",
+        "cause": "WEATHER",
+        "header_text": "All bus routes in Metro's East King County snow area have returned to their regular routing.",
+        "short_header_text": "All Rts. in Metro's East King County snow area have returned to their reg",
+        "severity": "Significant",
+        "created_dt": "1670341561",
+        "last_modified_dt": "1670946318",
+        "service_effect_text": "Bus service is operating on snow routes.",
+        "timeframe_text": "ongoing",
+        "alert_lifecycle": "Ongoing",
+        "effect_periods": [{ "effect_start": "1670341505", "effect_end": "" }],
+        "affected_services": {
+          "services": [{ "route_type": "3", "mode_name": "Bus" }],
+          "elevators": []
+        }
+      }
+    ],
+    "route_id": "100162",
+    "route_name": "271"
+  }
+]

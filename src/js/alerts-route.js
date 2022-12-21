@@ -24,12 +24,13 @@ async function generateAlerts() {
     if (!alerts) return;
   } else {
     let json;
-    json = "../static/json/route/c-line.json";
-    json = "../static/json/route/007.json";
+    // json = "../static/json/route/c-line.json";
+    // json = "../static/json/route/007.json";
     // json = "../static/json/route/271.json";
+    json = "../static/json/route/007-271.json";
 
     data = await fetch(json).then((res) => res.json());
-    data = [data];
+    // data = [data];
     data = removeSystemAlerts(data);
   }
 
