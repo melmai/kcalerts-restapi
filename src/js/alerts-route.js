@@ -1,15 +1,17 @@
-import { BASE_URL, API_KEY } from "./cred";
+import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
 import { countAlertTypes } from "./helpers";
 import { generateSingleAlert } from "./single-alert";
 
 window.addEventListener("DOMContentLoaded", generateAlerts);
 
+/**
+ * Init Function
+ */
 async function generateAlerts() {
   const alertContainer = document.getElementById("accordion");
-  const isRemote = false;
 
   let data;
-  if (isRemote) {
+  if (IS_REMOTE) {
     data = await getRemoteAlerts();
 
     // if no alerts, don't render accordion
@@ -28,7 +30,6 @@ async function generateAlerts() {
     data = await fetch(json).then((res) => res.json());
     data = [data];
   }
-  console.log(data);
 
   // build accordion
   let accordion = new DocumentFragment();
@@ -36,13 +37,13 @@ async function generateAlerts() {
   alertContainer.append(accordion);
 }
 
+/**
+ * Fetches API data
+ * @returns data array for routes parsed from URL string
+ */
 async function getRemoteAlerts() {
-  let path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241";
-  path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/c-line.html"; // alpha routes
-  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/241-545"; // 2 routes
-  // path = "/sitecore/content/KCGov/home/depts/metro/schedules-maps/217-241-245"; // 3 routes
-  // path = window.location.pathname;
-
+  // get route name from URL path
+  const path = window.location.pathname;
   const routeNames = parseRoutes(path.split("/").pop());
 
   // get the route IDs
@@ -62,6 +63,12 @@ async function getRemoteAlerts() {
   return data;
 }
 
+/**
+ * Builds accordion container to hold service alerts
+ *
+ * @param {Array} data
+ * @returns accordion panel within a div
+ */
 function buildAccordion(data) {
   // construct main panel
   const toggleBlock = document.createElement("div");
@@ -107,21 +114,35 @@ function buildAccordion(data) {
   return toggleBlock;
 }
 
+/**
+ * Builds accordion section inner panel for a single route's alerts
+ *
+ * @param {Array} data
+ * @returns alerts within a div element
+ */
 function createAlertsPanel(data) {
   // create panel to hold route alerts
   const alerts = document.createElement("div");
   alerts.setAttribute("class", "toggle-inner");
   const isMultiple = data.length > 1;
 
-  data.forEach((data, idxa) => {
-    alerts.append(generateRouteAlerts(data, idxa, isMultiple));
+  data.forEach((data) => {
+    alerts.append(generateRouteAlerts(data, isMultiple));
   });
   return alerts;
 }
 
-function generateRouteAlerts(data, idxa, isMultiple) {
+/**
+ * Builds grouping of alerts
+ *
+ * @param {Array} data
+ * @param {Boolean} isMultiple
+ * @returns
+ */
+function generateRouteAlerts(data, isMultiple) {
   const routeData = new DocumentFragment();
 
+  // build header section if multiple routes exist on this page
   if (isMultiple && data.alerts.length > 0) {
     const routeHeader = document.createElement("h3");
     routeHeader.setAttribute("class", "route-header");
@@ -137,6 +158,12 @@ function generateRouteAlerts(data, idxa, isMultiple) {
   return routeData;
 }
 
+/**
+ * Determines routes that exist within the URL path
+ *
+ * @param {String} path
+ * @returns array of route names
+ */
 function parseRoutes(path) {
   let routes = [];
   if (path[0].charAt(0).match(/[a-z]/i)) {
@@ -153,6 +180,14 @@ function parseRoutes(path) {
   return routes;
 }
 
+/**
+ * Gets IBI route ID for route
+ *
+ * @param {String} baseURL
+ * @param {String} apiKey
+ * @param {String} routeName
+ * @returns route ID
+ */
 async function getRouteID(baseURL, apiKey, routeName) {
   // get all routes
   const routes = await fetch(`${baseURL}/routes?api_key=${apiKey}`).then(
@@ -166,6 +201,14 @@ async function getRouteID(baseURL, apiKey, routeName) {
   return route.route_id;
 }
 
+/**
+ * Fetches alert data for a specific route by ID
+ *
+ * @param {String} baseURL
+ * @param {String} apiKey
+ * @param {String} routeID
+ * @returns array of alerts
+ */
 async function getAlertsByRoute(baseURL, apiKey, routeID) {
   // find alerts based on route ID
   const alerts = await fetch(
