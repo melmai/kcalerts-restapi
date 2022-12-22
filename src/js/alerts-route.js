@@ -13,6 +13,7 @@ async function generateAlerts() {
   let data;
   if (IS_REMOTE) {
     data = await getRemoteAlerts();
+    data = removeSystemAlerts(data);
 
     // if no alerts, don't render accordion
     let alerts = false;
@@ -23,12 +24,14 @@ async function generateAlerts() {
     if (!alerts) return;
   } else {
     let json;
-    json = "../static/json/route/c-line.json";
-    json = "../static/json/route/007.json";
+    // json = "../static/json/route/c-line.json";
+    // json = "../static/json/route/007.json";
     // json = "../static/json/route/271.json";
+    json = "../static/json/route/007-271.json";
 
     data = await fetch(json).then((res) => res.json());
-    data = [data];
+    // data = [data];
+    data = removeSystemAlerts(data);
   }
 
   // build accordion
@@ -215,4 +218,23 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
     `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
   ).then((res) => res.json());
   return alerts;
+}
+
+function removeSystemAlerts(data) {
+  console.log(data);
+  let res = data;
+  res.forEach((route) => {
+    let alerts = [];
+    route.alerts.forEach((alert) => {
+      const services = alert.affected_services.services;
+      for (let i = 0; i < services.length; i++) {
+        if (services[i].hasOwnProperty("route_name")) {
+          alerts.push(alert);
+          break;
+        }
+      }
+    });
+    route.alerts = alerts;
+  });
+  return res;
 }

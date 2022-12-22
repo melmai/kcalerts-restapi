@@ -1,6 +1,5 @@
 /* Styles for hiding and showing */
-.toggle {
-}
+
 .toggle .toggle-head,
 .toggle .toggle-link {
   position: relative;
@@ -21,11 +20,10 @@
   display: flex;
   justify-content: space-between;
 }
-.toggle input:checked + .advisory-block-title {
-  background-color: var(--primary-light-background);
-}
+.toggle input:checked + .advisory-block-title,
 .toggle input:checked + .advisory-block-title:active {
-  background-color: var(--primary-light-background);
+  background-color: var(--primary-ghost);
+  color: #fff;
 }
 
 .toggle.toggle--open label + .toggle-inner,

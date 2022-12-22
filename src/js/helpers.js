@@ -253,6 +253,8 @@ function organizeRoutes(routes) {
 }
 
 function countAlertTypes(data) {
+  console.log(data);
+
   let ongoing = 0;
   let upcoming = 0;
 
