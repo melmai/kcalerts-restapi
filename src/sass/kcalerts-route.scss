@@ -23,3 +23,13 @@
   border: 1px solid var(--border-color);
   border-bottom: 0;
 }
+
+/* *************************************************
+ * Route Header for Multi-Route pages
+ ***************************************************/
+.route-header {
+  padding: 0.6em 1em;
+  background-color: var(--primary-light-background);
+  // color: #fff;
+  font-size: 1.3em;
+}

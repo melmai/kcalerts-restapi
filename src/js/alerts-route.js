@@ -222,7 +222,19 @@ async function getAlertsByRoute(baseURL, apiKey, routeID) {
 
 function removeSystemAlerts(data) {
   console.log(data);
-  let alerts = [];
-  alerts = data;
-  return alerts;
+  let res = data;
+  res.forEach((route) => {
+    let alerts = [];
+    route.alerts.forEach((alert) => {
+      const services = alert.affected_services.services;
+      for (let i = 0; i < services.length; i++) {
+        if (services[i].hasOwnProperty("route_name")) {
+          alerts.push(alert);
+          break;
+        }
+      }
+    });
+    route.alerts = alerts;
+  });
+  return res;
 }
