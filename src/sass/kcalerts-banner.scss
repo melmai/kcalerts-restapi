@@ -1,0 +1,14 @@
+// External Libraries
+@import "../../node_modules/bootstrap/scss/bootstrap"; // remove this for prod
+
+.alert-warning {
+  padding-top: 20px;
+
+  .alert-title {
+    font-size: 24px;
+  }
+
+  .alert-text .rich-text {
+    margin-bottom: 10px;
+  }
+}

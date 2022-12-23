@@ -1,0 +1,628 @@
+/* *************************************************
+ * Globals
+ ***************************************************/
+* {
+  --body-font: "Cabin", sans-serif;
+  --title-font: "Roboto Condensed", sans-serif;
+  --icon-font: "Material Symbols Outlined";
+  --primary: #29856b;
+  --primary-hover: #185544;
+  --primary-ghost: #319e7f;
+  --primary-ghost-white: #29856b;
+  --primary-light-background: #baf1e1;
+  --border-color: #eee;
+  font-family: var(--body-font);
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--body-font);
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title-font);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.border1 {
+  border: 1px solid #ccc;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
+.main-content {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 600px) {
+  .main-content .main-content {
+    margin: 0;
+    padding: 0 0 20px;
+  }
+}
+
+/* *************************************************
+ * ongoing vs upcoming Alerts
+ ***************************************************/
+.accordion.ongoing > .upcoming:not(.ongoing),
+.accordion.ongoing .alert-panel.upcoming,
+.accordion.ongoing .route-status .upcoming {
+  display: none !important;
+}
+
+.accordion.upcoming > .ongoing:not(.upcoming),
+.accordion.upcoming .alert-panel.ongoing,
+.accordion.upcoming .route-status .ongoing {
+  display: none !important;
+}
+
+/* Status Count Icons */
+.route-status {
+  display: flex;
+  margin-right: 30px;
+}
+
+.route-status > span {
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 50%;
+  font-size: 14px;
+  padding: 0.5em;
+  padding-top: 0.75em;
+  line-height: 1;
+  margin-right: 0.25em;
+}
+
+.route-status .ongoing {
+  background-image: url(../static/img/svg/active-fill.svg);
+  color: #fff;
+}
+
+.route-status .upcoming {
+  background-image: url(../static/img/svg/planned.svg);
+}
+
+/* *************************************************
+ * Status Badges
+ ***************************************************/
+.advisory-status {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 1em;
+  text-transform: uppercase;
+  font-size: 0.6em;
+  padding: 2px 10px;
+  border-radius: 5px;
+  letter-spacing: 0.08em;
+}
+
+.advisory-status.ongoing {
+  background-color: red;
+  color: #fff;
+}
+
+.advisory-status.upcoming {
+  background-color: orange;
+}
+
+/* *************************************************
+ * Status Filter Buttons
+ ***************************************************/
+#status-filter {
+  margin-bottom: 20px;
+}
+
+#status-filter .filter-btn,
+#status-filter .tab-btn {
+  border: 1px solid #ccc;
+  background-color: var(--light);
+  color: var(--gray);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+#status-filter .filter-btn.selected,
+#status-filter .tab-btn.selected {
+  background-color: var(--primary);
+  color: #fff;
+  position: relative;
+  padding-left: 24px;
+}
+
+#status-filter .filter-btn.selected::before,
+#status-filter .tab-btn.selected::before {
+  font-family: "Material Symbols Outlined";
+  content: "check";
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+  font-size: 20px;
+  width: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* *************************************************
+   * Search Filter 
+   ***************************************************/
+.filter-box-wrapper {
+  background-color: #fff;
+  width: 100%;
+  margin: 0 0 1.7rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  -webkit-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
+  -moz-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
+}
+
+.filter-box {
+  position: relative;
+}
+
+#map-search,
+#route-search {
+  width: 100%;
+  font-size: 1.3em;
+  font-size: 16px;
+  height: 56px;
+  background: #f4f4f4;
+  border: 0;
+  border-bottom: 1px solid #757575;
+  border-radius: 0;
+  margin: 0;
+  padding: 20px;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+#map-search:focus,
+#map-search:hover,
+#route-search:focus,
+#route-search:hover {
+  height: 60px;
+  border-bottom: 4px solid #757575;
+  margin: 0 0 -4px;
+}
+
+#search {
+  margin-bottom: 20px;
+}
+
+#route-search-container {
+  position: relative;
+}
+
+#clear-search {
+  visibility: hidden;
+  border: 0;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: transparent;
+}
+
+#clear-search span {
+  color: var(--primary);
+}
+
+#clear-search span:hover {
+  color: var(--primary-hover);
+}
+
+#clear-search span:active {
+  color: var(--primary-ghost-white);
+}
+
+/* *************************************************
+ * Alert Icons
+ ***************************************************/
+.advisory-content::before {
+  font-family: var(--icon-font);
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+  font-size: 24px;
+  position: absolute;
+  top: -5px;
+  left: 1.2rem;
+}
+
+.dangerous::before {
+  content: "dangerous";
+  content: "dangerous"/"";
+  color: red;
+}
+
+.alt_route::before,
+.ac_unit::before {
+  content: "alt_route";
+  content: "alt_route"/"";
+  color: blue;
+}
+
+.ac_unit::before {
+  content: "ac_unit";
+  content: "ac_unit"/"";
+}
+
+.task_alt::before {
+  content: "task_alt";
+  content: "task_alt"/"";
+  color: green;
+}
+
+.error::before {
+  content: "error";
+  content: "error"/"";
+  color: red;
+}
+
+.timer::before {
+  content: "timer";
+  content: "timer"/"";
+  color: orange;
+}
+
+.warning::before {
+  content: "warning";
+  content: "warning"/"";
+  color: black;
+}
+
+/* Styles for hiding and showing */
+.toggle .toggle-head,
+.toggle .toggle-link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.toggle .toggle-head::before .toggle .toggle-link::before {
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+.toggle.toggle--open label.toggle-head::after,
+.toggle input[class=toggle-advisory]:checked + label.toggle-head::after,
+.toggle input[type=checkbox]:checked + label.toggle-head:after {
+  transform: rotate(-180deg);
+}
+
+.toggle .advisory-block-title {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle input:checked + .advisory-block-title,
+.toggle input:checked + .advisory-block-title:active {
+  background-color: var(--primary-ghost);
+  color: #fff;
+}
+
+.toggle.toggle--open label + .toggle-inner,
+.toggle input[id*=toggle-advisory]:checked + label + .toggle-inner,
+.toggle input[type=checkbox]:checked + label + .toggle-inner,
+.toggle-link.toggle--open label + .advisory-detail,
+.toggle-link input[id*=detail]:checked + label + .advisory-detail,
+.toggle-link input[type=checkbox]:checked + label + .advisory-detail {
+  display: block;
+  max-height: 100%;
+  transition: max-height 1s ease;
+}
+
+.toggle input[id*=toggle-advisory],
+.no-toggle input[id*=toggle-advisory],
+.toggle input[class*=detail],
+.no-toggle input[class*=detail] {
+  display: none;
+}
+
+.toggle .toggle-inner {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-link .advisory-detail {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  margin-bottom: 1em;
+}
+
+.toggle-link input[type=checkbox]:checked + label + .advisory-detail {
+  margin-top: 1rem;
+}
+
+/* *************************************************
+   * Accordion Container
+***************************************************/
+#accordion {
+  border: 2px solid var(--border-color);
+}
+
+/* *************************************************
+ * List View - Route Header 
+ ***************************************************/
+/* Route Name */
+.accordion-title {
+  font-family: var(--body-font);
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  padding: 1.2rem;
+}
+
+/* Status Count Icons */
+.route-status {
+  display: flex;
+  margin-right: 50px;
+}
+
+.route-status > span {
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 50%;
+  font-size: 14px;
+  padding: 0.5rem;
+  padding-top: 0.75rem;
+  line-height: 1;
+  margin-right: 0.25rem;
+}
+
+.route-status .ongoing {
+  background-image: url(../static/img/svg/active-fill.svg);
+  color: #fff;
+}
+
+.route-status .upcoming {
+  background-image: url(../static/img/svg/planned.svg);
+}
+
+/* *************************************************
+ * Alert Panels
+ ***************************************************/
+.alert-panel {
+  display: flex;
+  border: 1px solid #eee;
+  border-top-width: 0;
+  padding: 1.5rem 1rem 0;
+  position: relative;
+}
+
+.alert-type,
+.alert-title {
+  font-family: var(--title-font);
+  position: relative;
+}
+
+.alert-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .alert-type {
+    padding-right: 96px;
+  }
+}
+/* Alert Header */
+.alert-header {
+  display: flex;
+}
+
+.alert-header button {
+  border: 0;
+  background-color: #fff;
+  color: green;
+}
+
+/* Status Flags */
+.alert-status {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-size: 0.6em;
+  padding: 2px 10px;
+  border-radius: 5px;
+  letter-spacing: 0.08em;
+}
+
+@media only screen and (max-width: 600px) {
+  .alert-status {
+    right: 0;
+    top: 0;
+  }
+}
+.alert-status.ongoing {
+  background-color: red;
+  color: #fff;
+}
+
+.alert-status.upcoming {
+  background-color: orange;
+}
+
+/* Alert Contents */
+.alert-description,
+.advisory-dates {
+  white-space: pre-wrap;
+}
+
+.alert-description {
+  border-left: 2px solid var(--primary-ghost-white);
+  padding-left: 1rem;
+}
+
+.expand-link {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--title-font);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cause {
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+.advisory-dates {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.alert-link {
+  display: none;
+}
+
+.alert-footer {
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 7px;
+}
+
+@media screen and (min-width: 425px) {
+  .alert-footer {
+    font-size: 12px;
+  }
+}
+/* *************************************************
+ * Advisory Blocks
+ ***************************************************/
+.advisory-block {
+  position: relative;
+  line-height: 1.4;
+}
+
+.advisory-content {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 0 1.2rem 0.7rem 3.4rem;
+  border-bottom: 1px solid #eee;
+}
+
+.advisory-content + .advisory-content {
+  margin-top: 1rem;
+}
+
+.with-description:after {
+  font-family: var(--icon-font);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  /* display: inline-block; */
+  opacity: 0.5;
+  content: "expand_more";
+  position: absolute;
+  right: 1rem;
+  top: 1.3rem;
+  color: #333;
+  padding: 4px;
+  border-radius: 100%;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.advisory-type {
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+/* *************************************************
+ * Single Route Advisory Header
+ ***************************************************/
+.advisory-block-title,
+.advisory-type {
+  font-family: var(--title-font);
+}
+
+.advisory-block-title {
+  font-family: var(--title-font);
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 16px 20px;
+  border: 1px solid var(--border-color);
+  border-bottom: 0;
+}
+
+/* *************************************************
+ * Route Header for Multi-Route pages
+ ***************************************************/
+.route-header {
+  padding: 0.6em 1em;
+  background-color: var(--primary-light-background);
+  font-size: 1.3em;
+}
+
+/*# sourceMappingURL=kcalerts-route.css.map */

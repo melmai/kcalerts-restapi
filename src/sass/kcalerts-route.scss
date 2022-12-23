@@ -1,0 +1,35 @@
+@import "./partials/mixins"; // mixins
+@import "./partials/global"; // globals
+@import "./partials/badge"; // badges
+@import "./partials/filter"; // filters
+@import "./partials/icons"; // icons
+@import "./partials/toggle"; // accordion show/hide
+@import "./partials/list"; // list view
+@import "./partials/alert"; // alert panel
+
+/* *************************************************
+ * Single Route Advisory Header
+ ***************************************************/
+
+.advisory-block-title,
+.advisory-type {
+  font-family: var(--title-font);
+}
+.advisory-block-title {
+  font-family: var(--title-font);
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 16px 20px;
+  border: 1px solid var(--border-color);
+  border-bottom: 0;
+}
+
+/* *************************************************
+ * Route Header for Multi-Route pages
+ ***************************************************/
+.route-header {
+  padding: 0.6em 1em;
+  background-color: var(--primary-light-background);
+  // color: #fff;
+  font-size: 1.3em;
+}

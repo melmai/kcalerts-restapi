@@ -1,0 +1,84 @@
+@import "mixins";
+
+/* *************************************************
+ * Globals
+ ***************************************************/
+* {
+  --body-font: "Cabin", sans-serif;
+  --title-font: "Roboto Condensed", sans-serif;
+  --icon-font: "Material Symbols Outlined";
+  --primary: #29856b;
+  --primary-hover: #185544;
+  --primary-ghost: #319e7f;
+  --primary-ghost-white: #29856b;
+  --primary-light-background: #baf1e1;
+  --border-color: #eee;
+  font-family: var(--body-font);
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--body-font);
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title-font);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.border1 {
+  border: 1px solid #ccc;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
+.main-content {
+  max-width: 1140px;
+  margin: 0 auto;
+  // padding: 0 20px 20px;
+  @include responsive(600px) {
+    .main-content {
+      margin: 0;
+      padding: 0 0 20px;
+    }
+  }
+}
