@@ -3,21 +3,14 @@
  *
  */
 
-// comment this out for production build
 import "bootstrap";
-import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
+import { IS_REMOTE, LOCAL_ALERT_DATA, REMOTE_ALERT_API } from "./settings";
 import { processAlertDates } from "./modules/helpers";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
 
 function systemAlertInit() {
   const systemAlertContainer = document.getElementById("system-alerts-banner");
-
-  // remote API
-  const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
-
-  // local data
-  const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
 
   // set fetch type
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;

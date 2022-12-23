@@ -1,4 +1,10 @@
-import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
+import {
+  IS_REMOTE,
+  REMOTE_ALERT_API,
+  LOCAL_ALERT_DATA,
+  REMOTE_ROUTES_API,
+  LOCAL_ROUTE_DATA,
+} from "./settings";
 import {
   cleanup,
   uniqueRoutes,
@@ -22,15 +28,7 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
 
-  // remote API
-  const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
-  const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
-
-  // local JSON
-  const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
-  const LOCAL_ROUTE_DATA = "../static/json/routes.json";
-
-  // set fetch type
+  // set fetch URLs
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
   const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
 
