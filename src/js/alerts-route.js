@@ -1,4 +1,9 @@
-import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
+import {
+  IS_REMOTE,
+  REMOTE_ROUTES_API,
+  REMOTE_SINGLE_ALERT_API,
+  LOCAL_ROUTE_DATA,
+} from "./settings";
 import { countAlertTypes } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 
@@ -12,27 +17,25 @@ async function generateAlerts() {
 
   let data;
   if (IS_REMOTE) {
+    // fetch remote data
     data = await getRemoteAlerts();
-    data = removeSystemAlerts(data);
-
-    // if no alerts, don't render accordion
-    let alerts = false;
-    data.forEach((route) => {
-      if (route.alerts.length > 0) alerts = true;
-    });
-
-    if (!alerts) return;
   } else {
-    let json;
-    // json = "../static/json/route/c-line.json";
-    // json = "../static/json/route/007.json";
-    // json = "../static/json/route/271.json";
-    json = "../static/json/route/007-271.json";
+    // fetch data locally
+    data = await fetch(LOCAL_ROUTE_DATA).then((res) => res.json());
 
-    data = await fetch(json).then((res) => res.json());
-    // data = [data];
-    data = removeSystemAlerts(data);
+    // if local data is for a single route, set to an array
+    if (!route.includes("-")) data = [data];
   }
+
+  // remove system alerts
+  data = removeSystemAlerts(data);
+
+  // if no alerts, don't render accordion
+  let alerts = false;
+  data.forEach((route) => {
+    if (route.alerts.length > 0) alerts = true;
+  });
+  if (!alerts) return;
 
   // build accordion
   let accordion = new DocumentFragment();
@@ -52,14 +55,14 @@ async function getRemoteAlerts() {
   // get the route IDs
   const routeIDs = await Promise.all(
     routeNames.map(async (routeName) => {
-      return await getRouteID(BASE_URL, API_KEY, routeName);
+      return await getRouteID(routeName);
     })
   );
 
   // get the alerts by route ID
   const data = await Promise.all(
     routeIDs.map(async (routeID) => {
-      return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
+      return await getAlertsByRoute(routeID);
     })
   );
 
@@ -186,16 +189,13 @@ function parseRoutes(path) {
 /**
  * Gets IBI route ID for route
  *
- * @param {String} baseURL
  * @param {String} apiKey
  * @param {String} routeName
  * @returns route ID
  */
-async function getRouteID(baseURL, apiKey, routeName) {
+async function getRouteID(routeName) {
   // get all routes
-  const routes = await fetch(`${baseURL}/routes?api_key=${apiKey}`).then(
-    (res) => res.json()
-  );
+  const routes = await fetch(REMOTE_ROUTES_API).then((res) => res.json());
 
   // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
@@ -207,16 +207,14 @@ async function getRouteID(baseURL, apiKey, routeName) {
 /**
  * Fetches alert data for a specific route by ID
  *
- * @param {String} baseURL
  * @param {String} apiKey
  * @param {String} routeID
  * @returns array of alerts
  */
-async function getAlertsByRoute(baseURL, apiKey, routeID) {
+async function getAlertsByRoute(routeID) {
+  const fetchURL = REMOTE_SINGLE_ALERT_API + routeID;
   // find alerts based on route ID
-  const alerts = await fetch(
-    `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
-  ).then((res) => res.json());
+  const alerts = await fetch(fetchURL).then((res) => res.json());
   return alerts;
 }
 
