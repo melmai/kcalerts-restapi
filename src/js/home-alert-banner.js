@@ -4,7 +4,7 @@
  */
 
 import "bootstrap";
-import { IS_REMOTE, LOCAL_ALERT_DATA, REMOTE_ALERT_API } from "./settings";
+import { IS_REMOTE, LOCAL_ALERTS_DATA, REMOTE_ALERTS_API } from "./settings";
 import { processAlertDates } from "./modules/helpers";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
@@ -13,7 +13,7 @@ function systemAlertInit() {
   const systemAlertContainer = document.getElementById("system-alerts-banner");
 
   // set fetch type
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
+  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
 
   fetch(ALERT_URL)
     .then((res) => res.json())

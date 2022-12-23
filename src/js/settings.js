@@ -12,10 +12,10 @@ const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q";
  */
 
 // All Alerts
-const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
+const LOCAL_ALERTS_DATA = "../static/json/alerts20221207.json";
 
 // All Routes
-const LOCAL_ROUTE_DATA = "../static/json/routes.json";
+const LOCAL_ROUTES_DATA = "../static/json/routes.json";
 
 /**
  * API Endpoints
@@ -29,14 +29,14 @@ const LOCAL_ROUTE_DATA = "../static/json/routes.json";
 const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
 
 // All Alerts
-const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
+const REMOTE_ALERTS_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
 
 export {
   IS_REMOTE,
   BASE_URL,
   API_KEY,
-  LOCAL_ALERT_DATA,
-  LOCAL_ROUTE_DATA,
+  LOCAL_ALERTS_DATA,
+  LOCAL_ROUTES_DATA,
   REMOTE_ROUTES_API,
-  REMOTE_ALERT_API,
+  REMOTE_ALERTS_API,
 };

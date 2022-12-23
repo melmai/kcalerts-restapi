@@ -1,9 +1,9 @@
 import {
   IS_REMOTE,
-  REMOTE_ALERT_API,
-  LOCAL_ALERT_DATA,
+  REMOTE_ALERTS_API,
+  LOCAL_ALERTS_DATA,
   REMOTE_ROUTES_API,
-  LOCAL_ROUTE_DATA,
+  LOCAL_ROUTES_DATA,
 } from "./settings";
 import {
   cleanup,
@@ -29,8 +29,8 @@ function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
 
   // set fetch URLs
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
-  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
+  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
+  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
 
   // fetch data
   Promise.all([
