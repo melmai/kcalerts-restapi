@@ -37,7 +37,6 @@ function getBannerAlerts(alerts) {
     if (alert.banner_text) bannerAlerts.push(alert);
   });
 
-  console.log(bannerAlerts);
   return bannerAlerts;
 }
 
