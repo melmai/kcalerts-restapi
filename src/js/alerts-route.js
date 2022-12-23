@@ -218,7 +218,6 @@ async function getAlertsByRoute(routeID) {
 }
 
 function removeSystemAlerts(data) {
-  console.log(data);
   let res = data;
   res.forEach((route) => {
     let alerts = [];
