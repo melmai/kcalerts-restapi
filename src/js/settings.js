@@ -18,11 +18,11 @@ const LOCAL_ALERTS_DATA = "../static/json/alerts20221207.json";
 const LOCAL_ROUTES_DATA = "../static/json/routes.json";
 
 // Specific Route Alerts - use only one and comment out the rest
-// const route = '007';    // single
-// const route = '271';     // single
-const route = "007-271"; // multiple
+// const ROUTE = '007';    // single
+// const ROUTE = '271';     // single
+const ROUTE = "007-271"; // multiple
 
-const LOCAL_ROUTE_DATA = `../static/json/route/${route}`;
+const LOCAL_ROUTE_DATA = `../static/json/route/${ROUTE}.json`;
 
 /**
  * API Endpoints
@@ -48,6 +48,7 @@ export {
   LOCAL_ALERTS_DATA,
   LOCAL_ROUTES_DATA,
   LOCAL_ROUTE_DATA,
+  ROUTE,
   REMOTE_ROUTES_API,
   REMOTE_ALERTS_API,
   REMOTE_SINGLE_ALERT_API,

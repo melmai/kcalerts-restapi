@@ -3,8 +3,9 @@ import {
   REMOTE_ROUTES_API,
   REMOTE_SINGLE_ALERT_API,
   LOCAL_ROUTE_DATA,
+  ROUTE,
 } from "./settings";
-import { countAlertTypes } from "./modules/helpers";
+import { countAlertTypes, createStatusFlag } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 
 window.addEventListener("DOMContentLoaded", generateAlerts);
@@ -24,7 +25,7 @@ async function generateAlerts() {
     data = await fetch(LOCAL_ROUTE_DATA).then((res) => res.json());
 
     // if local data is for a single route, set to an array
-    if (!route.includes("-")) data = [data];
+    if (!ROUTE.includes("-")) data = [data];
   }
 
   // remove system alerts
@@ -96,22 +97,20 @@ function buildAccordion(data) {
   );
   label.textContent = "Service Advisory";
 
-  // status flag
+  // status flag container
   const statusFlags = document.createElement("span");
   statusFlags.setAttribute("class", "route-status");
 
+  // get alerts by type
   const flagData = countAlertTypes(data);
 
+  // add status icons based on alert type
   if (flagData.ongoing > 0) {
-    const ongoingFlag = document.createElement("span");
-    ongoingFlag.textContent = flagData.ongoing;
-    ongoingFlag.setAttribute("class", "ongoing");
+    const ongoingFlag = createStatusFlag("ongoing", flagData.ongoing);
     statusFlags.append(ongoingFlag);
   }
   if (flagData.upcoming > 0) {
-    const upcomingFlag = document.createElement("span");
-    upcomingFlag.textContent = flagData.upcoming;
-    upcomingFlag.setAttribute("class", "upcoming");
+    const upcomingFlag = createStatusFlag("upcoming", flagData.upcoming);
     statusFlags.append(upcomingFlag);
   }
 

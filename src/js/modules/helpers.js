@@ -296,6 +296,20 @@ function incrementStatusType(
   return res;
 }
 
+/**
+ * Creates status flag
+ *
+ * @param {String} type
+ * @param {String} text
+ * @returns
+ */
+function createStatusFlag(type, text) {
+  const flag = document.createElement("span");
+  flag.setAttribute("class", type);
+  flag.textContent = text;
+  return flag;
+}
+
 export {
   printDates,
   cleanup,
@@ -312,4 +326,5 @@ export {
   expandType,
   countAlertTypes,
   incrementStatusType,
+  createStatusFlag,
 };

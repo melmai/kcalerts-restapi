@@ -11,6 +11,7 @@ import {
   routeLabel,
   organizeRoutes,
   incrementStatusType,
+  createStatusFlag,
 } from "./modules/helpers";
 import {
   showAlerts,
@@ -187,20 +188,6 @@ function createRoutePanel(route, id) {
   header.append(alertBody);
   routePanel.append(header);
   return routePanel;
-}
-
-/**
- * Creates status flag
- *
- * @param {String} type
- * @param {String} text
- * @returns
- */
-function createStatusFlag(type, text) {
-  const flag = document.createElement("span");
-  flag.setAttribute("class", type);
-  flag.textContent = text;
-  return flag;
 }
 
 /**

@@ -77,18 +77,6 @@ function buildBanner(alert) {
   bodyText.setAttribute("class", "rich-text");
   bodyText.textContent = alert.banner_text;
 
-  // effective date
-  // const date = document.createElement("span");
-  // date.textContent = processAlertDates(
-  //   alert.effect_periods[0].effect_start,
-  //   alert.effect_periods[0].effect_end
-  // );
-
-  // link
-  // const link = document.createElement("a");
-  // link.setAttribute("href", "#");
-  // link.textContent = "";
-
   // close bttn
   const buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("class", "col");
