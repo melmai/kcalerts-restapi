@@ -5,14 +5,14 @@ import {
   routeLabel,
   organizeRoutes,
   incrementStatusType,
-} from "./helpers";
+} from "./modules/helpers";
 import {
   showAlerts,
   notifyNoResults,
   searchRoutes,
   clearSearch,
-} from "./events";
-import { generateSingleAlert } from "./single-alert";
+} from "./modules/events";
+import { generateSingleAlert } from "./modules/single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
 
