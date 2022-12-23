@@ -253,8 +253,6 @@ function organizeRoutes(routes) {
 }
 
 function countAlertTypes(data) {
-  console.log(data);
-
   let ongoing = 0;
   let upcoming = 0;
 
@@ -285,7 +283,6 @@ function incrementStatusType(
   alertStatus,
   routeStatus = { ongoing: 0, upcoming: 0 }
 ) {
-  // console.log(alertStatus);
   let res = routeStatus;
   if (alertStatus.includes("Ongoing") || alertStatus === "New") {
     res.ongoing = res.ongoing + 1;
@@ -294,6 +291,20 @@ function incrementStatusType(
   }
 
   return res;
+}
+
+/**
+ * Creates status flag
+ *
+ * @param {String} type
+ * @param {String} text
+ * @returns
+ */
+function createStatusFlag(type, text) {
+  const flag = document.createElement("span");
+  flag.setAttribute("class", type);
+  flag.textContent = text;
+  return flag;
 }
 
 export {
@@ -312,4 +323,5 @@ export {
   expandType,
   countAlertTypes,
   incrementStatusType,
+  createStatusFlag,
 };
