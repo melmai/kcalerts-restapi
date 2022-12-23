@@ -1,11 +1,16 @@
 /**
- * Home Alert Banner - Logic and rendering of the alert banner on the home page
+ * home-alert-banner.js
+ *
+ * This file controls the system alert banner that is displayed on the Metro home page and
+ * renders the most recent system alert with the banner_text field.
+ *
+ * To change the local data, add the json file to dist/static/json and update the variable
+ * in settings.js
  *
  */
 
 import "bootstrap";
 import { IS_REMOTE, LOCAL_ALERTS_DATA, REMOTE_ALERTS_API } from "./settings";
-import { processAlertDates } from "./modules/helpers";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
 

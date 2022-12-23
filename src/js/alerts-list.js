@@ -1,3 +1,14 @@
+/**
+ * alerts-list.js
+ *
+ * This file controls the main list of alerts/advisories. The data is pulled locally or
+ * remotely, based on the IS_REMOTE variable in settings.js.
+ *
+ * To change the local data, add the json file to dist/static/json and update the setting
+ * in settings.js
+ *
+ */
+
 import {
   IS_REMOTE,
   REMOTE_ALERTS_API,

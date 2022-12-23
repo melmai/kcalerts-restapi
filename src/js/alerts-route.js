@@ -1,3 +1,16 @@
+/**
+ * alerts-route.js
+ *
+ * This file generates the alert accordion on specific route pages. The page
+ * can be for a single route, or for multiple routes. Multiple routes will be
+ * identified by a route header within the accordion. The data being pulled can
+ * be either local or remote, which is controlled by the IS_REMOTE variable in
+ * settings.js
+ *
+ * To change the local data, add the json file to dist/static/json and update the
+ * variable in settings.js
+ */
+
 import {
   IS_REMOTE,
   REMOTE_ROUTES_API,
@@ -14,7 +27,7 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
  * Init Function
  */
 async function generateAlerts() {
-  const alertContainer = document.getElementById("accordion");
+  const alertContainer = document.getElementById("kcalert-accordion");
 
   let data;
   if (IS_REMOTE) {
