@@ -9207,6 +9207,10 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+#system-alerts-banner .alert-warning .row {
+  flex-wrap: nowrap;
+}
+
 .alert-warning {
   padding-top: 20px;
 }
