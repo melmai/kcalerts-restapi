@@ -1,6 +1,6 @@
 import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
-import { countAlertTypes } from "./helpers";
-import { generateSingleAlert } from "./single-alert";
+import { countAlertTypes } from "./modules/helpers";
+import { generateSingleAlert } from "./modules/single-alert";
 
 window.addEventListener("DOMContentLoaded", generateAlerts);
 

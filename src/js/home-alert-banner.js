@@ -1,6 +1,12 @@
+/**
+ * Home Alert Banner - Logic and rendering of the alert banner on the home page
+ *
+ */
+
+// comment this out for production build
 import "bootstrap";
 import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
-import { processAlertDates } from "./helpers";
+import { processAlertDates } from "./modules/helpers";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
 

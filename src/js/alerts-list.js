@@ -131,6 +131,7 @@ function createRoutePanel(route, id) {
   const header = document.createElement("div");
   header.id = route.route_id;
 
+  // set status class for filtering
   const ongoingClass = route.status.ongoing ? "ongoing" : "";
   const upcomingClass = route.status.upcoming ? "upcoming" : "";
   header.setAttribute(
@@ -139,6 +140,7 @@ function createRoutePanel(route, id) {
   );
   header.setAttribute("data-route", routeName);
 
+  // create toggle for accordion as button header
   const button = document.createElement("input");
   button.setAttribute("id", `toggle-advisory-${route.route_id}`);
   button.setAttribute("type", "checkbox");
@@ -152,25 +154,23 @@ function createRoutePanel(route, id) {
   );
   label.setAttribute("for", `toggle-advisory-${route.route_id}`);
 
+  // route name
   const title = document.createElement("h2");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeName;
 
+  // status flag icon container
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
   alertStatus.setAttribute("aria-hidden", "true");
-  let ongoing, upcoming;
-  if (route.status.ongoing > 0) {
-    ongoing = document.createElement("span");
-    ongoing.setAttribute("class", "ongoing");
-    ongoing.textContent = route.status.ongoing;
-  }
 
-  if (route.status.upcoming > 0) {
-    upcoming = document.createElement("span");
-    upcoming.setAttribute("class", "upcoming");
-    upcoming.textContent = route.status.upcoming;
-  }
+  // create status flags and add to container
+  let ongoing, upcoming;
+  if (route.status.ongoing > 0)
+    ongoing = createStatusFlag("ongoing", route.status.ongoing);
+
+  if (route.status.upcoming > 0)
+    upcoming = createStatusFlag("upcoming", route.status.upcoming);
 
   alertStatus.append(ongoing || "", upcoming || "");
 
@@ -191,6 +191,25 @@ function createRoutePanel(route, id) {
   return routePanel;
 }
 
+/**
+ * Creates status flag
+ *
+ * @param {String} type
+ * @param {String} text
+ * @returns
+ */
+function createStatusFlag(type, text) {
+  const flag = document.createElement("span");
+  flag.setAttribute("class", type);
+  flag.textContent = text;
+  return flag;
+}
+
+/**
+ * Sets up all event listeners
+ *
+ * @param {HTMLElement} element to watch
+ */
 function setupListEvents(element) {
   // reset to default view
   const reset = document.getElementById("reset");

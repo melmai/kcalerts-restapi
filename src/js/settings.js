@@ -1,3 +1,8 @@
+/**
+ * Settings for API and data fetching
+ *
+ */
+
 // general settings
 const IS_REMOTE = false;
 
