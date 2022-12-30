@@ -201,6 +201,11 @@ h6 {
   -moz-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
   box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
 }
+@media screen and (max-width: 500px) {
+  .filter-box-wrapper {
+    padding: 1.2rem;
+  }
+}
 
 .filter-box {
   position: relative;

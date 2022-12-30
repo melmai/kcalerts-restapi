@@ -1,20 +1,24 @@
+/**
+ * home-alert-banner.js
+ *
+ * This file controls the system alert banner that is displayed on the Metro home page and
+ * renders the most recent system alert with the banner_text field.
+ *
+ * To change the local data, add the json file to dist/static/json and update the variable
+ * in settings.js
+ *
+ */
+
 import "bootstrap";
-import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
-import { processAlertDates } from "./helpers";
+import { IS_REMOTE, LOCAL_ALERTS_DATA, REMOTE_ALERTS_API } from "./settings";
 
 window.addEventListener("DOMContentLoaded", systemAlertInit);
 
 function systemAlertInit() {
   const systemAlertContainer = document.getElementById("system-alerts-banner");
 
-  // remote API
-  const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
-
-  // local data
-  const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
-
   // set fetch type
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
+  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
 
   fetch(ALERT_URL)
     .then((res) => res.json())
@@ -33,7 +37,6 @@ function getBannerAlerts(alerts) {
     if (alert.banner_text) bannerAlerts.push(alert);
   });
 
-  console.log(bannerAlerts);
   return bannerAlerts;
 }
 
@@ -77,18 +80,6 @@ function buildBanner(alert) {
   const bodyText = document.createElement("p");
   bodyText.setAttribute("class", "rich-text");
   bodyText.textContent = alert.banner_text;
-
-  // effective date
-  // const date = document.createElement("span");
-  // date.textContent = processAlertDates(
-  //   alert.effect_periods[0].effect_start,
-  //   alert.effect_periods[0].effect_end
-  // );
-
-  // link
-  // const link = document.createElement("a");
-  // link.setAttribute("href", "#");
-  // link.textContent = "";
 
   // close bttn
   const buttonContainer = document.createElement("div");

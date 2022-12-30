@@ -1,6 +1,25 @@
-import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
-import { countAlertTypes } from "./helpers";
-import { generateSingleAlert } from "./single-alert";
+/**
+ * alerts-route.js
+ *
+ * This file generates the alert accordion on specific route pages. The page
+ * can be for a single route, or for multiple routes. Multiple routes will be
+ * identified by a route header within the accordion. The data being pulled can
+ * be either local or remote, which is controlled by the IS_REMOTE variable in
+ * settings.js
+ *
+ * To change the local data, add the json file to dist/static/json and update the
+ * variable in settings.js
+ */
+
+import {
+  IS_REMOTE,
+  REMOTE_ROUTES_API,
+  REMOTE_SINGLE_ALERT_API,
+  LOCAL_ROUTE_DATA,
+  ROUTE,
+} from "./settings";
+import { countAlertTypes, createStatusFlag } from "./modules/helpers";
+import { generateSingleAlert } from "./modules/single-alert";
 
 window.addEventListener("DOMContentLoaded", generateAlerts);
 
@@ -8,31 +27,29 @@ window.addEventListener("DOMContentLoaded", generateAlerts);
  * Init Function
  */
 async function generateAlerts() {
-  const alertContainer = document.getElementById("accordion");
+  const alertContainer = document.getElementById("kcalert-accordion");
 
   let data;
   if (IS_REMOTE) {
+    // fetch remote data
     data = await getRemoteAlerts();
-    data = removeSystemAlerts(data);
-
-    // if no alerts, don't render accordion
-    let alerts = false;
-    data.forEach((route) => {
-      if (route.alerts.length > 0) alerts = true;
-    });
-
-    if (!alerts) return;
   } else {
-    let json;
-    // json = "../static/json/route/c-line.json";
-    // json = "../static/json/route/007.json";
-    // json = "../static/json/route/271.json";
-    json = "../static/json/route/007-271.json";
+    // fetch data locally
+    data = await fetch(LOCAL_ROUTE_DATA).then((res) => res.json());
 
-    data = await fetch(json).then((res) => res.json());
-    // data = [data];
-    data = removeSystemAlerts(data);
+    // if local data is for a single route, set to an array
+    if (!ROUTE.includes("-")) data = [data];
   }
+
+  // remove system alerts
+  data = removeSystemAlerts(data);
+
+  // if no alerts, don't render accordion
+  let alerts = false;
+  data.forEach((route) => {
+    if (route.alerts.length > 0) alerts = true;
+  });
+  if (!alerts) return;
 
   // build accordion
   let accordion = new DocumentFragment();
@@ -52,14 +69,14 @@ async function getRemoteAlerts() {
   // get the route IDs
   const routeIDs = await Promise.all(
     routeNames.map(async (routeName) => {
-      return await getRouteID(BASE_URL, API_KEY, routeName);
+      return await getRouteID(routeName);
     })
   );
 
   // get the alerts by route ID
   const data = await Promise.all(
     routeIDs.map(async (routeID) => {
-      return await getAlertsByRoute(BASE_URL, API_KEY, routeID);
+      return await getAlertsByRoute(routeID);
     })
   );
 
@@ -93,22 +110,20 @@ function buildAccordion(data) {
   );
   label.textContent = "Service Advisory";
 
-  // status flag
+  // status flag container
   const statusFlags = document.createElement("span");
   statusFlags.setAttribute("class", "route-status");
 
+  // get alerts by type
   const flagData = countAlertTypes(data);
 
+  // add status icons based on alert type
   if (flagData.ongoing > 0) {
-    const ongoingFlag = document.createElement("span");
-    ongoingFlag.textContent = flagData.ongoing;
-    ongoingFlag.setAttribute("class", "ongoing");
+    const ongoingFlag = createStatusFlag("ongoing", flagData.ongoing);
     statusFlags.append(ongoingFlag);
   }
   if (flagData.upcoming > 0) {
-    const upcomingFlag = document.createElement("span");
-    upcomingFlag.textContent = flagData.upcoming;
-    upcomingFlag.setAttribute("class", "upcoming");
+    const upcomingFlag = createStatusFlag("upcoming", flagData.upcoming);
     statusFlags.append(upcomingFlag);
   }
 
@@ -186,16 +201,13 @@ function parseRoutes(path) {
 /**
  * Gets IBI route ID for route
  *
- * @param {String} baseURL
  * @param {String} apiKey
  * @param {String} routeName
  * @returns route ID
  */
-async function getRouteID(baseURL, apiKey, routeName) {
+async function getRouteID(routeName) {
   // get all routes
-  const routes = await fetch(`${baseURL}/routes?api_key=${apiKey}`).then(
-    (res) => res.json()
-  );
+  const routes = await fetch(REMOTE_ROUTES_API).then((res) => res.json());
 
   // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
@@ -207,21 +219,18 @@ async function getRouteID(baseURL, apiKey, routeName) {
 /**
  * Fetches alert data for a specific route by ID
  *
- * @param {String} baseURL
  * @param {String} apiKey
  * @param {String} routeID
  * @returns array of alerts
  */
-async function getAlertsByRoute(baseURL, apiKey, routeID) {
+async function getAlertsByRoute(routeID) {
+  const fetchURL = REMOTE_SINGLE_ALERT_API + routeID;
   // find alerts based on route ID
-  const alerts = await fetch(
-    `${baseURL}/alertsbyroute?api_key=${apiKey}&route=${routeID}`
-  ).then((res) => res.json());
+  const alerts = await fetch(fetchURL).then((res) => res.json());
   return alerts;
 }
 
 function removeSystemAlerts(data) {
-  console.log(data);
   let res = data;
   res.forEach((route) => {
     let alerts = [];

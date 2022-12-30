@@ -1,6 +1,10 @@
 // External Libraries
 @import "../../node_modules/bootstrap/scss/bootstrap"; // remove this for prod
 
+#system-alerts-banner .alert-warning .row {
+  flex-wrap: nowrap;
+}
+
 .alert-warning {
   padding-top: 20px;
 

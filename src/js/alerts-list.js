@@ -1,18 +1,36 @@
-import { IS_REMOTE, BASE_URL, API_KEY } from "./settings";
+/**
+ * alerts-list.js
+ *
+ * This file controls the main list of alerts/advisories. The data is pulled locally or
+ * remotely, based on the IS_REMOTE variable in settings.js.
+ *
+ * To change the local data, add the json file to dist/static/json and update the setting
+ * in settings.js
+ *
+ */
+
+import {
+  IS_REMOTE,
+  REMOTE_ALERTS_API,
+  LOCAL_ALERTS_DATA,
+  REMOTE_ROUTES_API,
+  LOCAL_ROUTES_DATA,
+} from "./settings";
 import {
   cleanup,
   uniqueRoutes,
   routeLabel,
   organizeRoutes,
   incrementStatusType,
-} from "./helpers";
+  createStatusFlag,
+} from "./modules/helpers";
 import {
   showAlerts,
   notifyNoResults,
   searchRoutes,
   clearSearch,
-} from "./events";
-import { generateSingleAlert } from "./single-alert";
+} from "./modules/events";
+import { generateSingleAlert } from "./modules/single-alert";
 
 window.addEventListener("DOMContentLoaded", createAlerts);
 
@@ -22,17 +40,9 @@ window.addEventListener("DOMContentLoaded", createAlerts);
 function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
 
-  // remote API
-  const REMOTE_ALERT_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
-  const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
-
-  // local JSON
-  const LOCAL_ALERT_DATA = "../static/json/alerts20221207.json";
-  const LOCAL_ROUTE_DATA = "../static/json/routes.json";
-
-  // set fetch type
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERT_API : LOCAL_ALERT_DATA;
-  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTE_DATA;
+  // set fetch URLs
+  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
+  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
 
   // fetch data
   Promise.all([
@@ -131,6 +141,7 @@ function createRoutePanel(route, id) {
   const header = document.createElement("div");
   header.id = route.route_id;
 
+  // set status class for filtering
   const ongoingClass = route.status.ongoing ? "ongoing" : "";
   const upcomingClass = route.status.upcoming ? "upcoming" : "";
   header.setAttribute(
@@ -139,6 +150,7 @@ function createRoutePanel(route, id) {
   );
   header.setAttribute("data-route", routeName);
 
+  // create toggle for accordion as button header
   const button = document.createElement("input");
   button.setAttribute("id", `toggle-advisory-${route.route_id}`);
   button.setAttribute("type", "checkbox");
@@ -152,25 +164,23 @@ function createRoutePanel(route, id) {
   );
   label.setAttribute("for", `toggle-advisory-${route.route_id}`);
 
+  // route name
   const title = document.createElement("h2");
   title.setAttribute("class", "accordion-title");
   title.textContent = routeName;
 
+  // status flag icon container
   const alertStatus = document.createElement("div");
   alertStatus.setAttribute("class", "route-status");
   alertStatus.setAttribute("aria-hidden", "true");
-  let ongoing, upcoming;
-  if (route.status.ongoing > 0) {
-    ongoing = document.createElement("span");
-    ongoing.setAttribute("class", "ongoing");
-    ongoing.textContent = route.status.ongoing;
-  }
 
-  if (route.status.upcoming > 0) {
-    upcoming = document.createElement("span");
-    upcoming.setAttribute("class", "upcoming");
-    upcoming.textContent = route.status.upcoming;
-  }
+  // create status flags and add to container
+  let ongoing, upcoming;
+  if (route.status.ongoing > 0)
+    ongoing = createStatusFlag("ongoing", route.status.ongoing);
+
+  if (route.status.upcoming > 0)
+    upcoming = createStatusFlag("upcoming", route.status.upcoming);
 
   alertStatus.append(ongoing || "", upcoming || "");
 
@@ -191,6 +201,11 @@ function createRoutePanel(route, id) {
   return routePanel;
 }
 
+/**
+ * Sets up all event listeners
+ *
+ * @param {HTMLElement} element to watch
+ */
 function setupListEvents(element) {
   // reset to default view
   const reset = document.getElementById("reset");
