@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Cabin:ital,wght@0,400;0,700;1,400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap";
 /* *************************************************
  * Globals
  ***************************************************/
@@ -119,11 +120,13 @@ h6 {
 
 .route-status .ongoing {
   background-image: url(../static/img/svg/active-fill.svg);
+  background-image: url(https://cm10-prod.kingcounty.gov/-/media/king-county/depts/metro/icons/svg/active-fill.svg);
   color: #fff;
 }
 
 .route-status .upcoming {
   background-image: url(../static/img/svg/planned.svg);
+  background-image: url(https://cm10-prod.kingcounty.gov/-/media/king-county/depts/metro/icons/svg/planned.svg);
 }
 
 /* *************************************************
@@ -431,15 +434,6 @@ h6 {
   padding-top: 0.75rem;
   line-height: 1;
   margin-right: 0.25rem;
-}
-
-.route-status .ongoing {
-  background-image: url(../static/img/svg/active-fill.svg);
-  color: #fff;
-}
-
-.route-status .upcoming {
-  background-image: url(../static/img/svg/planned.svg);
 }
 
 /* *************************************************

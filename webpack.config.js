@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    metroalertbanner: "./src/js/home-alert-banner.js",
+    // metroalertbanner: "./src/js/home-alert-banner.js",
     kcalertslist: "./src/js/alerts-list.js",
     kcalertsroute: "./src/js/alerts-route.js",
   },

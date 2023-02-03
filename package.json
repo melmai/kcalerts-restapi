@@ -9,6 +9,7 @@
   "scripts": {
     "sass": "sass --watch src/sass/:dist/css/",
     "build": "npm run sass && webpack -w",
+    "start:prod": "webpack-dev-server --mode=production",
     "start:dev": "webpack-dev-server --mode=development",
     "stop:dev": "webpack-dev-server stop --mode=development"
   },
