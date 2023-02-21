@@ -283,6 +283,11 @@ h6 {
   top: -5px;
   left: 1.2rem;
 }
+@media screen and (max-width: 767px) {
+  .advisory-content::before {
+    left: 0.25rem;
+  }
+}
 
 .dangerous::before {
   content: "dangerous";
@@ -417,7 +422,7 @@ h6 {
 }
 @media screen and (max-width: 767px) {
   .accordion-title {
-    padding: 1.2rem 0;
+    padding: 1.2rem 0.5rem;
   }
 }
 
@@ -570,6 +575,11 @@ h6 {
   padding: 0 1.2rem 0.7rem 3.4rem;
   border-bottom: 1px solid #eee;
 }
+@media screen and (max-width: 767px) {
+  .advisory-content {
+    padding: 0 0.5rem 0.7rem 2.25rem;
+  }
+}
 
 .advisory-content + .advisory-content {
   margin-top: 1rem;
@@ -605,7 +615,7 @@ h6 {
 }
 @media screen and (max-width: 767px) {
   .with-description:after {
-    right: 0;
+    right: 0.5rem;
   }
 }
 

@@ -20,7 +20,7 @@
   padding: 1.2rem;
 
   @include responsive(767px) {
-    padding: 1.2rem 0;
+    padding: 1.2rem 0.5rem;
   }
 }
 

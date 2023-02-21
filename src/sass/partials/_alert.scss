@@ -125,6 +125,10 @@
   margin-top: 1.5rem;
   padding: 0 1.2rem 0.7rem 3.4rem;
   border-bottom: 1px solid #eee;
+
+  @include responsive(767px) {
+    padding: 0 0.5rem 0.7rem 2.25rem;
+  }
 }
 
 .advisory-content + .advisory-content {
@@ -160,7 +164,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   @include responsive(767px) {
-    right: 0;
+    right: 0.5rem;
   }
 }
 

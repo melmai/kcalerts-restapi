@@ -9,6 +9,10 @@
   position: absolute;
   top: -5px;
   left: 1.2rem;
+
+  @include responsive(767px) {
+    left: 0.25rem;
+  }
 }
 .dangerous::before {
   content: "dangerous";
