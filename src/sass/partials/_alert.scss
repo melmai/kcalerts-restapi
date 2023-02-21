@@ -158,7 +158,12 @@
   text-rendering: optimizeLegibility;
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
+
+  @include responsive(767px) {
+    right: 0;
+  }
 }
+
 .advisory-type {
   font-weight: normal;
   font-size: 1.3rem;

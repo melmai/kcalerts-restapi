@@ -18,12 +18,20 @@
   align-items: center;
   font-weight: 400;
   padding: 1.2rem;
+
+  @include responsive(767px) {
+    padding: 1.2rem 0;
+  }
 }
 
 /* Status Count Icons */
 .route-status {
   display: flex;
   margin-right: 50px;
+
+  @include responsive(767px) {
+    margin-right: 30px;
+  }
 }
 
 .route-status > span {

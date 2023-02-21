@@ -415,11 +415,21 @@ h6 {
   font-weight: 400;
   padding: 1.2rem;
 }
+@media screen and (max-width: 767px) {
+  .accordion-title {
+    padding: 1.2rem 0;
+  }
+}
 
 /* Status Count Icons */
 .route-status {
   display: flex;
   margin-right: 50px;
+}
+@media screen and (max-width: 767px) {
+  .route-status {
+    margin-right: 30px;
+  }
 }
 
 .route-status > span {
@@ -592,6 +602,11 @@ h6 {
   text-rendering: optimizeLegibility;
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (max-width: 767px) {
+  .with-description:after {
+    right: 0;
+  }
 }
 
 .advisory-type {
