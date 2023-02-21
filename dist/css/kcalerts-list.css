@@ -142,6 +142,12 @@ h6 {
   border-radius: 5px;
   letter-spacing: 0.08em;
 }
+@media screen and (max-width: 767px) {
+  .advisory-status {
+    right: 10px;
+    top: 0;
+  }
+}
 
 .advisory-status.ongoing {
   background-color: red;
