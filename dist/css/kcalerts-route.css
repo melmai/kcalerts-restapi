@@ -138,6 +138,11 @@ h6 {
 #status-filter {
   margin-bottom: 20px;
 }
+@media screen and (max-width: 500px) {
+  #status-filter {
+    display: flex;
+  }
+}
 
 #status-filter .filter-btn,
 #status-filter .tab-btn {
@@ -462,7 +467,6 @@ h6 {
   color: green;
 }
 
-/* Status Flags */
 .advisory-title-container {
   display: flex;
 }
@@ -475,6 +479,12 @@ h6 {
   .advisory-title-container {
     position: static;
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .advisory-title-container .advisory-type {
+    font-size: 1.3rem;
   }
 }
 
@@ -532,7 +542,7 @@ h6 {
 }
 
 .cause {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
   text-transform: capitalize;
 }
 
