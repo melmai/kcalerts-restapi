@@ -76,9 +76,7 @@
 }
 
 #map-search:focus,
-#map-search:hover,
-#route-search:focus,
-#route-search:hover {
+#route-search:focus{
   height: 60px;
   border-bottom: 4px solid #757575;
   margin: 0 0 -4px;
