@@ -5,6 +5,10 @@
  ***************************************************/
 #status-filter {
   margin-bottom: 20px;
+
+  @include responsive(500px) {
+    display: flex;
+  }
 }
 
 #status-filter .filter-btn,
@@ -76,7 +80,7 @@
 }
 
 #map-search:focus,
-#route-search:focus{
+#route-search:focus {
   height: 60px;
   border-bottom: 4px solid #757575;
   margin: 0 0 -4px;
