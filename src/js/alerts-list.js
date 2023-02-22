@@ -32,12 +32,17 @@ import {
 } from "./modules/events";
 import { generateSingleAlert } from "./modules/single-alert";
 
-window.addEventListener("DOMContentLoaded", createAlerts);
+if (document.readyState !== "loading") {
+  createAlerts();
+} else {
+  window.addEventListener("DOMContentLoaded", createAlerts);
+}
 
 /**
  * Init Function
  */
 function createAlerts() {
+  console.log("create alerts fxn start");
   const allAlerts = document.getElementById("kcalert-accordion");
 
   // set fetch URLs
@@ -48,22 +53,27 @@ function createAlerts() {
   Promise.all([
     fetch(ALERT_URL).then((res) => res.json()),
     fetch(ROUTE_URL).then((res) => res.json()),
-  ]).then((res) => {
-    // process data
-    const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
-    const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
-    const allData = cleanup(processData(alerts, routes));
+  ])
+    .then((res) => {
+      // process data
+      const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
+      const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
+      const allData = cleanup(processData(alerts, routes));
 
-    // build accordion
-    let accordion = new DocumentFragment();
-    allData.forEach((route, idx) => {
-      accordion.append(createRoutePanel(route, idx));
+      // build accordion
+      let accordion = new DocumentFragment();
+      allData.forEach((route, idx) => {
+        accordion.append(createRoutePanel(route, idx));
+      });
+
+      allAlerts.append(accordion);
+
+      // attach event handlers
+      setupListEvents(allAlerts);
+    })
+    .catch((err) => {
+      console.log("error with create fxn");
     });
-    allAlerts.append(accordion);
-
-    // attach event handlers
-    setupListEvents(allAlerts);
-  });
 }
 
 /* Process API Data / Backend

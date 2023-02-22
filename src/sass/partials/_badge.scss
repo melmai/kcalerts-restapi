@@ -36,31 +36,38 @@
 
 .route-status .ongoing {
   background-image: url(../static/img/svg/active-fill.svg);
+  background-image: url(https://cm10-prod.kingcounty.gov/-/media/king-county/depts/metro/icons/svg/active-fill.svg);
   color: #fff;
 }
 .route-status .upcoming {
   background-image: url(../static/img/svg/planned.svg);
+  background-image: url(https://cm10-prod.kingcounty.gov/-/media/king-county/depts/metro/icons/svg/planned.svg);
 }
 
 /* *************************************************
  * Status Badges
  ***************************************************/
 
-.advisory-status {
-  position: absolute;
-  margin-top: 3px;
-  margin-left: 1em;
-  text-transform: uppercase;
-  font-size: 0.6em;
-  padding: 2px 10px;
-  border-radius: 5px;
-  letter-spacing: 0.08em;
-}
-.advisory-status.ongoing {
-  background-color: red;
-  color: #fff;
-}
+// .advisory-status {
+//   position: absolute;
+//   margin-top: 3px;
+//   margin-left: 1em;
+//   text-transform: uppercase;
+//   font-size: 0.6em;
+//   padding: 2px 10px;
+//   border-radius: 5px;
+//   letter-spacing: 0.08em;
 
-.advisory-status.upcoming {
-  background-color: orange;
-}
+//   @include responsive(767px) {
+//     right: 0;
+//     top: 0;
+//   }
+// }
+// .advisory-status.ongoing {
+//   background-color: red;
+//   color: #fff;
+// }
+
+// .advisory-status.upcoming {
+//   background-color: orange;
+// }

@@ -22,8 +22,8 @@
 }
 .toggle input:checked + .advisory-block-title,
 .toggle input:checked + .advisory-block-title:active {
-  background-color: var(--primary-ghost);
-  color: #fff;
+  background-color: var(--primary-light-background);
+  color: #000;
 }
 
 .toggle.toggle--open label + .toggle-inner,

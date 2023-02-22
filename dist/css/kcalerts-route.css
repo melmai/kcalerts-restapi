@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Cabin:ital,wght@0,400;0,700;1,400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap";
 /* *************************************************
  * Globals
  ***************************************************/
@@ -119,36 +120,18 @@ h6 {
 
 .route-status .ongoing {
   background-image: url(../static/img/svg/active-fill.svg);
+  background-image: url(https://cm10-prod.kingcounty.gov/-/media/king-county/depts/metro/icons/svg/active-fill.svg);
   color: #fff;
 }
 
 .route-status .upcoming {
   background-image: url(../static/img/svg/planned.svg);
+  background-image: url(https://cm10-prod.kingcounty.gov/-/media/king-county/depts/metro/icons/svg/planned.svg);
 }
 
 /* *************************************************
  * Status Badges
  ***************************************************/
-.advisory-status {
-  position: absolute;
-  margin-top: 3px;
-  margin-left: 1em;
-  text-transform: uppercase;
-  font-size: 0.6em;
-  padding: 2px 10px;
-  border-radius: 5px;
-  letter-spacing: 0.08em;
-}
-
-.advisory-status.ongoing {
-  background-color: red;
-  color: #fff;
-}
-
-.advisory-status.upcoming {
-  background-color: orange;
-}
-
 /* *************************************************
  * Status Filter Buttons
  ***************************************************/
@@ -201,11 +184,6 @@ h6 {
   -moz-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
   box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
 }
-@media screen and (max-width: 500px) {
-  .filter-box-wrapper {
-    padding: 1.2rem;
-  }
-}
 
 .filter-box {
   position: relative;
@@ -231,9 +209,7 @@ h6 {
 }
 
 #map-search:focus,
-#map-search:hover,
-#route-search:focus,
-#route-search:hover {
+#route-search:focus {
   height: 60px;
   border-bottom: 4px solid #757575;
   margin: 0 0 -4px;
@@ -278,6 +254,11 @@ h6 {
   position: absolute;
   top: -5px;
   left: 1.2rem;
+}
+@media screen and (max-width: 767px) {
+  .advisory-content::before {
+    left: 0.25rem;
+  }
 }
 
 .dangerous::before {
@@ -349,8 +330,8 @@ h6 {
 
 .toggle input:checked + .advisory-block-title,
 .toggle input:checked + .advisory-block-title:active {
-  background-color: var(--primary-ghost);
-  color: #fff;
+  background-color: var(--primary-light-background);
+  color: #000;
 }
 
 .toggle.toggle--open label + .toggle-inner,
@@ -411,11 +392,21 @@ h6 {
   font-weight: 400;
   padding: 1.2rem;
 }
+@media screen and (max-width: 767px) {
+  .accordion-title {
+    padding: 1.2rem 0.5rem;
+  }
+}
 
 /* Status Count Icons */
 .route-status {
   display: flex;
   margin-right: 50px;
+}
+@media screen and (max-width: 767px) {
+  .route-status {
+    margin-right: 30px;
+  }
 }
 
 .route-status > span {
@@ -431,15 +422,6 @@ h6 {
   padding-top: 0.75rem;
   line-height: 1;
   margin-right: 0.25rem;
-}
-
-.route-status .ongoing {
-  background-image: url(../static/img/svg/active-fill.svg);
-  color: #fff;
-}
-
-.route-status .upcoming {
-  background-image: url(../static/img/svg/planned.svg);
 }
 
 /* *************************************************
@@ -481,8 +463,23 @@ h6 {
 }
 
 /* Status Flags */
-.alert-status {
-  position: absolute;
+.advisory-title-container {
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .advisory-title-container {
+    position: relative;
+  }
+}
+@media screen and (max-width: 315px) {
+  .advisory-title-container {
+    position: static;
+    flex-direction: column;
+  }
+}
+
+.advisory-status {
+  align-self: flex-start;
   margin-top: 3px;
   margin-left: 1rem;
   text-transform: uppercase;
@@ -491,19 +488,27 @@ h6 {
   border-radius: 5px;
   letter-spacing: 0.08em;
 }
-
-@media only screen and (max-width: 600px) {
-  .alert-status {
+@media screen and (max-width: 767px) {
+  .advisory-status {
+    position: absolute;
     right: 0;
     top: 0;
   }
 }
-.alert-status.ongoing {
+@media screen and (max-width: 315px) {
+  .advisory-status {
+    position: static;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.advisory-status.ongoing {
   background-color: red;
   color: #fff;
 }
 
-.alert-status.upcoming {
+.advisory-status.upcoming {
   background-color: orange;
 }
 
@@ -565,6 +570,11 @@ h6 {
   padding: 0 1.2rem 0.7rem 3.4rem;
   border-bottom: 1px solid #eee;
 }
+@media screen and (max-width: 767px) {
+  .advisory-content {
+    padding: 0 0.5rem 0.7rem 2.25rem;
+  }
+}
 
 .advisory-content + .advisory-content {
   margin-top: 1rem;
@@ -597,6 +607,11 @@ h6 {
   text-rendering: optimizeLegibility;
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (max-width: 767px) {
+  .with-description:after {
+    right: 0.5rem;
+  }
 }
 
 .advisory-type {

@@ -15,6 +15,9 @@ export function generateSingleAlert(alert) {
     `advisory-content ${icon(alert.effect_name)}`
   );
 
+  const alertTitle = document.createElement("div");
+  alertTitle.setAttribute("class", "advisory-title-container");
+
   // alert type
   const type = document.createElement("h4");
   type.setAttribute("class", "advisory-type");
@@ -28,7 +31,7 @@ export function generateSingleAlert(alert) {
   );
   flag.textContent = statusText(alert.alert_lifecycle);
 
-  type.append(flag);
+  alertTitle.append(type, flag);
 
   // alert title
   const title = document.createElement("p");
@@ -85,7 +88,7 @@ export function generateSingleAlert(alert) {
   )}`;
 
   alertPanel.append(
-    type,
+    alertTitle,
     title,
     expandLink,
     alertDescription,
