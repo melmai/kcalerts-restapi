@@ -38,8 +38,49 @@
 }
 
 /* Status Flags */
-.alert-status {
-  position: absolute;
+// .alert-status {
+//   position: absolute;
+//   margin-top: 3px;
+//   margin-left: 1rem;
+//   text-transform: uppercase;
+//   font-size: 0.6em;
+//   padding: 2px 10px;
+//   border-radius: 5px;
+//   letter-spacing: 0.08em;
+// }
+
+// @media only screen and (max-width: 600px) {
+//   .alert-status {
+//     right: 0;
+//     top: 0;
+//   }
+// }
+
+// .alert-status.ongoing {
+//   background-color: red;
+//   color: #fff;
+// }
+
+// .alert-status.upcoming {
+//   background-color: orange;
+// }
+
+.advisory-title-container {
+  display: flex;
+
+  @include responsive(767px) {
+    position: relative;
+  }
+
+  @include responsive(315px) {
+    position: static;
+    flex-direction: column;
+  }
+}
+
+.advisory-status {
+  align-self: flex-start;
+  // display: block;
   margin-top: 3px;
   margin-left: 1rem;
   text-transform: uppercase;
@@ -47,21 +88,26 @@
   padding: 2px 10px;
   border-radius: 5px;
   letter-spacing: 0.08em;
-}
 
-@media only screen and (max-width: 600px) {
-  .alert-status {
+  @include responsive(767px) {
+    position: absolute;
     right: 0;
     top: 0;
   }
+
+  @include responsive(315px) {
+    position: static;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
 }
 
-.alert-status.ongoing {
+.advisory-status.ongoing {
   background-color: red;
   color: #fff;
 }
 
-.alert-status.upcoming {
+.advisory-status.upcoming {
   background-color: orange;
 }
 
