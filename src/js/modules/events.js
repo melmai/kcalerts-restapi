@@ -28,6 +28,7 @@ function showAlerts(show = "", hide = "") {
     accordion.removeAttribute("class", hide);
   }
   accordion.setAttribute("class", `accordion accordion-flush ${show}`);
+  accordion.scrollIntoView();
 
   // update buttons
   clearButtons();
@@ -99,6 +100,8 @@ function searchRoutes(showClear = false) {
       route.setAttribute("style", "display:block;");
     }
   }
+
+  document.getElementById("kcalert-accordion").scrollIntoView();
 }
 
 function clearSearch() {
