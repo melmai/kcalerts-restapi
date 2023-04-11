@@ -1,8 +1,10 @@
 /* *************************************************
  * Alert Panels
  ***************************************************/
-.alert-panel {
+.alert-panel,
+.advisory-panel {
   display: flex;
+  flex-direction: row;
   border: 1px solid #eee;
   border-top-width: 0;
   padding: 1.5rem 1rem 0;
@@ -146,12 +148,13 @@
 
 .advisory-content {
   position: relative;
-  margin-top: 1.5rem;
-  padding: 0 1.2rem 0.7rem 3.4rem;
+  margin-top: 0.25rem;
+  // padding: 0 1.2rem 0.7rem 3.4rem;
+  padding: 0 1.2rem 0.7rem 2.25rem;
   border-bottom: 1px solid #eee;
 
   @include responsive(767px) {
-    padding: 0 0.5rem 0.7rem 2.25rem;
+    padding: 0 0.5rem 0.7rem 1.25rem;
   }
 }
 
