@@ -50,6 +50,11 @@
   }
 }
 
+.advisory-type {
+  font-weight: normal;
+  font-size: 1.3rem !important;
+}
+
 .advisory-title-container .advisory-type {
   @include responsive(500px) {
     font-size: 1.3rem;
@@ -191,9 +196,4 @@
   @include responsive(767px) {
     right: 0.5rem;
   }
-}
-
-.advisory-type {
-  font-weight: normal;
-  font-size: 1.3rem;
 }

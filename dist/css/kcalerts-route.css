@@ -464,6 +464,11 @@ h6 {
   }
 }
 
+.advisory-type {
+  font-weight: normal;
+  font-size: 1.3rem !important;
+}
+
 @media screen and (max-width: 500px) {
   .advisory-title-container .advisory-type {
     font-size: 1.3rem;
@@ -604,11 +609,6 @@ h6 {
   .with-description:after {
     right: 0.5rem;
   }
-}
-
-.advisory-type {
-  font-weight: normal;
-  font-size: 1.3rem;
 }
 
 /* *************************************************

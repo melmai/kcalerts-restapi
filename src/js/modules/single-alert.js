@@ -24,7 +24,7 @@ export function generateSingleAlert(alert) {
   alertTitle.setAttribute("class", "advisory-title-container");
 
   // alert type
-  const type = document.createElement("h4");
+  const type = document.createElement("h3");
   type.setAttribute("class", "advisory-type");
   type.textContent = alert.effect_name;
 
