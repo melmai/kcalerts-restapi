@@ -611,4 +611,8 @@ h6 {
   }
 }
 
+#alerts-container {
+  scroll-margin-top: 100px;
+}
+
 /*# sourceMappingURL=kcalerts-list.css.map */

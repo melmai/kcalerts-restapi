@@ -6,3 +6,7 @@
 @import "./partials/toggle"; // accordion show/hide
 @import "./partials/list"; // list view
 @import "./partials/alert"; // alert panel
+
+#alerts-container {
+  scroll-margin-top: 100px;
+}
