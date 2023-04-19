@@ -120,13 +120,13 @@ h6 {
 
 .route-status .ongoing {
   background-image: url(../static/img/svg/active-fill.svg);
-  background-image: url(https://kingcounty.gov/-/media/king-county/depts/metro/icons/svg/active-fill.svg);
+  background-image: url(https://kingcounty.gov/en/-/media/king-county/depts/metro/icons/svg/active-fill.svg);
   color: #fff;
 }
 
 .route-status .upcoming {
   background-image: url(../static/img/svg/planned.svg);
-  background-image: url(https://kingcounty.gov/-/media/king-county/depts/metro/icons/svg/planned.svg);
+  background-image: url(https://kingcounty.gov/en/-/media/king-county/depts/metro/icons/svg/planned.svg);
 }
 
 /* *************************************************

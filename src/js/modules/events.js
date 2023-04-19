@@ -101,7 +101,9 @@ function searchRoutes(showClear = false) {
     }
   }
 
-  document.getElementById("kcalert-accordion").scrollIntoView();
+  document
+    .getElementById("alerts-container")
+    .scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function clearSearch() {
