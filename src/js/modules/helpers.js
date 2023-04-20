@@ -201,6 +201,7 @@ function convertEpoch(epochts) {
  */
 function routeLabel(route) {
   if (route === "Duvall-Monroe Shuttle") return route;
+  if (route === "629") return "SVT Shuttle";
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
@@ -247,17 +248,17 @@ function isST(route) {
  * @returns Array of routes in correct order
  */
 function organizeRoutes(routes) {
-  let shuttleRte = "";
+  let shuttleRtes = [];
   let routeArr = [];
   routes.forEach((route) => {
-    if (route.route_id === "102698") {
-      shuttleRte = route;
+    if (route.route_id === "102698" || route.route_id === "102699") {
+      shuttleRtes.push(route);
     } else {
       routeArr.push(route);
     }
   });
 
-  return [...routeArr, shuttleRte];
+  return [...routeArr, ...shuttleRtes];
 }
 
 function countAlertTypes(data) {
