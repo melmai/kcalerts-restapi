@@ -25,6 +25,14 @@ function printDates(dates) {
   return str;
 }
 
+function accessibleDate(ms) {
+  const date = new Date(ms);
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  return { day: day, month: month, year: year };
+}
+
 /**
  * Removes routes without ongoing alerts
  *
