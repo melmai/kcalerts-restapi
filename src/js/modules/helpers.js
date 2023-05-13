@@ -200,7 +200,9 @@ function convertEpoch(epochts) {
  * @returns String describing route type
  */
 function routeLabel(route) {
-  if (route === "Duvall-Monroe Shuttle") return route;
+  console.log(route);
+  if (route === "Duvall-Monroe Shuttle" || route === "Trailhead Direct Mt. Si")
+    return route;
   if (route === "629") return "SVT Shuttle";
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
@@ -251,7 +253,11 @@ function organizeRoutes(routes) {
   let shuttleRtes = [];
   let routeArr = [];
   routes.forEach((route) => {
-    if (route.route_id === "102698" || route.route_id === "102699") {
+    if (
+      route.route_id === "102698" ||
+      route.route_id === "102699" ||
+      route.route_name === "Trailhead Direct Mt. Si"
+    ) {
       shuttleRtes.push(route);
     } else {
       routeArr.push(route);
