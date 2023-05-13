@@ -58,7 +58,7 @@ export function generateSingleAlert(alert) {
     expandLink = document.createElement("a");
     expandLink.setAttribute("class", "expand-link");
     expandLink.addEventListener("click", toggleDetails);
-    expandLink.textContent = "View details";
+    expandLink.textContent = "Show details";
   }
 
   // cause
