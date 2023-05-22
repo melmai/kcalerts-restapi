@@ -51,10 +51,10 @@ function toggleDetails(e) {
     desc.style.display = "none";
   }
 
-  if (e.target.textContent === "View details") {
+  if (e.target.textContent === "Show details") {
     e.target.textContent = "Hide details";
   } else {
-    e.target.textContent = "View details";
+    e.target.textContent = "Show details";
   }
 }
 
