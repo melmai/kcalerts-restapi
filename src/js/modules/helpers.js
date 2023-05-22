@@ -25,6 +25,14 @@ function printDates(dates) {
   return str;
 }
 
+function accessibleDate(ms) {
+  const date = new Date(ms);
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  return { day: day, month: month, year: year };
+}
+
 /**
  * Removes routes without ongoing alerts
  *
@@ -192,7 +200,10 @@ function convertEpoch(epochts) {
  * @returns String describing route type
  */
 function routeLabel(route) {
-  if (route === "Duvall-Monroe Shuttle") return route;
+  console.log(route);
+  if (route === "Duvall-Monroe Shuttle" || route === "Trailhead Direct Mt. Si")
+    return route;
+  if (route === "629") return "SVT Shuttle";
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
@@ -239,17 +250,21 @@ function isST(route) {
  * @returns Array of routes in correct order
  */
 function organizeRoutes(routes) {
-  let shuttleRte = "";
+  let shuttleRtes = [];
   let routeArr = [];
   routes.forEach((route) => {
-    if (route.route_id === "102698") {
-      shuttleRte = route;
+    if (
+      route.route_id === "102698" ||
+      route.route_id === "102699" ||
+      route.route_name === "Trailhead Direct Mt. Si"
+    ) {
+      shuttleRtes.push(route);
     } else {
       routeArr.push(route);
     }
   });
 
-  return [...routeArr, shuttleRte];
+  return [...routeArr, ...shuttleRtes];
 }
 
 function countAlertTypes(data) {

@@ -2,8 +2,8 @@
  * General Settings for API and data fetching
  */
 
-const IS_REMOTE = false;
-const BASE_URL = "https://kcm-api-transit.ibi-transit.com/developer/api/v2";
+const IS_REMOTE = true;
+const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2";
 const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q";
 
 /**
@@ -11,8 +11,8 @@ const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q";
  *
  */
 
-const LOCAL_ALERTS_DATA = "../static/json/alerts20221207.json";
-const LOCAL_ROUTES_DATA = "../static/json/routes.json";
+const LOCAL_ALERTS_DATA = "/dist/static/json/alerts20230420.json";
+const LOCAL_ROUTES_DATA = "/dist/static/json/routes.json";
 
 // Specific Route Alerts - use only one and comment out the rest
 // const ROUTE = '007';    // single
@@ -28,8 +28,8 @@ const LOCAL_ROUTE_DATA = `../static/json/route/${ROUTE}.json`;
  * PROD: https://kcm-api.ibi-transit.com/developer/api/v2/alerts?api_key=3QxRRLWBsUAZbfT62GEB2Q&format=json
  */
 
-const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}`;
-const REMOTE_ALERTS_API = `${BASE_URL}/alerts?api_key=${API_KEY}`;
+const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}&format=json`;
+const REMOTE_ALERTS_API = `${BASE_URL}/alerts?api_key=${API_KEY}&format=json`;
 const REMOTE_SINGLE_ALERT_API = `${BASE_URL}/alertsbyroute?api_key=${API_KEY}&route=`;
 
 export {

@@ -10,13 +10,21 @@ import { toggleDetails } from "./events";
 export function generateSingleAlert(alert) {
   // alert panel
   const alertPanel = document.createElement("div");
-  alertPanel.setAttribute(
-    "class",
-    `advisory-content ${icon(alert.effect_name)}`
-  );
+  alertPanel.setAttribute("class", `advisory-panel`);
+
+  const alertIcon = document.createElement("span");
+  alertIcon.setAttribute("class", `advisory-icon ${icon(alert.effect_name)}`);
+  alertIcon.setAttribute("aria-hidden", "true");
+  alertIcon.textContent = icon(alert.effect_name);
+
+  const alertContent = document.createElement("div");
+  alertContent.setAttribute("class", "advisory-content");
+
+  const alertTitle = document.createElement("div");
+  alertTitle.setAttribute("class", "advisory-title-container");
 
   // alert type
-  const type = document.createElement("h4");
+  const type = document.createElement("h3");
   type.setAttribute("class", "advisory-type");
   type.textContent = alert.effect_name;
 
@@ -28,7 +36,7 @@ export function generateSingleAlert(alert) {
   );
   flag.textContent = statusText(alert.alert_lifecycle);
 
-  type.append(flag);
+  alertTitle.append(type, flag);
 
   // alert title
   const title = document.createElement("p");
@@ -84,8 +92,8 @@ export function generateSingleAlert(alert) {
     alert.last_modified_dt
   )}`;
 
-  alertPanel.append(
-    type,
+  alertContent.append(
+    alertTitle,
     title,
     expandLink,
     alertDescription,
@@ -93,5 +101,7 @@ export function generateSingleAlert(alert) {
     dates,
     footer
   );
+
+  alertPanel.append(alertIcon, alertContent);
   return alertPanel;
 }

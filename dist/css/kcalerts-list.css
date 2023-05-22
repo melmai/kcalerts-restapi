@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Cabin:ital,wght@0,400;0,700;1,400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap";
 /* *************************************************
  * Globals
  ***************************************************/
@@ -119,41 +120,28 @@ h6 {
 
 .route-status .ongoing {
   background-image: url(../static/img/svg/active-fill.svg);
+  background-image: url(https://kingcounty.gov/en/-/media/king-county/depts/metro/icons/svg/active-fill.svg);
   color: #fff;
 }
 
 .route-status .upcoming {
   background-image: url(../static/img/svg/planned.svg);
+  background-image: url(https://kingcounty.gov/en/-/media/king-county/depts/metro/icons/svg/planned.svg);
 }
 
 /* *************************************************
  * Status Badges
  ***************************************************/
-.advisory-status {
-  position: absolute;
-  margin-top: 3px;
-  margin-left: 1em;
-  text-transform: uppercase;
-  font-size: 0.6em;
-  padding: 2px 10px;
-  border-radius: 5px;
-  letter-spacing: 0.08em;
-}
-
-.advisory-status.ongoing {
-  background-color: red;
-  color: #fff;
-}
-
-.advisory-status.upcoming {
-  background-color: orange;
-}
-
 /* *************************************************
  * Status Filter Buttons
  ***************************************************/
 #status-filter {
   margin-bottom: 20px;
+}
+@media screen and (max-width: 500px) {
+  #status-filter {
+    display: flex;
+  }
 }
 
 #status-filter .filter-btn,
@@ -201,11 +189,6 @@ h6 {
   -moz-box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
   box-shadow: 0px 20px 20px 6px rgba(255, 255, 255, 0.8);
 }
-@media screen and (max-width: 500px) {
-  .filter-box-wrapper {
-    padding: 1.2rem;
-  }
-}
 
 .filter-box {
   position: relative;
@@ -231,9 +214,7 @@ h6 {
 }
 
 #map-search:focus,
-#map-search:hover,
-#route-search:focus,
-#route-search:hover {
+#route-search:focus {
   height: 60px;
   border-bottom: 4px solid #757575;
   margin: 0 0 -4px;
@@ -271,54 +252,41 @@ h6 {
 /* *************************************************
  * Alert Icons
  ***************************************************/
-.advisory-content::before {
+.advisory-icon {
   font-family: var(--icon-font);
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
   font-size: 24px;
   position: absolute;
-  top: -5px;
-  left: 1.2rem;
+  display: block;
+}
+@media screen and (max-width: 767px) {
+  .advisory-icon {
+    left: 0.25rem;
+  }
 }
 
-.dangerous::before {
-  content: "dangerous";
-  content: "dangerous"/"";
+.dangerous {
   color: red;
 }
 
-.alt_route::before,
-.ac_unit::before {
-  content: "alt_route";
-  content: "alt_route"/"";
+.alt_route,
+.ac_unit {
   color: blue;
 }
 
-.ac_unit::before {
-  content: "ac_unit";
-  content: "ac_unit"/"";
-}
-
-.task_alt::before {
-  content: "task_alt";
-  content: "task_alt"/"";
+.task_alt {
   color: green;
 }
 
-.error::before {
-  content: "error";
-  content: "error"/"";
+.error {
   color: red;
 }
 
-.timer::before {
-  content: "timer";
-  content: "timer"/"";
+.timer {
   color: orange;
 }
 
-.warning::before {
-  content: "warning";
-  content: "warning"/"";
+.warning {
   color: black;
 }
 
@@ -349,8 +317,8 @@ h6 {
 
 .toggle input:checked + .advisory-block-title,
 .toggle input:checked + .advisory-block-title:active {
-  background-color: var(--primary-ghost);
-  color: #fff;
+  background-color: var(--primary-light-background);
+  color: #000;
 }
 
 .toggle.toggle--open label + .toggle-inner,
@@ -411,11 +379,21 @@ h6 {
   font-weight: 400;
   padding: 1.2rem;
 }
+@media screen and (max-width: 767px) {
+  .accordion-title {
+    padding: 1.2rem 0.5rem;
+  }
+}
 
 /* Status Count Icons */
 .route-status {
   display: flex;
   margin-right: 50px;
+}
+@media screen and (max-width: 767px) {
+  .route-status {
+    margin-right: 30px;
+  }
 }
 
 .route-status > span {
@@ -433,22 +411,13 @@ h6 {
   margin-right: 0.25rem;
 }
 
-.route-status .ongoing {
-  background-image: url(../static/img/svg/active-fill.svg);
-  color: #fff;
-}
-
-.route-status .upcoming {
-  background-image: url(../static/img/svg/planned.svg);
-}
-
 /* *************************************************
  * Alert Panels
  ***************************************************/
-.alert-panel {
+.alert-panel,
+.advisory-panel {
   display: flex;
-  border: 1px solid #eee;
-  border-top-width: 0;
+  flex-direction: row;
   padding: 1.5rem 1rem 0;
   position: relative;
 }
@@ -480,9 +449,34 @@ h6 {
   color: green;
 }
 
-/* Status Flags */
-.alert-status {
-  position: absolute;
+.advisory-title-container {
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .advisory-title-container {
+    position: relative;
+  }
+}
+@media screen and (max-width: 315px) {
+  .advisory-title-container {
+    position: static;
+    flex-direction: column;
+  }
+}
+
+.advisory-type {
+  font-weight: normal;
+  font-size: 1.3rem !important;
+}
+
+@media screen and (max-width: 500px) {
+  .advisory-title-container .advisory-type {
+    font-size: 1.3rem;
+  }
+}
+
+.advisory-status {
+  align-self: flex-start;
   margin-top: 3px;
   margin-left: 1rem;
   text-transform: uppercase;
@@ -491,19 +485,27 @@ h6 {
   border-radius: 5px;
   letter-spacing: 0.08em;
 }
-
-@media only screen and (max-width: 600px) {
-  .alert-status {
+@media screen and (max-width: 767px) {
+  .advisory-status {
+    position: absolute;
     right: 0;
     top: 0;
   }
 }
-.alert-status.ongoing {
+@media screen and (max-width: 315px) {
+  .advisory-status {
+    position: static;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.advisory-status.ongoing {
   background-color: red;
   color: #fff;
 }
 
-.alert-status.upcoming {
+.advisory-status.upcoming {
   background-color: orange;
 }
 
@@ -527,7 +529,7 @@ h6 {
 }
 
 .cause {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
   text-transform: capitalize;
 }
 
@@ -561,9 +563,14 @@ h6 {
 
 .advisory-content {
   position: relative;
-  margin-top: 1.5rem;
-  padding: 0 1.2rem 0.7rem 3.4rem;
+  margin-top: 0.25rem;
+  padding: 0 1.2rem 0.7rem 2.25rem;
   border-bottom: 1px solid #eee;
+}
+@media screen and (max-width: 767px) {
+  .advisory-content {
+    padding: 0 0.5rem 0.7rem 1.25rem;
+  }
 }
 
 .advisory-content + .advisory-content {
@@ -598,10 +605,14 @@ h6 {
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
 }
+@media screen and (max-width: 767px) {
+  .with-description:after {
+    right: 0.5rem;
+  }
+}
 
-.advisory-type {
-  font-weight: normal;
-  font-size: 1.3rem;
+#alerts-container {
+  scroll-margin-top: 100px;
 }
 
 /*# sourceMappingURL=kcalerts-list.css.map */

@@ -1,18 +1,26 @@
 // External Libraries
-@import "../../node_modules/bootstrap/scss/bootstrap"; // remove this for prod
+// @import "../../node_modules/bootstrap/scss/bootstrap"; // remove this for prod
 
-#system-alerts-banner .alert-warning .row {
-  flex-wrap: nowrap;
+// #system-alerts-banner .alert-warning .row {
+//   flex-wrap: nowrap;
+// }
+
+// .alert-warning {
+//   padding-top: 20px;
+
+.alert-advanced .alert-title {
+  font-size: 24px;
 }
 
-.alert-warning {
-  padding-top: 20px;
+//   .alert-text .rich-text {
+//     margin-bottom: 10px;
+//   }
+// }
 
-  .alert-title {
-    font-size: 24px;
-  }
+.alert-advanced .alert-text {
+  margin-bottom: 0;
+}
 
-  .alert-text .rich-text {
-    margin-bottom: 10px;
-  }
+.alert-advanced .open-close {
+  display: none;
 }

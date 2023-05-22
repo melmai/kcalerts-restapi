@@ -18,12 +18,20 @@
   align-items: center;
   font-weight: 400;
   padding: 1.2rem;
+
+  @include responsive(767px) {
+    padding: 1.2rem 0.5rem;
+  }
 }
 
 /* Status Count Icons */
 .route-status {
   display: flex;
   margin-right: 50px;
+
+  @include responsive(767px) {
+    margin-right: 30px;
+  }
 }
 
 .route-status > span {
@@ -41,10 +49,10 @@
   margin-right: 0.25rem;
 }
 
-.route-status .ongoing {
-  background-image: url(../static/img/svg/active-fill.svg);
-  color: #fff;
-}
-.route-status .upcoming {
-  background-image: url(../static/img/svg/planned.svg);
-}
+// .route-status .ongoing {
+//   background-image: url(../static/img/svg/active-fill.svg);
+//   color: #fff;
+// }
+// .route-status .upcoming {
+//   background-image: url(../static/img/svg/planned.svg);
+// }
