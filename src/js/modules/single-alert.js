@@ -7,6 +7,32 @@ import {
 } from "./helpers";
 import { toggleDetails } from "./events";
 
+function createURL(url) {
+  const urlContainer = document.createElement("p");
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("target", "_blank");
+  link.setAttribute("class", "expand-link")
+
+  // set link text and class based on url
+  if (url.includes("drive.google.com")) {
+    link.textContent = "View PDF";  
+    link.setAttribute("class", "link-icon-picture_as_pdf");
+  } else if (url.includes("kingcountymetro.blog")) {
+    link.textContent = "View Blog Post";
+    link.setAttribute("class", "link-icon-outbound");
+  } else if (url.includes("tripplanner.kingcounty.gov")) {
+    link.textContent = "View next departures";
+  } else if (url.includes("/metro/routes-and-service/schedules-and-maps")) {
+    link.textContent = "View route schedule";
+  } else {
+    link.textContent = "More info";
+  }
+
+  urlContainer.append(link);
+  return urlContainer;
+}
+
 export function generateSingleAlert(alert) {
   // alert panel
   const alertPanel = document.createElement("div");
@@ -43,13 +69,22 @@ export function generateSingleAlert(alert) {
   title.setAttribute("class", "advisory-title");
   title.textContent = accessibleText(alert.header_text);
 
+  console.log(alert.url)
+
   // conditionally add description
   let alertDescription = "";
+  let alertURL = "";
   if (alert.description_text) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
+    
+    if (alert.url) {
+      alertDescription.append(createURL(alert.url));
+    }
+  } else if (alert.url) {
+    alertURL = createURL(alert.url);
   }
 
   // more details button
@@ -97,6 +132,7 @@ export function generateSingleAlert(alert) {
     title,
     expandLink,
     alertDescription,
+    alertURL,
     alertCause,
     dates,
     footer
