@@ -124,8 +124,9 @@
   margin-bottom: 20px;
 }
 
-.alert-link {
-  display: none;
+.advisory-link {
+  @extend.expand-link;
+  margin-top: 1em;
 }
 
 .alert-footer {

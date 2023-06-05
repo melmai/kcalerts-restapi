@@ -12,7 +12,7 @@ function createURL(url) {
   const link = document.createElement("a");
   link.setAttribute("href", url);
   link.setAttribute("target", "_blank");
-  link.setAttribute("class", "expand-link")
+  link.setAttribute("class", "advisory-link")
 
   // set link text and class based on url
   if (url.includes("drive.google.com")) {
