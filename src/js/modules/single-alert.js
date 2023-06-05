@@ -16,7 +16,7 @@ function createURL(url) {
 
   // set link text and class based on url
   if (url.includes("drive.google.com")) {
-    link.textContent = "View PDF";  
+    link.textContent = "View map";  
     link.setAttribute("class", "link-icon-picture_as_pdf");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
