@@ -17,10 +17,10 @@ function createURL(url) {
   // set link text and class based on url
   if (url.includes("drive.google.com")) {
     link.textContent = "View map";  
-    link.setAttribute("class", "link-icon-picture_as_pdf");
+    link.setAttribute("class", "advisory-link link-icon-picture_as_pdf");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
-    link.setAttribute("class", "link-icon-outbound");
+    link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("tripplanner.kingcounty.gov")) {
     link.textContent = "View next departures";
   } else if (url.includes("/metro/routes-and-service/schedules-and-maps")) {

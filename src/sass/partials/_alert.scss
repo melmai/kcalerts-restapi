@@ -67,10 +67,11 @@
   margin-top: 3px;
   margin-left: 1rem;
   text-transform: uppercase;
-  font-size: 0.6em;
-  padding: 2px 10px;
+  font-size: 0.9rem;
+  padding: 0 10px;
   border-radius: 5px;
   letter-spacing: 0.08em;
+  font-family: var(--title-font);
 
   @include responsive(767px) {
     position: absolute;
@@ -156,6 +157,7 @@
   // padding: 0 1.2rem 0.7rem 3.4rem;
   padding: 0 1.2rem 0.7rem 2.25rem;
   border-bottom: 1px solid #eee;
+  width: 100%;
 
   @include responsive(767px) {
     padding: 0 0.5rem 0.7rem 1.25rem;

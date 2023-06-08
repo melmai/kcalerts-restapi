@@ -15,13 +15,18 @@
 .advisory-type {
   font-family: var(--title-font);
 }
-.advisory-block-title {
+.toggle .advisory-block-title {
   font-family: var(--title-font);
   font-weight: bold;
   font-size: 1.5rem;
   padding: 16px 20px;
   border: 1px solid var(--border-color);
   border-bottom: 0;
+  background-color: var(--light-yellow)
+}
+
+#alert-accordion {
+  border: 1px solid var(--border-color);
 }
 
 /* *************************************************

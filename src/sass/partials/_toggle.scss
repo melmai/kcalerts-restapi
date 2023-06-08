@@ -20,6 +20,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.toggle .toggle-advisory {
+  margin-bottom: 0;
+}
+
 .toggle input:checked + .advisory-block-title,
 .toggle input:checked + .advisory-block-title:active {
   background-color: var(--primary-light-background);
@@ -47,6 +52,9 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease;
+}
+
+#kcalert-accordion .toggle .toggle-inner {
   border-bottom: 1px solid var(--border-color);
 }
 
