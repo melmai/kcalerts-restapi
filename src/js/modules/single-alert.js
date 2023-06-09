@@ -33,7 +33,7 @@ function createURL(url) {
   return urlContainer;
 }
 
-export function generateSingleAlert(alert) {
+export function generateSingleAlert(alert, isList = true) {
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute("class", `advisory-panel`);
@@ -69,22 +69,25 @@ export function generateSingleAlert(alert) {
   title.setAttribute("class", "advisory-title");
   title.textContent = accessibleText(alert.header_text);
 
-  console.log(alert.url)
-
   // conditionally add description
   let alertDescription = "";
+  let relatedLink = alert.url;
+  if (!isList && relatedLink.includes("schedules-and-maps")) {
+    relatedLink = "";
+  }
+
   let alertURL = "";
   if (alert.description_text) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
-    
-    if (alert.url) {
-      alertDescription.append(createURL(alert.url));
+
+    if (relatedLink) {
+      alertDescription.append(createURL(relatedLink));
     }
-  } else if (alert.url) {
-    alertURL = createURL(alert.url);
+  } else if (relatedLink) {
+    alertURL = createURL(relatedLink);
   }
 
   // more details button

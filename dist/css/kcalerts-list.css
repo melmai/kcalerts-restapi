@@ -11,9 +11,8 @@
   --primary-ghost: #319e7f;
   --primary-ghost-white: #29856b;
   --primary-light-background: #baf1e1;
-  --border-color: #eee;
+  --border-color: #dee2e6;
   --light-yellow: #fff8c4;
-  font-family: var(--body-font);
 }
 
 *,
@@ -26,25 +25,6 @@ html {
   font-family: var(--body-font);
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-}
-
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--title-font);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.2;
 }
 
 .border1 {
@@ -428,6 +408,7 @@ h6 {
   flex-direction: row;
   padding: 1.5rem 1rem 0;
   position: relative;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .alert-type,
@@ -473,8 +454,11 @@ h6 {
 }
 
 .advisory-type {
+  font-family: var(--title-font);
   font-weight: normal;
   font-size: 1.3rem !important;
+  margin: 0;
+  margin-bottom: 0.75rem;
 }
 
 @media screen and (max-width: 500px) {
@@ -542,7 +526,7 @@ h6 {
   text-transform: capitalize;
 }
 
-.advisory-dates {
+.advisory-content .advisory-dates {
   margin-top: 0;
   margin-bottom: 20px;
 }
@@ -551,14 +535,15 @@ h6 {
   margin-top: 1em;
 }
 
-.alert-footer {
+.advisory-panel .advisory-content .alert-footer {
   font-size: 14px;
   border-top: 1px solid var(--border-color);
   padding-top: 7px;
+  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 425px) {
-  .alert-footer {
+  .advisory-panel .advisory-content .alert-footer {
     font-size: 12px;
   }
 }
@@ -572,9 +557,8 @@ h6 {
 
 .advisory-content {
   position: relative;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
   padding: 0 1.2rem 0.7rem 2.25rem;
-  border-bottom: 1px solid #eee;
   width: 100%;
 }
 @media screen and (max-width: 767px) {
@@ -623,6 +607,15 @@ h6 {
 
 #alerts-container {
   scroll-margin-top: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  #kcalert-accordion {
+    border: 1px solid var(--border-color) !important;
+  }
+}
+.advisory-panel:last-child {
+  border-bottom: 0;
 }
 
 /*# sourceMappingURL=kcalerts-list.css.map */

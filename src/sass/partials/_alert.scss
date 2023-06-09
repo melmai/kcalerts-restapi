@@ -7,6 +7,7 @@
   flex-direction: row;
   padding: 1.5rem 1rem 0;
   position: relative;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .alert-type,
@@ -51,8 +52,11 @@
 }
 
 .advisory-type {
+  font-family: var(--title-font);
   font-weight: normal;
   font-size: 1.3rem !important;
+  margin: 0;
+  margin-bottom: .75rem;
 }
 
 .advisory-title-container .advisory-type {
@@ -120,7 +124,7 @@
   text-transform: capitalize;
 }
 
-.advisory-dates {
+.advisory-content .advisory-dates {
   margin-top: 0;
   margin-bottom: 20px;
 }
@@ -130,14 +134,15 @@
   margin-top: 1em;
 }
 
-.alert-footer {
+.advisory-panel .advisory-content .alert-footer {
   font-size: 14px;
   border-top: 1px solid var(--border-color);
   padding-top: 7px;
+  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 425px) {
-  .alert-footer {
+  .advisory-panel .advisory-content .alert-footer {
     font-size: 12px;
   }
 }
@@ -153,10 +158,10 @@
 
 .advisory-content {
   position: relative;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
   // padding: 0 1.2rem 0.7rem 3.4rem;
   padding: 0 1.2rem 0.7rem 2.25rem;
-  border-bottom: 1px solid #eee;
+  // border-bottom: 1px solid #eee;
   width: 100%;
 
   @include responsive(767px) {

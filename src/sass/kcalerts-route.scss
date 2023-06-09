@@ -15,18 +15,25 @@
 .advisory-type {
   font-family: var(--title-font);
 }
+
 .toggle .advisory-block-title {
-  font-family: var(--title-font);
   font-weight: bold;
   font-size: 1.5rem;
   padding: 16px 20px;
   border: 1px solid var(--border-color);
-  border-bottom: 0;
-  background-color: var(--light-yellow)
+  // border-bottom: 0;
+  background-color: var(--light-yellow);
+  margin-bottom: 0;
 }
 
-#alert-accordion {
-  border: 1px solid var(--border-color);
+@media screen and (min-width: 768px) {
+  #alert-accordion {
+    border: 1px solid var(--border-color);
+  }
+}
+
+#alert-accordion .route-status {
+  margin-right: 30px;
 }
 
 /* *************************************************
@@ -34,7 +41,15 @@
  ***************************************************/
 .route-header {
   padding: 0.6em 1em;
-  background-color: var(--primary-light-background);
-  // color: #fff;
+  background-color: var(--primary-ghost);
+  color: #fff;
   font-size: 1.3em;
+  margin-bottom: 0;
 }
+
+/* *************************************************
+ * Alert Panel
+ ***************************************************/
+// .advisory-panel {
+//   border-bottom: 0;
+// }
