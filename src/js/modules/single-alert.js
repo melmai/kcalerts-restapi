@@ -72,7 +72,7 @@ export function generateSingleAlert(alert, isList = true) {
   // conditionally add description
   let alertDescription = "";
   let relatedLink = alert.url;
-  if (!isList && relatedLink.includes("schedules-and-maps")) {
+  if (!isList && relatedLink && relatedLink.includes("schedules-and-maps")) {
     relatedLink = "";
   }
 
