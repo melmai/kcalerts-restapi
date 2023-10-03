@@ -21,13 +21,13 @@ import {
 import { countAlertTypes, createStatusFlag } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 
-window.addEventListener("DOMContentLoaded", generateAlerts);
+window.addEventListener("load", generateAlerts);
 
 /**
  * Init Function
  */
 async function generateAlerts() {
-  const alertContainer = document.getElementById("kcalert-accordion");
+  const alertContainer = document.getElementById("alert-accordion");
 
   let data;
   if (IS_REMOTE) {
@@ -170,7 +170,7 @@ function generateRouteAlerts(data, isMultiple) {
 
   // print alerts
   data.alerts.forEach((alert) => {
-    routeData.append(generateSingleAlert(alert));
+    routeData.append(generateSingleAlert(alert, false));
   });
 
   return routeData;

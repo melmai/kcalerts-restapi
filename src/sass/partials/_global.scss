@@ -13,8 +13,9 @@
   --primary-ghost: #319e7f;
   --primary-ghost-white: #29856b;
   --primary-light-background: #baf1e1;
-  --border-color: #eee;
-  font-family: var(--body-font);
+  --border-color: #dee2e6;
+  --light-yellow: #fff8c4;
+  // font-family: var(--body-font);
 }
 
 *,
@@ -29,24 +30,24 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--title-font);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
+// .h1,
+// .h2,
+// .h3,
+// .h4,
+// .h5,
+// .h6,
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   font-family: var(--title-font);
+//   margin-top: 0;
+//   margin-bottom: 0.5rem;
+//   font-weight: 500;
+//   line-height: 1.2;
+// }
 
 .border1 {
   border: 1px solid #ccc;
