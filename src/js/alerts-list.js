@@ -22,6 +22,7 @@ import {
   routeLabel,
   organizeRoutes,
   incrementStatusType,
+  incrementSnowCount,
   createStatusFlag,
 } from "./modules/helpers";
 import {
@@ -42,7 +43,6 @@ if (document.readyState !== "loading") {
  * Init Function
  */
 function createAlerts() {
-  console.log("create alerts fxn start");
   const allAlerts = document.getElementById("kcalert-accordion");
 
   // set fetch URLs
@@ -58,7 +58,9 @@ function createAlerts() {
       // process data
       const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
+      console.log(res[1]);
       const allData = cleanup(processData(alerts, routes));
+      // console.log("route data");
 
       // build accordion
       let accordion = new DocumentFragment();
@@ -72,7 +74,7 @@ function createAlerts() {
       setupListEvents(allAlerts);
     })
     .catch((err) => {
-      console.log("error with create fxn");
+      console.log("error with create fxn", err);
     });
 }
 
@@ -86,8 +88,10 @@ function createAlerts() {
  */
 function processData(alertArr, routeArr) {
   let routes = routeArr;
+  // console.log(routes);
 
   alertArr.forEach((data) => {
+    // console.log(data);
     data.route_ids.forEach((routeID) => {
       routes.forEach((route) => {
         if (routeID === route.route_id) {
@@ -101,6 +105,12 @@ function processData(alertArr, routeArr) {
 
           // increment alert type
           route.status = incrementStatusType(data.status, route.status);
+
+          // set snow flag
+          route.is_snow = incrementSnowCount(
+            data.alert.effect_name,
+            route.is_snow
+          );
         }
       });
     });
@@ -185,7 +195,7 @@ function createRoutePanel(route, id) {
   alertStatus.setAttribute("aria-hidden", "true");
 
   // create status flags and add to container
-  let ongoing, upcoming;
+  let snow, ongoing, upcoming;
   if (route.status.ongoing > 0)
     ongoing = createStatusFlag("ongoing", route.status.ongoing);
 
