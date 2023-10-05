@@ -196,13 +196,15 @@ function createRoutePanel(route, id) {
 
   // create status flags and add to container
   let snow, ongoing, upcoming;
+  if (route.is_snow > 0) snow = createStatusFlag("snow", route.is_snow);
+
   if (route.status.ongoing > 0)
     ongoing = createStatusFlag("ongoing", route.status.ongoing);
 
   if (route.status.upcoming > 0)
     upcoming = createStatusFlag("upcoming", route.status.upcoming);
 
-  alertStatus.append(ongoing || "", upcoming || "");
+  alertStatus.append(snow || "", ongoing || "", upcoming || "");
 
   // add elements to route header section
   label.append(title, alertStatus);

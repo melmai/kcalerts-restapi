@@ -323,8 +323,13 @@ function incrementSnowCount(title, snow = 0) {
  */
 function createStatusFlag(type, text) {
   const flag = document.createElement("span");
-  flag.setAttribute("class", type);
-  flag.textContent = text;
+  if (type !== "snow") {
+    flag.setAttribute("class", type);
+    flag.textContent = text;
+  } else {
+    flag.setAttribute("class", "snow-icon material-symbols-outlined");
+    flag.textContent = "ac_unit";
+  }
   return flag;
 }
 
