@@ -7,7 +7,33 @@ import {
 } from "./helpers";
 import { toggleDetails } from "./events";
 
-export function generateSingleAlert(alert) {
+function createURL(url) {
+  const urlContainer = document.createElement("p");
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("target", "_blank");
+  link.setAttribute("class", "advisory-link")
+
+  // set link text and class based on url
+  if (url.includes("drive.google.com")) {
+    link.textContent = "View map";  
+    link.setAttribute("class", "advisory-link link-icon-picture_as_pdf");
+  } else if (url.includes("kingcountymetro.blog")) {
+    link.textContent = "View Blog Post";
+    link.setAttribute("class", "advisory-link link-icon-outbound");
+  } else if (url.includes("tripplanner.kingcounty.gov")) {
+    link.textContent = "View next departures";
+  } else if (url.includes("/metro/routes-and-service/schedules-and-maps")) {
+    link.textContent = "View route schedule";
+  } else {
+    link.textContent = "More info";
+  }
+
+  urlContainer.append(link);
+  return urlContainer;
+}
+
+export function generateSingleAlert(alert, isList = true) {
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute("class", `advisory-panel`);
@@ -45,11 +71,23 @@ export function generateSingleAlert(alert) {
 
   // conditionally add description
   let alertDescription = "";
+  let relatedLink = alert.url;
+  if (!isList && relatedLink && relatedLink.includes("schedules-and-maps")) {
+    relatedLink = "";
+  }
+
+  let alertURL = "";
   if (alert.description_text) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
+
+    if (relatedLink) {
+      alertDescription.append(createURL(relatedLink));
+    }
+  } else if (relatedLink) {
+    alertURL = createURL(relatedLink);
   }
 
   // more details button
@@ -58,7 +96,7 @@ export function generateSingleAlert(alert) {
     expandLink = document.createElement("a");
     expandLink.setAttribute("class", "expand-link");
     expandLink.addEventListener("click", toggleDetails);
-    expandLink.textContent = "View details";
+    expandLink.textContent = "Show details";
   }
 
   // cause
@@ -97,6 +135,7 @@ export function generateSingleAlert(alert) {
     title,
     expandLink,
     alertDescription,
+    alertURL,
     alertCause,
     dates,
     footer
