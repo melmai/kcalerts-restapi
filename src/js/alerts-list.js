@@ -44,6 +44,7 @@ if (document.readyState !== "loading") {
  */
 function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
+  const snowMap = document.getElementById("snow-map-link");
 
   // set fetch URLs
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
@@ -74,6 +75,11 @@ function createAlerts() {
       });
 
       console.log("snow", snow);
+
+      // show snow map link
+      if (snow) {
+        snowMap.classList.remove("d-none");
+      }
 
       allAlerts.append(accordion);
 
