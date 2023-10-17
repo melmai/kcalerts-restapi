@@ -200,7 +200,7 @@ function convertEpoch(epochts) {
  * @returns String describing route type
  */
 function routeLabel(route) {
-  console.log(route);
+  // console.log(route);
   if (route === "Duvall-Monroe Shuttle" || route === "Trailhead Direct Mt. Si")
     return route;
   if (route === "629") return "SVT Shuttle";
@@ -250,6 +250,7 @@ function isST(route) {
  * @returns Array of routes in correct order
  */
 function organizeRoutes(routes) {
+  console.log(routes);
   let shuttleRtes = [];
   let routeArr = [];
   routes.forEach((route) => {
@@ -308,6 +309,11 @@ function incrementStatusType(
   return res;
 }
 
+function incrementSnowCount(title, snow = 0) {
+  if (title.toLowerCase().includes("snow")) return snow + 1;
+  return snow;
+}
+
 /**
  * Creates status flag
  *
@@ -317,8 +323,13 @@ function incrementStatusType(
  */
 function createStatusFlag(type, text) {
   const flag = document.createElement("span");
-  flag.setAttribute("class", type);
-  flag.textContent = text;
+  if (type !== "snow") {
+    flag.setAttribute("class", type);
+    flag.textContent = text;
+  } else {
+    flag.setAttribute("class", "snow-icon material-symbols-outlined");
+    flag.textContent = "ac_unit";
+  }
   return flag;
 }
 
@@ -338,5 +349,6 @@ export {
   expandType,
   countAlertTypes,
   incrementStatusType,
+  incrementSnowCount,
   createStatusFlag,
 };

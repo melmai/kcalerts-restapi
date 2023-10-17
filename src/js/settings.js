@@ -2,8 +2,9 @@
  * General Settings for API and data fetching
  */
 
-const IS_REMOTE = true;
+const IS_REMOTE = false;
 const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2";
+// const BASE_URL = "https://kcm-api.ibi-test.com/developer/api/v2";
 const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q";
 
 /**
@@ -11,8 +12,8 @@ const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q";
  *
  */
 
-const LOCAL_ALERTS_DATA = "/dist/static/json/alerts20230420.json";
-const LOCAL_ROUTES_DATA = "/dist/static/json/routes.json";
+const LOCAL_ALERTS_DATA = "/static/json/alerts20221207.json";
+const LOCAL_ROUTES_DATA = "/static/json/routes.json";
 
 // Specific Route Alerts - use only one and comment out the rest
 // const ROUTE = '007';    // single
