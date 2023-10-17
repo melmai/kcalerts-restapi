@@ -269,3 +269,9 @@ function setupListEvents(element) {
   // notify user if no results
   notifyNoResults(element);
 }
+
+// FancyBox
+Fancybox.bind("[data-fancybox]", {
+  // Custom options
+  hideScrollbar: true,
+});
