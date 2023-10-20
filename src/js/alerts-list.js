@@ -8,7 +8,7 @@
  * in settings.js
  *
  */
-
+import { Fancybox } from "@fancyapps/ui";
 import {
   IS_REMOTE,
   REMOTE_ALERTS_API,
@@ -47,8 +47,11 @@ function createAlerts() {
   const snowMap = document.getElementById("snow-map-link");
 
   // set fetch URLs
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
-  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
+  // const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
+  const ALERT_URL =
+    "https://cm10-prod.kingcounty.gov/~/media/king-county/fe-apps/metro/service-advisories/snow-alerts-json.json";
+  // const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
+  const ROUTE_URL = REMOTE_ROUTES_API;
 
   // fetch data
   Promise.all([
@@ -271,6 +274,16 @@ function setupListEvents(element) {
 }
 
 // FancyBox
+document.getElementById("snow-map-link").addEventListener("click", () => {
+  Fancybox.show([
+    {
+      src: "https://map.metrowinter.com/map-iframe/",
+      type: "iframe",
+      preload: false,
+    },
+  ]);
+});
+
 Fancybox.bind("[data-fancybox]", {
   // Custom options
   hideScrollbar: true,

@@ -6,6 +6,7 @@
 @import "./partials/toggle"; // accordion show/hide
 @import "./partials/list"; // list view
 @import "./partials/alert"; // alert panel
+@import "./fancybox";
 
 #alerts-container {
   scroll-margin-top: 100px;
@@ -19,4 +20,12 @@
 
 .advisory-panel:last-child {
   border-bottom: 0;
+}
+
+#snow-map-link {
+  border-width: 0;
+  border-left-width: 2px;
+  background: 0;
+  color: #0056f5;
+  cursor: pointer;
 }
