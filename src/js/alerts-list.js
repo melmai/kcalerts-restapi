@@ -48,9 +48,9 @@ function createAlerts() {
 
   // set fetch URLs
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
+  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
   // const ALERT_URL = "https://cm10-prod.kingcounty.gov/~/media/king-county/fe-apps/metro/service-advisories/snow-alerts-json.json";
-  // const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
-  const ROUTE_URL = REMOTE_ROUTES_API;
+  // const ROUTE_URL = REMOTE_ROUTES_API;
 
   // fetch data
   Promise.all([
