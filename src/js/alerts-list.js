@@ -8,7 +8,7 @@
  * in settings.js
  *
  */
-
+import { Fancybox } from "@fancyapps/ui";
 import {
   IS_REMOTE,
   REMOTE_ALERTS_API,
@@ -44,10 +44,13 @@ if (document.readyState !== "loading") {
  */
 function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
+  const snowMap = document.getElementById("snow-map-link");
 
   // set fetch URLs
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
   const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
+  // const ALERT_URL = "https://cm10-prod.kingcounty.gov/~/media/king-county/fe-apps/metro/service-advisories/snow-alerts-json.json";
+  // const ROUTE_URL = REMOTE_ROUTES_API;
 
   // fetch data
   Promise.all([
@@ -57,16 +60,28 @@ function createAlerts() {
     .then((res) => {
       // process data
       const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
+      console.log("alerts", alerts);
       const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
       console.log(res[1]);
       const allData = cleanup(processData(alerts, routes));
-      // console.log("route data");
+      console.log("allData", allData);
+
+      // snow flag
+      let snow = false;
 
       // build accordion
       let accordion = new DocumentFragment();
       allData.forEach((route, idx) => {
+        if (!snow && route.is_snow > 0) snow = true;
         accordion.append(createRoutePanel(route, idx));
       });
+
+      console.log("snow", snow);
+
+      // show snow map link
+      if (snow) {
+        snowMap.classList.remove("d-none");
+      }
 
       allAlerts.append(accordion);
 
@@ -256,3 +271,19 @@ function setupListEvents(element) {
   // notify user if no results
   notifyNoResults(element);
 }
+
+// FancyBox
+document.getElementById("snow-map-link").addEventListener("click", () => {
+  Fancybox.show([
+    {
+      src: "https://map.metrowinter.com/map-iframe/",
+      type: "iframe",
+      preload: false,
+    },
+  ]);
+});
+
+Fancybox.bind("[data-fancybox]", {
+  // Custom options
+  hideScrollbar: true,
+});

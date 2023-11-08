@@ -1,0 +1,44 @@
+{
+  "alerts": [
+    {
+      "alert_id": 1584,
+      "effect_name": "Stop Relocation",
+      "effect": "STOP_MOVED",
+      "cause_name": "construction",
+      "cause": "CONSTRUCTION",
+      "header_text": "Stop #13277 E Madison St & 13th Ave (WB) relocated through Thu Dec 15 due to construction.",
+      "short_header_text": "Stop #13277 E Madison St & 13th Ave (WB) relocated through Thu Dec 15 due to construction.",
+      "description_text": "Affected routes:\r\n2\r\n12\r\n\nGet on/off buses at:\r\nThe relocated stop a short distance east of the affected stop (WB)",
+      "severity": "Minor",
+      "created_dt": "1666733755",
+      "last_modified_dt": "1666733755",
+      "service_effect_text": "Stop Stop #13277 E Madison St & 13th Ave (WB) relocated through Thu Dec 15 due to construction",
+      "timeframe_text": "through December 15",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        { "effect_start": "1666733776", "effect_end": "1671191940" }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100018",
+            "route_name": "12",
+            "stop_id": "13277",
+            "stop_name": "E Madison St & 13th Ave (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100089",
+            "route_name": "2",
+            "stop_id": "13277",
+            "stop_name": "E Madison St & 13th Ave (WB)"
+          }
+        ],
+        "elevators": []
+      }
+    }
+  ]
+}

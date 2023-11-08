@@ -271,6 +271,7 @@ function organizeRoutes(routes) {
 function countAlertTypes(data) {
   let ongoing = 0;
   let upcoming = 0;
+  let snow = 0;
 
   data.forEach((route) => {
     route.alerts.forEach((alert) => {
@@ -279,12 +280,17 @@ function countAlertTypes(data) {
       } else {
         ongoing++;
       }
+
+      if (alert.effect_name.toLowerCase().includes("snow")) {
+        snow++;
+      }
     });
   });
 
   return {
     ongoing: ongoing,
     upcoming: upcoming,
+    snow: snow,
   };
 }
 

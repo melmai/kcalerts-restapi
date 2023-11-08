@@ -116,8 +116,13 @@ function buildAccordion(data) {
 
   // get alerts by type
   const flagData = countAlertTypes(data);
+  console.log(flagData);
 
   // add status icons based on alert type
+  if (flagData.snow > 0) {
+    const snowFlag = createStatusFlag("snow");
+    statusFlags.append(snowFlag);
+  }
   if (flagData.ongoing > 0) {
     const ongoingFlag = createStatusFlag("ongoing", flagData.ongoing);
     statusFlags.append(ongoingFlag);
