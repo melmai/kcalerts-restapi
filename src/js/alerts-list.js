@@ -49,8 +49,6 @@ function createAlerts() {
   // set fetch URLs
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
   const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
-  // const ALERT_URL = "https://cm10-prod.kingcounty.gov/~/media/king-county/fe-apps/metro/service-advisories/snow-alerts-json.json";
-  // const ROUTE_URL = REMOTE_ROUTES_API;
 
   // fetch data
   Promise.all([
@@ -60,11 +58,8 @@ function createAlerts() {
     .then((res) => {
       // process data
       const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
-      console.log("alerts", alerts);
       const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
-      console.log(res[1]);
       const allData = cleanup(processData(alerts, routes));
-      console.log("allData", allData);
 
       // snow flag
       let snow = false;
@@ -103,10 +98,8 @@ function createAlerts() {
  */
 function processData(alertArr, routeArr) {
   let routes = routeArr;
-  // console.log(routes);
 
   alertArr.forEach((data) => {
-    // console.log(data);
     data.route_ids.forEach((routeID) => {
       routes.forEach((route) => {
         if (routeID === route.route_id) {
@@ -230,7 +223,7 @@ function createRoutePanel(route, id) {
   alertBody.setAttribute("class", "toggle-inner");
 
   // append alerts to alert container
-  route.alerts.forEach((alert, idx) => {
+  route.alerts.forEach((alert) => {
     alertBody.append(generateSingleAlert(alert));
   });
   header.append(alertBody);
