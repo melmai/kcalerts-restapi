@@ -9,9 +9,8 @@
   "scripts": {
     "sass": "sass --watch src/sass/:dist/css/",
     "build": "./node_modules/.bin/webpack -w --mode=production",
-    "start:prod": "webpack-dev-server --mode=production",
-    "start:dev": "webpack-dev-server --mode=development",
-    "stop:dev": "webpack-dev-server stop --mode=development"
+    "start:prod": "webpack --config webpack.prod.config.js",
+    "start:dev": "webpack server --config webpack.dev.config.js --hot"
   },
   "repository": {
     "type": "git",
