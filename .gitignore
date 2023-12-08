@@ -3,3 +3,5 @@
 node_modules/
 *.css.map
 package-lock.json
+*.hot-update.json
+*.hot-update.js
