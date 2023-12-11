@@ -9,13 +9,7 @@
  *
  */
 import { Fancybox } from "@fancyapps/ui";
-import {
-  IS_REMOTE,
-  REMOTE_ALERTS_API,
-  LOCAL_ALERTS_DATA,
-  REMOTE_ROUTES_API,
-  LOCAL_ROUTES_DATA,
-} from "./settings";
+import { ALERTS_URL, ROUTES_URL } from "./settings";
 import {
   cleanup,
   uniqueRoutes,
@@ -46,14 +40,10 @@ function createAlerts() {
   const allAlerts = document.getElementById("kcalert-accordion");
   const snowMap = document.getElementById("snow-map-link");
 
-  // set fetch URLs
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
-  const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
-
   // fetch data
   Promise.all([
-    fetch(ALERT_URL).then((res) => res.json()),
-    fetch(ROUTE_URL).then((res) => res.json()),
+    fetch(ALERTS_URL).then((res) => res.json()),
+    fetch(ROUTES_URL).then((res) => res.json()),
   ])
     .then((res) => {
       // process data

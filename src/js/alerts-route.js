@@ -11,13 +11,7 @@
  * variable in settings.js
  */
 
-import {
-  IS_REMOTE,
-  REMOTE_ROUTES_API,
-  REMOTE_SINGLE_ALERT_API,
-  LOCAL_ROUTE_DATA,
-  ROUTE,
-} from "./settings";
+import { SINGLE_ALERT_URL, ROUTE } from "./settings";
 import { countAlertTypes, createStatusFlag } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 

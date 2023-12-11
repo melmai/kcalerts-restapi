@@ -10,7 +10,7 @@
  */
 
 import "bootstrap";
-import { IS_REMOTE, LOCAL_ALERTS_DATA, REMOTE_ALERTS_API } from "./settings";
+import { IS_REMOTE, ALERTS_URL } from "./settings";
 
 if (document.readyState !== "loading") {
   systemAlertInit();
@@ -24,8 +24,6 @@ function systemAlertInit() {
   // );
 
   const systemAlertContainer = document.getElementById("collapseAlertText");
-  // set fetch type
-  const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
 
   fetch(ALERT_URL)
     .then((res) => res.json())

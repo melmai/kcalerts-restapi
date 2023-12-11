@@ -27,7 +27,7 @@ module.exports = (env) => ({
   },
   plugins: [
     new Dotenv({
-      path: "./.env.dev",
+      path: "./.env.test",
       ignoreStub: true,
       systemvars: true,
     }),

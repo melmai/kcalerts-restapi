@@ -2,19 +2,7 @@
  * General Settings for API and data fetching
  */
 
-const IS_REMOTE = true;
-const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2"; // prod
-// const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2"; // test
-const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q"; // prod
-// const API_KEY = "gvMjFrABizrQwye9KBD3KB"; // test
-
-/**
- * Local Files - these will be used if IS_REMOTE is set to true
- *
- */
-
-const LOCAL_ALERTS_DATA = "/static/json/alerts20221207.json";
-const LOCAL_ROUTES_DATA = "/static/json/routes.json";
+const IS_REMOTE = false;
 
 // Specific Route Alerts - use only one and comment out the rest
 // const ROUTE = "002"; // single
@@ -31,19 +19,20 @@ const LOCAL_ROUTE_DATA = `../static/json/route/${ROUTE}.json`;
  * PROD: https://kcm-api.ibi-transit.com/developer/api/v2/alerts?api_key=3QxRRLWBsUAZbfT62GEB2Q&format=json
  */
 
-const REMOTE_ROUTES_API = `${BASE_URL}/routes?api_key=${API_KEY}&format=json`;
-const REMOTE_ALERTS_API = `${BASE_URL}/alerts?api_key=${API_KEY}&format=json`;
-const REMOTE_SINGLE_ALERT_API = `${BASE_URL}/alertsbyroute?api_key=${API_KEY}&route=`;
+// if (IS_REMOTE) {
+//   const REMOTE_ROUTES_API = process.env.ROUTES_URL;
+//   // const REMOTE_ALERTS_API = `${process.env.BASE_URL}/alerts?api_key=${process.env.API_KEY}&format=json`;
+//   const REMOTE_ALERTS_API = process.env.ALERTS_URL;
+//   console.log(REMOTE_ROUTES_API);
+//   console.log(REMOTE_ALERTS_API);
+//   const REMOTE_SINGLE_ALERT_API = process.env.ALERT_URL;
+// }
 
-export {
-  IS_REMOTE,
-  BASE_URL,
-  API_KEY,
-  LOCAL_ALERTS_DATA,
-  LOCAL_ROUTES_DATA,
-  LOCAL_ROUTE_DATA,
-  ROUTE,
-  REMOTE_ROUTES_API,
-  REMOTE_ALERTS_API,
-  REMOTE_SINGLE_ALERT_API,
-};
+// const ALERTS_URL = IS_REMOTE ? REMOTE_ALERTS_API : process.env.ALERTS_URL;
+// const ROUTES_URL = IS_REMOTE ? REMOTE_ROUTES_API : process.env.ROUTES_URL;
+// const SINGLE_ALERT_URL = IS_REMOTE ? REMOTE_SINGLE_ALERT_API : LOCAL_ROUTE_DATA;
+const ALERTS_URL = process.env.ALERTS_URL;
+const ROUTES_URL = process.env.ROUTES_URL;
+const SINGLE_ALERT_URL = IS_REMOTE ? REMOTE_SINGLE_ALERT_API : LOCAL_ROUTE_DATA;
+
+export { IS_REMOTE, ALERTS_URL, ROUTES_URL, ROUTE, SINGLE_ALERT_URL };
