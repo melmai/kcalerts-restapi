@@ -11,7 +11,7 @@
  * variable in settings.js
  */
 
-import { SINGLE_ALERT_URL, ROUTE } from "./settings";
+import { singleAlertURL } from "./settings";
 import { countAlertTypes, createStatusFlag } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 

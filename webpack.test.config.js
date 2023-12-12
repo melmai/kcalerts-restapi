@@ -11,7 +11,7 @@ module.exports = (env) => ({
     path: path.resolve(__dirname, "dist"),
     filename: "./js/[name].js",
   },
-  mode: "development",
+  mode: "none",
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
