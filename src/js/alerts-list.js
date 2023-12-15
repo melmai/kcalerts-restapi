@@ -62,13 +62,12 @@ function createAlerts() {
       const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const [rail, bus, marine] = res[1].mode;
 
-      const busRoutes = organizeRoutes(bus.route); // array of all available routes
+      const busRoutes = organizeRoutes(bus.route);
       const railRoutes = organizeRoutes(rail.route);
       const marineRoutes = organizeRoutes(marine.route);
 
       let data = [...busRoutes, ...railRoutes, ...marineRoutes];
       data = cleanup(processData(alerts, data));
-      console.log("data", data);
 
       // snow flag
       let snow = false;
