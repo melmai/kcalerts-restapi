@@ -196,14 +196,23 @@ function convertEpoch(epochts) {
 /**
  * Adjusts the route title based on route number
  *
+ * @todo: adjust Water Taxi route labels to be more descriptive
+ *
  * @param {String} route
  * @returns String describing route type
  */
 function routeLabel(route) {
-  // console.log(route);
-  if (route === "Duvall-Monroe Shuttle" || route === "Trailhead Direct Mt. Si")
-    return route;
+  const labels = [
+    "Duvall-Monoroe Shuttle",
+    "Trailhead Direct Mt. Si",
+    "First Hill Streetcar",
+    "South Lake Union Streetcar",
+  ];
+
+  if (labels.includes(route)) return route;
   if (route === "629") return "SVT Shuttle";
+  if (route === "973") return "West Seattle Water Taxi";
+  if (route === "975") return "Vashon Water Taxi";
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
@@ -250,7 +259,6 @@ function isST(route) {
  * @returns Array of routes in correct order
  */
 function organizeRoutes(routes) {
-  console.log(routes);
   let shuttleRtes = [];
   let routeArr = [];
   routes.forEach((route) => {
