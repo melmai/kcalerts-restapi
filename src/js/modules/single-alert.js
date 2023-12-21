@@ -12,17 +12,19 @@ function createURL(url) {
   const link = document.createElement("a");
   link.setAttribute("href", url);
   link.setAttribute("target", "_blank");
-  link.setAttribute("class", "advisory-link")
+  link.setAttribute("class", "advisory-link");
 
   // set link text and class based on url
   if (url.includes("drive.google.com")) {
-    link.textContent = "View map";  
+    link.textContent = "View map";
     link.setAttribute("class", "advisory-link link-icon-picture_as_pdf");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
     link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("tripplanner.kingcounty.gov")) {
     link.textContent = "View next departures";
+  } else if (url.includes("#route-map")) {
+    link.textContent = "View route map";
   } else if (url.includes("/metro/routes-and-service/schedules-and-maps")) {
     link.textContent = "View route schedule";
   } else {

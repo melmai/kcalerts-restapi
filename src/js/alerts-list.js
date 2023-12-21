@@ -79,7 +79,7 @@ function createAlerts() {
         accordion.append(createRoutePanel(route, idx));
       });
 
-      console.log("snow", snow);
+      // console.log("snow", snow);
 
       // show snow map link
       if (snow) {
