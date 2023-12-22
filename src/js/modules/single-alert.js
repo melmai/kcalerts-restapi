@@ -43,6 +43,7 @@ export function generateSingleAlert(alert, isList = true) {
   const alertIcon = document.createElement("span");
   alertIcon.setAttribute("class", `advisory-icon ${icon(alert.effect_name)}`);
   alertIcon.setAttribute("aria-hidden", "true");
+  alertIcon.setAttribute("translate", "no");
   alertIcon.textContent = icon(alert.effect_name);
 
   const alertContent = document.createElement("div");

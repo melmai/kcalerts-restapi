@@ -342,6 +342,7 @@ function createStatusFlag(type, text) {
     flag.textContent = text;
   } else {
     flag.setAttribute("class", "snow-icon material-symbols-outlined");
+    flag.setAttribute("translate", "no");
     flag.textContent = "ac_unit";
   }
   return flag;
