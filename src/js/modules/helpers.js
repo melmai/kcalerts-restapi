@@ -203,7 +203,7 @@ function convertEpoch(epochts) {
  */
 function routeLabel(route) {
   const labels = [
-    "Duvall-Monoroe Shuttle",
+    "Duvall-Monroe Shuttle",
     "Trailhead Direct Mt. Si",
     "First Hill Streetcar",
     "South Lake Union Streetcar",
