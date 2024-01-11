@@ -18,6 +18,9 @@ function createURL(url) {
   if (url.includes("drive.google.com")) {
     link.textContent = "View map";
     link.setAttribute("class", "advisory-link link-icon-picture_as_pdf");
+  } else if (url.includes("live.goswift.ly/seattle-streetcar/route")) {
+    link.textContent = "View route map";
+    link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
     link.setAttribute("class", "advisory-link link-icon-outbound");
@@ -82,19 +85,11 @@ export function generateSingleAlert(alert, isList = true) {
     alertURL = createURL(relatedLink);
   }
 
-  if (!isList && relatedLink && relatedLink.includes("schedules-and-maps")) {
-    relatedLink = "";
-  }
-
   if (alert.description_text) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
-
-    if (relatedLink) {
-      alertDescription.append(createURL(relatedLink));
-    }
   }
 
   // more details button
