@@ -95,8 +95,6 @@ export function generateSingleAlert(alert, isList = true) {
     if (relatedLink) {
       alertDescription.append(createURL(relatedLink));
     }
-  } else if (relatedLink) {
-    alertURL = createURL(relatedLink);
   }
 
   // more details button
@@ -142,9 +140,9 @@ export function generateSingleAlert(alert, isList = true) {
   alertContent.append(
     alertTitle,
     title,
+    alertURL,
     expandLink,
     alertDescription,
-    alertURL,
     alertCause,
     dates,
     footer
