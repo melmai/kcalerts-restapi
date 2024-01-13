@@ -18,6 +18,9 @@ function createURL(url) {
   if (url.includes("drive.google.com")) {
     link.textContent = "View map";
     link.setAttribute("class", "advisory-link link-icon-picture_as_pdf");
+  } else if (url.includes("live.goswift.ly/seattle-streetcar/route")) {
+    link.textContent = "View route map";
+    link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
     link.setAttribute("class", "advisory-link link-icon-outbound");
@@ -75,22 +78,18 @@ export function generateSingleAlert(alert, isList = true) {
   // conditionally add description
   let alertDescription = "";
   let relatedLink = alert.url;
-  if (!isList && relatedLink && relatedLink.includes("schedules-and-maps")) {
-    relatedLink = "";
+  let alertURL = "";
+
+  // add URL
+  if (relatedLink) {
+    alertURL = createURL(relatedLink);
   }
 
-  let alertURL = "";
   if (alert.description_text) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
-
-    if (relatedLink) {
-      alertDescription.append(createURL(relatedLink));
-    }
-  } else if (relatedLink) {
-    alertURL = createURL(relatedLink);
   }
 
   // more details button
@@ -136,9 +135,9 @@ export function generateSingleAlert(alert, isList = true) {
   alertContent.append(
     alertTitle,
     title,
+    alertURL,
     expandLink,
     alertDescription,
-    alertURL,
     alertCause,
     dates,
     footer
