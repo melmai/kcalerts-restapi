@@ -210,7 +210,7 @@ function routeLabel(route) {
   ];
 
   if (labels.includes(route)) return route;
-  if (route === "629") return "SVT Shuttle";
+  if (route === "SVT") return "SVT Shuttle";
   if (route === "973") return "West Seattle Water Taxi";
   if (route === "975") return "Vashon Water Taxi";
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
