@@ -5,6 +5,7 @@ module.exports = {
     metroalertbanner: "./src/js/home-alert-banner.js",
     kcalertslist: "./src/js/alerts-list.js",
     kcalertsroute: "./src/js/alerts-route.js",
+    watertaxi: "./src/js/alerts-taxi.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
