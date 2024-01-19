@@ -3,10 +3,10 @@
  */
 
 const IS_REMOTE = true;
-const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2"; // prod
-// const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2"; // test
-const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q"; // prod
-// const API_KEY = "gvMjFrABizrQwye9KBD3KB"; // test
+// const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2"; // prod
+const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2"; // test
+// const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q"; // prod
+const API_KEY = "gvMjFrABizrQwye9KBD3KB"; // test
 
 /**
  * Local Files - these will be used if IS_REMOTE is set to true

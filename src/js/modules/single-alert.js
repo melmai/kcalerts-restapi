@@ -21,6 +21,9 @@ function createURL(url) {
   } else if (url.includes("live.goswift.ly/seattle-streetcar/route")) {
     link.textContent = "View route map";
     link.setAttribute("class", "advisory-link link-icon-outbound");
+  } else if (url.includes("wsdot.com/ferries/vesselwatch/watertaxiwatch")) {
+    link.textContent = "Check status on Water Taxi Watch";
+    link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
     link.setAttribute("class", "advisory-link link-icon-outbound");
