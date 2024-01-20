@@ -642,6 +642,7 @@ html {
 /* *************************************************
  * Route Header for Multi-Route pages
  ***************************************************/
+#alert-accordion .route-header,
 .route-header {
   padding: 0.6em 1em;
   background-color: var(--primary-ghost);
