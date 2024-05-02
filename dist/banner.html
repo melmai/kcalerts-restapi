@@ -17,7 +17,10 @@
       rel="stylesheet"
       href="https://kingcounty.gov/en/assets/KCGov/css/styles.css"
     />
-    <link rel="stylesheet" href="css/kcalerts-list.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.kingcounty.gov/-/media/king-county/depts/metro/css/metro-global-styles-metro-with-font-awesome.css"
+    />
     <!-- <link rel="stylesheet" href="css/kcalerts-banner.css" /> -->
     <!-- <script src="./js/metroalertbanner.js" type="text/javascript"></script> -->
 
@@ -29,49 +32,31 @@
     /> -->
   </head>
   <body>
-    <section id="system-alerts-banner"></section>
-    <section id="alerts-container" class="main-content">
-      <!-- Snow map -->
-      <a class="link-emphasis d-none mb-5" id="snow-map-link"
-        >Snow, ice &amp; flood map</a
-      >
-
-      <section class="filter-box-wrapper">
-        <!-- Search -->
-        <section id="search">
-          <label for="route-search">Filter the list:</label>
-          <div id="route-search-container">
-            <input
-              type="text"
-              name="route-search"
-              id="route-search"
-              aria-label="Enter a route number"
-              placeholder="Enter a route number.."
-            />
-            <button id="clear-search">
-              <span class="material-symbols-outlined">close</span>
-            </button>
-          </div>
-        </section>
-
-        <!-- Tab Filters -->
-        <section id="status-filter">
-          <button id="reset" class="tab-btn selected">All</button>
-          <button id="ongoing-filter" class="tab-btn">ongoing</button>
-          <button id="upcoming-filter" class="tab-btn">upcoming Changes</button>
-        </section>
-      </section>
-
-      <!-- Accordion -->
-      <section
-        id="kcalert-accordion"
-        class="accordion accordion-flush"
-      ></section>
-
-      <!-- No results message -->
-      <section id="no-alerts-msg"><p>No alerts found!</p></section>
+    <section id="system-alerts-banner">
+      <div class="metro-alert" role="alert" aria-label="alert">
+        <!-- English (EN) -->
+        <div class="alert-container fade-in" id="en" lang="en">
+          <h3>How’s your bus service?</h3>
+          <p>
+            Sixteen transit agencies from around the world, including King
+            County Metro, are surveying customers to improve service. Share your
+            thoughts on Metro's bus service. Survey is open until May 5. All
+            riders, frequent or occasional, are welcome. Your feedback is
+            confidential.
+          </p>
+          <p>
+            <a
+              href="https://imperial.eu.qualtrics.com/jfe/form/SV_0058v5sfZBqVTTM"
+              target="_blank"
+              class="link-emphasis"
+              >Take the survey today!</a
+            >
+          </p>
+        </div>
+      </div>
     </section>
+
     <!-- Scripts -->
-    <script src="./js/kcalertslist.js" type="text/javascript"></script>
+    <script src="./js/system.js" type="text/javascript"></script>
   </body>
 </html>
