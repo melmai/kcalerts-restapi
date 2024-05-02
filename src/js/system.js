@@ -23,7 +23,7 @@ function systemAlertInit() {
   //   ".alert-advanced > .container"
   // );
 
-  const systemAlertContainer = document.getElementById("collapseAlertText");
+  const systemAlertContainer = document.getElementById("sysbanner");
   // set fetch type
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
 
@@ -90,17 +90,38 @@ function featuredAlert(alerts) {
   return featured;
 }
 
+/*
+<div class="metro-alert" role="alert" aria-label="alert">
+        <!-- English (EN) -->
+        <div class="alert-container fade-in" id="en" lang="en">
+          <h3>How’s your bus service?</h3>
+          <p>
+            Sixteen transit agencies from around the world, including King
+            County Metro, are surveying customers to improve service. Share your
+            thoughts on Metro's bus service. Survey is open until May 5. All
+            riders, frequent or occasional, are welcome. Your feedback is
+            confidential.
+          </p>
+          <p>
+            <a
+              href="https://imperial.eu.qualtrics.com/jfe/form/SV_0058v5sfZBqVTTM"
+              target="_blank"
+              class="link-emphasis"
+              >Take the survey today!</a
+            >
+          </p>
+        </div>
+      </div>
+*/
 // build banner with most recent alert
 function buildBanner(alert) {
   const bannerContent = document.createElement("div");
-  // bannerContent.setAttribute(
-  //   "class",
-  //   "alert alert-warning alert-dismissible fade show"
-  // );
-  // bannerContent.setAttribute("role", "alert");
+  bannerContent.setAttribute("class", "metro-alert");
+  bannerContent.setAttribute("role", "alert");
+  bannerContent.setAttribute("aria-label", "alert");
 
-  // const alertInner = document.createElement("div");
-  // alertInner.setAttribute("class", "container");
+  const alertInner = document.createElement("div");
+  alertInner.setAttribute("class", "alert-container fade-in");
 
   // const row = document.createElement("div");
   // row.setAttribute("class", "row");
@@ -118,7 +139,6 @@ function buildBanner(alert) {
   content.setAttribute("class", "alert-text");
 
   const bodyText = document.createElement("p");
-  bodyText.setAttribute("class", "rich-text");
   bodyText.textContent = alert.banner_text;
 
   // close bttn
