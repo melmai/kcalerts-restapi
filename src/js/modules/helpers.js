@@ -205,6 +205,7 @@ function routeLabel(route) {
   const labels = [
     "Duvall-Monroe Shuttle",
     "Trailhead Direct Mt. Si",
+    "Trailhead Direct Issaquah Alps",
     "First Hill Streetcar",
     "South Lake Union Streetcar",
   ];
@@ -265,7 +266,8 @@ function organizeRoutes(routes) {
     if (
       route.route_id === "102698" ||
       route.route_id === "102699" ||
-      route.route_name === "Trailhead Direct Mt. Si"
+      route.route_name === "Trailhead Direct Mt. Si" ||
+      route.route_name === "Trailhead Direct Issaquah Alps"
     ) {
       shuttleRtes.push(route);
     } else {
