@@ -63,10 +63,14 @@ function createAlerts() {
       const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const [rail, bus, marine] = res[1].mode;
 
+      console.log(rail);
+
       const busRoutes = organizeRoutes(bus.route);
       const railRoutes = organizeRoutes(rail.route);
       const marineRoutes = organizeRoutes(marine.route);
       const systemAlerts = getSystemAlerts(res[0].alerts);
+
+      console.log(railRoutes);
       console.log(systemAlerts);
 
       let data = [...busRoutes, ...railRoutes, ...marineRoutes];
@@ -77,12 +81,15 @@ function createAlerts() {
 
       // build accordion
       let accordion = new DocumentFragment();
+
+      // loop through data and create route panels
+      let container = document.createElement("div");
+      container.setAttribute("class", "bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
-        accordion.append(createRoutePanel(route, idx));
+        container.append(createRoutePanel(route, idx));
       });
-
-      // console.log("snow", snow);
+      accordion.append(container);
 
       // show snow map link
       if (snow) {
