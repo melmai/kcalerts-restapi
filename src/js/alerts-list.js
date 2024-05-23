@@ -91,6 +91,14 @@ function createAlerts() {
       });
       accordion.append(container);
 
+      // loop through system alerts and create alert panels
+      container = document.createElement("div");
+      container.setAttribute("class", "system-alerts");
+      systemAlerts.forEach((alert, idx) => {
+        container.append(generateSingleAlert(alert));
+      });
+      accordion.append(container);
+
       // show snow map link
       if (snow) {
         snowMap.classList.remove("d-none");
