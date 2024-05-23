@@ -24,6 +24,7 @@ import {
   incrementStatusType,
   incrementSnowCount,
   createStatusFlag,
+  getSystemAlerts,
 } from "./modules/helpers";
 import {
   showAlerts,
@@ -65,6 +66,8 @@ function createAlerts() {
       const busRoutes = organizeRoutes(bus.route);
       const railRoutes = organizeRoutes(rail.route);
       const marineRoutes = organizeRoutes(marine.route);
+      const systemAlerts = getSystemAlerts(res[0].alerts);
+      console.log(systemAlerts);
 
       let data = [...busRoutes, ...railRoutes, ...marineRoutes];
       data = cleanup(processData(alerts, data));

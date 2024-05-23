@@ -348,6 +348,15 @@ function createStatusFlag(type, text) {
   return flag;
 }
 
+function getSystemAlerts(alerts) {
+  let bannerAlerts = [];
+  alerts.forEach((alert) => {
+    if (alert.banner_text) bannerAlerts.push(alert);
+  });
+
+  return bannerAlerts;
+}
+
 export {
   printDates,
   cleanup,
@@ -366,4 +375,5 @@ export {
   incrementStatusType,
   incrementSnowCount,
   createStatusFlag,
+  getSystemAlerts,
 };
