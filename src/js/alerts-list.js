@@ -84,7 +84,7 @@ function createAlerts() {
 
       // loop through data and create route panels
       let container = document.createElement("div");
-      container.setAttribute("class", "bus-alerts");
+      container.setAttribute("class", "alerts bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
         container.append(createRoutePanel(route, idx));
@@ -93,7 +93,7 @@ function createAlerts() {
 
       // loop through system alerts and create alert panels
       container = document.createElement("div");
-      container.setAttribute("class", "system-alerts d-none");
+      container.setAttribute("class", "alerts system-alerts d-none");
       systemAlerts.forEach((alert, idx) => {
         container.append(generateSingleAlert(alert));
       });
@@ -280,6 +280,16 @@ function setupListEvents(element) {
   upcomingAlertsBttn.addEventListener("click", () =>
     showAlerts("upcoming", "ongoing")
   );
+
+  // show alerts by type
+  // const alertTypeBttns = document.getElementsByClassName("alert-type-bttn");
+  // for (const bttn of alertTypeBttns) {
+  //   bttn.addEventListener("click", (e) => {
+  //     const type = e.target.dataset.type;
+  //     console.log(type);
+  //     showAlerts(type);
+  //   });
+  // }
 
   // search input
   const searchInput = document.getElementById("route-search");
