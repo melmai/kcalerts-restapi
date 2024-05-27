@@ -31,6 +31,7 @@ import {
   notifyNoResults,
   searchRoutes,
   clearSearch,
+  showAlertType
 } from "./modules/events";
 import { generateSingleAlert } from "./modules/single-alert";
 
@@ -84,6 +85,7 @@ function createAlerts() {
 
       // loop through data and create route panels
       let container = document.createElement("div");
+      container.id = "bus-alerts";
       container.setAttribute("class", "alerts bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
@@ -93,6 +95,7 @@ function createAlerts() {
 
       // loop through system alerts and create alert panels
       container = document.createElement("div");
+      container.id = "system-alerts";
       container.setAttribute("class", "alerts system-alerts");
       container.style.display = "none";
       systemAlerts.forEach((alert, idx) => {
@@ -283,14 +286,14 @@ function setupListEvents(element) {
   );
 
   // show alerts by type
-  // const alertTypeBttns = document.getElementsByClassName("alert-type-bttn");
-  // for (const bttn of alertTypeBttns) {
-  //   bttn.addEventListener("click", (e) => {
-  //     const type = e.target.dataset.type;
-  //     console.log(type);
-  //     showAlerts(type);
-  //   });
-  // }
+  const alertTypeBttns = document.getElementsByClassName("alert-type-bttn");
+  for (const bttn of alertTypeBttns) {
+    bttn.addEventListener("click", (e) => {
+      const type = e.target.dataset.type;
+      console.log(type);
+      showAlertType(type);
+    });
+  }
 
   // search input
   const searchInput = document.getElementById("route-search");

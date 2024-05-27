@@ -121,17 +121,17 @@ function clearSearch() {
  * Filter alerts by type
  *
  */
-// function selectAlertType(type = "bus-alerts") {
-//   const alertSections = document.getElementsByClassName("alerts");
-//   for (const section of alertSections) {
-//     console.log(section);
-//     if (section.id === type) {
-//       section.setAttribute("style", "display: block;");
-//     } else {
-//       section.setAttribute("style", "display: none;");
-//     }
-//   }
-// }
+function showAlertType(type = "bus-alerts") {
+  const alertSections = document.getElementsByClassName("alerts");
+  for (const section of alertSections) {
+    console.log(section.className);
+    if (section.id === type) {
+      section.setAttribute("style", "display: block;");
+    } else {
+      section.setAttribute("style", "display: none;");
+    }
+  }
+}
 
 export {
   clearButtons,
@@ -140,5 +140,5 @@ export {
   notifyNoResults,
   searchRoutes,
   clearSearch,
-  // selectAlertType,
+  showAlertType,
 };
