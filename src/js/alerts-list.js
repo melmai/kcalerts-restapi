@@ -93,7 +93,8 @@ function createAlerts() {
 
       // loop through system alerts and create alert panels
       container = document.createElement("div");
-      container.setAttribute("class", "alerts system-alerts d-none");
+      container.setAttribute("class", "alerts system-alerts");
+      container.style.display = "none";
       systemAlerts.forEach((alert, idx) => {
         container.append(generateSingleAlert(alert));
       });
