@@ -114,3 +114,31 @@
 #clear-search span:active {
   color: var(--primary-ghost-white);
 }
+
+/* *************************************************
+   * Transit Type Filter 
+   ***************************************************/
+.type-filter {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.type-filter .alert-type-bttn {
+  width: 23%;
+  max-width: 200px;
+  margin-right: 20px;
+  padding: 10px 5px;
+  font-size: 0.9em;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.type-filter .alert-type-bttn .material-symbols-outlined {
+  font-size: 2em;
+  pointer-events: none;
+  background: grey;
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
