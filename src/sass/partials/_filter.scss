@@ -125,20 +125,49 @@
 
 .type-filter .alert-type-bttn {
   width: 23%;
-  max-width: 200px;
+  max-width: 125px;
   margin-right: 20px;
   padding: 10px 5px;
   font-size: 0.9em;
   border: 2px solid var(--primary);
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
+}
+
+.type-filter .alert-type-bttn:hover {
+  background-color: lightgray;
 }
 
 .type-filter .alert-type-bttn .material-symbols-outlined {
   font-size: 2em;
   pointer-events: none;
-  background: grey;
   border-radius: 50%;
   padding: 10px;
   margin-bottom: 10px;
+  color: #fff;
+}
+
+.type-filter
+  .alert-type-bttn[data-type="bus-alerts"]
+  .material-symbols-outlined {
+  background-color: var(--primary-ghost);
+}
+
+.type-filter
+  .alert-type-bttn[data-type="rail-alerts"]
+  .material-symbols-outlined {
+  background-color: #2a7997;
+  background-color: orange;
+}
+
+.type-filter
+  .alert-type-bttn[data-type="water-taxi-alerts"]
+  .material-symbols-outlined {
+  background-color: #3bbdda;
+}
+
+.type-filter
+  .alert-type-bttn[data-type="system-alerts"]
+  .material-symbols-outlined {
+  background-color: black;
 }
