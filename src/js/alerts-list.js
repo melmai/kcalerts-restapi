@@ -31,7 +31,7 @@ import {
   notifyNoResults,
   searchRoutes,
   clearSearch,
-  showAlertType
+  showAlertType,
 } from "./modules/events";
 import { generateSingleAlert } from "./modules/single-alert";
 
@@ -74,8 +74,8 @@ function createAlerts() {
       console.log(railRoutes);
       console.log(systemAlerts);
 
-      let data = [...busRoutes, ...railRoutes, ...marineRoutes];
-      data = cleanup(processData(alerts, data));
+      // let data = [...busRoutes, ...railRoutes, ...marineRoutes];
+      let data = cleanup(processData(alerts, busRoutes));
 
       // snow flag
       let snow = false;
@@ -89,6 +89,30 @@ function createAlerts() {
       container.setAttribute("class", "alerts bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
+        container.append(createRoutePanel(route, idx));
+      });
+      accordion.append(container);
+
+      // loop through data and create rail panels
+      data = cleanup(processData(alerts, railRoutes));
+      console.log(data);
+      container = document.createElement("div");
+      container.id = "rail-alerts";
+      container.setAttribute("class", "alerts rail-alerts");
+      container.style.display = "none";
+      data.forEach((alert, idx) => {
+        container.append(createRoutePanel(route, idx));
+      });
+      accordion.append(container);
+
+      // loop through data and create water taxi panels
+      data = cleanup(processData(alerts, marineRoutes));
+      console.log(data);
+      container = document.createElement("div");
+      container.id = "water-taxi-alerts";
+      container.setAttribute("class", "alerts water-taxi-alerts");
+      container.style.display = "none";
+      data.forEach((alert, idx) => {
         container.append(createRoutePanel(route, idx));
       });
       accordion.append(container);
