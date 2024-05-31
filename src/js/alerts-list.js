@@ -61,18 +61,18 @@ function createAlerts() {
   ])
     .then((res) => {
       // process data
+      // TODO: refactor to generate an object that separates routes by mode
       const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const [rail, bus, marine] = res[1].mode;
-
-      console.log(rail);
-
       const busRoutes = organizeRoutes(bus.route);
+
+      const allAlertsTest = processAlertsByMode(res[0].alerts);
+      console.log(allAlertsTest);
+
+      // TODO: can probably remove the organizeRoutes wrapper
       const railRoutes = organizeRoutes(rail.route);
       const marineRoutes = organizeRoutes(marine.route);
       const systemAlerts = getSystemAlerts(res[0].alerts);
-
-      console.log(railRoutes);
-      console.log(systemAlerts);
 
       // let data = [...busRoutes, ...railRoutes, ...marineRoutes];
       let data = cleanup(processData(alerts, busRoutes));
@@ -181,6 +181,42 @@ function processData(alertArr, routeArr) {
   });
 
   return routeArr;
+}
+
+/**
+ * Creates an object that holds alerts separated by mode
+ *
+ * @param {Array} alerts array of alert objects
+ * @returns an object with keys for each mode
+ */
+function processAlertsByMode(alerts) {
+  const busAlerts = [];
+  const railAlerts = [];
+  const waterTaxiAlerts = [];
+  const elevatorAlerts = [];
+  const systemAlerts = [];
+
+  for (const alert of alerts) {
+    if (alert.affected_services.elevators.length) {
+      elevatorAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Rail") {
+      railAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Water Taxi") {
+      waterTaxiAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Bus") {
+      busAlerts.push(alert);
+    } else {
+      systemAlerts.push(alert);
+    }
+  }
+
+  return {
+    bus: busAlerts,
+    rail: railAlerts,
+    waterTaxi: waterTaxiAlerts,
+    elevators: elevatorAlerts,
+    systemAlerts: systemAlerts,
+  };
 }
 
 /**
