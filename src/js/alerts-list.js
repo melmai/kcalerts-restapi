@@ -201,7 +201,7 @@ function processAlertsByMode(alerts) {
       elevatorAlerts.push(alert);
     } else if (alert.affected_services.services[0].mode_name === "Rail") {
       railAlerts.push(alert);
-    } else if (alert.affected_services.services[0].mode_name === "Water Taxi") {
+    } else if (alert.affected_services.services[0].mode_name === "Marine") {
       waterTaxiAlerts.push(alert);
     } else if (alert.affected_services.services[0].mode_name === "Bus") {
       busAlerts.push(alert);
