@@ -287,6 +287,10 @@ html {
   background-color: black;
 }
 
+.type-filter .alert-type-bttn[data-type=elevator-alerts] .material-symbols-outlined {
+  background-color: blue;
+}
+
 /* *************************************************
  * Alert Icons
  ***************************************************/
