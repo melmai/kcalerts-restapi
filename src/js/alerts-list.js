@@ -62,12 +62,12 @@ function createAlerts() {
     .then((res) => {
       // process data
       // TODO: refactor to generate an object that separates routes by mode
-      const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
+      // const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const [rail, bus, marine] = res[1].mode;
       const busRoutes = organizeRoutes(bus.route);
 
-      const allAlertsTest = processAlertsByMode(res[0].alerts);
-      console.log(allAlertsTest);
+      const alerts = getAlertsByMode(res[0].alerts);
+      console.log(alerts);
 
       // TODO: can probably remove the organizeRoutes wrapper
       const railRoutes = organizeRoutes(rail.route);
@@ -75,7 +75,7 @@ function createAlerts() {
       const systemAlerts = getSystemAlerts(res[0].alerts);
 
       // let data = [...busRoutes, ...railRoutes, ...marineRoutes];
-      let data = cleanup(processData(alerts, busRoutes));
+      let data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
 
       // snow flag
       let snow = false;
@@ -89,43 +89,62 @@ function createAlerts() {
       container.setAttribute("class", "alerts bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
-        container.append(createRoutePanel(route, idx));
+        console.log(route);
+        container.append(createRoutePanel(route, "bus", idx));
       });
       accordion.append(container);
+
+      console.log("bus done");
 
       // loop through data and create rail panels
-      data = cleanup(processData(alerts, railRoutes));
-      console.log(data);
-      container = document.createElement("div");
-      container.id = "rail-alerts";
-      container.setAttribute("class", "alerts rail-alerts");
-      container.style.display = "none";
-      data.forEach((alert, idx) => {
-        container.append(createRoutePanel(route, idx));
-      });
-      accordion.append(container);
+      // console.log(alerts.rail);
+      // data = cleanup(processData(alerts.rail, railRoutes));
+      // console.log(data);
+      // container = document.createElement("div");
+      // container.id = "rail-alerts";
+      // container.setAttribute("class", "alerts rail-alerts");
+      // container.style.display = "none";
+      // data.forEach((alert, idx) => {
+      //   container.append(createRoutePanel(route, "rail", idx));
+      // });
+      // accordion.append(container);
+      // console.log("rail done");
 
       // loop through data and create water taxi panels
-      data = cleanup(processData(alerts, marineRoutes));
-      console.log(data);
-      container = document.createElement("div");
-      container.id = "water-taxi-alerts";
-      container.setAttribute("class", "alerts water-taxi-alerts");
-      container.style.display = "none";
-      data.forEach((alert, idx) => {
-        container.append(createRoutePanel(route, idx));
-      });
-      accordion.append(container);
+      // data = cleanup(processData(alerts.waterTaxi, marineRoutes));
+      // console.log(data);
+      // container = document.createElement("div");
+      // container.id = "water-taxi-alerts";
+      // container.setAttribute("class", "alerts water-taxi-alerts");
+      // container.style.display = "none";
+      // data.forEach((alert, idx) => {
+      //   container.append(createRoutePanel(route, "marine", idx));
+      // });
+      // accordion.append(container);
+      // console.log("water taxi done");
 
       // loop through system alerts and create alert panels
+      // container = document.createElement("div");
+      // container.id = "system-alerts";
+      // container.setAttribute("class", "alerts system-alerts");
+      // container.style.display = "none";
+      // systemAlerts.forEach((alert, idx) => {
+      //   container.append(generateSingleAlert(alert));
+      // });
+      // accordion.append(container);
+
+      // loop through data and create elevator alerts
+      data = alerts.elevators;
+      console.log(data);
       container = document.createElement("div");
-      container.id = "system-alerts";
-      container.setAttribute("class", "alerts system-alerts");
+      container.id = "elevator-alerts";
+      container.setAttribute("class", "alerts elevator-alerts");
       container.style.display = "none";
-      systemAlerts.forEach((alert, idx) => {
-        container.append(generateSingleAlert(alert));
+      data.forEach((alert, idx) => {
+        container.append(createRoutePanel(alert, "elevator", idx));
       });
       accordion.append(container);
+      console.log("elevator done");
 
       // show snow map link
       if (snow) {
@@ -189,7 +208,7 @@ function processData(alertArr, routeArr) {
  * @param {Array} alerts array of alert objects
  * @returns an object with keys for each mode
  */
-function processAlertsByMode(alerts) {
+function getAlertsByMode(alerts) {
   const busAlerts = [];
   const railAlerts = [];
   const waterTaxiAlerts = [];
@@ -225,19 +244,36 @@ function processAlertsByMode(alerts) {
  * @param {Array} alerts
  * @returns an array of objects that contain an alert and its unique routes
  */
-function processAlerts(alerts) {
+function processAlerts(alerts, type = "bus") {
   let result = [];
 
-  // loop through all alerts and create an array of routes that have alerts
-  alerts.forEach((alert) => {
-    const routes = uniqueRoutes(alert.affected_services.services, "alert");
+  if (type === "elevator") {
+    alerts.forEach((alert) => {
+      const routes = uniqueRoutes(
+        alert.affected_services.elevators,
+        "elevator"
+      );
 
-    result.push({
-      route_ids: routes,
-      alert: alert,
-      status: alert.alert_lifecycle,
+      result.push({
+        // route_ids: routes,
+        alert: alert,
+        status: statusText(alert.alert_lifecycle),
+      });
     });
-  });
+  } else {
+    // loop through all alerts and create an array of routes that have alerts
+    alerts.forEach((alert) => {
+      const routes = uniqueRoutes(alert.affected_services.services, "alert");
+
+      result.push({
+        route_ids: routes,
+        alert: alert,
+        status: alert.alert_lifecycle,
+      });
+    });
+  }
+
+  console.log(result);
 
   return result;
 }
@@ -252,18 +288,32 @@ function processAlerts(alerts) {
  * @param {Int} id
  * @returns route element with alerts
  */
-function createRoutePanel(route, id) {
+function createRoutePanel(route, type = "bus", id) {
   // create parent fragment
   let routePanel = new DocumentFragment();
-  const routeName = routeLabel(route.route_name);
+  console.log(route);
+
+  let routeName;
+  if (type === "elevator") {
+    routeName = route.affected_services.elevators[0].elev_name;
+  } else {
+    routeName = routeLabel(route.route_name);
+  }
 
   // create panel elements
   const header = document.createElement("div");
   header.id = route.route_id;
 
   // set status class for filtering
-  const ongoingClass = route.status.ongoing ? "ongoing" : "";
-  const upcomingClass = route.status.upcoming ? "upcoming" : "";
+  let ongoingClass,
+    upcomingClass = "";
+
+  if (route.status) {
+    ongoingClass = route.status.ongoing ? "ongoing" : "";
+    upcomingClass = route.status.upcoming ? "upcoming" : "";
+  } else {
+    ongoingClass = "ongoing";
+  }
   header.setAttribute(
     "class",
     `toggle advisory-block ${ongoingClass} ${upcomingClass}`
@@ -298,11 +348,15 @@ function createRoutePanel(route, id) {
   let snow, ongoing, upcoming;
   if (route.is_snow > 0) snow = createStatusFlag("snow", route.is_snow);
 
-  if (route.status.ongoing > 0)
-    ongoing = createStatusFlag("ongoing", route.status.ongoing);
+  if (route.status) {
+    if (route.status.ongoing > 0)
+      ongoing = createStatusFlag("ongoing", route.status.ongoing);
 
-  if (route.status.upcoming > 0)
-    upcoming = createStatusFlag("upcoming", route.status.upcoming);
+    if (route.status.upcoming > 0)
+      upcoming = createStatusFlag("upcoming", route.status.upcoming);
+  } else {
+    ongoing = createStatusFlag("ongoing", 1);
+  }
 
   alertStatus.append(snow || "", ongoing || "", upcoming || "");
 
@@ -315,9 +369,13 @@ function createRoutePanel(route, id) {
   alertBody.setAttribute("class", "toggle-inner");
 
   // append alerts to alert container
-  route.alerts.forEach((alert, idx) => {
-    alertBody.append(generateSingleAlert(alert));
-  });
+  if (route.alerts) {
+    route.alerts.forEach((alert, idx) => {
+      alertBody.append(generateSingleAlert(alert));
+    });
+  } else {
+    alertBody.append(generateSingleAlert(route, "elevator"));
+  }
   header.append(alertBody);
   routePanel.append(header);
   return routePanel;

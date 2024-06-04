@@ -41,7 +41,8 @@ function createURL(url) {
   return urlContainer;
 }
 
-export function generateSingleAlert(alert, isList = true) {
+export function generateSingleAlert(alert, mode = "transit") {
+  console.log(alert);
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute("class", `advisory-panel`);
@@ -50,7 +51,12 @@ export function generateSingleAlert(alert, isList = true) {
   alertIcon.setAttribute("class", `advisory-icon ${icon(alert.effect_name)}`);
   alertIcon.setAttribute("aria-hidden", "true");
   alertIcon.setAttribute("translate", "no");
-  alertIcon.textContent = icon(alert.effect_name);
+
+  if (mode === "elevator") {
+    alertIcon.textContent = "elevator";
+  } else {
+    alertIcon.textContent = icon(alert.effect_name);
+  }
 
   const alertContent = document.createElement("div");
   alertContent.setAttribute("class", "advisory-content");
@@ -69,6 +75,7 @@ export function generateSingleAlert(alert, isList = true) {
     "class",
     `advisory-status ${statusText(alert.alert_lifecycle)}`
   );
+  console.log(alert);
   flag.textContent = statusText(alert.alert_lifecycle);
 
   alertTitle.append(type, flag);
