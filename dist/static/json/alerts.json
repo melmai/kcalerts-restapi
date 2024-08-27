@@ -1,34 +1,67 @@
 {
   "alerts": [
     {
-      "alert_id": 3839,
-      "effect_name": "Delay of Service",
-      "effect": "OTHER_EFFECT",
-      "cause_name": "special event",
-      "cause": "OTHER_CAUSE",
-      "header_text": "Rail service may experience delays due to special event.",
-      "short_header_text": "Rail service may experience delays due to special event.",
-      "description_text": "Rail (Streetcar) Systemwide Test Alert",
+      "alert_id": 3686,
+      "effect_name": "Single Route Reroute",
+      "effect": "DETOUR",
+      "cause_name": "utility work",
+      "cause": "MAINTENANCE",
+      "header_text": "Route 31 to University District is rerouted from Tuesday, April 30 through Saturday, August 31, due to utility work.",
+      "short_header_text": "Route 31 to University District is rerouted from Tue, Apr 30 through Sat, Aug 31, due to utility work.",
+      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/31/E/04/22/2024/",
+      "description_text": "Affected stops:\r\nStop #26885 N 35th St & Woodland Park Ave N (EB)\r\nStop #26901 N 35th St & Carr Pl N (EB)\r\n\nGet on/off buses at:\r\nStop #26870 N 35th St & Troll Ave N (EB)\r\nThe temporary stop located on Woodland Park Ave N, just north of 34th St.(SB)\r\nStop #26920 Wallingford Ave N & N 35th St (NB)",
       "severity": "Significant",
-      "created_dt": "1714596191",
-      "last_modified_dt": "1714596191",
-      "service_effect_text": "Rail service may experience delays due to special event",
-      "alert_lifecycle": "New",
+      "created_dt": "1713817184",
+      "last_modified_dt": "1724569218",
+      "service_effect_text": "Route 31 to University District is rerouted from Tue Apr 30 at 4:00 AM to Sat Aug 31 at 3:59 AM due to utility work",
+      "timeframe_text": "Through Saturday",
+      "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714596180",
-          "effect_end": ""
+          "effect_start": "1714474800",
+          "effect_end": "1725101940"
         }
       ],
       "affected_services": {
         "services": [
           {
-            "route_type": "0",
-            "mode_name": "Rail"
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100184",
+            "route_name": "31",
+            "direction_id": "1",
+            "direction_name": "to University District",
+            "stop_id": "26885",
+            "stop_name": "N 35th St & Woodland Park Ave N (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100184",
+            "route_name": "31",
+            "direction_id": "1",
+            "direction_name": "to University District",
+            "stop_id": "26901",
+            "stop_name": "N 35th St & Carr Pl N (EB)"
           }
         ],
         "elevators": []
-      }
+      },
+      "alternate_stops": [
+        {
+          "route_name": "31",
+          "direction_name": "to University District",
+          "stop_id": "26870",
+          "stop_name": "Stop #26870 N 35th St & Troll Ave N (EB)"
+        },
+        {
+          "route_name": "31",
+          "direction_name": "to University District",
+          "stop_id": "26920",
+          "stop_name": "Stop #26920 Wallingford Ave N & N 35th St (NB)"
+        }
+      ],
+      "publish_outlets": []
     },
     {
       "alert_id": 3779,
@@ -57,7 +90,8 @@
           }
         ],
         "elevators": []
-      }
+      },
+      "publish_outlets": []
     },
     {
       "alert_id": 3837,
@@ -70,9 +104,11 @@
       "description_text": "Bus Systemwide Test Alert",
       "severity": "Significant",
       "created_dt": "1714596023",
-      "last_modified_dt": "1714596023",
+      "last_modified_dt": "1714769777",
       "service_effect_text": "Bus service may experience delays due to special event",
-      "alert_lifecycle": "New",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "banner_text": "Bus service may experience delays due to special event.",
       "effect_periods": [
         {
           "effect_start": "1714596000",
@@ -87,7 +123,8 @@
           }
         ],
         "elevators": []
-      }
+      },
+      "publish_outlets": ["banner"]
     },
     {
       "alert_id": 3838,
@@ -100,9 +137,11 @@
       "description_text": "Marine Systemwide Alert Test",
       "severity": "Significant",
       "created_dt": "1714596088",
-      "last_modified_dt": "1714596088",
+      "last_modified_dt": "1714769778",
       "service_effect_text": "Marine service may experience delays due to special event",
-      "alert_lifecycle": "New",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "banner_text": "Marine service may experience delays due to special event.",
       "effect_periods": [
         {
           "effect_start": "1714596060",
@@ -117,26 +156,62 @@
           }
         ],
         "elevators": []
-      }
+      },
+      "publish_outlets": ["banner"]
     },
     {
-      "alert_id": 3405,
-      "effect_name": "Announcement",
+      "alert_id": 3839,
+      "effect_name": "Delay of Service",
       "effect": "OTHER_EFFECT",
-      "cause_name": "a sinkhole",
+      "cause_name": "special event",
       "cause": "OTHER_CAUSE",
-      "header_text": "ST 542 announcement: Route 542 suspended from Thu Apr 25 at 4:00 AM to Fri May 3 at 3:59 AM due to a sinkhole.",
-      "short_header_text": "ST 542 announcement: Route 542 suspended from Thu Apr 25 at 4:00 AM to Fri May 3 at 3:59 AM due to a sinkhole.",
+      "header_text": "Rail service may experience delays due to special event.",
+      "short_header_text": "Rail service may experience delays due to special event.",
+      "description_text": "Rail (Streetcar) Systemwide Test Alert",
       "severity": "Significant",
-      "created_dt": "1712261109",
-      "last_modified_dt": "1714561278",
-      "service_effect_text": "ST 542 announcement: from Thu Apr 25 at 4:00 AM to Fri May 3 at 3:59 AM due to a sinkhole.",
-      "timeframe_text": "through Friday",
+      "created_dt": "1714596191",
+      "last_modified_dt": "1714769898",
+      "service_effect_text": "Rail service may experience delays due to special event",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "banner_text": "Rail service may experience delays due to special event.",
+      "effect_periods": [
+        {
+          "effect_start": "1714596180",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "0",
+            "mode_name": "Rail"
+          }
+        ],
+        "elevators": []
+      },
+      "publish_outlets": ["banner"]
+    },
+    {
+      "alert_id": 3973,
+      "effect_name": "Single Route Reroute",
+      "effect": "DETOUR",
+      "cause_name": "a collision",
+      "cause": "ACCIDENT",
+      "header_text": "Trailhead Direct Issaquah Alps is rerouted off of Rainier Ave S between S Walker St and S Hill St due to a collision.",
+      "short_header_text": "Trailhead Direct Issaquah Alps is rerouted off of Rainier Ave S between S Walker St and S Hill St.",
+      "url": "https://trailheaddirect.org/",
+      "description_text": "Affected stops:\r\nStop #8440 Rainier Ave S & S Walker St (NB)\r\nStop #8641 Rainier Ave S & S Walker St (SB)\r\n\nFor Trailhead Direct Issaquah Alps to Mount Baker TC get on/off at:\r\nStop #8429 Rainier Ave S & S Bayview St (NB)\r\nStop #8450 Rainier Ave S & S Plum St (NB)\r\n\nFor Trailhead Direct Issaquah Alps to Issaquah TC get on/off at:\r\nStop #8620 Rainier Ave S & S State St (SB)\r\nStop #8660 Rainier Ave S & S Bayview St (SB)",
+      "severity": "Significant",
+      "created_dt": "1714768988",
+      "last_modified_dt": "1714804997",
+      "service_effect_text": "Trailhead Direct Issaquah Alps is rerouted due to a collision",
+      "timeframe_text": "ongoing",
       "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714042800",
-          "effect_end": "1714733940"
+          "effect_start": "1714768980",
+          "effect_end": ""
         }
       ],
       "affected_services": {
@@ -144,471 +219,224 @@
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100511",
-            "route_name": "542"
+            "route_id": "102646",
+            "route_name": "Trailhead Direct Issaquah Alps",
+            "stop_id": "8440",
+            "stop_name": "Rainier Ave S & S Walker St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102646",
+            "route_name": "Trailhead Direct Issaquah Alps",
+            "stop_id": "8641",
+            "stop_name": "Rainier Ave S & S Walker St (SB)"
           }
         ],
         "elevators": []
-      }
+      },
+      "alternate_stops": [
+        {
+          "route_name": "Trailhead Direct Issaquah Alps",
+          "direction_name": "to Mount Baker TC",
+          "stop_id": "8429",
+          "stop_name": "Stop #8429 Rainier Ave S & S Bayview St (NB)"
+        },
+        {
+          "route_name": "Trailhead Direct Issaquah Alps",
+          "direction_name": "to Mount Baker TC",
+          "stop_id": "8450",
+          "stop_name": "Stop #8450 Rainier Ave S & S Plum St (NB)"
+        },
+        {
+          "route_name": "Trailhead Direct Issaquah Alps",
+          "direction_name": "to Issaquah TC",
+          "stop_id": "8620",
+          "stop_name": "Stop #8620 Rainier Ave S & S State St (SB)"
+        },
+        {
+          "route_name": "Trailhead Direct Issaquah Alps",
+          "direction_name": "to Issaquah TC",
+          "stop_id": "8660",
+          "stop_name": "Stop #8660 Rainier Ave S & S Bayview St (SB)"
+        }
+      ],
+      "publish_outlets": []
     },
-
     {
-      "alert_id": 3826,
-      "effect_name": "Trip Cancelation",
+      "alert_id": 3999,
+      "effect_name": "Single Route Reroute",
+      "effect": "DETOUR",
+      "cause_name": "an event",
+      "cause": "DEMONSTRATION",
+      "header_text": "Routes 45, 50, 62, 125 and RapidRide H Line will be rerouted in both directions due to an event.",
+      "short_header_text": "Routes 45, 50, 62, 125 and RapidRide H Line will be rerouted in both directions due to an event.",
+      "severity": "Significant",
+      "created_dt": "1715204443",
+      "last_modified_dt": "1715240417",
+      "service_effect_text": "Routes 45, 50, 62, 125 and RapidRide H Line is rerouted due to an event",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        {
+          "effect_start": "1715204400",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100024",
+            "route_name": "125"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100225",
+            "route_name": "45"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100230",
+            "route_name": "50"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100252",
+            "route_name": "62"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "102736",
+            "route_name": "H Line"
+          }
+        ],
+        "elevators": []
+      },
+      "publish_outlets": []
+    },
+    {
+      "alert_id": 4032,
+      "effect_name": "Elevator Closure",
+      "effect": "ACCESSIBILITY_ISSUE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Elevators at Clyde Hill/Yarrow Point Freeway Station (WB) unavailable.",
+      "short_header_text": "Elevators at Clyde Hill/Yarrow Point Freeway Station (WB) unavailable.",
+      "description_text": "Westbound transit riders who require the use of an elevator can plan ahead to board or exit SR 520 transit service at the Evergreen Point Freeway Station instead. Transit passengers who need to get to Clyde Hill/Yarrow Point can continue to the Evergreen Point Freeway Station and transfer to any eastbound bus to return to Clyde Hill/Yarrow Point and use the elevator at the eastbound stop.",
+      "severity": "Minor",
+      "created_dt": "1716338069",
+      "last_modified_dt": "1716374057",
+      "service_effect_text": "Elevators at Clyde Hill/Yarrow Point Freeway Station (WB) unavailable",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        {
+          "effect_start": "1716338040",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [],
+        "elevators": [
+          {
+            "elev_id": "ele-709",
+            "elev_name": "Clyde Hill/Yarrow Point Freeway Station (WB)",
+            "elev_type": "elevator",
+            "stops": []
+          }
+        ]
+      },
+      "publish_outlets": ["bulletin"]
+    },
+    {
+      "alert_id": 4033,
+      "effect_name": "Elevator Closure",
+      "effect": "ACCESSIBILITY_ISSUE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Elevators at SR 520 & Evergreen Point Rd (EB) unavailable.",
+      "short_header_text": "Elevators at SR 520 & Evergreen Point Rd (EB) unavailable.",
+      "description_text": "Need passenger instructions when elevator is out. (EB)",
+      "severity": "Minor",
+      "created_dt": "1716339254",
+      "last_modified_dt": "1716375258",
+      "service_effect_text": "Elevators at SR 520 & Evergreen Point Rd (EB) unavailable",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        {
+          "effect_start": "1716339240",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [],
+        "elevators": [
+          {
+            "elev_id": "ele-712",
+            "elev_name": "SR 520 & Evergreen Point Rd (EB)",
+            "elev_type": "elevator",
+            "stops": []
+          }
+        ]
+      },
+      "publish_outlets": ["bulletin"]
+    },
+    {
+      "alert_id": 4034,
+      "effect_name": "Elevator Closure",
+      "effect": "ACCESSIBILITY_ISSUE",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Elevators at SR 520 & Evergreen Point Rd (WB) unavailable.",
+      "short_header_text": "Elevators at SR 520 & Evergreen Point Rd (WB) unavailable.",
+      "description_text": "Need passenger instructions when elevator is out. (WB)",
+      "severity": "Minor",
+      "created_dt": "1716339306",
+      "last_modified_dt": "1716375259",
+      "service_effect_text": "Elevators at SR 520 & Evergreen Point Rd (WB) unavailable",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        {
+          "effect_start": "1716339240",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [],
+        "elevators": [
+          {
+            "elev_id": "ele-711",
+            "elev_name": "SR 520 & Evergreen Point Rd (WB)",
+            "elev_type": "elevator",
+            "stops": []
+          }
+        ]
+      },
+      "publish_outlets": ["bulletin"]
+    },
+    {
+      "alert_id": 4038,
+      "effect_name": "Stop Closure",
       "effect": "NO_SERVICE",
       "cause": "UNKNOWN_CAUSE",
-      "header_text": "Route 2 trip to W Queen Anne scheduled at 7:02 AM from Madrona Park & Lake Washington Blvd (EB) and eight other trips are not operating today.",
-      "short_header_text": "Rt. 2 trip to W Queen Anne scheduled, 7:02AM frm Madrona Park & Lake Washington Blvd & eight other trips are n",
-      "description_text": "Affected trips to Madrona Park:\r\nTo Madrona Park scheduled at 7:03 AM from 7th Ave W & W Pleasant Pl (SB)\r\nTo Madrona Park scheduled at 7:05 AM from 3rd Ave & Cedar St (SB)\r\nTo Madrona Park scheduled at 7:29 AM from 3rd Ave & Cedar St (SB)\r\nTo Madrona Park scheduled at 7:38 AM from 7th Ave W & W Pleasant Pl (SB)\r\nTo Madrona Park scheduled at 7:46 AM from 3rd Ave & Cedar St (SB)\r\n\nAffected trips to W Queen Anne:\r\nTo W Queen Anne scheduled at 7:02 AM from Madrona Park & Lake Washington Blvd (EB)\r\nTo W Queen Anne scheduled at 7:16 AM from Madrona Park & Lake Washington Blvd (EB)\r\nTo W Queen Anne scheduled at 7:30 AM from Madrona Park & Lake Washington Blvd (EB)\r\nTo W Queen Anne scheduled at 7:56 AM from Madrona Park & Lake Washington Blvd (EB)",
-      "severity": "Significant",
-      "created_dt": "1714573841",
-      "last_modified_dt": "1714609937",
-      "service_effect_text": "The Route 2 trip to W Queen Anne scheduled at 7:02 AM from Madrona Park & Lake Washington Blvd (EB) and eight other trips trips are not operating today",
-      "timeframe_text": "ongoing",
+      "header_text": "Stop #2244 Denny Way & 2nd Ave N (EB) closed.",
+      "short_header_text": "Stop #2244 Denny Way & 2nd Ave N (EB) closed.",
+      "description_text": "Affected routes:\r\n8\r\n\nGet on/off at:\r\nStop #2200 Queen Anne Ave N & W John St (SB)\r\nStop #2245 Denny Way & 5th Ave N (EB)",
+      "severity": "Minor",
+      "created_dt": "1716928555",
+      "last_modified_dt": "1716964518",
+      "service_effect_text": "Stop #2244 Denny Way & 2nd Ave N (EB) closed",
+      "timeframe_text": "Ongoing",
       "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714573920",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928136",
-            "trip_name": "[2/7] 7:05 AM from 3rd Ave & Cedar St (SB) to Madrona Park & Lake Washington Blvd (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928146",
-            "trip_name": "[2/8] 7:29 AM from 3rd Ave & Cedar St (SB) to Madrona Park & Lake Washington Blvd (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928156",
-            "trip_name": "[2/10] 7:46 AM from 3rd Ave & Cedar St (SB) to Madrona Park & Lake Washington Blvd (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928526",
-            "trip_name": "[2/9] 7:02 AM from Madrona Park & Lake Washington Blvd (EB) to 7th Ave W & W Pleasant Pl (SB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928536",
-            "trip_name": "[2/5] 7:16 AM from Madrona Park & Lake Washington Blvd (EB) to 7th Ave W & W Pleasant Pl (SB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928546",
-            "trip_name": "[2/6] 7:30 AM from Madrona Park & Lake Washington Blvd (EB) to Seneca St & 8th Ave (WB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491928566",
-            "trip_name": "[2/7] 7:56 AM from Madrona Park & Lake Washington Blvd (EB) to Seneca St & 8th Ave (WB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491929246",
-            "trip_name": "[2/2] 7:03 AM from 7th Ave W & W Pleasant Pl (SB) to Madrona Park & Lake Washington Blvd (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100089",
-            "route_name": "2",
-            "trip_id": "491929256",
-            "trip_name": "[2/1] 7:38 AM from 7th Ave W & W Pleasant Pl (SB) to S Jackson St & 5th Ave S (EB) (LOCAL)"
-          }
-        ],
-        "elevators": []
-      }
-    },
-    {
-      "alert_id": 3827,
-      "effect_name": "Delay of Service",
-      "effect": "OTHER_EFFECT",
-      "cause_name": "an emergency response",
-      "cause": "POLICE_ACTIVITY",
-      "header_text": "Expect significant delays on Routes 181 and 187 today due to an emergency response near 7th Ave SW & SW 320th St.",
-      "short_header_text": "Expect significant delays on Rts. 181 & 187 today due to an emergency response near 7th Ave SW & SW 320th St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/tripplanning",
-      "severity": "Significant",
-      "created_dt": "1714577263",
-      "last_modified_dt": "1714613237",
-      "service_effect_text": "Expect Significant delays on Routes 181 and 187 today due to an emergency response",
-      "timeframe_text": "ongoing",
-      "alert_lifecycle": "Ongoing",
-      "effect_periods": [
-        {
-          "effect_start": "1714577220",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187"
-          }
-        ],
-        "elevators": []
-      }
-    },
-    {
-      "alert_id": 3828,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
-      "cause_name": "an emergency response",
-      "cause": "POLICE_ACTIVITY",
-      "header_text": "Route 181 is rerouted off SW 320th St between 1st Ave S and 21st Ave SW due to an emergency response.",
-      "short_header_text": "Route 181 is rerouted off SW 320th St between 1st Ave S and 21st Ave SW due to an emergency response.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/181/E/05/01/2024/",
-      "description_text": "Affected stops:\r\nTo Green River CC \r\nStop #83703 SW 320th St & 21st Ave SW (EB)\r\nStop #83704 SW 320th St & 18th Ave SW (EB)\r\nStop #83702 SW 320th St & 13th Ave SW (EB)\r\nStop #83701 SW 320th St & 10th Pl SW (EB)\r\nStop #83716 SW 320th St & 6th Ave SW (EB)\r\nStop #83789 SW 320th St & 3rd Pl SW (EB)\r\n\nTo Twin Lakes P&R\r\nStop #83784 SW 320th St & 1st Ave S (WB)\r\nStop #83711 SW 320th St & 3rd Pl SW (WB)\r\nStop #83785 SW 320th St & 6th Ave SW (WB)\r\nStop #83788 SW 320th St & 10th Pl SW (WB)\r\nStop #83787 SW 320th St & 13th Ave SW (WB)\r\nStop #83786 SW 320th St & 18th Ave SW (WB)\r\n\nFor Route 181 to Green River CC get on/off buses at:\r\nStop #42420 21st Ave SW & SW 325th Pl (NB)\r\nStop #83706 S 320th St & 1st Ave S (EB)\r\n\nFor Route 181 to Twin Lakes P&R get on/off buses at:\r\nStop #83783 S 320th St & 4th Ave S (WB)\r\nStop #42500 21st Ave SW & SW 320th St (SB)",
-      "severity": "Significant",
-      "created_dt": "1714578649",
-      "last_modified_dt": "1714614617",
-      "service_effect_text": "Route 181 is rerouted beginning at 8:43 AM due to an emergency response",
-      "timeframe_text": "ongoing",
-      "alert_lifecycle": "Ongoing",
-      "effect_periods": [
-        {
-          "effect_start": "1714578600",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83701",
-            "stop_name": "SW 320th St & 10th Pl SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83702",
-            "stop_name": "SW 320th St & 13th Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83703",
-            "stop_name": "SW 320th St & 21st Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83704",
-            "stop_name": "SW 320th St & 18th Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83711",
-            "stop_name": "SW 320th St & 3rd Pl SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83716",
-            "stop_name": "SW 320th St & 6th Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83784",
-            "stop_name": "SW 320th St & 1st Ave S (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83785",
-            "stop_name": "SW 320th St & 6th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83786",
-            "stop_name": "SW 320th St & 18th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83787",
-            "stop_name": "SW 320th St & 13th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83788",
-            "stop_name": "SW 320th St & 10th Pl SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100072",
-            "route_name": "181",
-            "stop_id": "83789",
-            "stop_name": "SW 320th St & 3rd Pl SW (EB)"
-          }
-        ],
-        "elevators": []
-      },
-      "alternate_stops": [
-        {
-          "route_name": "181",
-          "direction_name": "to Green River CC",
-          "stop_id": "42420",
-          "stop_name": "Stop #42420 21st Ave SW & SW 325th Pl (NB)"
-        },
-        {
-          "route_name": "181",
-          "direction_name": "to Green River CC",
-          "stop_id": "83706",
-          "stop_name": "Stop #83706 S 320th St & 1st Ave S (EB)"
-        },
-        {
-          "route_name": "181",
-          "direction_name": "to Twin Lakes P&R",
-          "stop_id": "83783",
-          "stop_name": "Stop #83783 S 320th St & 4th Ave S (WB)"
-        },
-        {
-          "route_name": "181",
-          "direction_name": "to Twin Lakes P&R",
-          "stop_id": "42500",
-          "stop_name": "Stop #42500 21st Ave SW & SW 320th St (SB)"
-        }
-      ]
-    },
-    {
-      "alert_id": 3829,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
-      "cause_name": "an emergency response",
-      "cause": "POLICE_ACTIVITY",
-      "header_text": "Route 187 is rerouted off SW 320th St between 1st Ave S and 21st Ave SW due to an emergency response.",
-      "short_header_text": "Route 187 is rerouted off SW 320th St between 1st Ave S and 21st Ave SW due to an emergency response.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/187/N/05/01/2024/",
-      "description_text": "Affected stops:\r\nTo Federal Way TC \r\nStop #83703 SW 320th St & 21st Ave SW (EB)\r\nStop #83704 SW 320th St & 18th Ave SW (EB)\r\nStop #83702 SW 320th St & 13th Ave SW (EB)\r\nStop #83701 SW 320th St & 10th Pl SW (EB)\r\nStop #83716 SW 320th St & 6th Ave SW (EB)\r\nStop #83789 SW 320th St & 3rd Pl SW (EB)\r\n\nTo Twin Lakes \r\nStop #83784 SW 320th St & 1st Ave S (WB)\r\nStop #83711 SW 320th St & 3rd Pl SW (WB)\r\nStop #83785 SW 320th St & 6th Ave SW (WB)\r\nStop #83788 SW 320th St & 10th Pl SW (WB)\r\nStop #83787 SW 320th St & 13th Ave SW (WB)\r\nStop #83786 SW 320th St & 18th Ave SW (WB)\r\n\nFor Route 187 to Federal Way TC get on/off buses at:\r\nStop #61580 26th Ave SW & SW 320th St (NB)\r\nStop #83706 S 320th St & 1st Ave S (EB)\r\n\nFor Route 187 to Twin Lakes get on/off buses at:\r\nStop #83783 S 320th St & 4th Ave S (WB)\r\nStop #61870 SW 320th St & 21st Ave SW (WB)",
-      "severity": "Significant",
-      "created_dt": "1714578966",
-      "last_modified_dt": "1714614918",
-      "service_effect_text": "Route 187 is rerouted today due to an emergency response",
-      "timeframe_text": "ongoing",
-      "alert_lifecycle": "Ongoing",
-      "effect_periods": [
-        {
-          "effect_start": "1714578900",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83701",
-            "stop_name": "SW 320th St & 10th Pl SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83702",
-            "stop_name": "SW 320th St & 13th Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83703",
-            "stop_name": "SW 320th St & 21st Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83704",
-            "stop_name": "SW 320th St & 18th Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83711",
-            "stop_name": "SW 320th St & 3rd Pl SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83716",
-            "stop_name": "SW 320th St & 6th Ave SW (EB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83784",
-            "stop_name": "SW 320th St & 1st Ave S (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83785",
-            "stop_name": "SW 320th St & 6th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83786",
-            "stop_name": "SW 320th St & 18th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83787",
-            "stop_name": "SW 320th St & 13th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83788",
-            "stop_name": "SW 320th St & 10th Pl SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "stop_id": "83789",
-            "stop_name": "SW 320th St & 3rd Pl SW (EB)"
-          }
-        ],
-        "elevators": []
-      },
-      "alternate_stops": [
-        {
-          "route_name": "187",
-          "direction_name": "to Federal Way TC",
-          "stop_id": "61580",
-          "stop_name": "Stop #61580 26th Ave SW & SW 320th St (NB)"
-        },
-        {
-          "route_name": "187",
-          "direction_name": "to Federal Way TC",
-          "stop_id": "83706",
-          "stop_name": "Stop #83706 S 320th St & 1st Ave S (EB)"
-        },
-        {
-          "route_name": "187",
-          "direction_name": "to Twin Lakes",
-          "stop_id": "83783",
-          "stop_name": "Stop #83783 S 320th St & 4th Ave S (WB)"
-        },
-        {
-          "route_name": "187",
-          "direction_name": "to Twin Lakes",
-          "stop_id": "61870",
-          "stop_name": "Stop #61870 SW 320th St & 21st Ave SW (WB)"
-        }
-      ]
-    },
-    {
-      "alert_id": 3830,
-      "effect_name": "Delay of Service",
-      "effect": "OTHER_EFFECT",
-      "cause_name": "construction",
-      "cause": "CONSTRUCTION",
-      "header_text": "Expect significant delays on Route 8 today due to construction near 32nd Ave E & E Thomas St.",
-      "short_header_text": "Expect significant delays on Route 8 today due to construction near 32nd Ave E & E Thomas St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/8/W/05/01/2024/",
-      "description_text": "Affected direction: to Seattle Center",
-      "severity": "Significant",
-      "created_dt": "1714579993",
-      "last_modified_dt": "1714615997",
-      "service_effect_text": "Expect Significant delays on Route 8 to Seattle Center today due to construction",
-      "timeframe_text": "ongoing",
-      "alert_lifecycle": "Ongoing",
-      "effect_periods": [
-        {
-          "effect_start": "1714579980",
-          "effect_end": "1714624671"
+          "effect_start": "1716928500",
+          "effect_end": ""
         }
       ],
       "affected_services": {
@@ -618,55 +446,8 @@
             "mode_name": "Bus",
             "route_id": "100275",
             "route_name": "8",
-            "direction_id": "0",
-            "direction_name": "to Seattle Center"
-          }
-        ],
-        "elevators": []
-      }
-    },
-    {
-      "alert_id": 3831,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
-      "cause_name": "construction",
-      "cause": "CONSTRUCTION",
-      "header_text": "Route 8 to Seattle Center is rerouted off E Madison St and a portion of Martin Luther King Jr Way E due to construction.",
-      "short_header_text": "Route 8 to Seattle Center is rerouted off E Madison St and a portion of Martin Luther King Jr Way E.",
-      "description_text": "Affected stops:\r\nStop #12322 E Madison St & 28th Ave E (WB)\r\nStop #12340 E Madison St & 25th Ave E (WB)\r\n\nGet on/off buses at:\r\nStop #43792 Martin L King Jr Way E & E John St (NB)\r\nStop #29258 E John St & 22nd Ave E (WB)",
-      "severity": "Significant",
-      "created_dt": "1714580454",
-      "last_modified_dt": "1714616418",
-      "service_effect_text": "Route 8 to Seattle Center is rerouted today due to construction",
-      "timeframe_text": "ongoing",
-      "alert_lifecycle": "Ongoing",
-      "effect_periods": [
-        {
-          "effect_start": "1714580400",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100275",
-            "route_name": "8",
-            "direction_id": "0",
-            "direction_name": "to Seattle Center",
-            "stop_id": "12322",
-            "stop_name": "E Madison St & 28th Ave E (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100275",
-            "route_name": "8",
-            "direction_id": "0",
-            "direction_name": "to Seattle Center",
-            "stop_id": "12340",
-            "stop_name": "E Madison St & 25th Ave E (WB)"
+            "stop_id": "2244",
+            "stop_name": "Denny Way & 2nd Ave N (EB)"
           }
         ],
         "elevators": []
@@ -674,38 +455,38 @@
       "alternate_stops": [
         {
           "route_name": "8",
-          "direction_name": "to Seattle Center",
-          "stop_id": "43792",
-          "stop_name": "Stop #43792 Martin L King Jr Way E & E John St (NB)"
+          "direction_name": "Both",
+          "stop_id": "2200",
+          "stop_name": "Stop #2200 Queen Anne Ave N & W John St (SB)"
         },
         {
           "route_name": "8",
-          "direction_name": "to Seattle Center",
-          "stop_id": "29258",
-          "stop_name": "Stop #29258 E John St & 22nd Ave E (WB)"
+          "direction_name": "Both",
+          "stop_id": "2245",
+          "stop_name": "Stop #2245 Denny Way & 5th Ave N (EB)"
         }
-      ]
+      ],
+      "publish_outlets": []
     },
     {
-      "alert_id": 3832,
-      "effect_name": "Delay of Service",
-      "effect": "OTHER_EFFECT",
+      "alert_id": 4042,
+      "effect_name": "Single Route Reroute",
+      "effect": "DETOUR",
       "cause_name": "a collision",
       "cause": "ACCIDENT",
-      "header_text": "Expect significant delays on RapidRide A Line today due to a collision near Pacific Hwy S & S 272nd St.",
-      "short_header_text": "Expect significant delays on RapidRide A Line today due to a collision near Pacific Hwy S & S 272nd St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/671/S/05/01/2024/",
-      "description_text": "Affected direction: to Federal Way TC",
+      "header_text": "Route 107 is rerouted off of S 3rd St in Renton due to a collision.",
+      "short_header_text": "Route 107 is rerouted off of S 3rd St in Renton due to a collision.",
+      "description_text": "Affected stops:\r\nStop #45320 S 2nd St & Shattuck Ave S (WB)\r\nStop #79520 SW Sunset Blvd & Rainier Ave S (WB)\r\nStop #79521 Hardie Ave SW & SW 2nd St (NB)\r\nStop #45360 Taylor Ave NW & NW 2nd St (NB)\r\nStop #45375 Taylor Ave NW & NW 3rd Pl (NB)\r\nStop #46450 S 3rd St & Shattuck Ave S (EB)\r\nStop #46440 S 3rd St & Rainier Ave S (EB)\r\nStop #79610 SW Sunset Blvd & Hardie Ave SW (EB)\r\nStop #79522 Hardie Ave SW & SW 2nd St (SB)\r\nStop #46410 Taylor Ave NW & NW 2nd Pl (SB)\r\n\nFor Route 107 to Beacon Hill Station get on/off at:\r\nStop #46477 Renton Transit Center - Bay 2 (WB)\r\nStop #45390 Taylor Pl NW & NW 5th St (NB)\r\n\nFor Route 107 to Renton TC get on/off at:\r\nStop #46390 Taylor Ave NW & NW 4th St (SB)\r\nStop #46479 Renton Transit Center - Bay 4 (EB)",
       "severity": "Significant",
-      "created_dt": "1714581105",
-      "last_modified_dt": "1714617078",
-      "service_effect_text": "Expect Significant delays on RapidRide A Line to Federal Way TC today due to a collision",
-      "timeframe_text": "ongoing",
+      "created_dt": "1716997143",
+      "last_modified_dt": "1717033098",
+      "service_effect_text": "Route 107 is rerouted due to a collision",
+      "timeframe_text": "Ongoing",
       "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714581060",
-          "effect_end": "1714624671"
+          "effect_start": "1716997080",
+          "effect_end": ""
         }
       ],
       "affected_services": {
@@ -713,34 +494,133 @@
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100512",
-            "route_name": "A Line",
-            "direction_id": "0",
-            "direction_name": "to Federal Way TC"
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "45320",
+            "stop_name": "S 2nd St & Shattuck Ave S (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "45360",
+            "stop_name": "Taylor Ave NW & NW 2nd St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "45375",
+            "stop_name": "Taylor Ave NW & NW 3rd Pl (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "46410",
+            "stop_name": "Taylor Ave NW & NW 2nd Pl (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "46440",
+            "stop_name": "S 3rd St & Rainier Ave S (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "46450",
+            "stop_name": "S 3rd St & Shattuck Ave S (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "79520",
+            "stop_name": "SW Sunset Blvd & Rainier Ave S (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "79521",
+            "stop_name": "Hardie Ave SW & SW 2nd St (NB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "79522",
+            "stop_name": "Hardie Ave SW & SW 2nd St (SB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100006",
+            "route_name": "107",
+            "stop_id": "79610",
+            "stop_name": "SW Sunset Blvd & Hardie Ave SW (EB)"
           }
         ],
         "elevators": []
-      }
+      },
+      "alternate_stops": [
+        {
+          "route_name": "107",
+          "direction_name": "to Beacon Hill Station",
+          "stop_id": "46477",
+          "stop_name": "Stop #46477 Renton Transit Center - Bay 2 (WB)"
+        },
+        {
+          "route_name": "107",
+          "direction_name": "to Beacon Hill Station",
+          "stop_id": "45390",
+          "stop_name": "Stop #45390 Taylor Pl NW & NW 5th St (NB)"
+        },
+        {
+          "route_name": "107",
+          "direction_name": "to Renton TC",
+          "stop_id": "46390",
+          "stop_name": "Stop #46390 Taylor Ave NW & NW 4th St (SB)"
+        },
+        {
+          "route_name": "107",
+          "direction_name": "to Renton TC",
+          "stop_id": "46479",
+          "stop_name": "Stop #46479 Renton Transit Center - Bay 4 (EB)"
+        }
+      ],
+      "publish_outlets": []
     },
     {
-      "alert_id": 3833,
+      "alert_id": 4044,
       "effect_name": "Single Route Reroute",
       "effect": "DETOUR",
       "cause_name": "a collision",
       "cause": "ACCIDENT",
-      "header_text": "RapidRide A Line to Federal Way TC is rerouted off Pacific Hwy S between 272nd St and 16th Ave S due to a collision.",
-      "short_header_text": "RapidRide A Line to Federal Way TC is rerouted off Pacific Hwy S between 272nd St and 16th Ave S.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/671/S/05/01/2024/",
-      "description_text": "Affected stops:\r\nStop #61240 Pacific Hwy S & S 272nd St (SB)\r\nStop #61243 Pacific Hwy S & S 276th St (SB)\r\n\nGet on/off buses at:\r\nStop #61230 Pacific Hwy S & S 268th St (SB)\r\nStop #61270 Pacific Hwy S & S 288th St (SB)",
+      "header_text": "Route 269 is rerouted off of some streets with really long names due to a collision.",
+      "short_header_text": "Route 269 is rerouted off of some streets with really long names due to a collision.",
+      "description_text": "Affected stops:\r\nStop #64467 NW Sammamish Rd & 11th Ave NW (EB)\r\nStop #64464 SE 56th St & 221st Pl SE (EB)\r\nStop #64465 SE 56th St & East Lake Sammamish Pkwy SE (EB)\r\nStop #81837 SE Blk Nugget Rd & East Lk Sammamish Pkw (EB)\r\nStop #64468 NW Sammamish Rd & 11th Ave NW (WB)\r\nStop #64466 SE 56th St & East Lake Sammamish Pkwy SE (WB)\r\nStop #81838 SE Blk Nugget Rd & East Lk Sammamish Pkw (WB)\r\nStop #81850 SE Black Nugget Rd & SE 62nd St (WB)\r\n\nFor Route 269 to Overlake get on/off at:\r\nStop #64592 Issaquah Transit Center - Bay 5 (SB)\r\nStop #81837 SE Blk Nugget Rd & East Lk Sammamish Pkw (EB)\r\n\nFor Route 269 to Issaquah TC get on/off at:\r\nStop #81841 SE Blk Nugget Rd & SE Issaquah Fall Cit  (WB)\r\nStop #64592 Issaquah Transit Center - Bay 5 (SB)",
       "severity": "Significant",
-      "created_dt": "1714581643",
-      "last_modified_dt": "1714581643",
-      "service_effect_text": "RapidRide A Line to Federal Way TC is rerouted today due to a collision",
-      "alert_lifecycle": "New",
+      "created_dt": "1716999985",
+      "last_modified_dt": "1717035978",
+      "service_effect_text": "Route 269 is rerouted due to a collision",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714581600",
-          "effect_end": "1714624671"
+          "effect_start": "1716999960",
+          "effect_end": ""
         }
       ],
       "affected_services": {
@@ -748,61 +628,116 @@
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100512",
-            "route_name": "A Line",
-            "direction_id": "0",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61240",
-            "stop_name": "Pacific Hwy S & S 272nd St (SB)"
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "64464",
+            "stop_name": "SE 56th St & 221st Pl SE (EB)"
           },
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100512",
-            "route_name": "A Line",
-            "direction_id": "0",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61243",
-            "stop_name": "Pacific Hwy S & S 276th St (SB)"
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "64465",
+            "stop_name": "SE 56th St & East Lake Sammamish Pkwy SE (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "64466",
+            "stop_name": "SE 56th St & East Lake Sammamish Pkwy SE (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "64467",
+            "stop_name": "NW Sammamish Rd & 11th Ave NW (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "64468",
+            "stop_name": "NW Sammamish Rd & 11th Ave NW (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "81837",
+            "stop_name": "SE Blk Nugget Rd & East Lk Sammamish Pkw (EB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "81838",
+            "stop_name": "SE Blk Nugget Rd & East Lk Sammamish Pkw (WB)"
+          },
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100160",
+            "route_name": "269",
+            "stop_id": "81850",
+            "stop_name": "SE Black Nugget Rd & SE 62nd St (WB)"
           }
         ],
         "elevators": []
       },
       "alternate_stops": [
         {
-          "route_name": "RapidRide A Line",
-          "direction_name": "to Federal Way TC",
-          "stop_id": "61230",
-          "stop_name": "Stop #61230 Pacific Hwy S & S 268th St (SB)"
+          "route_name": "269",
+          "direction_name": "to Overlake",
+          "stop_id": "64592",
+          "stop_name": "Stop #64592 Issaquah Transit Center - Bay 5 (SB)"
         },
         {
-          "route_name": "RapidRide A Line",
-          "direction_name": "to Federal Way TC",
-          "stop_id": "61270",
-          "stop_name": "Stop #61270 Pacific Hwy S & S 288th St (SB)"
+          "route_name": "269",
+          "direction_name": "to Overlake",
+          "stop_id": "81837",
+          "stop_name": "Stop #81837 SE Blk Nugget Rd & East Lk Sammamish Pkw (EB)"
+        },
+        {
+          "route_name": "269",
+          "direction_name": "to Issaquah TC",
+          "stop_id": "81841",
+          "stop_name": "Stop #81841 SE Blk Nugget Rd & SE Issaquah Fall Cit  (WB)"
+        },
+        {
+          "route_name": "269",
+          "direction_name": "to Issaquah TC",
+          "stop_id": "64592",
+          "stop_name": "Stop #64592 Issaquah Transit Center - Bay 5 (SB)"
         }
-      ]
+      ],
+      "publish_outlets": []
     },
-
     {
-      "alert_id": 3840,
+      "alert_id": 4045,
       "effect_name": "Delay of Service",
       "effect": "OTHER_EFFECT",
       "cause_name": "a collision",
       "cause": "ACCIDENT",
-      "header_text": "Expect significant delays on Route 187 today due to a collision near 47th Ave SW and SW 320th St.",
-      "short_header_text": "Expect significant delays on Route 187 today due to a collision near 47th Ave SW and SW 320th St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/187/N/05/01/2024/",
-      "description_text": "Affected direction: to Federal Way TC",
+      "header_text": "Expect significant delays on Route 269 due to a collision.",
+      "short_header_text": "Expect significant delays on Route 269 due to a collision.",
       "severity": "Significant",
-      "created_dt": "1714596546",
-      "last_modified_dt": "1714596546",
-      "service_effect_text": "Expect Significant delays on Route 187 to Federal Way TC today due to a collision",
-      "alert_lifecycle": "New",
+      "created_dt": "1717000009",
+      "last_modified_dt": "1717035979",
+      "service_effect_text": "Expect Significant delays on Route 269 due to a collision",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714596540",
-          "effect_end": "1714624671"
+          "effect_start": "1716999960",
+          "effect_end": ""
         }
       ],
       "affected_services": {
@@ -810,34 +745,32 @@
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC"
+            "route_id": "100160",
+            "route_name": "269"
           }
         ],
         "elevators": []
-      }
+      },
+      "publish_outlets": []
     },
     {
-      "alert_id": 3841,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
+      "alert_id": 4046,
+      "effect_name": "Delay of Service",
+      "effect": "OTHER_EFFECT",
       "cause_name": "a collision",
       "cause": "ACCIDENT",
-      "header_text": "Route 187 to Federal Way TC is rerouted today due to a collision near 47th Ave SW & SW 320th St.",
-      "short_header_text": "Route 187 to Federal Way TC is rerouted today due to a collision near 47th Ave SW & SW 320th St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/187/N/05/01/2024/",
-      "description_text": "Affected stops:\r\nStop #61870 SW 320th St & 21st Ave SW (WB)\r\nStop #61378 SW 320th St & 26th Ave SW (WB)\r\nStop #61380 SW 320th St & 30th Ave SW (WB)\r\nStop #61390 SW 320th St & SW 323rd St (WB)\r\nStop #61400 SW 320th St & 36th Ave SW (WB)\r\nStop #61410 SW 320th St & 41st Ave SW (WB)\r\nStop #61420 SW 320th St & 47th Ave SW (WB)\r\nStop #61422 Hoyt Rd SW & SW 323rd St (SB)\r\nStop #61424 Hoyt Rd SW & SW 326th St (SB)\r\nStop #61426 Hoyt Rd SW & SW 329th Way (SB)\r\nStop #61430 Hoyt Rd SW & SW 331st Pl (SB)\r\nStop #61435 Hoyt Rd SW & SW 338th St (SB)\r\n\nGet on/off buses at:\r\nStop #61437 39th Ave SW & SW 340th St (SB)",
+      "header_text": "Expect significant delays on Route 148 due to a collision.",
+      "short_header_text": "Expect significant delays on Route 148 due to a collision.",
       "severity": "Significant",
-      "created_dt": "1714597208",
-      "last_modified_dt": "1714597208",
-      "service_effect_text": "Route 187 to Federal Way TC is rerouted today due to a collision",
-      "alert_lifecycle": "New",
+      "created_dt": "1717000268",
+      "last_modified_dt": "1717036278",
+      "service_effect_text": "Expect Significant delays on Route 148 due to a collision",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714597140",
-          "effect_end": "1714624671"
+          "effect_start": "1717000260",
+          "effect_end": ""
         }
       ],
       "affected_services": {
@@ -845,523 +778,181 @@
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61378",
-            "stop_name": "SW 320th St & 26th Ave SW (WB)"
+            "route_id": "100042",
+            "route_name": "148"
+          }
+        ],
+        "elevators": []
+      },
+      "publish_outlets": []
+    },
+    {
+      "alert_id": 4047,
+      "effect_name": "Single Route Reroute",
+      "effect": "DETOUR",
+      "cause_name": "a blocking vehicle",
+      "cause": "OTHER_CAUSE",
+      "header_text": "Route 148 is rerouted due to a blocking vehicle.",
+      "short_header_text": "Route 148 is rerouted due to a blocking vehicle.",
+      "description_text": "Affected stops:\r\nStop #59560 140th Ave SE & SE Petrovitsky Rd (NB)\r\nStop #59570 140th Ave SE & SE 171st Way (NB)\r\nStop #59580 SE Fairwood Blvd & 139th Pl SE (WB)\r\nStop #59552 SE Petrovitsky Rd & 140th Ave SE (EB)\r\nStop #55948 140th Ave SE & SE 171st Pl (SB)\r\nStop #60150 SE Fairwood Blvd & 140th Ave SE (EB)\r\n\nFor Route 148 to Renton get on/off at:\r\nStop #60161 SE 177th St & 140th Ave SE (WB)\r\nStop #59590 SE Fairwood Blvd & 138th Ave SE (WB)\r\n\nFor Route 148 to Fairwood get on/off at:\r\nStop #60140 SE Fairwood Blvd & 138th Ave SE (EB)\r\nStop #60161 SE 177th St & 140th Ave SE (WB)",
+      "severity": "Significant",
+      "created_dt": "1717000340",
+      "last_modified_dt": "1717036338",
+      "service_effect_text": "Route 148 is rerouted due to a blocking vehicle",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        {
+          "effect_start": "1717000320",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "3",
+            "mode_name": "Bus",
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "55948",
+            "stop_name": "140th Ave SE & SE 171st Pl (SB)"
           },
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61380",
-            "stop_name": "SW 320th St & 30th Ave SW (WB)"
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "59552",
+            "stop_name": "SE Petrovitsky Rd & 140th Ave SE (EB)"
           },
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61390",
-            "stop_name": "SW 320th St & SW 323rd St (WB)"
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "59560",
+            "stop_name": "140th Ave SE & SE Petrovitsky Rd (NB)"
           },
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61400",
-            "stop_name": "SW 320th St & 36th Ave SW (WB)"
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "59570",
+            "stop_name": "140th Ave SE & SE 171st Way (NB)"
           },
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61410",
-            "stop_name": "SW 320th St & 41st Ave SW (WB)"
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "59580",
+            "stop_name": "SE Fairwood Blvd & 139th Pl SE (WB)"
           },
           {
             "route_type": "3",
             "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61420",
-            "stop_name": "SW 320th St & 47th Ave SW (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61422",
-            "stop_name": "Hoyt Rd SW & SW 323rd St (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61424",
-            "stop_name": "Hoyt Rd SW & SW 326th St (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61426",
-            "stop_name": "Hoyt Rd SW & SW 329th Way (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61430",
-            "stop_name": "Hoyt Rd SW & SW 331st Pl (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61435",
-            "stop_name": "Hoyt Rd SW & SW 338th St (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100078",
-            "route_name": "187",
-            "direction_id": "1",
-            "direction_name": "to Federal Way TC",
-            "stop_id": "61870",
-            "stop_name": "SW 320th St & 21st Ave SW (WB)"
+            "route_id": "100042",
+            "route_name": "148",
+            "stop_id": "60150",
+            "stop_name": "SE Fairwood Blvd & 140th Ave SE (EB)"
           }
         ],
         "elevators": []
       },
       "alternate_stops": [
         {
-          "route_name": "187",
-          "direction_name": "to Federal Way TC",
-          "stop_id": "61437",
-          "stop_name": "Stop #61437 39th Ave SW & SW 340th St (SB)"
+          "route_name": "148",
+          "direction_name": "to Renton",
+          "stop_id": "60161",
+          "stop_name": "Stop #60161 SE 177th St & 140th Ave SE (WB)"
+        },
+        {
+          "route_name": "148",
+          "direction_name": "to Renton",
+          "stop_id": "59590",
+          "stop_name": "Stop #59590 SE Fairwood Blvd & 138th Ave SE (WB)"
+        },
+        {
+          "route_name": "148",
+          "direction_name": "to Fairwood",
+          "stop_id": "60140",
+          "stop_name": "Stop #60140 SE Fairwood Blvd & 138th Ave SE (EB)"
+        },
+        {
+          "route_name": "148",
+          "direction_name": "to Fairwood",
+          "stop_id": "60161",
+          "stop_name": "Stop #60161 SE 177th St & 140th Ave SE (WB)"
         }
-      ]
+      ],
+      "publish_outlets": []
     },
     {
-      "alert_id": 3842,
+      "alert_id": 4098,
       "effect_name": "Delay of Service",
       "effect": "OTHER_EFFECT",
-      "cause_name": "a fire response",
-      "cause": "OTHER_CAUSE",
-      "header_text": "Expect significant delays on Routes 124 and 128 today due to a fire response near Tukwila International Blvd and S 148th St.",
-      "short_header_text": "Expect significant delays on Rts. 124 & 128 due to a fire response near Tukwila International Blvd & S 148 St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/tripplanning",
-      "severity": "Significant",
-      "created_dt": "1714598117",
-      "last_modified_dt": "1714598117",
-      "service_effect_text": "Expect Significant delays on Routes 124 and 128 today due to a fire response",
-      "alert_lifecycle": "New",
-      "effect_periods": [
-        {
-          "effect_start": "1714598100",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100023",
-            "route_name": "124"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128"
-          }
-        ],
-        "elevators": []
-      }
-    },
-    {
-      "alert_id": 3843,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
-      "cause_name": "a fire response",
-      "cause": "OTHER_CAUSE",
-      "header_text": "Route 124 to Tukwila Link Station is rerouted today due to a fire response near Tukwila International Blvd & S 148th St.",
-      "short_header_text": "Rt. 124 to Tukwila Link Sta is rerouted due to a fire response near Tukwila International Blvd & S 148 St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/124/S/05/01/2024/",
-      "description_text": "Affected stops:\r\nStop #61020 Tukwila Intl Blvd & S 144th St (SB)\r\nStop #61040 Tukwila Intl Blvd & S 148th St (SB)\r\n\nGet on/off buses at:\r\nStop #61012 Tukwila Intl Blvd & S 141st St (SB)\r\nStop #60922 Tuk Intl Blvd Sta - Bay 2 (WB)",
-      "severity": "Significant",
-      "created_dt": "1714598858",
-      "last_modified_dt": "1714598858",
-      "service_effect_text": "Route 124 to Tukwila Link Station is rerouted today due to a fire response",
-      "alert_lifecycle": "New",
-      "effect_periods": [
-        {
-          "effect_start": "1714598820",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100023",
-            "route_name": "124",
-            "direction_id": "0",
-            "direction_name": "to Tukwila Link Station",
-            "stop_id": "61020",
-            "stop_name": "Tukwila Intl Blvd & S 144th St (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100023",
-            "route_name": "124",
-            "direction_id": "0",
-            "direction_name": "to Tukwila Link Station",
-            "stop_id": "61040",
-            "stop_name": "Tukwila Intl Blvd & S 148th St (SB)"
-          }
-        ],
-        "elevators": []
-      },
-      "alternate_stops": [
-        {
-          "route_name": "124",
-          "direction_name": "to Tukwila Link Station",
-          "stop_id": "61012",
-          "stop_name": "Stop #61012 Tukwila Intl Blvd & S 141st St (SB)"
-        },
-        {
-          "route_name": "124",
-          "direction_name": "to Tukwila Link Station",
-          "stop_id": "60922",
-          "stop_name": "Stop #60922 Tuk Intl Blvd Sta - Bay 2 (WB)"
-        }
-      ]
-    },
-    {
-      "alert_id": 3844,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
-      "cause_name": "a fire response",
-      "cause": "OTHER_CAUSE",
-      "header_text": "Route 128 to Southcenter is rerouted today due to a fire response near Tukwila International Blvd & S 148th St.",
-      "short_header_text": "Rt. 128 to Southcenter is rerouted today due to a fire response near Tukwila International Blvd & S 148th St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/128/S/05/01/2024/",
-      "description_text": "Affected stops:\r\nStop #61020 Tukwila Intl Blvd & S 144th St (SB)\r\nStop #61040 Tukwila Intl Blvd & S 148th St (SB)\r\nStop #60922 Tuk Intl Blvd Sta - Bay 2 (WB)\r\nStop #49350 42nd Ave S & S 152nd St (NB)\r\nStop #49360 42nd Ave S & S 148th St (NB)\r\nStop #41119 42nd Ave S & S 144th St (NB)\r\n\nGet on/off at:\r\nStop #41128 S 144th St & Pacific Hwy S (EB)\r\nStop #41237 S 144th St & 51st Ave S (EB)",
-      "severity": "Significant",
-      "created_dt": "1714599030",
-      "last_modified_dt": "1714599030",
-      "service_effect_text": "Route 128 to Southcenter is rerouted today due to a fire response",
-      "alert_lifecycle": "New",
-      "effect_periods": [
-        {
-          "effect_start": "1714599000",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128",
-            "direction_id": "1",
-            "direction_name": "to Southcenter",
-            "stop_id": "41119",
-            "stop_name": "42nd Ave S & S 144th St (NB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128",
-            "direction_id": "1",
-            "direction_name": "to Southcenter",
-            "stop_id": "49350",
-            "stop_name": "42nd Ave S & S 152nd St (NB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128",
-            "direction_id": "1",
-            "direction_name": "to Southcenter",
-            "stop_id": "49360",
-            "stop_name": "42nd Ave S & S 148th St (NB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128",
-            "direction_id": "1",
-            "direction_name": "to Southcenter",
-            "stop_id": "60922",
-            "stop_name": "Tuk Intl Blvd Sta - Bay 2 (WB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128",
-            "direction_id": "1",
-            "direction_name": "to Southcenter",
-            "stop_id": "61020",
-            "stop_name": "Tukwila Intl Blvd & S 144th St (SB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100026",
-            "route_name": "128",
-            "direction_id": "1",
-            "direction_name": "to Southcenter",
-            "stop_id": "61040",
-            "stop_name": "Tukwila Intl Blvd & S 148th St (SB)"
-          }
-        ],
-        "elevators": []
-      },
-      "alternate_stops": [
-        {
-          "route_name": "128",
-          "direction_name": "to Southcenter",
-          "stop_id": "41128",
-          "stop_name": "Stop #41128 S 144th St & Pacific Hwy S (EB)"
-        },
-        {
-          "route_name": "128",
-          "direction_name": "to Southcenter",
-          "stop_id": "41237",
-          "stop_name": "Stop #41237 S 144th St & 51st Ave S (EB)"
-        }
-      ]
-    },
-    {
-      "alert_id": 3845,
-      "effect_name": "Delay of Service",
-      "effect": "OTHER_EFFECT",
-      "cause_name": "a fire response",
-      "cause": "OTHER_CAUSE",
-      "header_text": "Expect significant delays on Routes 7, 9 and 106 today due to a fire response near S Brandon St & Martin Luther King Jr Way S.",
-      "short_header_text": "Expect significant delays on Rts. 7, 9 & 106 due to a fire response near S Brandon St & Martin Luther King Jr ",
-      "url": "https://tripplanner.kingcounty.gov/#/app/tripplanning",
-      "severity": "Significant",
-      "created_dt": "1714599800",
-      "last_modified_dt": "1714599800",
-      "service_effect_text": "Expect Significant delays on Routes 7, 9 and 106 today due to a fire response",
-      "alert_lifecycle": "New",
-      "effect_periods": [
-        {
-          "effect_start": "1714599720",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100005",
-            "route_name": "106"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100263",
-            "route_name": "7"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100289",
-            "route_name": "9"
-          }
-        ],
-        "elevators": []
-      }
-    },
-    {
-      "alert_id": 3846,
-      "effect_name": "Single Route Reroute",
-      "effect": "DETOUR",
-      "cause_name": "a fire response",
-      "cause": "OTHER_CAUSE",
-      "header_text": "Route 106 to Downtown Seattle is rerouted off Martin Luther King Jr Way S between S Orcas St and S Alaska St due to a fire response.",
-      "short_header_text": "Route 106 to Downtown Seattle is rerouted off Martin Luther King Jr Way S between S Orcas St and S Alaska St.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/106/N/05/01/2024/",
-      "description_text": "Affected stops:\r\nStop #55729 Martin L King Jr Way S & S Orcas St (NB)\r\nStop #55735 Martin L King Jr Way S & S Dawson St (NB)\r\nStop #55771 Martin L King Jr Way S & S Edmunds St (NB)\r\n\nGet on/off buses at:\r\nStop #55711 Martin L King Jr Way S & 37th Ave S (NB)\r\nStop #55780 Martin L King Jr Way S & S Alaska St (NB)",
-      "severity": "Significant",
-      "created_dt": "1714600248",
-      "last_modified_dt": "1714600248",
-      "service_effect_text": "Route 106 to Downtown Seattle is rerouted today due to a fire response",
-      "alert_lifecycle": "New",
-      "effect_periods": [
-        {
-          "effect_start": "1714600200",
-          "effect_end": "1714624671"
-        }
-      ],
-      "affected_services": {
-        "services": [
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100005",
-            "route_name": "106",
-            "direction_id": "1",
-            "direction_name": "to Downtown Seattle",
-            "stop_id": "55729",
-            "stop_name": "Martin L King Jr Way S & S Orcas St (NB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100005",
-            "route_name": "106",
-            "direction_id": "1",
-            "direction_name": "to Downtown Seattle",
-            "stop_id": "55735",
-            "stop_name": "Martin L King Jr Way S & S Dawson St (NB)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "100005",
-            "route_name": "106",
-            "direction_id": "1",
-            "direction_name": "to Downtown Seattle",
-            "stop_id": "55771",
-            "stop_name": "Martin L King Jr Way S & S Edmunds St (NB)"
-          }
-        ],
-        "elevators": []
-      },
-      "alternate_stops": [
-        {
-          "route_name": "106",
-          "direction_name": "to Downtown Seattle",
-          "stop_id": "55711",
-          "stop_name": "Stop #55711 Martin L King Jr Way S & 37th Ave S (NB)"
-        },
-        {
-          "route_name": "106",
-          "direction_name": "to Downtown Seattle",
-          "stop_id": "55780",
-          "stop_name": "Stop #55780 Martin L King Jr Way S & S Alaska St (NB)"
-        }
-      ]
-    },
-    {
-      "alert_id": 3848,
-      "effect_name": "Trip Restoration",
-      "effect": "MODIFIED_SERVICE",
       "cause": "UNKNOWN_CAUSE",
-      "header_text": "RapidRide C Line trip to West Seattle scheduled at 4:31 PM from Valley St & Fairview Ave N (WB) and five other trips are restored and operating today.",
-      "short_header_text": "RapidRide C Line to W Seattle at 4:31PM from Valley St and Fairview Av N and five other trips are restored.",
-      "url": "https://tripplanner.kingcounty.gov/#/app/nextdepartures/routeheadway/full/672/E/05/01/2024/",
-      "description_text": "Affected trips to Downtown Seattle:\r\nTo Downtown Seattle scheduled at 5:51 PM from SW Barton St & 26th Ave SW - Bay 1 (EB)\r\nTo Downtown Seattle scheduled at 8:32 PM from SW Barton St & 26th Ave SW - Bay 1 (EB)\r\nTo Downtown Seattle scheduled at 10:53 PM from SW Barton St & 26th Ave SW - Bay 1 (EB)\r\n\nAffected trips to West Seattle:\r\nTo West Seattle scheduled at 4:31 PM from Valley St & Fairview Ave N (WB)\r\nTo West Seattle scheduled at 7:17 PM from Valley St & Fairview Ave N (WB)\r\nTo West Seattle scheduled at 9:52 PM from Valley St & Fairview Ave N (WB)",
+      "header_text": "Service on the First Hill Streetcar will be reduced with trips operating approximately every 20 minutes until further notice.",
+      "short_header_text": "Service on the FHSC will be reduced with trips operating about every 20 minutes until further notice.",
+      "description_text": "For alternate bus service, use Metro bus routes 7, 36 or 106 for service on S Jackson St. Use Metro bus route 60 for service on Broadway.\r\n\nAdditionally, riders can use the 1 Line for direct service between Capitol Hill and the International District.\r\n\nWe apologize for the inconvenience.",
       "severity": "Significant",
-      "created_dt": "1714602193",
-      "last_modified_dt": "1714602656",
-      "service_effect_text": "RapidRide C Line trip to West Seattle scheduled at 4:31 PM from Valley St & Fairview Ave N (WB) and five other trips trips are restored and operating today",
-      "alert_lifecycle": "New",
+      "created_dt": "1722953405",
+      "last_modified_dt": "1723558218",
+      "service_effect_text": "Expect Significant delays on First Hill Streetcar",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
       "effect_periods": [
         {
-          "effect_start": "1714602600",
-          "effect_end": "1714624671"
+          "effect_start": "1722953400",
+          "effect_end": ""
         }
       ],
       "affected_services": {
         "services": [
           {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "102576",
-            "route_name": "C Line",
-            "trip_id": "608571886",
-            "trip_name": "[673/26] 4:31 PM from Valley St & Fairview Ave N (WB) to SW Barton St & 26th Ave SW - Bay 1 (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "102576",
-            "route_name": "C Line",
-            "trip_id": "608573326",
-            "trip_name": "[673/26] 7:17 PM from Valley St & Fairview Ave N (WB) to SW Barton St & 26th Ave SW - Bay 1 (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "102576",
-            "route_name": "C Line",
-            "trip_id": "608573576",
-            "trip_name": "[673/26] 10:53 PM from SW Barton St & 26th Ave SW - Bay 1 (EB) to Fairview Ave N & Valley St (NB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "102576",
-            "route_name": "C Line",
-            "trip_id": "608598386",
-            "trip_name": "[673/26] 9:52 PM from Valley St & Fairview Ave N (WB) to SW Barton St & 26th Ave SW - Bay 1 (EB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "102576",
-            "route_name": "C Line",
-            "trip_id": "635650926",
-            "trip_name": "[673/26] 5:51 PM from SW Barton St & 26th Ave SW - Bay 1 (EB) to Fairview Ave N & Valley St (NB) (LOCAL)"
-          },
-          {
-            "route_type": "3",
-            "mode_name": "Bus",
-            "route_id": "102576",
-            "route_name": "C Line",
-            "trip_id": "635650946",
-            "trip_name": "[673/26] 8:32 PM from SW Barton St & 26th Ave SW - Bay 1 (EB) to Fairview Ave N & Valley St (NB) (LOCAL)"
+            "route_type": "0",
+            "mode_name": "Rail",
+            "route_id": "102638",
+            "route_name": "First Hill Streetcar"
           }
         ],
         "elevators": []
-      }
+      },
+      "publish_outlets": []
+    },
+    {
+      "alert_id": 4099,
+      "effect_name": "Delay of Service",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Service on the South Lake Union Streetcar is reduced with trips operating approximately every 18 minutes until further notice.",
+      "short_header_text": "Service on the SLU Streetcar is reduced with trips operating about every 18 minutes until further notice.",
+      "description_text": "Customers wanting to travel to and from South Lake Union can also use Metro routes 40, 70, or RapidRide C Line.",
+      "severity": "Significant",
+      "created_dt": "1722953463",
+      "last_modified_dt": "1723558278",
+      "service_effect_text": "Expect Significant delays on South Lake Union Streetcar",
+      "timeframe_text": "Ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [
+        {
+          "effect_start": "1722953460",
+          "effect_end": ""
+        }
+      ],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "0",
+            "mode_name": "Rail",
+            "route_id": "100340",
+            "route_name": "South Lake Union Streetcar"
+          }
+        ],
+        "elevators": []
+      },
+      "publish_outlets": []
     }
   ]
 }
