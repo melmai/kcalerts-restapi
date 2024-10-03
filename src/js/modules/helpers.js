@@ -182,7 +182,7 @@ function expandType(type) {
  * @returns String to display in status flag and classnames
  */
 function statusText(status) {
-  console.log(status);
+  // console.log(status);
   if (status === "New" || status.includes("Ongoing")) return "ongoing";
   return "upcoming";
 }

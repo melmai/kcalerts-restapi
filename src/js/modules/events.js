@@ -34,13 +34,11 @@ function showAlerts(show = "", hide = "") {
   clearButtons();
 
   let bttn;
-  console.log(show);
   if (show === "") {
     bttn = document.getElementById("reset");
   } else {
     bttn = document.getElementById(`${show}-filter`);
   }
-  console.log(bttn);
   bttn.setAttribute("class", "tab-btn selected");
 }
 
@@ -124,7 +122,6 @@ function clearSearch() {
 function showAlertType(type = "bus-alerts") {
   const alertSections = document.getElementsByClassName("alerts");
   for (const section of alertSections) {
-    console.log(section.className);
     if (section.id === type) {
       section.setAttribute("style", "display: block;");
     } else {

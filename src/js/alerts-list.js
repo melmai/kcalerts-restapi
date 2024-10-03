@@ -67,16 +67,10 @@ function createAlerts() {
       const busRoutes = organizeRoutes(bus.route);
 
       const alerts = getAlertsByMode(res[0].alerts);
-      console.log(alerts);
-
-      // TODO: can probably remove the organizeRoutes wrapper
-      const railRoutes = organizeRoutes(rail.route);
-      const marineRoutes = organizeRoutes(marine.route);
 
       // TODO: create banner for system alert on list page
       // const systemAlerts = getSystemAlerts(res[0].alerts);
 
-      // let data = [...busRoutes, ...railRoutes, ...marineRoutes];
       let data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
 
       // snow flag
@@ -91,7 +85,6 @@ function createAlerts() {
       container.setAttribute("class", "alerts bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
-        console.log(route);
         container.append(createRoutePanel(route, "bus", idx));
       });
       accordion.append(container);
@@ -99,45 +92,34 @@ function createAlerts() {
       console.log("bus done");
 
       // loop through data and create rail panels
-      // console.log(alerts.rail);
-      // data = cleanup(processData(alerts.rail, railRoutes));
-      // console.log(data);
-      // container = document.createElement("div");
-      // container.id = "rail-alerts";
-      // container.setAttribute("class", "alerts rail-alerts");
-      // container.style.display = "none";
-      // data.forEach((alert, idx) => {
-      //   container.append(createRoutePanel(route, "rail", idx));
-      // });
-      // accordion.append(container);
-      // console.log("rail done");
+      data = cleanup(processData(processAlerts(alerts.rail), rail.route));
+      container = document.createElement("div");
+      container.id = "rail-alerts";
+      container.setAttribute("class", "alerts rail-alerts");
+      container.style.display = "none";
+
+      data.forEach((route, idx) => {
+        container.append(createRoutePanel(route, "rail", idx));
+      });
+      accordion.append(container);
+      console.log("rail done");
 
       // loop through data and create water taxi panels
-      // data = cleanup(processData(alerts.waterTaxi, marineRoutes));
-      // console.log(data);
-      // container = document.createElement("div");
-      // container.id = "water-taxi-alerts";
-      // container.setAttribute("class", "alerts water-taxi-alerts");
-      // container.style.display = "none";
-      // data.forEach((alert, idx) => {
-      //   container.append(createRoutePanel(route, "marine", idx));
-      // });
-      // accordion.append(container);
-      // console.log("water taxi done");
-
-      // loop through system alerts and create alert panels
-      // container = document.createElement("div");
-      // container.id = "system-alerts";
-      // container.setAttribute("class", "alerts system-alerts");
-      // container.style.display = "none";
-      // systemAlerts.forEach((alert, idx) => {
-      //   container.append(generateSingleAlert(alert));
-      // });
-      // accordion.append(container);
+      data = cleanup(
+        processData(processAlerts(alerts.waterTaxi), marine.route)
+      );
+      container = document.createElement("div");
+      container.id = "water-taxi-alerts";
+      container.setAttribute("class", "alerts water-taxi-alerts");
+      container.style.display = "none";
+      data.forEach((alert, idx) => {
+        container.append(createRoutePanel(route, "marine", idx));
+      });
+      accordion.append(container);
+      console.log("marine done");
 
       // loop through data and create elevator alerts
       data = alerts.elevators;
-      console.log(data);
       container = document.createElement("div");
       container.id = "elevator-alerts";
       container.setAttribute("class", "alerts elevator-alerts");
@@ -147,8 +129,6 @@ function createAlerts() {
       });
       accordion.append(container);
       console.log("elevator done");
-
-      console.log(snow);
 
       // show snow map link
       if (snow) {
@@ -175,10 +155,8 @@ function createAlerts() {
  */
 function processData(alertArr, routeArr) {
   let routes = routeArr;
-  // console.log(routes);
 
   alertArr.forEach((data) => {
-    // console.log(data);
     data.route_ids.forEach((routeID) => {
       routes.forEach((route) => {
         if (routeID === route.route_id) {
@@ -277,8 +255,6 @@ function processAlerts(alerts, type = "bus") {
     });
   }
 
-  console.log(result);
-
   return result;
 }
 
@@ -295,7 +271,6 @@ function processAlerts(alerts, type = "bus") {
 function createRoutePanel(route, type = "bus", idx) {
   // create parent fragment
   let routePanel = new DocumentFragment();
-  console.log(route);
 
   let routeName;
   if (type === "elevator") {
@@ -413,7 +388,6 @@ function setupListEvents(element) {
   for (const bttn of alertTypeBttns) {
     bttn.addEventListener("click", (e) => {
       const type = e.target.dataset.type;
-      console.log(type);
       showAlertType(type);
     });
   }

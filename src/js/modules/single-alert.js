@@ -42,7 +42,7 @@ function createURL(url) {
 }
 
 export function generateSingleAlert(alert, mode = "transit") {
-  console.log(alert);
+  // console.log(alert);
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute("class", `advisory-panel`);
@@ -75,7 +75,7 @@ export function generateSingleAlert(alert, mode = "transit") {
     "class",
     `advisory-status ${statusText(alert.alert_lifecycle)}`
   );
-  console.log(alert);
+  // console.log(alert);
   flag.textContent = statusText(alert.alert_lifecycle);
 
   alertTitle.append(type, flag);
