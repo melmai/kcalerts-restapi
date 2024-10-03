@@ -2,7 +2,7 @@
  * General Settings for API and data fetching
  */
 
-const IS_REMOTE = false;
+const IS_REMOTE = true;
 
 // Production API
 // const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2";

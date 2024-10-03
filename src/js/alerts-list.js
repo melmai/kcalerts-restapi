@@ -72,7 +72,9 @@ function createAlerts() {
       // TODO: can probably remove the organizeRoutes wrapper
       const railRoutes = organizeRoutes(rail.route);
       const marineRoutes = organizeRoutes(marine.route);
-      const systemAlerts = getSystemAlerts(res[0].alerts);
+
+      // TODO: create banner for system alert on list page
+      // const systemAlerts = getSystemAlerts(res[0].alerts);
 
       // let data = [...busRoutes, ...railRoutes, ...marineRoutes];
       let data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
@@ -145,6 +147,8 @@ function createAlerts() {
       });
       accordion.append(container);
       console.log("elevator done");
+
+      console.log(snow);
 
       // show snow map link
       if (snow) {
@@ -288,7 +292,7 @@ function processAlerts(alerts, type = "bus") {
  * @param {Int} id
  * @returns route element with alerts
  */
-function createRoutePanel(route, type = "bus", id) {
+function createRoutePanel(route, type = "bus", idx) {
   // create parent fragment
   let routePanel = new DocumentFragment();
   console.log(route);
@@ -301,8 +305,9 @@ function createRoutePanel(route, type = "bus", id) {
   }
 
   // create panel elements
+  const id = route.route_id || route.alert_id;
   const header = document.createElement("div");
-  header.id = route.route_id;
+  header.id = id;
 
   // set status class for filtering
   let ongoingClass,
@@ -322,9 +327,9 @@ function createRoutePanel(route, type = "bus", id) {
 
   // create toggle for accordion as button header
   const button = document.createElement("input");
-  button.setAttribute("id", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("id", `toggle-advisory-${id}`);
   button.setAttribute("type", "checkbox");
-  button.setAttribute("name", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("name", `toggle-advisory-${id}`);
   button.setAttribute("aria-hidden", "true");
 
   const label = document.createElement("label");
@@ -332,7 +337,7 @@ function createRoutePanel(route, type = "bus", id) {
     "class",
     "toggle-head advisory-block-title with-description"
   );
-  label.setAttribute("for", `toggle-advisory-${route.route_id}`);
+  label.setAttribute("for", `toggle-advisory-${id}`);
 
   // route name
   const title = document.createElement("h2");
