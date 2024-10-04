@@ -3,3 +3,5 @@
 node_modules/
 *.css.map
 package-lock.json
+dist/js/
+dist/css/
