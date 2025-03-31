@@ -121,6 +121,10 @@ function icon(effectName) {
       text = "ac_unit";
       break;
 
+    case "Elevator Closure":
+      text = "elevator";
+      break;
+
     default:
       text = "warning";
   }
@@ -178,6 +182,7 @@ function expandType(type) {
  * @returns String to display in status flag and classnames
  */
 function statusText(status) {
+  // console.log(status);
   if (status === "New" || status.includes("Ongoing")) return "ongoing";
   return "upcoming";
 }
@@ -350,6 +355,15 @@ function createStatusFlag(type, text) {
   return flag;
 }
 
+function getSystemAlerts(alerts) {
+  let bannerAlerts = [];
+  alerts.forEach((alert) => {
+    if (alert.banner_text) bannerAlerts.push(alert);
+  });
+
+  return bannerAlerts;
+}
+
 export {
   printDates,
   cleanup,
@@ -368,4 +382,5 @@ export {
   incrementStatusType,
   incrementSnowCount,
   createStatusFlag,
+  getSystemAlerts,
 };

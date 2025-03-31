@@ -115,6 +115,21 @@ function clearSearch() {
   searchRoutes(false);
 }
 
+/**
+ * Filter alerts by type
+ *
+ */
+function showAlertType(type = "bus-alerts") {
+  const alertSections = document.getElementsByClassName("alerts");
+  for (const section of alertSections) {
+    if (section.id === type) {
+      section.setAttribute("style", "display: block;");
+    } else {
+      section.setAttribute("style", "display: none;");
+    }
+  }
+}
+
 export {
   clearButtons,
   showAlerts,
@@ -122,4 +137,5 @@ export {
   notifyNoResults,
   searchRoutes,
   clearSearch,
+  showAlertType,
 };

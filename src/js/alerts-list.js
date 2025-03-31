@@ -24,12 +24,14 @@ import {
   incrementStatusType,
   incrementSnowCount,
   createStatusFlag,
+  getSystemAlerts,
 } from "./modules/helpers";
 import {
   showAlerts,
   notifyNoResults,
   searchRoutes,
   clearSearch,
+  showAlertType,
 } from "./modules/events";
 import { generateSingleAlert } from "./modules/single-alert";
 
@@ -59,27 +61,74 @@ function createAlerts() {
   ])
     .then((res) => {
       // process data
-      const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
+      // TODO: refactor to generate an object that separates routes by mode
+      // const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const [rail, bus, marine] = res[1].mode;
-
       const busRoutes = organizeRoutes(bus.route);
-      const railRoutes = organizeRoutes(rail.route);
-      const marineRoutes = organizeRoutes(marine.route);
 
-      let data = [...busRoutes, ...railRoutes, ...marineRoutes];
-      data = cleanup(processData(alerts, data));
+      const alerts = getAlertsByMode(res[0].alerts);
+
+      // TODO: create banner for system alert on list page
+      // const systemAlerts = getSystemAlerts(res[0].alerts);
+
+      let data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
 
       // snow flag
       let snow = false;
 
       // build accordion
       let accordion = new DocumentFragment();
+
+      // loop through data and create route panels
+      let container = document.createElement("div");
+      container.id = "bus-alerts";
+      container.setAttribute("class", "alerts bus-alerts");
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
-        accordion.append(createRoutePanel(route, idx));
+        container.append(createRoutePanel(route, "bus", idx));
       });
+      accordion.append(container);
 
-      // console.log("snow", snow);
+      console.log("bus done");
+
+      // loop through data and create rail panels
+      data = cleanup(processData(processAlerts(alerts.rail), rail.route));
+      container = document.createElement("div");
+      container.id = "rail-alerts";
+      container.setAttribute("class", "alerts rail-alerts");
+      container.style.display = "none";
+
+      data.forEach((route, idx) => {
+        container.append(createRoutePanel(route, "rail", idx));
+      });
+      accordion.append(container);
+      console.log("rail done");
+
+      // loop through data and create water taxi panels
+      data = cleanup(
+        processData(processAlerts(alerts.waterTaxi), marine.route)
+      );
+      container = document.createElement("div");
+      container.id = "water-taxi-alerts";
+      container.setAttribute("class", "alerts water-taxi-alerts");
+      container.style.display = "none";
+      data.forEach((alert, idx) => {
+        container.append(createRoutePanel(route, "marine", idx));
+      });
+      accordion.append(container);
+      console.log("marine done");
+
+      // loop through data and create elevator alerts
+      data = alerts.elevators;
+      container = document.createElement("div");
+      container.id = "elevator-alerts";
+      container.setAttribute("class", "alerts elevator-alerts");
+      container.style.display = "none";
+      data.forEach((alert, idx) => {
+        container.append(createRoutePanel(alert, "elevator", idx));
+      });
+      accordion.append(container);
+      console.log("elevator done");
 
       // show snow map link
       if (snow) {
@@ -106,10 +155,8 @@ function createAlerts() {
  */
 function processData(alertArr, routeArr) {
   let routes = routeArr;
-  // console.log(routes);
 
   alertArr.forEach((data) => {
-    // console.log(data);
     data.route_ids.forEach((routeID) => {
       routes.forEach((route) => {
         if (routeID === route.route_id) {
@@ -138,24 +185,75 @@ function processData(alertArr, routeArr) {
 }
 
 /**
+ * Creates an object that holds alerts separated by mode
+ *
+ * @param {Array} alerts array of alert objects
+ * @returns an object with keys for each mode
+ */
+function getAlertsByMode(alerts) {
+  const busAlerts = [];
+  const railAlerts = [];
+  const waterTaxiAlerts = [];
+  const elevatorAlerts = [];
+  const systemAlerts = [];
+
+  for (const alert of alerts) {
+    if (alert.affected_services.elevators.length) {
+      elevatorAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Rail") {
+      railAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Marine") {
+      waterTaxiAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Bus") {
+      busAlerts.push(alert);
+    } else {
+      systemAlerts.push(alert);
+    }
+  }
+
+  return {
+    bus: busAlerts,
+    rail: railAlerts,
+    waterTaxi: waterTaxiAlerts,
+    elevators: elevatorAlerts,
+    systemAlerts: systemAlerts,
+  };
+}
+
+/**
  * Process all alerts
  *
  * @param {Array} alerts
  * @returns an array of objects that contain an alert and its unique routes
  */
-function processAlerts(alerts) {
+function processAlerts(alerts, type = "bus") {
   let result = [];
 
-  // loop through all alerts and create an array of routes that have alerts
-  alerts.forEach((alert) => {
-    const routes = uniqueRoutes(alert.affected_services.services, "alert");
+  if (type === "elevator") {
+    alerts.forEach((alert) => {
+      const routes = uniqueRoutes(
+        alert.affected_services.elevators,
+        "elevator"
+      );
 
-    result.push({
-      route_ids: routes,
-      alert: alert,
-      status: alert.alert_lifecycle,
+      result.push({
+        // route_ids: routes,
+        alert: alert,
+        status: statusText(alert.alert_lifecycle),
+      });
     });
-  });
+  } else {
+    // loop through all alerts and create an array of routes that have alerts
+    alerts.forEach((alert) => {
+      const routes = uniqueRoutes(alert.affected_services.services, "alert");
+
+      result.push({
+        route_ids: routes,
+        alert: alert,
+        status: alert.alert_lifecycle,
+      });
+    });
+  }
 
   return result;
 }
@@ -170,18 +268,32 @@ function processAlerts(alerts) {
  * @param {Int} id
  * @returns route element with alerts
  */
-function createRoutePanel(route, id) {
+function createRoutePanel(route, type = "bus", idx) {
   // create parent fragment
   let routePanel = new DocumentFragment();
-  const routeName = routeLabel(route.route_name);
+
+  let routeName;
+  if (type === "elevator") {
+    routeName = route.affected_services.elevators[0].elev_name;
+  } else {
+    routeName = routeLabel(route.route_name);
+  }
 
   // create panel elements
+  const id = route.route_id || route.alert_id;
   const header = document.createElement("div");
-  header.id = route.route_id;
+  header.id = id;
 
   // set status class for filtering
-  const ongoingClass = route.status.ongoing ? "ongoing" : "";
-  const upcomingClass = route.status.upcoming ? "upcoming" : "";
+  let ongoingClass,
+    upcomingClass = "";
+
+  if (route.status) {
+    ongoingClass = route.status.ongoing ? "ongoing" : "";
+    upcomingClass = route.status.upcoming ? "upcoming" : "";
+  } else {
+    ongoingClass = "ongoing";
+  }
   header.setAttribute(
     "class",
     `toggle advisory-block ${ongoingClass} ${upcomingClass}`
@@ -190,9 +302,9 @@ function createRoutePanel(route, id) {
 
   // create toggle for accordion as button header
   const button = document.createElement("input");
-  button.setAttribute("id", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("id", `toggle-advisory-${id}`);
   button.setAttribute("type", "checkbox");
-  button.setAttribute("name", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("name", `toggle-advisory-${id}`);
   button.setAttribute("aria-hidden", "true");
 
   const label = document.createElement("label");
@@ -200,7 +312,7 @@ function createRoutePanel(route, id) {
     "class",
     "toggle-head advisory-block-title with-description"
   );
-  label.setAttribute("for", `toggle-advisory-${route.route_id}`);
+  label.setAttribute("for", `toggle-advisory-${id}`);
 
   // route name
   const title = document.createElement("h2");
@@ -216,11 +328,15 @@ function createRoutePanel(route, id) {
   let snow, ongoing, upcoming;
   if (route.is_snow > 0) snow = createStatusFlag("snow", route.is_snow);
 
-  if (route.status.ongoing > 0)
-    ongoing = createStatusFlag("ongoing", route.status.ongoing);
+  if (route.status) {
+    if (route.status.ongoing > 0)
+      ongoing = createStatusFlag("ongoing", route.status.ongoing);
 
-  if (route.status.upcoming > 0)
-    upcoming = createStatusFlag("upcoming", route.status.upcoming);
+    if (route.status.upcoming > 0)
+      upcoming = createStatusFlag("upcoming", route.status.upcoming);
+  } else {
+    ongoing = createStatusFlag("ongoing", 1);
+  }
 
   alertStatus.append(snow || "", ongoing || "", upcoming || "");
 
@@ -233,9 +349,13 @@ function createRoutePanel(route, id) {
   alertBody.setAttribute("class", "toggle-inner");
 
   // append alerts to alert container
-  route.alerts.forEach((alert, idx) => {
-    alertBody.append(generateSingleAlert(alert));
-  });
+  if (route.alerts) {
+    route.alerts.forEach((alert, idx) => {
+      alertBody.append(generateSingleAlert(alert));
+    });
+  } else {
+    alertBody.append(generateSingleAlert(route, "elevator"));
+  }
   header.append(alertBody);
   routePanel.append(header);
   return routePanel;
@@ -262,6 +382,15 @@ function setupListEvents(element) {
   upcomingAlertsBttn.addEventListener("click", () =>
     showAlerts("upcoming", "ongoing")
   );
+
+  // show alerts by type
+  const alertTypeBttns = document.getElementsByClassName("alert-type-bttn");
+  for (const bttn of alertTypeBttns) {
+    bttn.addEventListener("click", (e) => {
+      const type = e.target.dataset.type;
+      showAlertType(type);
+    });
+  }
 
   // search input
   const searchInput = document.getElementById("route-search");
