@@ -137,7 +137,7 @@ html {
 #status-filter .tab-btn {
   border: 1px solid #ccc;
   background-color: var(--light);
-  color: var(--gray);
+  color: #333;
   padding: 6px 12px;
   font-size: 0.8rem;
   text-transform: uppercase;
