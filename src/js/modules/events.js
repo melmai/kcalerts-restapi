@@ -120,6 +120,17 @@ function clearSearch() {
  *
  */
 function showAlertType(type = "bus-alerts") {
+  // change visible state of buttons
+  const alertBttns = document.getElementsByClassName("alert-type-bttn");
+  for (const bttn of alertBttns) {
+    if (bttn.id === type + "-bttn") {
+      bttn.setAttribute("class", "alert-type-bttn selected");
+    } else {
+      bttn.setAttribute("class", "alert-type-bttn");
+    }
+  }
+
+  // show/hide alert sections
   const alertSections = document.getElementsByClassName("alerts");
   for (const section of alertSections) {
     if (section.id === type) {

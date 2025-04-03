@@ -142,7 +142,7 @@
 .type-filter .alert-type-bttn:active,
 .type-filter .alert-type-bttn:state(selected),
 .type-filter .alert-type-bttn.selected {
-  background-color: lightgrey;
+  background-color: var(--primary-light-background);
 }
 
 .type-filter .alert-type-bttn .material-symbols-outlined {
