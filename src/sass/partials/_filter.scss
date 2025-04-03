@@ -134,8 +134,15 @@
   background-color: #fff;
 }
 
-.type-filter .alert-type-bttn:hover {
-  background-color: lightgray;
+.type-filter .alert-type-bttn:hover,
+.type-filter .alert-type-bttn:focus {
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.type-filter .alert-type-bttn:active,
+.type-filter .alert-type-bttn:state(selected),
+.type-filter .alert-type-bttn.selected {
+  background-color: lightgrey;
 }
 
 .type-filter .alert-type-bttn .material-symbols-outlined {
