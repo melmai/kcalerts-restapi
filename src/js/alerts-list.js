@@ -135,6 +135,10 @@ function createAlerts() {
         snowMap.classList.remove("d-none");
       }
 
+      // remove load spinner
+      document.getElementById("loading").remove();
+
+      // add system alerts
       allAlerts.append(accordion);
 
       // attach event handlers
