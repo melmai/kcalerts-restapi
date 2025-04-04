@@ -9,6 +9,7 @@
  *
  */
 import { Fancybox } from "@fancyapps/ui";
+import { DotLottie } from "@lottiefiles/dotlottie-web";
 import {
   IS_REMOTE,
   REMOTE_ALERTS_API,
