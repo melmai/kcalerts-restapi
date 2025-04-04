@@ -29,3 +29,12 @@
   color: #0056f5;
   cursor: pointer;
 }
+
+// loading spinner
+.spinner-border {
+  display: block;
+  margin: 50px auto;
+  color: var(--primary);
+  height: 3rem;
+  width: 3rem;
+}
