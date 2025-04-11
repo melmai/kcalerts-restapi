@@ -9,7 +9,6 @@
  *
  */
 import { Fancybox } from "@fancyapps/ui";
-import { DotLottie } from "@lottiefiles/dotlottie-web";
 import {
   IS_REMOTE,
   REMOTE_ALERTS_API,
@@ -29,10 +28,10 @@ import {
 } from "./modules/helpers";
 import {
   showAlerts,
-  notifyNoResults,
   searchRoutes,
   clearSearch,
   showAlertType,
+  initLottie,
 } from "./modules/events";
 import { generateSingleAlert } from "./modules/single-alert";
 
@@ -66,8 +65,15 @@ function createAlerts() {
       // const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
       const [rail, bus, marine] = res[1].mode;
       const busRoutes = organizeRoutes(bus.route);
-
       const alerts = getAlertsByMode(res[0].alerts);
+      console.log("alerts", alerts);
+
+      // number of alerts for each mode
+      const busCount = alerts.bus.length;
+      const railCount = alerts.rail.length;
+      const marineCount = alerts.waterTaxi.length;
+      const elevatorCount = alerts.elevators.length;
+      const systemCount = alerts.systemAlerts.length;
 
       // TODO: create banner for system alert on list page
       // const systemAlerts = getSystemAlerts(res[0].alerts);
@@ -138,6 +144,9 @@ function createAlerts() {
 
       // remove load spinner
       document.getElementById("loading").remove();
+
+      // test lottie
+      initLottie();
 
       // add system alerts
       allAlerts.append(accordion);
@@ -404,9 +413,6 @@ function setupListEvents(element) {
   // clear search
   const clearInput = document.getElementById("clear-search");
   clearInput.addEventListener("click", clearSearch);
-
-  // notify user if no results
-  notifyNoResults(element);
 }
 
 // FancyBox
