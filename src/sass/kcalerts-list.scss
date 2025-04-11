@@ -38,3 +38,18 @@
   height: 3rem;
   width: 3rem;
 }
+
+// No alerts message
+#no-alerts-msg {
+  text-align: center;
+  margin: 50px auto;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+#dotlottie-canvas {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
