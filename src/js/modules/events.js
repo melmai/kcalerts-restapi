@@ -1,3 +1,5 @@
+import { DotLottie } from "@lottiefiles/dotlottie-web";
+
 /* Event Handlers
  ******************************************************* */
 /**
@@ -139,6 +141,22 @@ function showAlertType(type = "bus-alerts") {
       section.setAttribute("style", "display: none;");
     }
   }
+
+  // TODO: if no alerts, show lottie animation
+}
+
+/**
+ * Initialize Lottie animation
+ *
+ */
+function initLottie() {
+  const canvas = document.getElementById("dotlottie-canvas");
+  const animation = new DotLottie({
+    canvas,
+    autoplay: true,
+    loop: true,
+    src: "https://lottie.host/5387d430-388a-4a2f-b124-1345aebfff6f/ra3lkmR3Rj.lottie",
+  });
 }
 
 export {
@@ -149,4 +167,5 @@ export {
   searchRoutes,
   clearSearch,
   showAlertType,
+  initLottie,
 };
