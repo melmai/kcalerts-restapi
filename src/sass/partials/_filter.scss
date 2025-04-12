@@ -121,6 +121,17 @@
 .type-filter {
   display: flex;
   margin-bottom: 20px;
+
+  @include responsive(500px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+  }
+
+  @include responsive(350px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .type-filter .alert-type-bttn {
@@ -132,6 +143,14 @@
   border: 2px solid var(--primary);
   border-radius: 5px;
   background-color: #fff;
+
+  @include responsive(500px) {
+    width: auto;
+    max-width: none;
+    display: flex;
+    text-align: left;
+    align-items: center;
+  }
 }
 
 .type-filter .alert-type-bttn:hover,
@@ -152,6 +171,13 @@
   padding: 10px;
   margin-bottom: 10px;
   color: #fff;
+
+  @include responsive(500px) {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 1.8em;
+    padding: 3%;
+  }
 }
 
 .type-filter
