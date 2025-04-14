@@ -401,7 +401,8 @@ function setupListEvents(element) {
   const alertTypeBttns = document.getElementsByClassName("alert-type-bttn");
   for (const bttn of alertTypeBttns) {
     bttn.addEventListener("click", (e) => {
-      const type = e.target.dataset.type;
+      const type = e.target.dataset.type || e.target.parentElement.dataset.type;
+      console.log(type);
       showAlertType(type);
     });
   }
