@@ -60,42 +60,34 @@ function createAlerts() {
     fetch(ROUTE_URL).then((res) => res.json()),
   ])
     .then((res) => {
-      // process data
-      // TODO: refactor to generate an object that separates routes by mode
-      // const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
-      const [rail, bus, marine] = res[1].mode;
-      const busRoutes = organizeRoutes(bus.route);
-      const alerts = getAlertsByMode(res[0].alerts);
-      console.log("alerts", alerts);
-
-      // number of alerts for each mode
-      const busCount = alerts.bus.length;
-      const railCount = alerts.rail.length;
-      const marineCount = alerts.waterTaxi.length;
-      const elevatorCount = alerts.elevators.length;
-      const systemCount = alerts.systemAlerts.length;
-
-      // TODO: create banner for system alert on list page
-      // const systemAlerts = getSystemAlerts(res[0].alerts);
-
-      let data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
-
-      // snow flag
-      let snow = false;
-
       // build accordion
       let accordion = new DocumentFragment();
 
       // loop through data and create route panels
-      let container = document.createElement("div");
+      let container, data;
+
+      // identify data
+      let snow = false; // snow flag
+      const [rail, bus, marine] = res[1].mode;
+      const busRoutes = organizeRoutes(bus.route);
+      const alerts = getAlertsByMode(res[0].alerts);
+      data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
+
+      // create container for each alert type
+      container = document.createElement("div");
       container.id = "bus-alerts";
       container.setAttribute("class", "alerts bus-alerts");
+
+      // add alert elements to container
       data.forEach((route, idx) => {
         if (!snow && route.is_snow > 0) snow = true;
         container.append(createRoutePanel(route, "bus", idx));
       });
+
+      // add container to main accordion
       accordion.append(container);
 
+      // notify that the mode is complete
       console.log("bus done");
 
       // loop through data and create rail panels
