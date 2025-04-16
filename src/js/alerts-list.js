@@ -60,84 +60,67 @@ function createAlerts() {
     fetch(ROUTE_URL).then((res) => res.json()),
   ])
     .then((res) => {
-      // process data
-      // TODO: refactor to generate an object that separates routes by mode
-      // const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
-      const [rail, bus, marine] = res[1].mode;
-      const busRoutes = organizeRoutes(bus.route);
-      const alerts = getAlertsByMode(res[0].alerts);
-      console.log("alerts", alerts);
-
-      // number of alerts for each mode
-      const busCount = alerts.bus.length;
-      const railCount = alerts.rail.length;
-      const marineCount = alerts.waterTaxi.length;
-      const elevatorCount = alerts.elevators.length;
-      const systemCount = alerts.systemAlerts.length;
-
-      // TODO: create banner for system alert on list page
-      // const systemAlerts = getSystemAlerts(res[0].alerts);
-
-      let data = cleanup(processData(processAlerts(alerts.bus), busRoutes));
-
-      // snow flag
-      let snow = false;
-
       // build accordion
       let accordion = new DocumentFragment();
+      let container, routeAlerts;
 
-      // loop through data and create route panels
-      let container = document.createElement("div");
-      container.id = "bus-alerts";
-      container.setAttribute("class", "alerts bus-alerts");
-      data.forEach((route, idx) => {
-        if (!snow && route.is_snow > 0) snow = true;
-        container.append(createRoutePanel(route, "bus", idx));
+      // identify data
+      let snow = false; // snow flag
+      const [rail, bus, waterTaxi] = res[1].mode;
+      const alerts = getAlertsByMode(res[0].alerts);
+
+      const data = [
+        {
+          routes: organizeRoutes(bus.route),
+          alerts: alerts.bus,
+          name: "bus",
+        },
+        {
+          routes: rail.route,
+          alerts: alerts.rail,
+          name: "rail",
+        },
+        {
+          routes: waterTaxi.route,
+          alerts: alerts.waterTaxi,
+          name: "water-taxi",
+        },
+        {
+          alerts: alerts.elevators,
+          name: "elevator",
+        },
+      ];
+
+      data.forEach((mode) => {
+        // loop through data and create route panels
+        if (mode.name !== "elevator") {
+          routeAlerts = cleanup(
+            processData(processAlerts(mode.alerts), mode.routes)
+          );
+        } else {
+          routeAlerts = mode.alerts;
+        }
+
+        // create container for each alert type
+        container = document.createElement("div");
+        container.id = `${mode.name}-alerts`;
+        container.setAttribute("class", `alerts ${mode.name}-alerts`);
+
+        // bus alerts should display by default
+        if (mode.name !== "bus") container.style.display = "none";
+
+        // add alert elements to container
+        routeAlerts.forEach((alert, idx) => {
+          if (!snow && alert.is_snow > 0) snow = true; // update flag if snow alert found
+          container.append(createRoutePanel(alert, mode.name, idx));
+        });
+
+        // add container to main accordion and notify when done
+        accordion.append(container);
+        console.log(`${mode.name} done`);
       });
-      accordion.append(container);
 
-      console.log("bus done");
-
-      // loop through data and create rail panels
-      data = cleanup(processData(processAlerts(alerts.rail), rail.route));
-      container = document.createElement("div");
-      container.id = "rail-alerts";
-      container.setAttribute("class", "alerts rail-alerts");
-      container.style.display = "none";
-
-      data.forEach((route, idx) => {
-        container.append(createRoutePanel(route, "rail", idx));
-      });
-      accordion.append(container);
-      console.log("rail done");
-
-      // loop through data and create water taxi panels
-      data = cleanup(
-        processData(processAlerts(alerts.waterTaxi), marine.route)
-      );
-      container = document.createElement("div");
-      container.id = "water-taxi-alerts";
-      container.setAttribute("class", "alerts water-taxi-alerts");
-      container.style.display = "none";
-      data.forEach((alert, idx) => {
-        container.append(createRoutePanel(route, "marine", idx));
-      });
-      accordion.append(container);
-      console.log("marine done");
-
-      // loop through data and create elevator alerts
-      data = alerts.elevators;
-      container = document.createElement("div");
-      container.id = "elevator-alerts";
-      container.setAttribute("class", "alerts elevator-alerts");
-      container.style.display = "none";
-      data.forEach((alert, idx) => {
-        container.append(createRoutePanel(alert, "elevator", idx));
-      });
-      accordion.append(container);
-      console.log("elevator done");
-
-      // show snow map link
+      // show snow map link if snow alerts exist
       if (snow) {
         snowMap.classList.remove("d-none");
       }
@@ -145,10 +128,9 @@ function createAlerts() {
       // remove load spinner
       document.getElementById("loading").remove();
 
-      // test lottie
+      // show no alerts msg if no alerts exist
       initLottie();
 
-      // add system alerts
       allAlerts.append(accordion);
 
       // attach event handlers
