@@ -45,7 +45,8 @@ export function generateSingleAlert(alert, mode = "transit") {
   // console.log(alert);
   // alert panel
   const alertPanel = document.createElement("div");
-  alertPanel.setAttribute("class", `advisory-panel`);
+  alertPanel.setAttribute("class", `card-body`);
+  // alertPanel.setAttribute("class", `advisory-panel`);
 
   const alertIcon = document.createElement("span");
   alertIcon.setAttribute("class", `advisory-icon ${icon(alert.effect_name)}`);

@@ -33,6 +33,7 @@ import {
   showAlertType,
   initLottie,
 } from "./modules/events";
+import bootstrap from "bootstrap";
 import { generateSingleAlert } from "./modules/single-alert";
 
 if (document.readyState !== "loading") {
@@ -267,6 +268,34 @@ function processAlerts(alerts, type = "bus") {
 function createRoutePanel(route, type = "bus", idx) {
   // create parent fragment
   let routePanel = new DocumentFragment();
+  const id = route.route_id || route.alert_id;
+
+  // create card
+  let card = document.createElement("div");
+  card.setAttribute("class", "card");
+
+  // create card header
+  const cardHeader = document.createElement("div");
+  cardHeader.setAttribute("class", "card-header");
+  cardHeader.id = id;
+
+  // set status class for filtering
+  // let ongoingClass,
+  //   upcomingClass = "";
+
+  // if (route.status) {
+  //   ongoingClass = route.status.ongoing ? "ongoing" : "";
+  //   upcomingClass = route.status.upcoming ? "upcoming" : "";
+  // } else {
+  //   ongoingClass = "ongoing";
+  // }
+
+  // cardHeader.setAttribute("class", `${ongoingClass} ${upcomingClass}`);
+  // cardHeader.setAttribute("data-route", routeName);
+
+  // heading
+  const title = document.createElement("h2");
+  title.setAttribute("class", "mb-0");
 
   let routeName;
   if (type === "elevator") {
@@ -275,45 +304,15 @@ function createRoutePanel(route, type = "bus", idx) {
     routeName = routeLabel(route.route_name);
   }
 
-  // create panel elements
-  const id = route.route_id || route.alert_id;
-  const header = document.createElement("div");
-  header.id = id;
-
-  // set status class for filtering
-  let ongoingClass,
-    upcomingClass = "";
-
-  if (route.status) {
-    ongoingClass = route.status.ongoing ? "ongoing" : "";
-    upcomingClass = route.status.upcoming ? "upcoming" : "";
-  } else {
-    ongoingClass = "ongoing";
-  }
-  header.setAttribute(
-    "class",
-    `toggle advisory-block ${ongoingClass} ${upcomingClass}`
-  );
-  header.setAttribute("data-route", routeName);
-
   // create toggle for accordion as button header
-  const button = document.createElement("input");
-  button.setAttribute("id", `toggle-advisory-${id}`);
-  button.setAttribute("type", "checkbox");
-  button.setAttribute("name", `toggle-advisory-${id}`);
-  button.setAttribute("aria-hidden", "true");
-
-  const label = document.createElement("label");
-  label.setAttribute(
-    "class",
-    "toggle-head advisory-block-title with-description"
-  );
-  label.setAttribute("for", `toggle-advisory-${id}`);
-
-  // route name
-  const title = document.createElement("h2");
-  title.setAttribute("class", "accordion-title");
-  title.textContent = routeName;
+  const button = document.createElement("button");
+  button.setAttribute("class", "btn btn-link btn-block text-left collapsed");
+  button.setAttribute("type", "button");
+  button.setAttribute("data-toggle", "collapse");
+  button.setAttribute("data-target", `#collapse-${id}`);
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-controls", `collapse-${id}`);
+  button.textContent = routeName;
 
   // status flag icon container
   const alertStatus = document.createElement("div");
@@ -337,23 +336,34 @@ function createRoutePanel(route, type = "bus", idx) {
   alertStatus.append(snow || "", ongoing || "", upcoming || "");
 
   // add elements to route header section
-  label.append(title, alertStatus);
-  header.append(button, label);
+  button.append(alertStatus);
+  title.append(button);
+  cardHeader.append(title);
+  card.append(cardHeader);
 
   // create alert container
-  const alertBody = document.createElement("div");
-  alertBody.setAttribute("class", "toggle-inner");
+  const alertBodyContainer = document.createElement("div");
+  alertBodyContainer.id = `collapse-${id}`;
+  alertBodyContainer.setAttribute("class", "collapse");
+  alertBodyContainer.setAttribute("aria-labelledby", id);
+  // alertBodyContainer.setAttribute("data-parent", `#bus-alerts`);
+  alertBodyContainer.setAttribute("data-parent", `#kcalert-accordion`);
+
+  // const alertBody = document.createElement("div");
+  // alertBody.setAttribute("class", "card-body");
 
   // append alerts to alert container
   if (route.alerts) {
     route.alerts.forEach((alert, idx) => {
-      alertBody.append(generateSingleAlert(alert));
+      alertBodyContainer.append(generateSingleAlert(alert));
     });
   } else {
-    alertBody.append(generateSingleAlert(route, "elevator"));
+    alertBodyContainer.append(generateSingleAlert(route, "elevator"));
   }
-  header.append(alertBody);
-  routePanel.append(header);
+
+  // alertBodyContainer.append(alertBody);
+  card.append(alertBodyContainer);
+  routePanel.append(card);
   return routePanel;
 }
 
