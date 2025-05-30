@@ -12,11 +12,11 @@
   scroll-margin-top: 100px;
 }
 
-@media screen and (min-width: 768px) {
-  #kcalert-accordion {
-    border: 1px solid var(--border-color) !important;
-  }
-}
+// @media screen and (min-width: 768px) {
+//   #kcalert-accordion {
+//     border: 2px solid var(--border-color) !important;
+//   }
+// }
 
 .advisory-panel:last-child {
   border-bottom: 0;

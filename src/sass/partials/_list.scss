@@ -1,9 +1,9 @@
 /* *************************************************
    * Accordion Container
 ***************************************************/
-#accordion {
-  border: 2px solid var(--border-color);
-}
+// #kcalert-accordion {
+//   border: 2px solid var(--border-color);
+// }
 
 /* *************************************************
  * List View - Route Header 
@@ -25,14 +25,14 @@
 }
 
 /* Status Count Icons */
-.route-status {
-  display: flex;
-  margin-right: 50px;
+// .route-status {
+//   display: flex;
+//   margin-right: 50px;
 
-  @include responsive(767px) {
-    margin-right: 30px;
-  }
-}
+//   @include responsive(767px) {
+//     margin-right: 30px;
+//   }
+// }
 
 .route-status > span {
   background-size: contain;

@@ -28,14 +28,70 @@
 }
 
 /* Alert Header */
-.alert-header {
-  display: flex;
+// .alert-header {
+//   display: flex;
+// }
+
+// .alert-header button {
+//   border: 0;
+//   background-color: #fff;
+//   color: green;
+// }
+
+.card,
+.card-header {
+  border-radius: 0 !important;
+  background-color: #fff;
 }
 
-.alert-header button {
-  border: 0;
-  background-color: #fff;
-  color: green;
+.card:not(:last-child),
+.card-header:not(:last-child) {
+  border-bottom: 0;
+}
+
+.card-header button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header button:active,
+.card-header button:focus,
+.card-header button:hover .route-status {
+  text-decoration: none;
+}
+
+.card-header button::after {
+  font-family: var(--icon-font);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  /* display: inline-block; */
+  opacity: 0.5;
+  content: "expand_more";
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+  color: #333;
+  padding: 4px;
+  border-radius: 100%;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  @include responsive(767px) {
+    right: 0.5rem;
+  }
 }
 
 .advisory-title-container {
@@ -56,7 +112,7 @@
   font-weight: normal;
   font-size: 1.3rem !important;
   margin: 0;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .advisory-title-container .advisory-type {
@@ -173,35 +229,35 @@
   margin-top: 1rem;
 }
 
-.with-description:after {
-  font-family: var(--icon-font);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  /* display: inline-block; */
-  opacity: 0.5;
-  content: "expand_more";
-  position: absolute;
-  right: 1rem;
-  top: 1.3rem;
-  color: #333;
-  padding: 4px;
-  border-radius: 100%;
-  height: 1.5rem;
-  width: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.4s;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+// .with-description:after {
+//   font-family: var(--icon-font);
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 30px;
+//   /* display: inline-block; */
+//   opacity: 0.5;
+//   content: "expand_more";
+//   position: absolute;
+//   right: 1rem;
+//   top: 1.3rem;
+//   color: #333;
+//   padding: 4px;
+//   border-radius: 100%;
+//   height: 1.5rem;
+//   width: 1.5rem;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+//   transition: all 0.4s;
+//   /* Support for all WebKit browsers. */
+//   -webkit-font-smoothing: antialiased;
+//   /* Support for Safari and Chrome. */
+//   text-rendering: optimizeLegibility;
+//   /* Support for Firefox. */
+//   -moz-osx-font-smoothing: grayscale;
 
-  @include responsive(767px) {
-    right: 0.5rem;
-  }
-}
+//   @include responsive(767px) {
+//     right: 0.5rem;
+//   }
+// }
