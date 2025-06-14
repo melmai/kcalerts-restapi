@@ -108,6 +108,7 @@ export function generateSingleAlert(alert, mode = "transit") {
   if (alert.description_text) {
     expandLink = document.createElement("a");
     expandLink.setAttribute("class", "expand-link");
+    expandLink.setAttribute("href", "#");
     expandLink.addEventListener("click", toggleDetails);
     expandLink.textContent = "Show details";
   }
