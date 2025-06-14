@@ -2,12 +2,22 @@
  * Alert Panels
  ***************************************************/
 .alert-panel,
-.advisory-panel {
+.advisory-panel,
+.card-body {
   display: flex;
   flex-direction: row;
   padding: 1.5rem 1rem 0;
   position: relative;
   border-bottom: 1px solid var(--border-color);
+}
+
+#kcalert-accordion .card-body {
+  color: #333;
+  padding-top: 1em;
+
+  &:last-child {
+    border-bottom: 0;
+  }
 }
 
 .alert-type,
@@ -47,18 +57,25 @@
 .card:not(:last-child),
 .card-header:not(:last-child) {
   border-bottom: 0;
+  padding: 0;
 }
 
 .card-header button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0;
+  padding: 1rem 1.25rem;
 }
 
 .card-header button:active,
 .card-header button:focus,
 .card-header button:hover .route-status {
   text-decoration: none;
+}
+
+.card-header button:not(.collapsed) {
+  background-color: var(--primary-light-background);
 }
 
 .card-header button::after {
@@ -71,7 +88,7 @@
   content: "expand_more";
   position: absolute;
   right: 1rem;
-  top: 1.5rem;
+  top: 1rem;
   color: #333;
   padding: 4px;
   border-radius: 100%;
@@ -190,7 +207,7 @@
   margin-top: 1em;
 }
 
-.advisory-panel .advisory-content .alert-footer {
+.advisory-content .alert-footer {
   font-size: 14px;
   border-top: 1px solid var(--border-color);
   padding-top: 7px;
@@ -198,7 +215,7 @@
 }
 
 @media screen and (min-width: 425px) {
-  .advisory-panel .advisory-content .alert-footer {
+  .advisory-content .alert-footer {
     font-size: 12px;
   }
 }

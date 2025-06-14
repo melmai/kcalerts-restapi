@@ -33,7 +33,7 @@ import {
   showAlertType,
   initLottie,
 } from "./modules/events";
-import bootstrap from "bootstrap";
+// import bootstrap from "bootstrap";
 import { generateSingleAlert } from "./modules/single-alert";
 
 if (document.readyState !== "loading") {
