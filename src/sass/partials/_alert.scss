@@ -68,9 +68,8 @@
   padding: 1rem 1.25rem;
 }
 
-.card-header button:active,
-.card-header button:focus,
-.card-header button:hover .route-status {
+.card-header .btn-link:hover,
+.card-header .btn-link:focus {
   text-decoration: none;
 }
 
