@@ -409,7 +409,8 @@ function setupListEvents(element) {
 }
 
 // FancyBox
-document.getElementById("snow-map-link").addEventListener("click", () => {
+document.getElementById("snow-map-link").addEventListener("click", (e) => {
+  e.preventDefault();
   Fancybox.show([
     {
       src: "https://map.metrowinter.com/map-iframe/",
