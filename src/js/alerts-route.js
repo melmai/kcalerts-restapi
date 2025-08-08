@@ -63,8 +63,15 @@ async function generateAlerts() {
  */
 async function getRemoteAlerts() {
   // get route name from URL path
-  const path = window.location.pathname;
+  console.log("Window obj: ", window.location);
+  let path = window.location.href;
+  // console.log("Path: ", path);
+
+  // remove trailing slash
+  path = path.replace(/\/+$/, "");
+  // console.log("Path: ", path);
   const routeNames = parseRoutes(path.split("/").pop());
+  // console.log("Route Names: ", routeNames);
 
   // get the route IDs
   const routeIDs = await Promise.all(
