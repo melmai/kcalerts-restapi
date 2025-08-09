@@ -15,7 +15,7 @@
 #status-filter .tab-btn {
   border: 1px solid #ccc;
   background-color: var(--light);
-  color: var(--gray);
+  color: #333;
   padding: 6px 12px;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -113,4 +113,99 @@
 
 #clear-search span:active {
   color: var(--primary-ghost-white);
+}
+
+/* *************************************************
+   * Transit Type Filter 
+   ***************************************************/
+.type-filter {
+  display: flex;
+  margin-bottom: 20px;
+
+  @include responsive(500px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+  }
+
+  @include responsive(350px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.type-filter .alert-type-bttn {
+  width: 23%;
+  max-width: 125px;
+  margin-right: 20px;
+  padding: 10px 5px;
+  font-size: 0.9em;
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  background-color: #fff;
+
+  @include responsive(500px) {
+    width: auto;
+    max-width: none;
+    display: flex;
+    text-align: left;
+    align-items: center;
+  }
+}
+
+.type-filter .alert-type-bttn:hover,
+.type-filter .alert-type-bttn:focus {
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.type-filter .alert-type-bttn:active,
+.type-filter .alert-type-bttn:state(selected),
+.type-filter .alert-type-bttn.selected {
+  background-color: var(--primary-light-background);
+}
+
+.type-filter .alert-type-bttn .material-symbols-outlined {
+  font-size: 2em;
+  pointer-events: none;
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+
+  @include responsive(500px) {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 1.8em;
+    padding: 3%;
+  }
+}
+
+.type-filter
+  .alert-type-bttn[data-type="bus-alerts"]
+  .material-symbols-outlined {
+  background-color: var(--primary-ghost);
+}
+
+.type-filter
+  .alert-type-bttn[data-type="rail-alerts"]
+  .material-symbols-outlined {
+  background-color: #2a7997;
+  background-color: orange;
+}
+
+.type-filter
+  .alert-type-bttn[data-type="water-taxi-alerts"]
+  .material-symbols-outlined {
+  background-color: #3bbdda;
+}
+
+.type-filter
+  .alert-type-bttn[data-type="system-alerts"]
+  .material-symbols-outlined {
+  background-color: black;
+}
+.type-filter
+  .alert-type-bttn[data-type="elevator-alerts"]
+  .material-symbols-outlined {
+  background-color: blue;
 }

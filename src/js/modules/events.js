@@ -1,3 +1,5 @@
+import { DotLottie } from "@lottiefiles/dotlottie-web";
+
 /* Event Handlers
  ******************************************************* */
 /**
@@ -58,25 +60,6 @@ function toggleDetails(e) {
   }
 }
 
-function notifyNoResults(element) {
-  const resize_ob = new ResizeObserver(function (entries) {
-    // since we are observing only a single element, so we access the first element in entries array
-    let rect = entries[0].contentRect;
-    const errorMsg = document.getElementById("no-alerts-msg");
-
-    if (rect.height === 0) {
-      errorMsg.setAttribute("style", "display: block;");
-      element.setAttribute("style", "border-color: transparent;");
-    } else {
-      errorMsg.setAttribute("style", "display: none;");
-      element.setAttribute("style", "border-color: #eee;");
-    }
-  });
-
-  // start observing for resize
-  resize_ob.observe(element);
-}
-
 /**
  * Hides routes that do not include search input
  *
@@ -115,11 +98,62 @@ function clearSearch() {
   searchRoutes(false);
 }
 
+/**
+ * Filter alerts by type
+ *
+ */
+function showAlertType(type = "bus-alerts") {
+  // change visible state of buttons
+  const alertBttns = document.getElementsByClassName("alert-type-bttn");
+  for (const bttn of alertBttns) {
+    if (bttn.id === type + "-bttn") {
+      bttn.setAttribute("class", "alert-type-bttn selected");
+    } else {
+      bttn.setAttribute("class", "alert-type-bttn");
+    }
+  }
+
+  // show/hide alert sections
+  const alertSections = document.getElementsByClassName("alerts");
+  const errorMsg = document.getElementById("no-alerts-msg");
+  errorMsg.setAttribute("class", "d-none");
+
+  for (const section of alertSections) {
+    if (section.id === type) {
+      section.setAttribute("style", "display: block;");
+
+      if (!section.hasChildNodes()) {
+        // add no alert notification
+        errorMsg.removeAttribute("class", "d-none");
+      }
+    } else {
+      section.setAttribute("style", "display: none;");
+    }
+  }
+
+  // TODO: if no alerts, show lottie animation
+}
+
+/**
+ * Initialize Lottie animation
+ *
+ */
+function initLottie() {
+  const canvas = document.getElementById("dotlottie-canvas");
+  const animation = new DotLottie({
+    canvas,
+    autoplay: true,
+    loop: true,
+    src: "https://lottie.host/5387d430-388a-4a2f-b124-1345aebfff6f/ra3lkmR3Rj.lottie",
+  });
+}
+
 export {
   clearButtons,
   showAlerts,
   toggleDetails,
-  notifyNoResults,
   searchRoutes,
   clearSearch,
+  showAlertType,
+  initLottie,
 };

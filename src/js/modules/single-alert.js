@@ -12,17 +12,25 @@ function createURL(url) {
   const link = document.createElement("a");
   link.setAttribute("href", url);
   link.setAttribute("target", "_blank");
-  link.setAttribute("class", "advisory-link")
+  link.setAttribute("class", "advisory-link");
 
   // set link text and class based on url
   if (url.includes("drive.google.com")) {
-    link.textContent = "View map";  
+    link.textContent = "View map";
     link.setAttribute("class", "advisory-link link-icon-picture_as_pdf");
+  } else if (url.includes("live.goswift.ly/seattle-streetcar/route")) {
+    link.textContent = "View route map";
+    link.setAttribute("class", "advisory-link link-icon-outbound");
+  } else if (url.includes("wsdot.com/ferries/vesselwatch/watertaxiwatch")) {
+    link.textContent = "Check status on Water Taxi Watch";
+    link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("kingcountymetro.blog")) {
     link.textContent = "View Blog Post";
     link.setAttribute("class", "advisory-link link-icon-outbound");
   } else if (url.includes("tripplanner.kingcounty.gov")) {
     link.textContent = "View next departures";
+  } else if (url.includes("#route-map")) {
+    link.textContent = "View route map";
   } else if (url.includes("/metro/routes-and-service/schedules-and-maps")) {
     link.textContent = "View route schedule";
   } else {
@@ -33,7 +41,8 @@ function createURL(url) {
   return urlContainer;
 }
 
-export function generateSingleAlert(alert, isList = true) {
+export function generateSingleAlert(alert, mode = "transit") {
+  // console.log(alert);
   // alert panel
   const alertPanel = document.createElement("div");
   alertPanel.setAttribute("class", `advisory-panel`);
@@ -41,7 +50,13 @@ export function generateSingleAlert(alert, isList = true) {
   const alertIcon = document.createElement("span");
   alertIcon.setAttribute("class", `advisory-icon ${icon(alert.effect_name)}`);
   alertIcon.setAttribute("aria-hidden", "true");
-  alertIcon.textContent = icon(alert.effect_name);
+  alertIcon.setAttribute("translate", "no");
+
+  if (mode === "elevator") {
+    alertIcon.textContent = "elevator";
+  } else {
+    alertIcon.textContent = icon(alert.effect_name);
+  }
 
   const alertContent = document.createElement("div");
   alertContent.setAttribute("class", "advisory-content");
@@ -60,6 +75,7 @@ export function generateSingleAlert(alert, isList = true) {
     "class",
     `advisory-status ${statusText(alert.alert_lifecycle)}`
   );
+  // console.log(alert);
   flag.textContent = statusText(alert.alert_lifecycle);
 
   alertTitle.append(type, flag);
@@ -72,22 +88,18 @@ export function generateSingleAlert(alert, isList = true) {
   // conditionally add description
   let alertDescription = "";
   let relatedLink = alert.url;
-  if (!isList && relatedLink && relatedLink.includes("schedules-and-maps")) {
-    relatedLink = "";
+  let alertURL = "";
+
+  // add URL
+  if (relatedLink) {
+    alertURL = createURL(relatedLink);
   }
 
-  let alertURL = "";
   if (alert.description_text) {
     alertDescription = document.createElement("p");
     alertDescription.textContent = accessibleText(alert.description_text);
     alertDescription.setAttribute("class", "alert-description");
     alertDescription.setAttribute("style", "display:none;");
-
-    if (relatedLink) {
-      alertDescription.append(createURL(relatedLink));
-    }
-  } else if (relatedLink) {
-    alertURL = createURL(relatedLink);
   }
 
   // more details button
@@ -133,9 +145,9 @@ export function generateSingleAlert(alert, isList = true) {
   alertContent.append(
     alertTitle,
     title,
+    alertURL,
     expandLink,
     alertDescription,
-    alertURL,
     alertCause,
     dates,
     footer

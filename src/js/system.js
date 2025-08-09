@@ -9,7 +9,7 @@
  *
  */
 
-import "bootstrap";
+// import "bootstrap";
 import { IS_REMOTE, LOCAL_ALERTS_DATA, REMOTE_ALERTS_API } from "./settings";
 
 if (document.readyState !== "loading") {
@@ -19,11 +19,8 @@ if (document.readyState !== "loading") {
 }
 
 function systemAlertInit() {
-  // const systemAlertContainer = document.querySelector(
-  //   ".alert-advanced > .container"
-  // );
+  const systemAlertContainer = document.getElementById("sysbanner");
 
-  const systemAlertContainer = document.getElementById("collapseAlertText");
   // set fetch type
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
 
@@ -35,6 +32,7 @@ function systemAlertInit() {
       // if (bannerAlerts.length === 0) return; // don't proceed if no system alerts
 
       // let featuredAlert = bannerAlerts[0];
+
       let featuredAlert = {
         alert_id: 1713,
         effect_name: "Snow Routes",
@@ -75,6 +73,8 @@ function getBannerAlerts(alerts) {
   let bannerAlerts = [];
   alerts.forEach((alert) => {
     if (alert.banner_text) bannerAlerts.push(alert);
+    // obj.hasOwnProperty(prop);
+    // if (!alert.hasOwnProperty()) bannerAlerts.push(alert);
   });
 
   return bannerAlerts;
@@ -90,27 +90,42 @@ function featuredAlert(alerts) {
   return featured;
 }
 
+/*
+<div class="metro-alert" role="alert" aria-label="alert">
+        <!-- English (EN) -->
+        <div class="alert-container fade-in" id="en" lang="en">
+          <h3>How’s your bus service?</h3>
+          <p>
+            Sixteen transit agencies from around the world, including King
+            County Metro, are surveying customers to improve service. Share your
+            thoughts on Metro's bus service. Survey is open until May 5. All
+            riders, frequent or occasional, are welcome. Your feedback is
+            confidential.
+          </p>
+          <p>
+            <a
+              href="https://imperial.eu.qualtrics.com/jfe/form/SV_0058v5sfZBqVTTM"
+              target="_blank"
+              class="link-emphasis"
+              >Take the survey today!</a
+            >
+          </p>
+        </div>
+      </div>
+*/
 // build banner with most recent alert
 function buildBanner(alert) {
   const bannerContent = document.createElement("div");
-  // bannerContent.setAttribute(
-  //   "class",
-  //   "alert alert-warning alert-dismissible fade show"
-  // );
-  // bannerContent.setAttribute("role", "alert");
+  bannerContent.setAttribute("class", "metro-alert");
+  bannerContent.setAttribute("role", "alert");
+  bannerContent.setAttribute("aria-label", "alert");
 
-  // const alertInner = document.createElement("div");
-  // alertInner.setAttribute("class", "container");
-
-  // const row = document.createElement("div");
-  // row.setAttribute("class", "row");
-
-  // const col11 = document.createElement("div");
-  // col11.setAttribute("class", "col-11");
+  const alertInner = document.createElement("div");
+  alertInner.setAttribute("class", "alert-container fade-in");
 
   // title
   const title = document.createElement("h2");
-  title.setAttribute("class", "alert-title");
+  title.setAttribute("class", "alert-title title-md");
   title.textContent = alert.service_effect_text;
 
   // text
@@ -118,10 +133,9 @@ function buildBanner(alert) {
   content.setAttribute("class", "alert-text");
 
   const bodyText = document.createElement("p");
-  bodyText.setAttribute("class", "rich-text");
   bodyText.textContent = alert.banner_text;
 
-  // close bttn
+  // link
   // const buttonContainer = document.createElement("div");
   // buttonContainer.setAttribute("class", "col");
 

@@ -121,6 +121,10 @@ function icon(effectName) {
       text = "ac_unit";
       break;
 
+    case "Elevator Closure":
+      text = "elevator";
+      break;
+
     default:
       text = "warning";
   }
@@ -178,6 +182,7 @@ function expandType(type) {
  * @returns String to display in status flag and classnames
  */
 function statusText(status) {
+  // console.log(status);
   if (status === "New" || status.includes("Ongoing")) return "ongoing";
   return "upcoming";
 }
@@ -196,14 +201,24 @@ function convertEpoch(epochts) {
 /**
  * Adjusts the route title based on route number
  *
+ * @todo: adjust Water Taxi route labels to be more descriptive
+ *
  * @param {String} route
  * @returns String describing route type
  */
 function routeLabel(route) {
-  console.log(route);
-  if (route === "Duvall-Monroe Shuttle" || route === "Trailhead Direct Mt. Si")
-    return route;
-  if (route === "629") return "SVT Shuttle";
+  const labels = [
+    "Duvall-Monroe Shuttle",
+    "Trailhead Direct Mt. Si",
+    "Trailhead Direct Issaquah Alps",
+    "First Hill Streetcar",
+    "South Lake Union Streetcar",
+  ];
+
+  if (labels.includes(route)) return route;
+  if (route === "SVT") return "SVT Shuttle";
+  if (route === "973") return "West Seattle Water Taxi";
+  if (route === "975") return "Vashon Water Taxi";
   if (route.charAt(0).match(/[a-z]/i)) return `RapidRide ${route}`;
   if (isST(route)) return `ST ${route}`;
   if (isDART(route)) return `DART ${route}`;
@@ -256,7 +271,8 @@ function organizeRoutes(routes) {
     if (
       route.route_id === "102698" ||
       route.route_id === "102699" ||
-      route.route_name === "Trailhead Direct Mt. Si"
+      route.route_name === "Trailhead Direct Mt. Si" ||
+      route.route_name === "Trailhead Direct Issaquah Alps"
     ) {
       shuttleRtes.push(route);
     } else {
@@ -270,6 +286,7 @@ function organizeRoutes(routes) {
 function countAlertTypes(data) {
   let ongoing = 0;
   let upcoming = 0;
+  let snow = 0;
 
   data.forEach((route) => {
     route.alerts.forEach((alert) => {
@@ -278,12 +295,17 @@ function countAlertTypes(data) {
       } else {
         ongoing++;
       }
+
+      if (alert.effect_name.toLowerCase().includes("snow")) {
+        snow++;
+      }
     });
   });
 
   return {
     ongoing: ongoing,
     upcoming: upcoming,
+    snow: snow,
   };
 }
 
@@ -308,6 +330,11 @@ function incrementStatusType(
   return res;
 }
 
+function incrementSnowCount(title, snow = 0) {
+  if (title.toLowerCase().includes("snow")) return snow + 1;
+  return snow;
+}
+
 /**
  * Creates status flag
  *
@@ -317,9 +344,24 @@ function incrementStatusType(
  */
 function createStatusFlag(type, text) {
   const flag = document.createElement("span");
-  flag.setAttribute("class", type);
-  flag.textContent = text;
+  if (type !== "snow") {
+    flag.setAttribute("class", type);
+    flag.textContent = text;
+  } else {
+    flag.setAttribute("class", "snow-icon material-symbols-outlined");
+    flag.setAttribute("translate", "no");
+    flag.textContent = "ac_unit";
+  }
   return flag;
+}
+
+function getSystemAlerts(alerts) {
+  let bannerAlerts = [];
+  alerts.forEach((alert) => {
+    if (alert.banner_text) bannerAlerts.push(alert);
+  });
+
+  return bannerAlerts;
 }
 
 export {
@@ -338,5 +380,7 @@ export {
   expandType,
   countAlertTypes,
   incrementStatusType,
+  incrementSnowCount,
   createStatusFlag,
+  getSystemAlerts,
 };
