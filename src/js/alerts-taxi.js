@@ -1,5 +1,5 @@
 /**
- * alerts-route.js
+ * alerts-taxi.js
  *
  * This file generates the alert accordion on specific route pages. The page
  * can be for a single route, or for multiple routes. Multiple routes will be
@@ -63,22 +63,31 @@ async function generateAlerts() {
  */
 async function getRemoteAlerts() {
   // get route name from URL path
-  console.log("Window obj: ", window.location);
-  let path = window.location.href;
-  // console.log("Path: ", path);
+  const path = window.location.pathname;
+  const endpoint = path.split("/").pop();
 
-  // remove trailing slash
-  path = path.replace(/\/+$/, "");
-  // console.log("Path: ", path);
-  const routeNames = parseRoutes(path.split("/").pop());
-  // console.log("Route Names: ", routeNames);
+  /*
+  Water Taxi paths
+  Main: https://kingcounty.gov/en/dept/metro/travel-options/water-taxi
+  Vashon: https://kingcounty.gov/en/dept/metro/travel-options/water-taxi/vashon
+  West Seattle: https://kingcounty.gov/en/dept/metro/travel-options/water-taxi/west-seattle
+  */
+
+  let routeIDs = [];
+  if (endpoint === "vashon") {
+    routeIDs = ["100337"];
+  } else if (endpoint === "west-seattle") {
+    routeIDs = ["100336"];
+  } else {
+    routeIDs = ["100337", "100336"];
+  }
 
   // get the route IDs
-  const routeIDs = await Promise.all(
-    routeNames.map(async (routeName) => {
-      return await getRouteID(routeName);
-    })
-  );
+  // const routeIDs = await Promise.all(
+  //   routeNames.map(async (routeName) => {
+  //     return await getRouteID(routeName);
+  //   })
+  // );
 
   // get the alerts by route ID
   const data = await Promise.all(
@@ -171,12 +180,16 @@ function createAlertsPanel(data) {
  */
 function generateRouteAlerts(data, isMultiple) {
   const routeData = new DocumentFragment();
+  const routeNames = {
+    973: "West Seattle - Downtown",
+    975: "Vashon - Downtown",
+  };
 
   // build header section if multiple routes exist on this page
   if (isMultiple && data.alerts.length > 0) {
     const routeHeader = document.createElement("h3");
     routeHeader.setAttribute("class", "route-header");
-    routeHeader.textContent = data.route_name;
+    routeHeader.textContent = routeNames[data.route_name];
     routeData.append(routeHeader);
   }
 

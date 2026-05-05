@@ -479,6 +479,32 @@
       }
     },
     {
+      "alert_id": 883388,
+      "effect_name": "Service Revision",
+      "effect": "OTHER_EFFECT",
+      "cause": "UNKNOWN_CAUSE",
+      "header_text": "Service on the South Lake Union Streetcar will be reduced today with trips operating approximately every 30 minutes until further notice. \n\nFor alternate bus service, use Metro bus routes 40 or 70.\n\n",
+      "short_header_text": "Service on the South Lake Union Streetcar will be reduced today with trips operating every 30 min.",
+      "severity": "Minor",
+      "created_dt": "1647609009",
+      "last_modified_dt": "1648213818",
+      "service_effect_text": "South Lake Union Streetcar notice:",
+      "timeframe_text": "ongoing",
+      "alert_lifecycle": "Ongoing",
+      "effect_periods": [{ "effect_start": "1647609002", "effect_end": "" }],
+      "affected_services": {
+        "services": [
+          {
+            "route_type": "2",
+            "mode_name": "Water Taxi",
+            "route_id": "100336",
+            "route_name": "Water Taxi"
+          }
+        ],
+        "elevators": []
+      }
+    },
+    {
       "alert_id": 995,
       "effect_name": "Stop Closure",
       "effect": "NO_SERVICE",

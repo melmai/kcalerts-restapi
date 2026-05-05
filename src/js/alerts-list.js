@@ -8,7 +8,7 @@
  * in settings.js
  *
  */
-
+import { Fancybox } from "@fancyapps/ui";
 import {
   IS_REMOTE,
   REMOTE_ALERTS_API,
@@ -22,13 +22,16 @@ import {
   routeLabel,
   organizeRoutes,
   incrementStatusType,
+  incrementSnowCount,
   createStatusFlag,
+  getSystemAlerts,
 } from "./modules/helpers";
 import {
   showAlerts,
-  notifyNoResults,
   searchRoutes,
   clearSearch,
+  showAlertType,
+  initLottie,
 } from "./modules/events";
 import { generateSingleAlert } from "./modules/single-alert";
 
@@ -42,12 +45,14 @@ if (document.readyState !== "loading") {
  * Init Function
  */
 function createAlerts() {
-  console.log("create alerts fxn start");
   const allAlerts = document.getElementById("kcalert-accordion");
+  const snowMap = document.getElementById("snow-map-link");
 
   // set fetch URLs
   const ALERT_URL = IS_REMOTE ? REMOTE_ALERTS_API : LOCAL_ALERTS_DATA;
   const ROUTE_URL = IS_REMOTE ? REMOTE_ROUTES_API : LOCAL_ROUTES_DATA;
+  // const ALERT_URL = "https://cm10-prod.kingcounty.gov/~/media/king-county/fe-apps/metro/service-advisories/snow-alerts-json.json";
+  // const ROUTE_URL = REMOTE_ROUTES_API;
 
   // fetch data
   Promise.all([
@@ -55,16 +60,91 @@ function createAlerts() {
     fetch(ROUTE_URL).then((res) => res.json()),
   ])
     .then((res) => {
-      // process data
-      const alerts = processAlerts(res[0].alerts); // array of objs that hold the alert and pertinent routes
-      const routes = organizeRoutes(res[1].mode[1].route); // array of all available routes
-      const allData = cleanup(processData(alerts, routes));
+      // console.log(res[0]);
+      // console.log(res[1]);
 
       // build accordion
       let accordion = new DocumentFragment();
-      allData.forEach((route, idx) => {
-        accordion.append(createRoutePanel(route, idx));
+      let container, routeAlerts;
+
+      // identify data
+      let snow = false; // snow flag
+      const [rail, bus, waterTaxi] = res[1].mode;
+      const alerts = getAlertsByMode(res[0].alerts);
+
+      const data = [
+        {
+          routes: organizeRoutes(bus.route),
+          alerts: alerts.bus,
+          name: "bus",
+        },
+        {
+          routes: rail.route,
+          alerts: alerts.rail,
+          name: "rail",
+        },
+        {
+          routes: waterTaxi.route,
+          alerts: alerts.waterTaxi,
+          name: "water-taxi",
+        },
+        {
+          alerts: alerts.elevators,
+          name: "elevator",
+        },
+      ];
+
+      data.forEach((mode) => {
+        // loop through data and create route panels
+        if (mode.name !== "elevator") {
+          routeAlerts = cleanup(
+            processData(processAlerts(mode.alerts), mode.routes),
+          );
+        } else {
+          routeAlerts = mode.alerts;
+        }
+
+        // create container for each alert type
+        container = document.createElement("div");
+        container.id = `${mode.name}-alerts`;
+        container.setAttribute("class", `alerts ${mode.name}-alerts`);
+
+        // bus alerts should display by default
+        if (mode.name !== "bus") container.style.display = "none";
+
+        // count alerts
+        let count = 0;
+
+        // add alert elements to container
+        routeAlerts.forEach((alert, idx) => {
+          if (!snow && alert.is_snow > 0) snow = true; // update flag if snow alert found
+          container.append(createRoutePanel(alert, mode.name, idx));
+          count++;
+        });
+
+        // console.log(container);
+
+        // add container to main accordion and notify when done
+        accordion.append(container);
+        // console.log(accordion);
+        console.log(`${mode.name} done. ${count} alerts found.`);
       });
+
+      // show snow map link if snow alerts exist
+      if (snow) {
+        snowMap.classList.remove("d-none");
+      }
+
+      // remove No alerts msg
+      const noAlertsFound = document.getElementById("no-alerts-msg");
+      console.log(noAlertsFound);
+      noAlertsFound.setAttribute("class", "d-none");
+
+      // remove load spinner
+      // document.getElementById("loading").remove();
+
+      // show no alerts msg if no alerts exist
+      initLottie();
 
       allAlerts.append(accordion);
 
@@ -72,7 +152,7 @@ function createAlerts() {
       setupListEvents(allAlerts);
     })
     .catch((err) => {
-      console.log("error with create fxn");
+      console.log("error with create fxn", err);
     });
 }
 
@@ -101,6 +181,12 @@ function processData(alertArr, routeArr) {
 
           // increment alert type
           route.status = incrementStatusType(data.status, route.status);
+
+          // set snow flag
+          route.is_snow = incrementSnowCount(
+            data.alert.effect_name,
+            route.is_snow,
+          );
         }
       });
     });
@@ -110,24 +196,75 @@ function processData(alertArr, routeArr) {
 }
 
 /**
+ * Creates an object that holds alerts separated by mode
+ *
+ * @param {Array} alerts array of alert objects
+ * @returns an object with keys for each mode
+ */
+function getAlertsByMode(alerts) {
+  const busAlerts = [];
+  const railAlerts = [];
+  const waterTaxiAlerts = [];
+  const elevatorAlerts = [];
+  const systemAlerts = [];
+
+  for (const alert of alerts) {
+    if (alert.affected_services.elevators.length) {
+      elevatorAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Rail") {
+      railAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Marine") {
+      waterTaxiAlerts.push(alert);
+    } else if (alert.affected_services.services[0].mode_name === "Bus") {
+      busAlerts.push(alert);
+    } else {
+      systemAlerts.push(alert);
+    }
+  }
+
+  return {
+    bus: busAlerts,
+    rail: railAlerts,
+    waterTaxi: waterTaxiAlerts,
+    elevators: elevatorAlerts,
+    systemAlerts: systemAlerts,
+  };
+}
+
+/**
  * Process all alerts
  *
  * @param {Array} alerts
  * @returns an array of objects that contain an alert and its unique routes
  */
-function processAlerts(alerts) {
+function processAlerts(alerts, type = "bus") {
   let result = [];
 
-  // loop through all alerts and create an array of routes that have alerts
-  alerts.forEach((alert) => {
-    const routes = uniqueRoutes(alert.affected_services.services, "alert");
+  if (type === "elevator") {
+    alerts.forEach((alert) => {
+      const routes = uniqueRoutes(
+        alert.affected_services.elevators,
+        "elevator",
+      );
 
-    result.push({
-      route_ids: routes,
-      alert: alert,
-      status: alert.alert_lifecycle,
+      result.push({
+        // route_ids: routes,
+        alert: alert,
+        status: statusText(alert.alert_lifecycle),
+      });
     });
-  });
+  } else {
+    // loop through all alerts and create an array of routes that have alerts
+    alerts.forEach((alert) => {
+      const routes = uniqueRoutes(alert.affected_services.services, "alert");
+
+      result.push({
+        route_ids: routes,
+        alert: alert,
+        status: alert.alert_lifecycle,
+      });
+    });
+  }
 
   return result;
 }
@@ -142,37 +279,51 @@ function processAlerts(alerts) {
  * @param {Int} id
  * @returns route element with alerts
  */
-function createRoutePanel(route, id) {
+function createRoutePanel(route, type = "bus", idx) {
   // create parent fragment
   let routePanel = new DocumentFragment();
-  const routeName = routeLabel(route.route_name);
+
+  let routeName;
+  if (type === "elevator") {
+    routeName = route.affected_services.elevators[0].elev_name;
+  } else {
+    routeName = routeLabel(route.route_name);
+  }
 
   // create panel elements
+  const id = route.route_id || route.alert_id;
   const header = document.createElement("div");
-  header.id = route.route_id;
+  header.id = id;
 
   // set status class for filtering
-  const ongoingClass = route.status.ongoing ? "ongoing" : "";
-  const upcomingClass = route.status.upcoming ? "upcoming" : "";
+  let ongoingClass,
+    upcomingClass = "";
+
+  if (route.status) {
+    ongoingClass = route.status.ongoing ? "ongoing" : "";
+    upcomingClass = route.status.upcoming ? "upcoming" : "";
+  } else {
+    ongoingClass = "ongoing";
+  }
   header.setAttribute(
     "class",
-    `toggle advisory-block ${ongoingClass} ${upcomingClass}`
+    `toggle advisory-block ${ongoingClass} ${upcomingClass}`,
   );
   header.setAttribute("data-route", routeName);
 
   // create toggle for accordion as button header
   const button = document.createElement("input");
-  button.setAttribute("id", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("id", `toggle-advisory-${id}`);
   button.setAttribute("type", "checkbox");
-  button.setAttribute("name", `toggle-advisory-${route.route_id}`);
+  button.setAttribute("name", `toggle-advisory-${id}`);
   button.setAttribute("aria-hidden", "true");
 
   const label = document.createElement("label");
   label.setAttribute(
     "class",
-    "toggle-head advisory-block-title with-description"
+    "toggle-head advisory-block-title with-description",
   );
-  label.setAttribute("for", `toggle-advisory-${route.route_id}`);
+  label.setAttribute("for", `toggle-advisory-${id}`);
 
   // route name
   const title = document.createElement("h2");
@@ -185,14 +336,20 @@ function createRoutePanel(route, id) {
   alertStatus.setAttribute("aria-hidden", "true");
 
   // create status flags and add to container
-  let ongoing, upcoming;
-  if (route.status.ongoing > 0)
-    ongoing = createStatusFlag("ongoing", route.status.ongoing);
+  let snow, ongoing, upcoming;
+  if (route.is_snow > 0) snow = createStatusFlag("snow", route.is_snow);
 
-  if (route.status.upcoming > 0)
-    upcoming = createStatusFlag("upcoming", route.status.upcoming);
+  if (route.status) {
+    if (route.status.ongoing > 0)
+      ongoing = createStatusFlag("ongoing", route.status.ongoing);
 
-  alertStatus.append(ongoing || "", upcoming || "");
+    if (route.status.upcoming > 0)
+      upcoming = createStatusFlag("upcoming", route.status.upcoming);
+  } else {
+    ongoing = createStatusFlag("ongoing", 1);
+  }
+
+  alertStatus.append(snow || "", ongoing || "", upcoming || "");
 
   // add elements to route header section
   label.append(title, alertStatus);
@@ -203,9 +360,13 @@ function createRoutePanel(route, id) {
   alertBody.setAttribute("class", "toggle-inner");
 
   // append alerts to alert container
-  route.alerts.forEach((alert, idx) => {
-    alertBody.append(generateSingleAlert(alert));
-  });
+  if (route.alerts) {
+    route.alerts.forEach((alert, idx) => {
+      alertBody.append(generateSingleAlert(alert));
+    });
+  } else {
+    alertBody.append(generateSingleAlert(route, "elevator"));
+  }
   header.append(alertBody);
   routePanel.append(header);
   return routePanel;
@@ -224,14 +385,24 @@ function setupListEvents(element) {
   // show only ongoing alerts
   const ongoingAlertsBttn = document.getElementById("ongoing-filter");
   ongoingAlertsBttn.addEventListener("click", () =>
-    showAlerts("ongoing", "upcoming")
+    showAlerts("ongoing", "upcoming"),
   );
 
   // show only upcoming alerts
   const upcomingAlertsBttn = document.getElementById("upcoming-filter");
   upcomingAlertsBttn.addEventListener("click", () =>
-    showAlerts("upcoming", "ongoing")
+    showAlerts("upcoming", "ongoing"),
   );
+
+  // show alerts by type
+  const alertTypeBttns = document.getElementsByClassName("alert-type-bttn");
+  for (const bttn of alertTypeBttns) {
+    bttn.addEventListener("click", (e) => {
+      const type = e.target.dataset.type || e.target.parentElement.dataset.type;
+      // console.log(type);
+      showAlertType(type);
+    });
+  }
 
   // search input
   const searchInput = document.getElementById("route-search");
@@ -241,6 +412,21 @@ function setupListEvents(element) {
   const clearInput = document.getElementById("clear-search");
   clearInput.addEventListener("click", clearSearch);
 
-  // notify user if no results
-  notifyNoResults(element);
+  // FancyBox
+  const mapLink = document.getElementById("snow-map-link");
+  console.log(mapLink);
+  mapLink.addEventListener("click", () => {
+    Fancybox.show([
+      {
+        src: "https://map.metrowinter.com/map-iframe/",
+        type: "iframe",
+        preload: false,
+      },
+    ]);
+  });
 }
+
+Fancybox.bind("[data-fancybox]", {
+  // Custom options
+  hideScrollbar: true,
+});

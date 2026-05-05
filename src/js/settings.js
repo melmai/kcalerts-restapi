@@ -3,21 +3,28 @@
  */
 
 const IS_REMOTE = true;
+
+// Production API
 const BASE_URL = "https://kcm-api.ibi-transit.com/developer/api/v2";
 const API_KEY = "3QxRRLWBsUAZbfT62GEB2Q";
+
+// Test API
+// const BASE_URL = "https://kcm-api-test.ibi-transit.com/developer/api/v2";
+// const API_KEY = "gvMjFrABizrQwye9KBD3KB";
 
 /**
  * Local Files - these will be used if IS_REMOTE is set to true
  *
  */
 
-const LOCAL_ALERTS_DATA = "/dist/static/json/alerts20230420.json";
-const LOCAL_ROUTES_DATA = "/dist/static/json/routes.json";
+const LOCAL_ALERTS_DATA = "/static/json/alerts.json";
+const LOCAL_ROUTES_DATA = "/static/json/routes.json";
 
 // Specific Route Alerts - use only one and comment out the rest
-// const ROUTE = '007';    // single
+// const ROUTE = "002"; // single
+const ROUTE = "007"; // single
 // const ROUTE = '271';     // single
-const ROUTE = "007-271"; // multiple
+// const ROUTE = "007-271"; // multiple
 const LOCAL_ROUTE_DATA = `../static/json/route/${ROUTE}.json`;
 
 /**

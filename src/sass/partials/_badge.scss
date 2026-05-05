@@ -1,13 +1,13 @@
 /* *************************************************
  * ongoing vs upcoming Alerts
  ***************************************************/
-.accordion.ongoing > .upcoming:not(.ongoing),
+.accordion.ongoing > .alerts > .upcoming:not(.ongoing),
 .accordion.ongoing .alert-panel.upcoming,
 .accordion.ongoing .route-status .upcoming {
   display: none !important;
 }
 
-.accordion.upcoming > .ongoing:not(.upcoming),
+.accordion.upcoming > .alerts > .ongoing:not(.upcoming),
 .accordion.upcoming .alert-panel.ongoing,
 .accordion.upcoming .route-status .ongoing {
   display: none !important;
@@ -42,6 +42,14 @@
 .route-status .upcoming {
   background-image: url(../static/img/svg/planned.svg);
   background-image: url(https://kingcounty.gov/en/-/media/king-county/depts/metro/icons/svg/planned.svg);
+}
+
+.route-status .snow-icon {
+  font-size: 1.75rem;
+  color: blue;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* *************************************************
