@@ -105,7 +105,9 @@ function clearSearch() {
 function showAlertType(type = "bus-alerts") {
   // change visible state of buttons
   const alertBttns = document.getElementsByClassName("alert-type-bttn");
+  console.log(alertBttns);
   for (const bttn of alertBttns) {
+    console.log(bttn);
     if (bttn.id === type + "-bttn") {
       bttn.setAttribute("class", "alert-type-bttn selected");
     } else {

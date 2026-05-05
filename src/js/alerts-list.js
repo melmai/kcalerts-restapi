@@ -60,6 +60,9 @@ function createAlerts() {
     fetch(ROUTE_URL).then((res) => res.json()),
   ])
     .then((res) => {
+      // console.log(res[0]);
+      // console.log(res[1]);
+
       // build accordion
       let accordion = new DocumentFragment();
       let container, routeAlerts;
@@ -95,7 +98,7 @@ function createAlerts() {
         // loop through data and create route panels
         if (mode.name !== "elevator") {
           routeAlerts = cleanup(
-            processData(processAlerts(mode.alerts), mode.routes)
+            processData(processAlerts(mode.alerts), mode.routes),
           );
         } else {
           routeAlerts = mode.alerts;
@@ -109,15 +112,22 @@ function createAlerts() {
         // bus alerts should display by default
         if (mode.name !== "bus") container.style.display = "none";
 
+        // count alerts
+        let count = 0;
+
         // add alert elements to container
         routeAlerts.forEach((alert, idx) => {
           if (!snow && alert.is_snow > 0) snow = true; // update flag if snow alert found
           container.append(createRoutePanel(alert, mode.name, idx));
+          count++;
         });
+
+        // console.log(container);
 
         // add container to main accordion and notify when done
         accordion.append(container);
-        console.log(`${mode.name} done`);
+        // console.log(accordion);
+        console.log(`${mode.name} done. ${count} alerts found.`);
       });
 
       // show snow map link if snow alerts exist
@@ -125,8 +135,13 @@ function createAlerts() {
         snowMap.classList.remove("d-none");
       }
 
+      // remove No alerts msg
+      const noAlertsFound = document.getElementById("no-alerts-msg");
+      console.log(noAlertsFound);
+      noAlertsFound.setAttribute("class", "d-none");
+
       // remove load spinner
-      document.getElementById("loading").remove();
+      // document.getElementById("loading").remove();
 
       // show no alerts msg if no alerts exist
       initLottie();
@@ -170,7 +185,7 @@ function processData(alertArr, routeArr) {
           // set snow flag
           route.is_snow = incrementSnowCount(
             data.alert.effect_name,
-            route.is_snow
+            route.is_snow,
           );
         }
       });
@@ -229,7 +244,7 @@ function processAlerts(alerts, type = "bus") {
     alerts.forEach((alert) => {
       const routes = uniqueRoutes(
         alert.affected_services.elevators,
-        "elevator"
+        "elevator",
       );
 
       result.push({
@@ -292,7 +307,7 @@ function createRoutePanel(route, type = "bus", idx) {
   }
   header.setAttribute(
     "class",
-    `toggle advisory-block ${ongoingClass} ${upcomingClass}`
+    `toggle advisory-block ${ongoingClass} ${upcomingClass}`,
   );
   header.setAttribute("data-route", routeName);
 
@@ -306,7 +321,7 @@ function createRoutePanel(route, type = "bus", idx) {
   const label = document.createElement("label");
   label.setAttribute(
     "class",
-    "toggle-head advisory-block-title with-description"
+    "toggle-head advisory-block-title with-description",
   );
   label.setAttribute("for", `toggle-advisory-${id}`);
 
@@ -370,13 +385,13 @@ function setupListEvents(element) {
   // show only ongoing alerts
   const ongoingAlertsBttn = document.getElementById("ongoing-filter");
   ongoingAlertsBttn.addEventListener("click", () =>
-    showAlerts("ongoing", "upcoming")
+    showAlerts("ongoing", "upcoming"),
   );
 
   // show only upcoming alerts
   const upcomingAlertsBttn = document.getElementById("upcoming-filter");
   upcomingAlertsBttn.addEventListener("click", () =>
-    showAlerts("upcoming", "ongoing")
+    showAlerts("upcoming", "ongoing"),
   );
 
   // show alerts by type
@@ -384,7 +399,7 @@ function setupListEvents(element) {
   for (const bttn of alertTypeBttns) {
     bttn.addEventListener("click", (e) => {
       const type = e.target.dataset.type || e.target.parentElement.dataset.type;
-      console.log(type);
+      // console.log(type);
       showAlertType(type);
     });
   }
@@ -396,18 +411,20 @@ function setupListEvents(element) {
   // clear search
   const clearInput = document.getElementById("clear-search");
   clearInput.addEventListener("click", clearSearch);
-}
 
-// FancyBox
-document.getElementById("snow-map-link").addEventListener("click", () => {
-  Fancybox.show([
-    {
-      src: "https://map.metrowinter.com/map-iframe/",
-      type: "iframe",
-      preload: false,
-    },
-  ]);
-});
+  // FancyBox
+  const mapLink = document.getElementById("snow-map-link");
+  console.log(mapLink);
+  mapLink.addEventListener("click", () => {
+    Fancybox.show([
+      {
+        src: "https://map.metrowinter.com/map-iframe/",
+        type: "iframe",
+        preload: false,
+      },
+    ]);
+  });
+}
 
 Fancybox.bind("[data-fancybox]", {
   // Custom options
