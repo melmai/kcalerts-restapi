@@ -68,11 +68,11 @@ async function getRemoteAlerts() {
   const routeNames = parseRoutes(routes.split("/").pop());
 
   // get the route IDs
-  const routeIDs = await Promise.all(
-    routeNames.map(async (routeName) => {
-      return await getRouteID(routeName);
-    }),
-  );
+  // get all routes
+  const routesList = await fetch(REMOTE_ROUTES_API).then((res) => res.json());
+  const routeIDs = routeNames.map((routeName) => {
+    return getRouteID(routeName, routesList);
+  });
 
   // get the alerts by route ID
   const data = await Promise.all(
@@ -211,10 +211,7 @@ function parseRoutes(path) {
  * @param {String} routeName
  * @returns route ID
  */
-async function getRouteID(routeName) {
-  // get all routes
-  const routes = await fetch(REMOTE_ROUTES_API).then((res) => res.json());
-
+function getRouteID(routeName, routes) {
   // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
     (route) => route.route_name.toLowerCase() === routeName,
