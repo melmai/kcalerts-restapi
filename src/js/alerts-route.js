@@ -62,29 +62,23 @@ async function generateAlerts() {
  * @returns data array for routes parsed from URL string
  */
 async function getRemoteAlerts() {
-  // get route name from URL path
-  console.log("Window obj: ", window.location);
-  let path = window.location.href;
-  // console.log("Path: ", path);
-
-  // remove trailing slash
-  path = path.replace(/\/+$/, "");
-  // console.log("Path: ", path);
-  const routeNames = parseRoutes(path.split("/").pop());
-  // console.log("Route Names: ", routeNames);
+  // get route name from query string
+  const urlParams = new URLSearchParams(window.location.search);
+  const routes = urlParams.get("route");
+  const routeNames = parseRoutes(routes.split("/").pop());
 
   // get the route IDs
   const routeIDs = await Promise.all(
     routeNames.map(async (routeName) => {
       return await getRouteID(routeName);
-    })
+    }),
   );
 
   // get the alerts by route ID
   const data = await Promise.all(
     routeIDs.map(async (routeID) => {
       return await getAlertsByRoute(routeID);
-    })
+    }),
   );
 
   return data;
@@ -113,7 +107,7 @@ function buildAccordion(data) {
   label.setAttribute("for", "toggle-advisory");
   label.setAttribute(
     "class",
-    "toggle-head advisory-block-title with-description"
+    "toggle-head advisory-block-title with-description",
   );
   label.textContent = "Service Advisory";
 
@@ -223,7 +217,7 @@ async function getRouteID(routeName) {
 
   // find the route ID we're looking for based on its name
   const route = routes.mode[1].route.find(
-    (route) => route.route_name.toLowerCase() === routeName
+    (route) => route.route_name.toLowerCase() === routeName,
   );
   return route.route_id;
 }
