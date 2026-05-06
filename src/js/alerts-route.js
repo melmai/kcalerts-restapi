@@ -31,7 +31,7 @@ if (document.readyState !== "loading") {
  * Init Function
  */
 async function generateAlerts() {
-  const alertContainer = document.getElementById("alert-accordion");
+  
 
   let data;
   if (IS_REMOTE) {
@@ -54,6 +54,8 @@ async function generateAlerts() {
     if (route.alerts.length > 0) alerts = true;
   });
   if (!alerts) return;
+
+  const alertContainer = document.getElementById("alert-accordion");
 
   // build accordion
   let accordion = new DocumentFragment();
@@ -117,7 +119,6 @@ function buildAccordion(data) {
 
   // get alerts by type
   const flagData = countAlertTypes(data);
-  console.log(flagData);
 
   // add status icons based on alert type
   if (flagData.snow > 0) {
@@ -132,7 +133,7 @@ function buildAccordion(data) {
     const upcomingFlag = createStatusFlag("upcoming", flagData.upcoming);
     statusFlags.append(upcomingFlag);
   }
-
+  
   label.append(statusFlags);
   toggleBlock.append(button, label, createAlertsPanel(data));
   return toggleBlock;
@@ -173,7 +174,7 @@ function generateRouteAlerts(data, isMultiple) {
     routeHeader.textContent = data.route_name;
     routeData.append(routeHeader);
   }
-
+  
   // print alerts
   data.alerts.forEach((alert) => {
     routeData.append(generateSingleAlert(alert, false));
