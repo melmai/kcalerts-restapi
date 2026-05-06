@@ -21,7 +21,11 @@ import {
 import { countAlertTypes, createStatusFlag } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 
-window.addEventListener("load", generateAlerts);
+if (document.readyState !== "loading") {
+  generateAlerts();
+} else {
+  window.addEventListener("DOMContentLoaded", generateAlerts);
+}
 
 /**
  * Init Function
