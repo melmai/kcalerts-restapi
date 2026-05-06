@@ -67,12 +67,8 @@ async function getRemoteAlerts() {
   const routes = urlParams.get("route");
   const routeNames = parseRoutes(routes.split("/").pop());
 
-  // get the route IDs
-  // get all routes
   const routesList = await fetch(REMOTE_ROUTES_API).then((res) => res.json());
-  const routeIDs = routeNames.map((routeName) => {
-    return getRouteID(routeName, routesList);
-  });
+  const routeIDs = getRouteIDs(routeNames, routesList.mode[1].route);
 
   // get the alerts by route ID
   const data = await Promise.all(
@@ -205,18 +201,21 @@ function parseRoutes(path) {
 }
 
 /**
- * Gets IBI route ID for route
- *
- * @param {String} apiKey
- * @param {String} routeName
- * @returns route ID
+ * Provides array of route IDs based on array of route names
+ * 
+ * @param {*} routeNames 
+ * @param {*} routes 
+ * @returns IBI route IDs for each route by name
  */
-function getRouteID(routeName, routes) {
-  // find the route ID we're looking for based on its name
-  const route = routes.mode[1].route.find(
-    (route) => route.route_name.toLowerCase() === routeName,
-  );
-  return route.route_id;
+function getRouteIDs(routeNames, routes) {
+  let routeIDs = [];
+
+  for (let i = 0; routeIDs.length < routeNames.length; i++) {
+     if (routeNames.includes(routes[i].route_name)) {
+      routeIDs.push(routes[i].route_id);
+    }
+  }
+  return routeIDs;
 }
 
 /**
