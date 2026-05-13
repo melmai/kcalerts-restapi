@@ -21,13 +21,17 @@ import {
 import { countAlertTypes, createStatusFlag } from "./modules/helpers";
 import { generateSingleAlert } from "./modules/single-alert";
 
-window.addEventListener("load", generateAlerts);
+if (document.readyState !== "loading") {
+  generateAlerts();
+} else {
+  window.addEventListener("DOMContentLoaded", generateAlerts);
+}
 
 /**
  * Init Function
  */
 async function generateAlerts() {
-  const alertContainer = document.getElementById("alert-accordion");
+  
 
   let data;
   if (IS_REMOTE) {
@@ -51,6 +55,8 @@ async function generateAlerts() {
   });
   if (!alerts) return;
 
+  const alertContainer = document.getElementById("alert-accordion");
+
   // build accordion
   let accordion = new DocumentFragment();
   accordion.append(buildAccordion(data));
@@ -67,12 +73,8 @@ async function getRemoteAlerts() {
   const routes = urlParams.get("route");
   const routeNames = parseRoutes(routes.split("/").pop());
 
-  // get the route IDs
-  // get all routes
   const routesList = await fetch(REMOTE_ROUTES_API).then((res) => res.json());
-  const routeIDs = routeNames.map((routeName) => {
-    return getRouteID(routeName, routesList);
-  });
+  const routeIDs = getRouteIDs(routeNames, routesList.mode[1].route);
 
   // get the alerts by route ID
   const data = await Promise.all(
@@ -117,7 +119,6 @@ function buildAccordion(data) {
 
   // get alerts by type
   const flagData = countAlertTypes(data);
-  console.log(flagData);
 
   // add status icons based on alert type
   if (flagData.snow > 0) {
@@ -132,7 +133,7 @@ function buildAccordion(data) {
     const upcomingFlag = createStatusFlag("upcoming", flagData.upcoming);
     statusFlags.append(upcomingFlag);
   }
-
+  
   label.append(statusFlags);
   toggleBlock.append(button, label, createAlertsPanel(data));
   return toggleBlock;
@@ -173,7 +174,7 @@ function generateRouteAlerts(data, isMultiple) {
     routeHeader.textContent = data.route_name;
     routeData.append(routeHeader);
   }
-
+  
   // print alerts
   data.alerts.forEach((alert) => {
     routeData.append(generateSingleAlert(alert, false));
@@ -205,18 +206,21 @@ function parseRoutes(path) {
 }
 
 /**
- * Gets IBI route ID for route
- *
- * @param {String} apiKey
- * @param {String} routeName
- * @returns route ID
+ * Provides array of route IDs based on array of route names
+ * 
+ * @param {*} routeNames 
+ * @param {*} routes 
+ * @returns IBI route IDs for each route by name
  */
-function getRouteID(routeName, routes) {
-  // find the route ID we're looking for based on its name
-  const route = routes.mode[1].route.find(
-    (route) => route.route_name.toLowerCase() === routeName,
-  );
-  return route.route_id;
+function getRouteIDs(routeNames, routes) {
+  let routeIDs = [];
+
+  for (let i = 0; routeIDs.length < routeNames.length; i++) {
+     if (routeNames.includes(routes[i].route_name)) {
+      routeIDs.push(routes[i].route_id);
+    }
+  }
+  return routeIDs;
 }
 
 /**
