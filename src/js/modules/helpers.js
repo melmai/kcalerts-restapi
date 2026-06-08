@@ -13,12 +13,12 @@ function printDates(dates) {
     if (i === dates.length - 1) {
       str += `and ${processAlertDates(
         dates[i].effect_start,
-        dates[i].effect_end
+        dates[i].effect_end,
       )}`;
     } else {
       str += `${processAlertDates(
         dates[i].effect_start,
-        dates[i].effect_end
+        dates[i].effect_end,
       )}, `;
     }
   }
@@ -213,6 +213,9 @@ function routeLabel(route) {
     "Trailhead Direct Issaquah Alps",
     "First Hill Streetcar",
     "South Lake Union Streetcar",
+    "Waterfront Shuttle",
+    "Accessible Match Day Shuttle",
+    "Metro Match Day Shuttle",
   ];
 
   if (labels.includes(route)) return route;
@@ -319,7 +322,7 @@ function countAlertTypes(data) {
  */
 function incrementStatusType(
   alertStatus,
-  routeStatus = { ongoing: 0, upcoming: 0 }
+  routeStatus = { ongoing: 0, upcoming: 0 },
 ) {
   let res = routeStatus;
   if (alertStatus.includes("Ongoing") || alertStatus === "New") {
