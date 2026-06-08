@@ -71,6 +71,7 @@ function createAlerts() {
       let snow = false; // snow flag
       const [rail, bus, waterTaxi] = res[1].mode;
       const alerts = getAlertsByMode(res[0].alerts);
+      // console.log(alerts);
 
       const data = [
         {
@@ -94,6 +95,8 @@ function createAlerts() {
         },
       ];
 
+      console.log(data);
+
       data.forEach((mode) => {
         // loop through data and create route panels
         if (mode.name !== "elevator") {
@@ -110,7 +113,8 @@ function createAlerts() {
         container.setAttribute("class", `alerts ${mode.name}-alerts`);
 
         // bus alerts should display by default
-        if (mode.name !== "bus") container.style.display = "none";
+        // if (mode.name !== "bus") container.style.display = "none";
+        if (mode.name === "elevator") container.style.display = "none";
 
         // count alerts
         let count = 0;
@@ -126,6 +130,7 @@ function createAlerts() {
 
         // add container to main accordion and notify when done
         accordion.append(container);
+
         // console.log(accordion);
         console.log(`${mode.name} done. ${count} alerts found.`);
       });
@@ -144,7 +149,7 @@ function createAlerts() {
       // document.getElementById("loading").remove();
 
       // show no alerts msg if no alerts exist
-      initLottie();
+      // initLottie();
 
       allAlerts.append(accordion);
 
@@ -207,6 +212,8 @@ function getAlertsByMode(alerts) {
   const waterTaxiAlerts = [];
   const elevatorAlerts = [];
   const systemAlerts = [];
+
+  console.log(alerts);
 
   for (const alert of alerts) {
     if (alert.affected_services.elevators.length) {
