@@ -2,10 +2,11 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    sysbanner: "./src/js/system.js",
+    // sysbanner: "./src/js/system.js",
     kcalertslist: "./src/js/alerts-list.js",
     kcalertsroute: "./src/js/alerts-route.js",
     watertaxi: "./src/js/alerts-taxi.js",
+    sea26: "./src/js/alerts-sea26.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -17,7 +18,12 @@ module.exports = {
     },
     port: 9000,
     open: {
-      target: ["/index.html", "/2.html", "/banner.html"],
+      target: [
+        "/index.html",
+        "/match-day-shuttle.html",
+        "/waterfront-shuttle.html",
+        "/accessible-match-day-shuttle.html",
+      ],
     },
   },
   module: {
