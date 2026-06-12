@@ -63,23 +63,26 @@ async function generateAlerts() {
  */
 async function getRemoteAlerts() {
   // get route name from URL path
-  const path = window.location.pathname;
+  let path = window.location.pathname;
+  console.log(path);
+  path = path.toLowerCase().replace(/\.[^/.]+$/, "");
+  console.log(path);
   const endpoint = path.split("/").pop();
 
   /*
-  Water Taxi paths
-  Main: https://kingcounty.gov/en/dept/metro/travel-options/water-taxi
-  Vashon: https://kingcounty.gov/en/dept/metro/travel-options/water-taxi/vashon
-  West Seattle: https://kingcounty.gov/en/dept/metro/travel-options/water-taxi/west-seattle
+ SEA26 paths
+  Accessible Match Day Shuttle: https://kingcounty.gov/en/dept/metro/travel-options/bus/accessible-match-day-shuttle
+  Metro Match Day Shuttle: https://kingcounty.gov/en/dept/metro/travel-options/bus/match-day-shuttle
+  Waterfront Shuttle: https://kingcounty.gov/en/dept/metro/travel-options/bus/waterfront-shuttle
   */
 
   let routeIDs = [];
-  if (endpoint === "vashon") {
-    routeIDs = ["100337"];
-  } else if (endpoint === "west-seattle") {
-    routeIDs = ["100336"];
+  if (endpoint.includes("accessible")) {
+    routeIDs = ["102759"];
+  } else if (endpoint.includes("waterfront")) {
+    routeIDs = ["102763"];
   } else {
-    routeIDs = ["100337", "100336"];
+    routeIDs = ["102759"];
   }
 
   // get the route IDs
